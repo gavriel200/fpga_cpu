@@ -1,0 +1,49 @@
+# Gowin IDE build directories
+impl/
+synthesis/
+simulation/
+rev_
+tmp/
+project/
+
+# Common build outputs
+*.fs
+*.fsdb
+*.vm
+*.rpt
+*.log
+*.mrp
+*.nlf
+*.tim
+*.twr
+*.tcl.bak
+*.bit
+*.bin
+*.jed
+*.svf
+
+# Intermediate files
+*.map
+*.ngd
+*.ngc
+*.ncd
+*.xpi
+*.xml
+*.htm
+*.html
+
+# Backup files
+*.bak
+*.tmp
+*.~*
+
+# IDE metadata
+.gwprj/
+*.gprj.lock
+*.ini
+
+# OS / Editor junk
+.DS_Store
+Thumbs.db
+*.swp
+*.swo

@@ -1,0 +1,18 @@
+# first step
+- create have 4 registers
+- have simple commads for load from reg load value to reg
+- add simple alu with addition
+- have a carry flag
+- write code to compile the asm and add it to the verilog
+- run simple test program
+
+- try to simulate before trying to use the fpga
+
+modules:
+top - top
+gpr - global purpose registers
+alu - addition operation
+rom - holds the assembly
+decoder - decodes each line in assembly
+flags - carry flag for the addition
+reset - reset using button ??

@@ -1,0 +1,28 @@
+
+
+LD - load value from one register to another
+LD [to register], [from register]
+```
+LD R1, R2
+R1 = R2
+```
+
+LDR - load value raw into register
+LDR [to register], [value]
+```
+LDR R1, 10
+R1 = 10
+```
+| add support for both int,hex,binary,char
+| int - just number
+| hex - start with 0x
+| binary - start with b
+| char - have ' around it
+
+ADD - adds registers
+ADD [to register], [with register]
+```
+ADD R1, R2
+R1 = R1 + R2
+```
+
