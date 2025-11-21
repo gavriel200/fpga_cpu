@@ -1,5 +1,71 @@
+`include "global_params.vh"
+
 module decoder (
-    input clk
+    // rom
+    input [23:0] rom_data,
+
+    // gpr
+    output reg       gpr_w_enable,
+    output reg [2:0] gpr_w_addr,
+    output reg [7:0] gpr_w_data,
+    output reg [2:0] gpr_r_addr_a,
+    output reg [2:0] gpr_r_addr_b,
+    input      [7:0] gpr_r_data_a,
+    input      [7:0] gpr_r_data_b,
+
+    // alu
+    output reg [2:0] alu_operation,
+    output reg [7:0] alu_A,
+    output reg [7:0] alu_B,
+    input      [7:0] alu_C
 );
 
+  wire [7:0] instruction = rom_data[23:16];
+  wire [7:0] arg_a = rom_data[15:8];
+  wire [7:0] arg_b = rom_data[7:0];
+
+  always @(*) begin
+    // default values (avoid latches)
+    gpr_w_enable = 0;
+    gpr_w_addr = 0;
+    gpr_w_data = 0;
+    gpr_r_addr_a = 0;
+    gpr_r_addr_b = 0;
+    alu_operation = 0;
+    alu_A = 0;
+    alu_B = 0;
+
+    case (instruction)
+      NOP: begin
+        gpr_w_enable = 0;
+      end
+
+      LD: begin
+        gpr_w_enable = 1;
+        gpr_w_addr   = arg_a[2:0];
+        gpr_r_addr_a = arg_b[2:0];
+        gpr_w_data   = gpr_r_data_a;
+      end
+
+      LDR: begin
+        gpr_w_enable = 1;
+        gpr_w_addr   = arg_a[2:0];
+        gpr_w_data   = arg_b;
+      end
+
+      ADD: begin
+        gpr_w_enable = 1;
+        gpr_w_addr = arg_a[2:0];
+
+        gpr_r_addr_a = arg_a[2:0];
+        gpr_r_addr_b = arg_b[2:0];
+
+        alu_A = gpr_r_data_a;
+        alu_B = gpr_r_data_b;
+
+        alu_operation = addition;
+        gpr_w_data = alu_C;
+      end
+    endcase
+  end
 endmodule

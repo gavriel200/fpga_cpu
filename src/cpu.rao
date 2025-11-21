@@ -1,0 +1,203 @@
+<?xml version="1" encoding="UTF-8"?>
+<GAO_CONFIG>
+    <Version>3.0</Version>
+    <Mode>Standard</Mode>
+    <AoCore index="0" sample_clock="clk" trig_type="0" storage_depth="1024" window_num="1" capture_amount="1024" implementation="0" trigger_pos="0" module_name="top" force_trigger_by_falling_edge="false" capture_init_data_enabled="false">
+        <SignalList>
+            <Bus capture_enable="true" name="asm - instruction" restorename="rom_data[23:16]">
+                <Signal>rom_data[23]</Signal>
+                <Signal>rom_data[22]</Signal>
+                <Signal>rom_data[21]</Signal>
+                <Signal>rom_data[20]</Signal>
+                <Signal>rom_data[19]</Signal>
+                <Signal>rom_data[18]</Signal>
+                <Signal>rom_data[17]</Signal>
+                <Signal>rom_data[16]</Signal>
+            </Bus>
+            <Bus capture_enable="true" name="asm - arg 1" restorename="rom_data[15:8]">
+                <Signal>rom_data[15]</Signal>
+                <Signal>rom_data[14]</Signal>
+                <Signal>rom_data[13]</Signal>
+                <Signal>rom_data[12]</Signal>
+                <Signal>rom_data[11]</Signal>
+                <Signal>rom_data[10]</Signal>
+                <Signal>rom_data[9]</Signal>
+                <Signal>rom_data[8]</Signal>
+            </Bus>
+            <Bus capture_enable="true" name="asm - arg 2" restorename="rom_data[7:0]">
+                <Signal>rom_data[7]</Signal>
+                <Signal>rom_data[6]</Signal>
+                <Signal>rom_data[5]</Signal>
+                <Signal>rom_data[4]</Signal>
+                <Signal>rom_data[3]</Signal>
+                <Signal>rom_data[2]</Signal>
+                <Signal>rom_data[1]</Signal>
+                <Signal>rom_data[0]</Signal>
+            </Bus>
+            <Bus capture_enable="true" name="gpr_w_addr[2:0]">
+                <Signal>gpr_w_addr[2]</Signal>
+                <Signal>gpr_w_addr[1]</Signal>
+                <Signal>gpr_w_addr[0]</Signal>
+            </Bus>
+            <Bus capture_enable="true" name="gpr_w_data[7:0]">
+                <Signal>gpr_w_data[7]</Signal>
+                <Signal>gpr_w_data[6]</Signal>
+                <Signal>gpr_w_data[5]</Signal>
+                <Signal>gpr_w_data[4]</Signal>
+                <Signal>gpr_w_data[3]</Signal>
+                <Signal>gpr_w_data[2]</Signal>
+                <Signal>gpr_w_data[1]</Signal>
+                <Signal>gpr_w_data[0]</Signal>
+            </Bus>
+            <Bus capture_enable="true" name="gpr_r_addr_a[2:0]">
+                <Signal>gpr_r_addr_a[2]</Signal>
+                <Signal>gpr_r_addr_a[1]</Signal>
+                <Signal>gpr_r_addr_a[0]</Signal>
+            </Bus>
+            <Bus capture_enable="true" name="gpr_r_addr_b[2:0]">
+                <Signal>gpr_r_addr_b[2]</Signal>
+                <Signal>gpr_r_addr_b[1]</Signal>
+                <Signal>gpr_r_addr_b[0]</Signal>
+            </Bus>
+            <Bus capture_enable="true" name="gpr_r_data_a[7:0]">
+                <Signal>gpr_r_data_a[7]</Signal>
+                <Signal>gpr_r_data_a[6]</Signal>
+                <Signal>gpr_r_data_a[5]</Signal>
+                <Signal>gpr_r_data_a[4]</Signal>
+                <Signal>gpr_r_data_a[3]</Signal>
+                <Signal>gpr_r_data_a[2]</Signal>
+                <Signal>gpr_r_data_a[1]</Signal>
+                <Signal>gpr_r_data_a[0]</Signal>
+            </Bus>
+            <Bus capture_enable="true" name="gpr_r_data_b[7:0]">
+                <Signal>gpr_r_data_b[7]</Signal>
+                <Signal>gpr_r_data_b[6]</Signal>
+                <Signal>gpr_r_data_b[5]</Signal>
+                <Signal>gpr_r_data_b[4]</Signal>
+                <Signal>gpr_r_data_b[3]</Signal>
+                <Signal>gpr_r_data_b[2]</Signal>
+                <Signal>gpr_r_data_b[1]</Signal>
+                <Signal>gpr_r_data_b[0]</Signal>
+            </Bus>
+            <Bus capture_enable="true" name="alu_operation[2:0]">
+                <Signal>alu_operation[2]</Signal>
+                <Signal>alu_operation[1]</Signal>
+                <Signal>alu_operation[0]</Signal>
+            </Bus>
+            <Bus capture_enable="true" name="alu_A[7:0]">
+                <Signal>alu_A[7]</Signal>
+                <Signal>alu_A[6]</Signal>
+                <Signal>alu_A[5]</Signal>
+                <Signal>alu_A[4]</Signal>
+                <Signal>alu_A[3]</Signal>
+                <Signal>alu_A[2]</Signal>
+                <Signal>alu_A[1]</Signal>
+                <Signal>alu_A[0]</Signal>
+            </Bus>
+            <Bus capture_enable="true" name="alu_B[7:0]">
+                <Signal>alu_B[7]</Signal>
+                <Signal>alu_B[6]</Signal>
+                <Signal>alu_B[5]</Signal>
+                <Signal>alu_B[4]</Signal>
+                <Signal>alu_B[3]</Signal>
+                <Signal>alu_B[2]</Signal>
+                <Signal>alu_B[1]</Signal>
+                <Signal>alu_B[0]</Signal>
+            </Bus>
+            <Bus capture_enable="true" name="alu_C[7:0]">
+                <Signal>alu_C[7]</Signal>
+                <Signal>alu_C[6]</Signal>
+                <Signal>alu_C[5]</Signal>
+                <Signal>alu_C[4]</Signal>
+                <Signal>alu_C[3]</Signal>
+                <Signal>alu_C[2]</Signal>
+                <Signal>alu_C[1]</Signal>
+                <Signal>alu_C[0]</Signal>
+            </Bus>
+            <Signal capture_enable="true">gpr_w_enable</Signal>
+            <Bus capture_enable="true" name="GPR2" restorename="i8/registers[23:16]">
+                <Signal>i8/registers[23]</Signal>
+                <Signal>i8/registers[22]</Signal>
+                <Signal>i8/registers[21]</Signal>
+                <Signal>i8/registers[20]</Signal>
+                <Signal>i8/registers[19]</Signal>
+                <Signal>i8/registers[18]</Signal>
+                <Signal>i8/registers[17]</Signal>
+                <Signal>i8/registers[16]</Signal>
+            </Bus>
+            <Bus capture_enable="true" name="GPR1" restorename="i8/registers[15:8]">
+                <Signal>i8/registers[15]</Signal>
+                <Signal>i8/registers[14]</Signal>
+                <Signal>i8/registers[13]</Signal>
+                <Signal>i8/registers[12]</Signal>
+                <Signal>i8/registers[11]</Signal>
+                <Signal>i8/registers[10]</Signal>
+                <Signal>i8/registers[9]</Signal>
+                <Signal>i8/registers[8]</Signal>
+            </Bus>
+            <Bus capture_enable="true" name="GPR0" restorename="i8/registers[7:0]">
+                <Signal>i8/registers[7]</Signal>
+                <Signal>i8/registers[6]</Signal>
+                <Signal>i8/registers[5]</Signal>
+                <Signal>i8/registers[4]</Signal>
+                <Signal>i8/registers[3]</Signal>
+                <Signal>i8/registers[2]</Signal>
+                <Signal>i8/registers[1]</Signal>
+                <Signal>i8/registers[0]</Signal>
+            </Bus>
+        </SignalList>
+        <Triggers>
+            <Trigger index="0">
+                <SignalList>
+                    <Bus restorename="i7/pc[7:0]">
+                        <Signal>i7/pc[7]</Signal>
+                        <Signal>i7/pc[6]</Signal>
+                        <Signal>i7/pc[5]</Signal>
+                        <Signal>i7/pc[4]</Signal>
+                        <Signal>i7/pc[3]</Signal>
+                        <Signal>i7/pc[2]</Signal>
+                        <Signal>i7/pc[1]</Signal>
+                        <Signal>i7/pc[0]</Signal>
+                    </Bus>
+                </SignalList>
+            </Trigger>
+            <Trigger index="1"/>
+            <Trigger index="2"/>
+            <Trigger index="3"/>
+            <Trigger index="4"/>
+            <Trigger index="5"/>
+            <Trigger index="6"/>
+            <Trigger index="7"/>
+            <Trigger index="8"/>
+            <Trigger index="9"/>
+            <Trigger index="10"/>
+            <Trigger index="11"/>
+            <Trigger index="12"/>
+            <Trigger index="13"/>
+            <Trigger index="14"/>
+            <Trigger index="15"/>
+        </Triggers>
+        <MatchUnits>
+            <MatchUnit index="0" enabled="1" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="00000001" value1="00000000" trigger="0"/>
+            <MatchUnit index="1" enabled="0" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="" value1=""/>
+            <MatchUnit index="2" enabled="0" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="" value1=""/>
+            <MatchUnit index="3" enabled="0" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="" value1=""/>
+            <MatchUnit index="4" enabled="0" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="" value1=""/>
+            <MatchUnit index="5" enabled="0" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="" value1=""/>
+            <MatchUnit index="6" enabled="0" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="" value1=""/>
+            <MatchUnit index="7" enabled="0" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="" value1=""/>
+            <MatchUnit index="8" enabled="0" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="" value1=""/>
+            <MatchUnit index="9" enabled="0" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="" value1=""/>
+            <MatchUnit index="10" enabled="0" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="" value1=""/>
+            <MatchUnit index="11" enabled="0" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="" value1=""/>
+            <MatchUnit index="12" enabled="0" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="" value1=""/>
+            <MatchUnit index="13" enabled="0" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="" value1=""/>
+            <MatchUnit index="14" enabled="0" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="" value1=""/>
+            <MatchUnit index="15" enabled="0" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="" value1=""/>
+        </MatchUnits>
+        <Expressions type="Static">
+            <Expression>M0</Expression>
+        </Expressions>
+    </AoCore>
+    <GAO_ID>1101011000000110</GAO_ID>
+</GAO_CONFIG>

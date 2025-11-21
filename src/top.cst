@@ -1,0 +1,6 @@
+IO_LOC "clk" 52;
+IO_PORT "clk" PULL_MODE=UP;
+IO_LOC "rst_btn" 4;
+IO_PORT "rst_btn" PULL_MODE=UP;
+IO_LOC "rst_led" 15;
+IO_PORT "rst_led" IO_TYPE=LVCMOS18;
