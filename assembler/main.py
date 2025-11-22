@@ -21,6 +21,9 @@ class Instruction(IntEnum):
     LD = 1
     LDR = 2
     ADD = 3
+    SUB = 4
+    INC = 5
+    DEC = 6
 
 
 class Registers(IntEnum):
@@ -87,7 +90,7 @@ class Nop(BaseInstruction):
     arg_num = 0
 
     def value(self):
-        return "000000"
+        return f"{0:02X}{0:02X}{0:02X}"
 
 
 class Ld(BaseInstruction):
@@ -141,6 +144,50 @@ class Add(BaseInstruction):
         return f"{self.instruciton_id:02X}{self.arg1:02X}{self.arg2:02X}"
 
 
+class Sub(BaseInstruction):
+    instruciton_id = Instruction.SUB
+    arg_num = 2
+
+    def __init__(self, line):
+        args = self.get_args(line)
+        self.validate_arg(args[0], self.is_register)
+        self.validate_arg(args[1], self.is_register)
+
+        self.arg1 = Registers[args[0]].value
+        self.arg2 = Registers[args[1]].value
+
+    def value(self):
+        return f"{self.instruciton_id:02X}{self.arg1:02X}{self.arg2:02X}"
+
+
+class Inc(BaseInstruction):
+    instruciton_id = Instruction.INC
+    arg_num = 1
+
+    def __init__(self, line):
+        args = self.get_args(line)
+        self.validate_arg(args[0], self.is_register)
+
+        self.arg1 = Registers[args[0]].value
+
+    def value(self):
+        return f"{self.instruciton_id:02X}{self.arg1:02X}{0:02X}"
+
+
+class Dec(BaseInstruction):
+    instruciton_id = Instruction.DEC
+    arg_num = 1
+
+    def __init__(self, line):
+        args = self.get_args(line)
+        self.validate_arg(args[0], self.is_register)
+
+        self.arg1 = Registers[args[0]].value
+
+    def value(self):
+        return f"{self.instruciton_id:02X}{self.arg1:02X}{0:02X}"
+
+
 def instruction_factory(line):
     instruction = line.split(" ", 1)[0]
     match instruction:
@@ -152,6 +199,12 @@ def instruction_factory(line):
             return Ldr(line)
         case Instruction.ADD.name:
             return Add(line)
+        case Instruction.SUB.name:
+            return Sub(line)
+        case Instruction.INC.name:
+            return Inc(line)
+        case Instruction.DEC.name:
+            return Dec(line)
         case _:
             raise ValueError(f"invalid instruction {instruction}")
 

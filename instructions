@@ -26,3 +26,24 @@ ADD R1, R2
 R1 = R1 + R2
 ```
 
+SUB - substracks registers
+SUB [to registers], [with registers]
+```
+SUB R1, R2
+R1 = R1 - R2
+```
+
+INC - increments register by one
+INC [register to increment]
+```
+INC R1
+R1 = R1 + 1
+```
+
+DEC - decrement register by one
+DEC [register to decrement]
+```
+DEC R1
+R1 = R1 - 1
+```
+

@@ -66,6 +66,44 @@ module decoder (
         alu_operation = addition;
         gpr_w_data = alu_C;
       end
+
+      SUB: begin
+        gpr_w_enable = 1;
+        gpr_w_addr = arg_a[2:0];
+
+        gpr_r_addr_a = arg_a[2:0];
+        gpr_r_addr_b = arg_b[2:0];
+
+        alu_A = gpr_r_data_a;
+        alu_B = gpr_r_data_b;
+
+        alu_operation = substraction;
+        gpr_w_data = alu_C;
+      end
+
+      INC: begin
+        gpr_w_enable = 1;
+        gpr_w_addr = arg_a[2:0];
+
+        gpr_r_addr_a = arg_a[2:0];
+
+        alu_A = gpr_r_data_a;
+
+        alu_operation = increment;
+        gpr_w_data = alu_C;
+      end
+
+      DEC: begin
+        gpr_w_enable = 1;
+        gpr_w_addr = arg_a[2:0];
+
+        gpr_r_addr_a = arg_a[2:0];
+
+        alu_A = gpr_r_data_a;
+
+        alu_operation = decrement;
+        gpr_w_data = alu_C;
+      end
     endcase
   end
 endmodule

@@ -14,6 +14,15 @@ module alu (
       addition: begin
         C = A + B;
       end
+      substraction: begin
+        C = A - B;
+      end
+      increment: begin
+        C = A + 1;
+      end
+      decrement: begin
+        C = A - 1;
+      end
     endcase
   end
 

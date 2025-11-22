@@ -41,8 +41,10 @@ module top (
   wire [7:0] alu_B;
   wire [7:0] alu_C;
   alu(
-      .operation(operation), .A(alu_A), .B(alu_B), .C(alu_C)
-  ); decoder(
+      .operation(alu_operation), .A(alu_A), .B(alu_B), .C(alu_C)
+  );
+  //
+  decoder(
       .rom_data(rom_data),
       .gpr_w_enable(gpr_w_enable),
       .gpr_w_addr(gpr_w_addr),
