@@ -1,0 +1,14 @@
+// start
+# another comment
+NOP
+LDR R0, 1
+LDR R1, 3
+LD  R0, R1
+ADD R0, R1
+LD  R2, R0
+ADD R0, R1
+LD  R1, R0
+LDR R0, 0x0f
+NOP
+NOP
+
