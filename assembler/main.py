@@ -25,7 +25,7 @@ class Instruction(IntEnum):
     INC = 5
     DEC = 6
     CLR = 7
-    SET = 8
+    FIL = 8
 
 
 class Registers(IntEnum):
@@ -205,7 +205,7 @@ class Clr(BaseInstruction):
 
 
 class Set(BaseInstruction):
-    instruciton_id = Instruction.SET
+    instruciton_id = Instruction.FIL
     arg_num = 1
 
     def __init__(self, line):
@@ -237,7 +237,7 @@ def instruction_factory(line):
             return Dec(line)
         case Instruction.CLR.name:
             return Clr(line)
-        case Instruction.SET.name:
+        case Instruction.FIL.name:
             return Set(line)
         case _:
             raise ValueError(f"invalid instruction {instruction}")

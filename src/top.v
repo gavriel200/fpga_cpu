@@ -36,7 +36,7 @@ module top (
       .r_data_b(gpr_r_data_b)
   );
 
-  wire [2:0] alu_operation;
+  wire [4:0] alu_operation;
   wire [7:0] alu_A;
   wire [7:0] alu_B;
   wire [7:0] alu_C;

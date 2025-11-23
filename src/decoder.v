@@ -111,7 +111,7 @@ module decoder (
         gpr_w_data   = 8'h00;
       end
 
-      SET: begin
+      FIL: begin
         gpr_w_enable = 1;
         gpr_w_addr   = arg_a[2:0];
         gpr_w_data   = 8'hFF;
