@@ -14,7 +14,7 @@ module decoder (
     input      [7:0] gpr_r_data_b,
 
     // alu
-    output reg [2:0] alu_operation,
+    output reg [4:0] alu_operation,
     output reg [7:0] alu_A,
     output reg [7:0] alu_B,
     input      [7:0] alu_C
@@ -103,6 +103,18 @@ module decoder (
 
         alu_operation = decrement;
         gpr_w_data = alu_C;
+      end
+
+      CLR: begin
+        gpr_w_enable = 1;
+        gpr_w_addr   = arg_a[2:0];
+        gpr_w_data   = 8'h00;
+      end
+
+      SET: begin
+        gpr_w_enable = 1;
+        gpr_w_addr   = arg_a[2:0];
+        gpr_w_data   = 8'hFF;
       end
     endcase
   end

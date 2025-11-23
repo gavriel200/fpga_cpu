@@ -79,7 +79,9 @@
                 <Signal>gpr_r_data_b[1]</Signal>
                 <Signal>gpr_r_data_b[0]</Signal>
             </Bus>
-            <Bus capture_enable="true" name="alu_operation[2:0]">
+            <Bus capture_enable="true" name="alu_operation[4:0]">
+                <Signal>alu_operation[4]</Signal>
+                <Signal>alu_operation[3]</Signal>
                 <Signal>alu_operation[2]</Signal>
                 <Signal>alu_operation[1]</Signal>
                 <Signal>alu_operation[0]</Signal>

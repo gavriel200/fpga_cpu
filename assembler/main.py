@@ -24,6 +24,8 @@ class Instruction(IntEnum):
     SUB = 4
     INC = 5
     DEC = 6
+    CLR = 7
+    SET = 8
 
 
 class Registers(IntEnum):
@@ -188,6 +190,34 @@ class Dec(BaseInstruction):
         return f"{self.instruciton_id:02X}{self.arg1:02X}{0:02X}"
 
 
+class Clr(BaseInstruction):
+    instruciton_id = Instruction.CLR
+    arg_num = 1
+
+    def __init__(self, line):
+        args = self.get_args(line)
+        self.validate_arg(args[0], self.is_register)
+
+        self.arg1 = Registers[args[0]].value
+
+    def value(self):
+        return f"{self.instruciton_id:02X}{self.arg1:02X}{0:02X}"
+
+
+class Set(BaseInstruction):
+    instruciton_id = Instruction.SET
+    arg_num = 1
+
+    def __init__(self, line):
+        args = self.get_args(line)
+        self.validate_arg(args[0], self.is_register)
+
+        self.arg1 = Registers[args[0]].value
+
+    def value(self):
+        return f"{self.instruciton_id:02X}{self.arg1:02X}{0:02X}"
+
+
 def instruction_factory(line):
     instruction = line.split(" ", 1)[0]
     match instruction:
@@ -205,6 +235,10 @@ def instruction_factory(line):
             return Inc(line)
         case Instruction.DEC.name:
             return Dec(line)
+        case Instruction.CLR.name:
+            return Clr(line)
+        case Instruction.SET.name:
+            return Set(line)
         case _:
             raise ValueError(f"invalid instruction {instruction}")
 
