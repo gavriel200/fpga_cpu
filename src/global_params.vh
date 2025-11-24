@@ -11,6 +11,8 @@ localparam INC = 8'd5;
 localparam DEC = 8'd6;
 localparam CLR = 8'd7;
 localparam FIL = 8'd8;
+localparam PSH = 8'd9;  // maybe later change to PUSH
+localparam POP = 8'd10;
 
 // general purpose registers
 // index

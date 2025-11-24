@@ -17,7 +17,13 @@ module decoder (
     output reg [4:0] alu_operation,
     output reg [7:0] alu_A,
     output reg [7:0] alu_B,
-    input      [7:0] alu_C
+    input      [7:0] alu_C,
+
+    // stack
+    output reg       stack_push_enable,
+    output reg [7:0] stack_push_data,
+    output reg       stack_pop_enable,
+    input      [7:0] stack_pop_data
 );
 
   wire [7:0] instruction = rom_data[23:16];
@@ -34,6 +40,9 @@ module decoder (
     alu_operation = 0;
     alu_A = 0;
     alu_B = 0;
+    stack_push_enable = 0;
+    stack_push_data = 0;
+    stack_pop_enable = 0;
 
     case (instruction)
       NOP: begin
@@ -115,6 +124,20 @@ module decoder (
         gpr_w_enable = 1;
         gpr_w_addr   = arg_a[2:0];
         gpr_w_data   = 8'hFF;
+      end
+
+      PSH: begin
+        gpr_r_addr_a = arg_a[2:0];
+        stack_push_enable = 1;
+        stack_push_data = gpr_r_data_a;
+      end
+
+      POP: begin
+        gpr_w_enable = 1;
+        gpr_w_addr = arg_a[2:0];
+        gpr_w_data = stack_pop_data;
+
+        stack_pop_enable = 1;
       end
     endcase
   end

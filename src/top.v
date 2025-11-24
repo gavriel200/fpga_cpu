@@ -43,6 +43,21 @@ module top (
   alu(
       .operation(alu_operation), .A(alu_A), .B(alu_B), .C(alu_C)
   );
+
+
+  wire stack_push_enable;
+  wire [7:0] stack_push_data;
+  wire stack_pop_enable;
+  wire [7:0] stack_pop_data;
+  stack(
+      .clk(clk),
+      .rst(rst),
+      .push_enable(stack_push_enable),
+      .push_data(stack_push_data),
+      .pop_enable(stack_pop_enable),
+      .pop_data(stack_pop_data)
+  );
+
   //
   decoder(
       .rom_data(rom_data),
@@ -56,7 +71,11 @@ module top (
       .alu_operation(alu_operation),
       .alu_A(alu_A),
       .alu_B(alu_B),
-      .alu_C(alu_C)
+      .alu_C(alu_C),
+      .stack_push_enable(stack_push_enable),
+      .stack_push_data(stack_push_data),
+      .stack_pop_enable(stack_pop_enable),
+      .stack_pop_data(stack_pop_data)
   );
 
 endmodule

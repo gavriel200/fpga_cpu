@@ -47,3 +47,16 @@ DEC R1
 R1 = R1 - 1
 ```
 
+PSH - push register value on the stack
+PSH [from register]
+```
+PSH R1
+[R1 value is now on the stack and the pointer moved]
+```
+
+POP - pop last value from the stack to the register
+POP [to register]
+```
+POP R1
+[R1 value is the last value on the stack, pointer moves down]
+```
