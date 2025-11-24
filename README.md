@@ -84,7 +84,7 @@ S (Sign): S = N ⊕ V
 
 - dncrement (-= 1)
 
-- compair (no storing result just setting flags)
+- compair (no storing result just setting flags) compair just does a - b and sets flags with no save
 
 - multiply -> saves into another registers (since can be more then 8 bits result)
 

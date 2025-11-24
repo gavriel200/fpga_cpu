@@ -36,12 +36,33 @@ module top (
       .r_data_b(gpr_r_data_b)
   );
 
+  wire flags_w_enable;
+  wire flags_z_val;
+  wire flags_z;
+  wire flags_c_val;
+  wire flags_c;
+  flags(
+      .clk(clk),
+      .rst(rst),
+      .w_enable(flags_w_enable),
+      .z_val(flags_z_val),
+      .z(flags_z),
+      .c_val(flags_c_val),
+      .c(flags_c)
+  );
+
+
   wire [4:0] alu_operation;
   wire [7:0] alu_A;
   wire [7:0] alu_B;
   wire [7:0] alu_C;
   alu(
-      .operation(alu_operation), .A(alu_A), .B(alu_B), .C(alu_C)
+      .operation(alu_operation),
+      .A(alu_A),
+      .B(alu_B),
+      .C(alu_C),
+      .flags_z_val(flags_z_val),
+      .flags_c_val(flags_c_val)
   );
 
 
@@ -69,6 +90,7 @@ module top (
       .gpr_r_data_a(gpr_r_data_a),
       .gpr_r_data_b(gpr_r_data_b),
       .alu_operation(alu_operation),
+      .flags_w_enable(flags_w_enable),
       .alu_A(alu_A),
       .alu_B(alu_B),
       .alu_C(alu_C),

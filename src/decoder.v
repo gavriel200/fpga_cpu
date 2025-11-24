@@ -13,6 +13,8 @@ module decoder (
     input      [7:0] gpr_r_data_a,
     input      [7:0] gpr_r_data_b,
 
+    output reg flags_w_enable,
+
     // alu
     output reg [4:0] alu_operation,
     output reg [7:0] alu_A,
@@ -37,6 +39,7 @@ module decoder (
     gpr_w_data = 0;
     gpr_r_addr_a = 0;
     gpr_r_addr_b = 0;
+    flags_w_enable = 0;
     alu_operation = 0;
     alu_A = 0;
     alu_B = 0;
@@ -63,55 +66,63 @@ module decoder (
       end
 
       ADD: begin
-        gpr_w_enable = 1;
-        gpr_w_addr = arg_a[2:0];
+        gpr_w_enable   = 1;
+        gpr_w_addr     = arg_a[2:0];
 
-        gpr_r_addr_a = arg_a[2:0];
-        gpr_r_addr_b = arg_b[2:0];
+        gpr_r_addr_a   = arg_a[2:0];
+        gpr_r_addr_b   = arg_b[2:0];
 
-        alu_A = gpr_r_data_a;
-        alu_B = gpr_r_data_b;
+        flags_w_enable = 1;
 
-        alu_operation = addition;
-        gpr_w_data = alu_C;
+        alu_A          = gpr_r_data_a;
+        alu_B          = gpr_r_data_b;
+
+        alu_operation  = addition;
+        gpr_w_data     = alu_C;
       end
 
       SUB: begin
-        gpr_w_enable = 1;
-        gpr_w_addr = arg_a[2:0];
+        gpr_w_enable   = 1;
+        gpr_w_addr     = arg_a[2:0];
 
-        gpr_r_addr_a = arg_a[2:0];
-        gpr_r_addr_b = arg_b[2:0];
+        gpr_r_addr_a   = arg_a[2:0];
+        gpr_r_addr_b   = arg_b[2:0];
 
-        alu_A = gpr_r_data_a;
-        alu_B = gpr_r_data_b;
+        flags_w_enable = 1;
 
-        alu_operation = substraction;
-        gpr_w_data = alu_C;
+        alu_A          = gpr_r_data_a;
+        alu_B          = gpr_r_data_b;
+
+        alu_operation  = substraction;
+        gpr_w_data     = alu_C;
       end
 
       INC: begin
-        gpr_w_enable = 1;
-        gpr_w_addr = arg_a[2:0];
+        gpr_w_enable   = 1;
+        gpr_w_addr     = arg_a[2:0];
 
-        gpr_r_addr_a = arg_a[2:0];
+        gpr_r_addr_a   = arg_a[2:0];
 
-        alu_A = gpr_r_data_a;
+        flags_w_enable = 1;
 
-        alu_operation = increment;
-        gpr_w_data = alu_C;
+        alu_A          = gpr_r_data_a;
+
+        alu_operation  = increment;
+        gpr_w_data     = alu_C;
       end
 
       DEC: begin
-        gpr_w_enable = 1;
-        gpr_w_addr = arg_a[2:0];
+        gpr_w_enable   = 1;
+        gpr_w_addr     = arg_a[2:0];
 
-        gpr_r_addr_a = arg_a[2:0];
+        gpr_r_addr_a   = arg_a[2:0];
 
-        alu_A = gpr_r_data_a;
+        flags_w_enable = 1;
 
-        alu_operation = decrement;
-        gpr_w_data = alu_C;
+        alu_A          = gpr_r_data_a;
+
+        alu_operation  = decrement;
+        gpr_w_data     = alu_C;
       end
 
       CLR: begin
@@ -127,15 +138,15 @@ module decoder (
       end
 
       PSH: begin
-        gpr_r_addr_a = arg_a[2:0];
+        gpr_r_addr_a      = arg_a[2:0];
         stack_push_enable = 1;
-        stack_push_data = gpr_r_data_a;
+        stack_push_data   = gpr_r_data_a;
       end
 
       POP: begin
-        gpr_w_enable = 1;
-        gpr_w_addr = arg_a[2:0];
-        gpr_w_data = stack_pop_data;
+        gpr_w_enable     = 1;
+        gpr_w_addr       = arg_a[2:0];
+        gpr_w_data       = stack_pop_data;
 
         stack_pop_enable = 1;
       end
