@@ -11,17 +11,24 @@ module top (
 
   assign rst_led = !rst;
 
-  reg rom_enable = 1;
+  reg            rom_enable = 1;
   wire [8*3-1:0] rom_data;
+  wire           rom_jump_enable;
+  wire [    7:0] rom_jump_data;
   rom(
-      .clk(clk), .rst(rst), .enable(rom_enable), .data(rom_data)
+      .clk(clk),
+      .rst(rst),
+      .enable(rom_enable),
+      .data(rom_data),
+      .jump_enable(rom_jump_enable),
+      .jump_data(rom_jump_data)
   );
 
   wire gpr_w_enable;
-  wire [2:0] gpr_w_addr;
+  wire [3:0] gpr_w_addr;
   wire [7:0] gpr_w_data;
-  wire [2:0] gpr_r_addr_a;
-  wire [2:0] gpr_r_addr_b;
+  wire [3:0] gpr_r_addr_a;
+  wire [3:0] gpr_r_addr_b;
   wire [7:0] gpr_r_data_a;
   wire [7:0] gpr_r_data_b;
   gpr(
@@ -82,6 +89,8 @@ module top (
   //
   decoder(
       .rom_data(rom_data),
+      .rom_jump_enable(rom_jump_enable),
+      .rom_jump_data(rom_jump_data),
       .gpr_w_enable(gpr_w_enable),
       .gpr_w_addr(gpr_w_addr),
       .gpr_w_data(gpr_w_data),
@@ -94,6 +103,8 @@ module top (
       .alu_A(alu_A),
       .alu_B(alu_B),
       .alu_C(alu_C),
+      .flags_z(flags_z),
+      .flags_c(flags_c),
       .stack_push_enable(stack_push_enable),
       .stack_push_data(stack_push_data),
       .stack_pop_enable(stack_pop_enable),

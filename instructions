@@ -60,3 +60,39 @@ POP [to register]
 POP R1
 [R1 value is the last value on the stack, pointer moves down]
 ```
+
+JMP - jump to value in jump register
+JMP
+```
+LDR RJ0 0x01
+LDR RJ1 0xF0
+JMP
+[jumps to 0xF001]
+```
+
+JMR - jump to specific raw value
+JMR [value] [value]
+```
+JMR 0x00 0x01
+[jumps to 0x0001]
+```
+
+JMI - jump to value in jump register if flag
+JMI [flag] (C - carry, Z - zero)
+```
+LDR RJ0 0xA2
+LDR RJ1 0x0E
+LDR R0 1
+DEC R0
+JMI Z
+[jumps to 0x0EA2]
+```
+
+```
+LDR RJ0 0xA2
+LDR RJ1 0x0E
+LDR R0 2
+DEC R0
+JMI Z
+[no jump]
+```

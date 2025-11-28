@@ -6,16 +6,16 @@ module gpr (
 
     // write
     input       w_enable,  // write eable
-    input [2:0] w_addr,    // which register to update
+    input [3:0] w_addr,    // which register to update
     input [7:0] w_data,
 
     // read
-    input  [2:0] r_addr_a,
-    input  [2:0] r_addr_b,
+    input  [3:0] r_addr_a,
+    input  [3:0] r_addr_b,
     output [7:0] r_data_a,
     output [7:0] r_data_b
 );
-  reg [8*8-1:0] registers;
+  reg [8*9-1:0] registers;
 
   assign r_data_a = registers[r_addr_a*8+:8];
   assign r_data_b = registers[r_addr_b*8+:8];

@@ -1,5 +1,3 @@
-// start
-# another comment
 NOP
 LDR R0, 1
 LDR R1, 3
@@ -11,12 +9,15 @@ LD  R1, R0
 LDR R0, 0x0f
 SUB R0, R1
 INC R0
+LDR RJ, 18
+JMP
 INC R0
 DEC R1
 FIL R0
 DEC R0
 CLR R0
 LDR R0, 1
+JMR 25
 PSH R0
 LDR R0, 3
 PSH R0
@@ -30,4 +31,6 @@ CLR R2
 DEC R2
 NOP
 NOP
+// comment
+# another comment
 

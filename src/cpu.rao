@@ -149,6 +149,16 @@
             </Bus>
             <Signal capture_enable="true">flags_z</Signal>
             <Signal capture_enable="true">flags_c</Signal>
+            <Bus capture_enable="true" name="i7/pc[7:0]">
+                <Signal>i7/pc[7]</Signal>
+                <Signal>i7/pc[6]</Signal>
+                <Signal>i7/pc[5]</Signal>
+                <Signal>i7/pc[4]</Signal>
+                <Signal>i7/pc[3]</Signal>
+                <Signal>i7/pc[2]</Signal>
+                <Signal>i7/pc[1]</Signal>
+                <Signal>i7/pc[0]</Signal>
+            </Bus>
         </SignalList>
         <Triggers>
             <Trigger index="0">
@@ -203,5 +213,5 @@
             <Expression>M0</Expression>
         </Expressions>
     </AoCore>
-    <GAO_ID>0101011000001110</GAO_ID>
+    <GAO_ID>1011000010001101</GAO_ID>
 </GAO_CONFIG>
