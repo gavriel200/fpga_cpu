@@ -2,7 +2,8 @@
 NOP
 LDR R0, 5
 LDR R1, 10
-LDR RJ, 4
+LDR RJ, @test
+&test:
 INC R0
 COM R0, R1
 JMI NZ

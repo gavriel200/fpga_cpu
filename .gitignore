@@ -50,3 +50,5 @@ Thumbs.db
 
 cpu.gprj.user
 cpu.gprj
+
+__pycache__/

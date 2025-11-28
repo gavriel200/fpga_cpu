@@ -1,5 +1,3 @@
-
-
 LD - load value from one register to another
 LD [to register], [from register]
 ```
@@ -102,4 +100,16 @@ COM [register] [register]
 ```
 COM R0, R1
 [does R0 - R1 values and only sets relevant flags]
+```
+
+memory locations
+to allow easier jump address locaiton added mmeory locations
+string starting with '&' ending with ':'
+this will point to the instruction right after it
+to access it when passing raw value use @ and the name of the memory location
+```
+&example:
+INC R0
+LDR RJ @example
+[example will be the loaction of INC R0]
 ```

@@ -3,6 +3,7 @@ import sys
 
 from assembler.instructions import (
     Add,
+    BaseInstruction,
     Clr,
     Com,
     Dec,
@@ -64,6 +65,22 @@ def comment_or_empty(line: str):
     return False
 
 
+def is_memory_location(line: str):
+    if line.startswith("&") and line.strip().endswith(":"):
+        if len(line.strip().split(" ")) != 1:
+            raise ValueError("bad memory locaiton")
+        return True
+    return False
+
+
+def get_memory_locaiton(line: str):
+    return line.strip().replace("&", "").replace(":", "")
+
+
+def clean_hex_file():
+    open("src/main.hex", "w").close()
+
+
 def main():
     if len(sys.argv) != 2:
         raise
@@ -78,20 +95,26 @@ def main():
 
     instructions = []
 
+    current_pc = 0
+
+    with open(full_file_path, "r") as f:
+        for line in f:
+            if is_memory_location(line):
+                BaseInstruction.memory_locations[get_memory_locaiton(line)] = current_pc
+            if not comment_or_empty(line.strip()):
+                current_pc += 1
+
     with open(full_file_path, "r") as f:
         for line in f:
             striped_line = line.strip()
-            if not comment_or_empty(striped_line):
+            if not comment_or_empty(striped_line) and not is_memory_location(line):
                 instructions.append(instruction_factory(striped_line))
+
+    clean_hex_file()
 
     for i in instructions:
         i.write()
 
 
-def clean_hex_file():
-    open("src/main.hex", "w").close()
-
-
 if __name__ == "__main__":
-    clean_hex_file()
     main()

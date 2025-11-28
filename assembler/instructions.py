@@ -46,6 +46,7 @@ class BaseInstruction:
     arg2 = None
     arg_num = 0
     register_pattern = r"^(R[0-7]|RJ)$"
+    memory_locations = {}
 
     def is_register(self, arg):
         return re.match(self.register_pattern, arg)
@@ -95,11 +96,18 @@ class BaseInstruction:
         return Registers[arg].value
 
     def get_number(self, arg):
-        self.validate_arg(arg, self.is_number)
-        if arg.startswith("0x"):
-            return int(arg, 16)
+        if arg.startswith("@"):
+            memory_place = arg.replace("@", "")
+            if memory_place in BaseInstruction.memory_locations:
+                return BaseInstruction.memory_locations[memory_place]
+            else:
+                raise KeyError(f"unknown memory place {memory_place}")
         else:
-            return int(arg, 10)
+            self.validate_arg(arg, self.is_number)
+            if arg.startswith("0x"):
+                return int(arg, 16)
+            else:
+                return int(arg, 10)
 
     def get_flag(self, arg):
         self.validate_arg(arg, self.is_flag)
