@@ -64,8 +64,8 @@ POP R1
 JMP - jump to value in jump register
 JMP
 ```
-LDR RJ0 0x01
-LDR RJ1 0xF0
+LDR RJ0, 0x01
+LDR RJ1, 0xF0
 JMP
 [jumps to 0xF001]
 ```
@@ -73,26 +73,33 @@ JMP
 JMR - jump to specific raw value
 JMR [value] [value]
 ```
-JMR 0x00 0x01
+JMR 0x00, 0x01
 [jumps to 0x0001]
 ```
 
 JMI - jump to value in jump register if flag
 JMI [flag] (C - carry, Z - zero)
 ```
-LDR RJ0 0xA2
-LDR RJ1 0x0E
-LDR R0 1
+LDR RJ0, 0xA2
+LDR RJ1, 0x0E
+LDR R0, 1
 DEC R0
 JMI Z
 [jumps to 0x0EA2]
 ```
 
 ```
-LDR RJ0 0xA2
-LDR RJ1 0x0E
-LDR R0 2
+LDR RJ0, 0xA2
+LDR RJ1, 0x0E
+LDR R0, 2
 DEC R0
 JMI Z
 [no jump]
+```
+
+COM - compairs 2 registers doing substraction but does not save it
+COM [register] [register]
+```
+COM R0, R1
+[does R0 - R1 values and only sets relevant flags]
 ```

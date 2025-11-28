@@ -1,7 +1,3 @@
-- add compair
-- jump if condition
-
-
 - upgrade compiler to better control rom length
 - for functions enable compile the exact PC to update the jump
 

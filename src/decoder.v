@@ -172,11 +172,28 @@ module decoder (
       end
 
       JMI: begin
-        if ((arg_a == Z && flags_z) || (arg_a == C && flags_c)) begin
+        if (
+          (arg_a == Z && flags_z) ||
+          (arg_a == NZ && !flags_z) || 
+          (arg_a == C && flags_c) || 
+          (arg_a == NZ && !flags_z)
+        ) begin
           gpr_r_addr_a    = GPRJ;
           rom_jump_enable = 1;
           rom_jump_data   = gpr_r_data_a;
         end
+      end
+
+      COM: begin
+        gpr_r_addr_a   = arg_a[3:0];
+        gpr_r_addr_b   = arg_b[3:0];
+
+        flags_w_enable = 1;
+
+        alu_A          = gpr_r_data_a;
+        alu_B          = gpr_r_data_b;
+
+        alu_operation  = substraction;
       end
     endcase
   end

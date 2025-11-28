@@ -17,6 +17,7 @@ class Instruction(IntEnum):
     JMP = 11
     JMR = 12
     JMI = 13
+    COM = 14
 
 
 class Registers(IntEnum):
@@ -33,7 +34,9 @@ class Registers(IntEnum):
 
 class Flag(IntEnum):
     Z = 0
-    C = 1
+    NZ = 1
+    C = 2
+    NC = 3
 
 
 class BaseInstruction:
@@ -66,7 +69,7 @@ class BaseInstruction:
             return False
 
     def is_flag(self, arg):
-        return arg == "Z" or arg == "C"
+        return arg == "Z" or arg == "NZ" or arg == "C" or arg == "NC"
 
     def value(self):
         pass
@@ -265,3 +268,16 @@ class Jmi(BaseInstruction):
 
     def value(self):
         return f"{self.instruciton_id:02X}{self.arg1:02X}{0:02X}"
+
+
+class Com(BaseInstruction):
+    instruciton_id = Instruction.COM
+    arg_num = 2
+
+    def __init__(self, line):
+        args = self.get_args(line)
+        self.arg1 = self.get_reg(args[0])
+        self.arg2 = self.get_reg(args[1])
+
+    def value(self):
+        return f"{self.instruciton_id:02X}{self.arg1:02X}{self.arg2:02X}"

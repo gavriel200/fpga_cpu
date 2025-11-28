@@ -4,6 +4,7 @@ import sys
 from assembler.instructions import (
     Add,
     Clr,
+    Com,
     Dec,
     Inc,
     Instruction,
@@ -51,6 +52,8 @@ def instruction_factory(line):
             return Jmr(line)
         case Instruction.JMI.name:
             return Jmi(line)
+        case Instruction.COM.name:
+            return Com(line)
         case _:
             raise ValueError(f"invalid instruction {instruction}")
 

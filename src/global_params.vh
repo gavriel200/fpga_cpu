@@ -16,6 +16,7 @@ localparam POP = 8'd10;
 localparam JMP = 8'd11;
 localparam JMR = 8'd12;
 localparam JMI = 8'd13;
+localparam COM = 8'd14;
 
 // general purpose registers
 localparam GPR0 = 4'd0;
@@ -35,7 +36,9 @@ localparam increment = 5'd2;
 localparam decrement = 5'd3;
 
 // flags
-localparam Z = 1'd0;
-localparam C = 1'd1;
+localparam Z = 2'd0;
+localparam NZ = 2'd1;
+localparam C = 2'd2;
+localparam NC = 2'd3;
 
 `endif
