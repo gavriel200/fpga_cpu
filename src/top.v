@@ -13,6 +13,7 @@ module top (
 
   reg            rom_enable = 1;
   wire [8*3-1:0] rom_data;
+  wire [    7:0] rom_pc;
   wire           rom_jump_enable;
   wire [    7:0] rom_jump_data;
   rom(
@@ -20,6 +21,7 @@ module top (
       .rst(rst),
       .enable(rom_enable),
       .data(rom_data),
+      .pc(rom_pc),
       .jump_enable(rom_jump_enable),
       .jump_data(rom_jump_data)
   );
@@ -89,6 +91,7 @@ module top (
   //
   decoder(
       .rom_data(rom_data),
+      .rom_pc(rom_pc),
       .rom_jump_enable(rom_jump_enable),
       .rom_jump_data(rom_jump_data),
       .gpr_w_enable(gpr_w_enable),

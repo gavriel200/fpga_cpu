@@ -3,6 +3,7 @@
 module decoder (
     // rom
     input      [23:0] rom_data,
+    input      [ 7:0] rom_pc,
     output reg        rom_jump_enable,
     output reg [ 7:0] rom_jump_data,
 
@@ -194,6 +195,21 @@ module decoder (
         alu_B          = gpr_r_data_b;
 
         alu_operation  = substraction;
+      end
+
+      CAL: begin
+        stack_push_enable = 1;
+        stack_push_data   = rom_pc + 1;
+
+        rom_jump_enable   = 1;
+        rom_jump_data     = arg_a;
+      end
+
+      RTN: begin
+        stack_pop_enable = 1;
+
+        rom_jump_enable  = 1;
+        rom_jump_data    = stack_pop_data;
       end
     endcase
   end

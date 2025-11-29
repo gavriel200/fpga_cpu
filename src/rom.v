@@ -2,19 +2,20 @@ module rom (
     input clk,
     input rst,
 
-    input            enable,  // increments pc each clk while enabled
-    output [8*3-1:0] data,
+    input                enable,  // increments pc each clk while enabled
+    output     [8*3-1:0] data,
+    output reg [    7:0] pc,
 
     // jump
     input       jump_enable,
     input [7:0] jump_data
 );
-  reg [7:0] pc = 0;
   reg [8*3-1:0] rom_data[0:255];  // 256 lines, each 3 bytes
 
   assign data = rom_data[pc];
 
   initial begin
+    pc = 0;
     $readmemh("main.hex", rom_data);
   end
 

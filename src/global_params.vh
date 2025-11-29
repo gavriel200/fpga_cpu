@@ -17,6 +17,8 @@ localparam JMP = 8'd11;
 localparam JMR = 8'd12;
 localparam JMI = 8'd13;
 localparam COM = 8'd14;
+localparam CAL = 8'd15;
+localparam RTN = 8'd16;
 
 // general purpose registers
 localparam GPR0 = 4'd0;

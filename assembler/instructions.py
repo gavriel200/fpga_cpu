@@ -18,6 +18,8 @@ class Instruction(IntEnum):
     JMR = 12
     JMI = 13
     COM = 14
+    CAL = 15
+    RTN = 16
 
 
 class Registers(IntEnum):
@@ -289,3 +291,23 @@ class Com(BaseInstruction):
 
     def value(self):
         return f"{self.instruciton_id:02X}{self.arg1:02X}{self.arg2:02X}"
+
+
+class Cal(BaseInstruction):
+    instruciton_id = Instruction.CAL
+    arg_num = 1
+
+    def __init__(self, line):
+        args = self.get_args(line)
+        self.arg1 = self.get_number(args[0])
+
+    def value(self):
+        return f"{self.instruciton_id:02X}{self.arg1:02X}{0:02X}"
+
+
+class Rtn(BaseInstruction):
+    instruciton_id = Instruction.RTN
+    arg_num = 0
+
+    def value(self):
+        return f"{self.instruciton_id:02X}{0:02X}{0:02X}"

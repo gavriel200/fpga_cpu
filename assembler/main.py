@@ -4,6 +4,7 @@ import sys
 from assembler.instructions import (
     Add,
     BaseInstruction,
+    Cal,
     Clr,
     Com,
     Dec,
@@ -17,6 +18,7 @@ from assembler.instructions import (
     Nop,
     Pop,
     Psh,
+    Rtn,
     Set,
     Sub,
 )
@@ -55,6 +57,10 @@ def instruction_factory(line):
             return Jmi(line)
         case Instruction.COM.name:
             return Com(line)
+        case Instruction.CAL.name:
+            return Cal(line)
+        case Instruction.RTN.name:
+            return Rtn()
         case _:
             raise ValueError(f"invalid instruction {instruction}")
 

@@ -1,36 +1,16 @@
-- upgrade compiler to better control rom length
-- for functions enable compile the exact PC to update the jump
+- add ram
+add read and write [register to memory location (only first 256 addresses)]
+add read write using write register [write to register and then only what register to write (all of addresses)]
 
-```
-.
-.
-.
-call func
-.
-.
-.
+- timer
+
+- interrupt handle, start with timer
 
 
-func:
-.
-.
-.
-retrun
 
-```
-translates to
-```
-push current pc
-jump to where the func is
-.
-.
-.
-pop the pc
-jump to pc
-
-```
-
-
-- functions (call)
-- return 
+- make the rom bigger
+    - support 2 arg memory location
+    - 2 args for JMP
+    - support for JMI instead of having the arg be the logic have the instruction be different
+    JZ/JNZ/JC/JNC and the memory be first and second arg
 
