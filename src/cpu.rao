@@ -34,50 +34,50 @@
                 <Signal>rom_data[1]</Signal>
                 <Signal>rom_data[0]</Signal>
             </Bus>
-            <Bus capture_enable="true" name="gpr_w_addr[2:0]">
-                <Signal>gpr_w_addr[2]</Signal>
-                <Signal>gpr_w_addr[1]</Signal>
-                <Signal>gpr_w_addr[0]</Signal>
+            <Bus capture_enable="true" name="registers_w_addr[2:0]">
+                <Signal>registers_w_addr[2]</Signal>
+                <Signal>registers_w_addr[1]</Signal>
+                <Signal>registers_w_addr[0]</Signal>
             </Bus>
-            <Bus capture_enable="true" name="gpr_w_data[7:0]">
-                <Signal>gpr_w_data[7]</Signal>
-                <Signal>gpr_w_data[6]</Signal>
-                <Signal>gpr_w_data[5]</Signal>
-                <Signal>gpr_w_data[4]</Signal>
-                <Signal>gpr_w_data[3]</Signal>
-                <Signal>gpr_w_data[2]</Signal>
-                <Signal>gpr_w_data[1]</Signal>
-                <Signal>gpr_w_data[0]</Signal>
+            <Bus capture_enable="true" name="registers_w_data[7:0]">
+                <Signal>registers_w_data[7]</Signal>
+                <Signal>registers_w_data[6]</Signal>
+                <Signal>registers_w_data[5]</Signal>
+                <Signal>registers_w_data[4]</Signal>
+                <Signal>registers_w_data[3]</Signal>
+                <Signal>registers_w_data[2]</Signal>
+                <Signal>registers_w_data[1]</Signal>
+                <Signal>registers_w_data[0]</Signal>
             </Bus>
-            <Bus capture_enable="true" name="gpr_r_addr_a[2:0]">
-                <Signal>gpr_r_addr_a[2]</Signal>
-                <Signal>gpr_r_addr_a[1]</Signal>
-                <Signal>gpr_r_addr_a[0]</Signal>
+            <Bus capture_enable="true" name="registers_r_addr_a[2:0]">
+                <Signal>registers_r_addr_a[2]</Signal>
+                <Signal>registers_r_addr_a[1]</Signal>
+                <Signal>registers_r_addr_a[0]</Signal>
             </Bus>
-            <Bus capture_enable="true" name="gpr_r_addr_b[2:0]">
-                <Signal>gpr_r_addr_b[2]</Signal>
-                <Signal>gpr_r_addr_b[1]</Signal>
-                <Signal>gpr_r_addr_b[0]</Signal>
+            <Bus capture_enable="true" name="registers_r_addr_b[2:0]">
+                <Signal>registers_r_addr_b[2]</Signal>
+                <Signal>registers_r_addr_b[1]</Signal>
+                <Signal>registers_r_addr_b[0]</Signal>
             </Bus>
-            <Bus capture_enable="true" name="gpr_r_data_a[7:0]">
-                <Signal>gpr_r_data_a[7]</Signal>
-                <Signal>gpr_r_data_a[6]</Signal>
-                <Signal>gpr_r_data_a[5]</Signal>
-                <Signal>gpr_r_data_a[4]</Signal>
-                <Signal>gpr_r_data_a[3]</Signal>
-                <Signal>gpr_r_data_a[2]</Signal>
-                <Signal>gpr_r_data_a[1]</Signal>
-                <Signal>gpr_r_data_a[0]</Signal>
+            <Bus capture_enable="true" name="registers_r_data_a[7:0]">
+                <Signal>registers_r_data_a[7]</Signal>
+                <Signal>registers_r_data_a[6]</Signal>
+                <Signal>registers_r_data_a[5]</Signal>
+                <Signal>registers_r_data_a[4]</Signal>
+                <Signal>registers_r_data_a[3]</Signal>
+                <Signal>registers_r_data_a[2]</Signal>
+                <Signal>registers_r_data_a[1]</Signal>
+                <Signal>registers_r_data_a[0]</Signal>
             </Bus>
-            <Bus capture_enable="true" name="gpr_r_data_b[7:0]">
-                <Signal>gpr_r_data_b[7]</Signal>
-                <Signal>gpr_r_data_b[6]</Signal>
-                <Signal>gpr_r_data_b[5]</Signal>
-                <Signal>gpr_r_data_b[4]</Signal>
-                <Signal>gpr_r_data_b[3]</Signal>
-                <Signal>gpr_r_data_b[2]</Signal>
-                <Signal>gpr_r_data_b[1]</Signal>
-                <Signal>gpr_r_data_b[0]</Signal>
+            <Bus capture_enable="true" name="registers_r_data_b[7:0]">
+                <Signal>registers_r_data_b[7]</Signal>
+                <Signal>registers_r_data_b[6]</Signal>
+                <Signal>registers_r_data_b[5]</Signal>
+                <Signal>registers_r_data_b[4]</Signal>
+                <Signal>registers_r_data_b[3]</Signal>
+                <Signal>registers_r_data_b[2]</Signal>
+                <Signal>registers_r_data_b[1]</Signal>
+                <Signal>registers_r_data_b[0]</Signal>
             </Bus>
             <Bus capture_enable="true" name="alu_operation[4:0]">
                 <Signal>alu_operation[4]</Signal>
@@ -116,36 +116,36 @@
                 <Signal>alu_C[1]</Signal>
                 <Signal>alu_C[0]</Signal>
             </Bus>
-            <Signal capture_enable="true">gpr_w_enable</Signal>
-            <Bus capture_enable="true" name="GPR2" restorename="i8/registers[23:16]">
-                <Signal>i8/registers[23]</Signal>
-                <Signal>i8/registers[22]</Signal>
-                <Signal>i8/registers[21]</Signal>
-                <Signal>i8/registers[20]</Signal>
-                <Signal>i8/registers[19]</Signal>
-                <Signal>i8/registers[18]</Signal>
-                <Signal>i8/registers[17]</Signal>
-                <Signal>i8/registers[16]</Signal>
+            <Signal capture_enable="true">registers_w_enable</Signal>
+            <Bus capture_enable="true" name="GPR2" restorename="i8/registers_data[23:16]">
+                <Signal>i8/registers_data[23]</Signal>
+                <Signal>i8/registers_data[22]</Signal>
+                <Signal>i8/registers_data[21]</Signal>
+                <Signal>i8/registers_data[20]</Signal>
+                <Signal>i8/registers_data[19]</Signal>
+                <Signal>i8/registers_data[18]</Signal>
+                <Signal>i8/registers_data[17]</Signal>
+                <Signal>i8/registers_data[16]</Signal>
             </Bus>
-            <Bus capture_enable="true" name="GPR1" restorename="i8/registers[15:8]">
-                <Signal>i8/registers[15]</Signal>
-                <Signal>i8/registers[14]</Signal>
-                <Signal>i8/registers[13]</Signal>
-                <Signal>i8/registers[12]</Signal>
-                <Signal>i8/registers[11]</Signal>
-                <Signal>i8/registers[10]</Signal>
-                <Signal>i8/registers[9]</Signal>
-                <Signal>i8/registers[8]</Signal>
+            <Bus capture_enable="true" name="GPR1" restorename="i8/registers_data[15:8]">
+                <Signal>i8/registers_data[15]</Signal>
+                <Signal>i8/registers_data[14]</Signal>
+                <Signal>i8/registers_data[13]</Signal>
+                <Signal>i8/registers_data[12]</Signal>
+                <Signal>i8/registers_data[11]</Signal>
+                <Signal>i8/registers_data[10]</Signal>
+                <Signal>i8/registers_data[9]</Signal>
+                <Signal>i8/registers_data[8]</Signal>
             </Bus>
-            <Bus capture_enable="true" name="GPR0" restorename="i8/registers[7:0]">
-                <Signal>i8/registers[7]</Signal>
-                <Signal>i8/registers[6]</Signal>
-                <Signal>i8/registers[5]</Signal>
-                <Signal>i8/registers[4]</Signal>
-                <Signal>i8/registers[3]</Signal>
-                <Signal>i8/registers[2]</Signal>
-                <Signal>i8/registers[1]</Signal>
-                <Signal>i8/registers[0]</Signal>
+            <Bus capture_enable="true" name="GPR0" restorename="i8/registers_data[7:0]">
+                <Signal>i8/registers_data[7]</Signal>
+                <Signal>i8/registers_data[6]</Signal>
+                <Signal>i8/registers_data[5]</Signal>
+                <Signal>i8/registers_data[4]</Signal>
+                <Signal>i8/registers_data[3]</Signal>
+                <Signal>i8/registers_data[2]</Signal>
+                <Signal>i8/registers_data[1]</Signal>
+                <Signal>i8/registers_data[0]</Signal>
             </Bus>
             <Signal capture_enable="true">flags_z</Signal>
             <Signal capture_enable="true">flags_c</Signal>
@@ -159,37 +159,37 @@
                 <Signal>i7/pc[1]</Signal>
                 <Signal>i7/pc[0]</Signal>
             </Bus>
-            <Bus capture_enable="true" name="ram addr[87:72]" restorename="i8/registers[87:72]">
-                <Signal>i8/registers[87]</Signal>
-                <Signal>i8/registers[86]</Signal>
-                <Signal>i8/registers[85]</Signal>
-                <Signal>i8/registers[84]</Signal>
-                <Signal>i8/registers[83]</Signal>
-                <Signal>i8/registers[82]</Signal>
-                <Signal>i8/registers[81]</Signal>
-                <Signal>i8/registers[80]</Signal>
-                <Signal>i8/registers[79]</Signal>
-                <Signal>i8/registers[78]</Signal>
-                <Signal>i8/registers[77]</Signal>
-                <Signal>i8/registers[76]</Signal>
-                <Signal>i8/registers[75]</Signal>
-                <Signal>i8/registers[74]</Signal>
-                <Signal>i8/registers[73]</Signal>
-                <Signal>i8/registers[72]</Signal>
+            <Bus capture_enable="true" name="ram addr[87:72]" restorename="i8/registers_data[87:72]">
+                <Signal>i8/registers_data[87]</Signal>
+                <Signal>i8/registers_data[86]</Signal>
+                <Signal>i8/registers_data[85]</Signal>
+                <Signal>i8/registers_data[84]</Signal>
+                <Signal>i8/registers_data[83]</Signal>
+                <Signal>i8/registers_data[82]</Signal>
+                <Signal>i8/registers_data[81]</Signal>
+                <Signal>i8/registers_data[80]</Signal>
+                <Signal>i8/registers_data[79]</Signal>
+                <Signal>i8/registers_data[78]</Signal>
+                <Signal>i8/registers_data[77]</Signal>
+                <Signal>i8/registers_data[76]</Signal>
+                <Signal>i8/registers_data[75]</Signal>
+                <Signal>i8/registers_data[74]</Signal>
+                <Signal>i8/registers_data[73]</Signal>
+                <Signal>i8/registers_data[72]</Signal>
             </Bus>
-            <Bus capture_enable="true" name="gpr_ram_addr[11:0]">
-                <Signal>gpr_ram_addr[11]</Signal>
-                <Signal>gpr_ram_addr[10]</Signal>
-                <Signal>gpr_ram_addr[9]</Signal>
-                <Signal>gpr_ram_addr[8]</Signal>
-                <Signal>gpr_ram_addr[7]</Signal>
-                <Signal>gpr_ram_addr[6]</Signal>
-                <Signal>gpr_ram_addr[5]</Signal>
-                <Signal>gpr_ram_addr[4]</Signal>
-                <Signal>gpr_ram_addr[3]</Signal>
-                <Signal>gpr_ram_addr[2]</Signal>
-                <Signal>gpr_ram_addr[1]</Signal>
-                <Signal>gpr_ram_addr[0]</Signal>
+            <Bus capture_enable="true" name="registers_ram_addr[11:0]">
+                <Signal>registers_ram_addr[11]</Signal>
+                <Signal>registers_ram_addr[10]</Signal>
+                <Signal>registers_ram_addr[9]</Signal>
+                <Signal>registers_ram_addr[8]</Signal>
+                <Signal>registers_ram_addr[7]</Signal>
+                <Signal>registers_ram_addr[6]</Signal>
+                <Signal>registers_ram_addr[5]</Signal>
+                <Signal>registers_ram_addr[4]</Signal>
+                <Signal>registers_ram_addr[3]</Signal>
+                <Signal>registers_ram_addr[2]</Signal>
+                <Signal>registers_ram_addr[1]</Signal>
+                <Signal>registers_ram_addr[0]</Signal>
             </Bus>
             <Bus capture_enable="true" name="i12/memory[15:8]">
                 <Signal>i12/memory[15]</Signal>

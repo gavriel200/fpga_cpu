@@ -1,6 +1,6 @@
 `include "global_params.vh"
 
-module gpr (
+module registers (
     input clk,
     input rst,
 
@@ -18,18 +18,18 @@ module gpr (
     // ram
     output [11:0] ram_addr
 );
-  reg [8*11-1:0] registers;
+  reg [8*11-1:0] registers_data;
 
-  assign r_data_a = registers[r_addr_a*8+:8];
-  assign r_data_b = registers[r_addr_b*8+:8];
+  assign r_data_a = registers_data[r_addr_a*8+:8];
+  assign r_data_b = registers_data[r_addr_b*8+:8];
 
-  assign ram_addr = registers[RM0*8+:12];
+  assign ram_addr = registers_data[RM0*8+:12];
 
   always @(posedge clk) begin
     if (rst) begin
-      registers <= 0;
+      registers_data <= 0;
     end else if (w_enable) begin
-      registers[w_addr*8+:8] <= w_data;
+      registers_data[w_addr*8+:8] <= w_data;
     end
   end
 endmodule

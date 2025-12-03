@@ -22,7 +22,7 @@ localparam RTN = 8'd16;
 localparam WR = 8'd17;
 localparam RD = 8'd18;
 
-// general purpose registers
+// registers
 localparam GPR0 = 4'd0;
 localparam GPR1 = 4'd1;
 localparam GPR2 = 4'd2;

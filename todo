@@ -1,6 +1,4 @@
-- add ram
-add read and write [register to memory location (only first 256 addresses)]
-add read write using write register [write to register and then only what register to write (all of addresses)]
+- add random
 
 - timer
 
