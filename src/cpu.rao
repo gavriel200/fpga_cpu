@@ -159,6 +159,58 @@
                 <Signal>i7/pc[1]</Signal>
                 <Signal>i7/pc[0]</Signal>
             </Bus>
+            <Bus capture_enable="true" name="ram addr[87:72]" restorename="i8/registers[87:72]">
+                <Signal>i8/registers[87]</Signal>
+                <Signal>i8/registers[86]</Signal>
+                <Signal>i8/registers[85]</Signal>
+                <Signal>i8/registers[84]</Signal>
+                <Signal>i8/registers[83]</Signal>
+                <Signal>i8/registers[82]</Signal>
+                <Signal>i8/registers[81]</Signal>
+                <Signal>i8/registers[80]</Signal>
+                <Signal>i8/registers[79]</Signal>
+                <Signal>i8/registers[78]</Signal>
+                <Signal>i8/registers[77]</Signal>
+                <Signal>i8/registers[76]</Signal>
+                <Signal>i8/registers[75]</Signal>
+                <Signal>i8/registers[74]</Signal>
+                <Signal>i8/registers[73]</Signal>
+                <Signal>i8/registers[72]</Signal>
+            </Bus>
+            <Bus capture_enable="true" name="gpr_ram_addr[11:0]">
+                <Signal>gpr_ram_addr[11]</Signal>
+                <Signal>gpr_ram_addr[10]</Signal>
+                <Signal>gpr_ram_addr[9]</Signal>
+                <Signal>gpr_ram_addr[8]</Signal>
+                <Signal>gpr_ram_addr[7]</Signal>
+                <Signal>gpr_ram_addr[6]</Signal>
+                <Signal>gpr_ram_addr[5]</Signal>
+                <Signal>gpr_ram_addr[4]</Signal>
+                <Signal>gpr_ram_addr[3]</Signal>
+                <Signal>gpr_ram_addr[2]</Signal>
+                <Signal>gpr_ram_addr[1]</Signal>
+                <Signal>gpr_ram_addr[0]</Signal>
+            </Bus>
+            <Bus capture_enable="true" name="i12/memory[15:8]">
+                <Signal>i12/memory[15]</Signal>
+                <Signal>i12/memory[14]</Signal>
+                <Signal>i12/memory[13]</Signal>
+                <Signal>i12/memory[12]</Signal>
+                <Signal>i12/memory[11]</Signal>
+                <Signal>i12/memory[10]</Signal>
+                <Signal>i12/memory[9]</Signal>
+                <Signal>i12/memory[8]</Signal>
+            </Bus>
+            <Bus capture_enable="true" name="i12/memory[7:0]">
+                <Signal>i12/memory[7]</Signal>
+                <Signal>i12/memory[6]</Signal>
+                <Signal>i12/memory[5]</Signal>
+                <Signal>i12/memory[4]</Signal>
+                <Signal>i12/memory[3]</Signal>
+                <Signal>i12/memory[2]</Signal>
+                <Signal>i12/memory[1]</Signal>
+                <Signal>i12/memory[0]</Signal>
+            </Bus>
         </SignalList>
         <Triggers>
             <Trigger index="0">
@@ -213,5 +265,5 @@
             <Expression>M0</Expression>
         </Expressions>
     </AoCore>
-    <GAO_ID>1011000010001101</GAO_ID>
+    <GAO_ID>0101111000000000</GAO_ID>
 </GAO_CONFIG>

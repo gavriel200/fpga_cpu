@@ -18,9 +18,11 @@ from assembler.instructions import (
     Nop,
     Pop,
     Psh,
+    Rd,
     Rtn,
     Set,
     Sub,
+    Wr,
 )
 
 
@@ -61,6 +63,10 @@ def instruction_factory(line):
             return Cal(line)
         case Instruction.RTN.name:
             return Rtn()
+        case Instruction.WR.name:
+            return Wr(line)
+        case Instruction.RD.name:
+            return Rd(line)
         case _:
             raise ValueError(f"invalid instruction {instruction}")
 

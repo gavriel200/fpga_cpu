@@ -131,3 +131,23 @@ RTN
 INC R0
 RTN
 ```
+
+WR - write value to ram
+WR [register to get value from]
+```
+LDR RM0 0
+LDR RM1 0
+// address 0 in ram
+WR R0
+[writes R0 value to address 0]
+```
+
+RD - raad value from ram to register
+RD [register to write to]
+```
+LDR RM0 0
+LDR RM1 0
+// address 0 in ram
+RD R0
+[writes value from ram address 0 to R0]
+```

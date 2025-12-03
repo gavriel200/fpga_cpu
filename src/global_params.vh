@@ -19,6 +19,8 @@ localparam JMI = 8'd13;
 localparam COM = 8'd14;
 localparam CAL = 8'd15;
 localparam RTN = 8'd16;
+localparam WR = 8'd17;
+localparam RD = 8'd18;
 
 // general purpose registers
 localparam GPR0 = 4'd0;
@@ -29,7 +31,9 @@ localparam GPR4 = 4'd4;
 localparam GPR5 = 4'd5;
 localparam GPR6 = 4'd6;
 localparam GPR7 = 4'd7;
-localparam GPRJ = 4'd8;
+localparam RJ = 4'd8;  // jump register
+localparam RM0 = 4'd9;  // ram addr 0
+localparam RM1 = 4'd10;  // ram addr 1
 
 // ALU
 localparam addition = 5'd0;

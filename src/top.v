@@ -26,13 +26,14 @@ module top (
       .jump_data(rom_jump_data)
   );
 
-  wire gpr_w_enable;
-  wire [3:0] gpr_w_addr;
-  wire [7:0] gpr_w_data;
-  wire [3:0] gpr_r_addr_a;
-  wire [3:0] gpr_r_addr_b;
-  wire [7:0] gpr_r_data_a;
-  wire [7:0] gpr_r_data_b;
+  wire        gpr_w_enable;
+  wire [ 3:0] gpr_w_addr;
+  wire [ 7:0] gpr_w_data;
+  wire [ 3:0] gpr_r_addr_a;
+  wire [ 3:0] gpr_r_addr_b;
+  wire [ 7:0] gpr_r_data_a;
+  wire [ 7:0] gpr_r_data_b;
+  wire [11:0] gpr_ram_addr;
   gpr(
       .clk(clk),
       .rst(rst),
@@ -42,7 +43,8 @@ module top (
       .r_addr_a(gpr_r_addr_a),
       .r_addr_b(gpr_r_addr_b),
       .r_data_a(gpr_r_data_a),
-      .r_data_b(gpr_r_data_b)
+      .r_data_b(gpr_r_data_b),
+      .ram_addr(gpr_ram_addr)
   );
 
   wire flags_w_enable;
@@ -88,6 +90,18 @@ module top (
       .pop_data(stack_pop_data)
   );
 
+  wire       ram_w_enable;
+  wire [7:0] ram_w_data;
+  wire [7:0] ram_r_data;
+  ram(
+      .clk(clk),
+      .rst(rst),
+      .addr(gpr_ram_addr),
+      .w_enable(ram_w_enable),
+      .w_data(ram_w_data),
+      .r_data(ram_r_data)
+  );
+
   //
   decoder(
       .rom_data(rom_data),
@@ -111,7 +125,10 @@ module top (
       .stack_push_enable(stack_push_enable),
       .stack_push_data(stack_push_data),
       .stack_pop_enable(stack_pop_enable),
-      .stack_pop_data(stack_pop_data)
+      .stack_pop_data(stack_pop_data),
+      .ram_w_enable(ram_w_enable),
+      .ram_w_data(ram_w_data),
+      .ram_r_data(ram_r_data)
   );
 
 endmodule

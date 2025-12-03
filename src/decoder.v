@@ -33,7 +33,12 @@ module decoder (
     output reg       stack_push_enable,
     output reg [7:0] stack_push_data,
     output reg       stack_pop_enable,
-    input      [7:0] stack_pop_data
+    input      [7:0] stack_pop_data,
+
+    // ram
+    input      [7:0] ram_r_data,
+    output reg       ram_w_enable,
+    output reg [7:0] ram_w_data
 );
 
   wire [7:0] instruction = rom_data[23:16];
@@ -56,6 +61,8 @@ module decoder (
     stack_push_enable = 0;
     stack_push_data = 0;
     stack_pop_enable = 0;
+    ram_w_enable = 0;
+    ram_w_data = 0;
 
     case (instruction)
       NOP: begin
@@ -162,7 +169,7 @@ module decoder (
       end
 
       JMP: begin
-        gpr_r_addr_a    = GPRJ;
+        gpr_r_addr_a    = RJ;
         rom_jump_enable = 1;
         rom_jump_data   = gpr_r_data_a;
       end
@@ -179,7 +186,7 @@ module decoder (
           (arg_a == C && flags_c) || 
           (arg_a == NZ && !flags_z)
         ) begin
-          gpr_r_addr_a    = GPRJ;
+          gpr_r_addr_a    = RJ;
           rom_jump_enable = 1;
           rom_jump_data   = gpr_r_data_a;
         end
@@ -210,6 +217,20 @@ module decoder (
 
         rom_jump_enable  = 1;
         rom_jump_data    = stack_pop_data;
+      end
+
+      WR: begin
+        gpr_r_addr_a = arg_a[3:0];
+
+        ram_w_enable = 1;
+        ram_w_data   = gpr_r_data_a;
+      end
+
+      RD: begin
+        gpr_w_enable = 1;
+        gpr_w_addr   = arg_a[3:0];
+
+        gpr_w_data   = ram_r_data;
       end
     endcase
   end

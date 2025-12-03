@@ -20,6 +20,8 @@ class Instruction(IntEnum):
     COM = 14
     CAL = 15
     RTN = 16
+    WR = 17
+    RD = 18
 
 
 class Registers(IntEnum):
@@ -32,6 +34,8 @@ class Registers(IntEnum):
     R6 = 6
     R7 = 7
     RJ = 8
+    RM0 = 9
+    RM1 = 10
 
 
 class Flag(IntEnum):
@@ -47,11 +51,11 @@ class BaseInstruction:
     arg1 = None
     arg2 = None
     arg_num = 0
-    register_pattern = r"^(R[0-7]|RJ)$"
+    register_pattern = [r.name for r in Registers]
     memory_locations = {}
 
     def is_register(self, arg):
-        return re.match(self.register_pattern, arg)
+        return arg in self.register_pattern
 
     def is_number(self, arg):
         arg = arg.strip().lower()
@@ -311,3 +315,27 @@ class Rtn(BaseInstruction):
 
     def value(self):
         return f"{self.instruciton_id:02X}{0:02X}{0:02X}"
+
+
+class Wr(BaseInstruction):
+    instruciton_id = Instruction.WR
+    arg_num = 1
+
+    def __init__(self, line):
+        args = self.get_args(line)
+        self.arg1 = self.get_reg(args[0])
+
+    def value(self):
+        return f"{self.instruciton_id:02X}{self.arg1:02X}{0:02X}"
+
+
+class Rd(BaseInstruction):
+    instruciton_id = Instruction.RD
+    arg_num = 1
+
+    def __init__(self, line):
+        args = self.get_args(line)
+        self.arg1 = self.get_reg(args[0])
+
+    def value(self):
+        return f"{self.instruciton_id:02X}{self.arg1:02X}{0:02X}"
