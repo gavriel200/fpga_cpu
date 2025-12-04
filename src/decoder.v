@@ -9,10 +9,10 @@ module decoder (
 
     // registers
     output reg       registers_w_enable,
-    output reg [3:0] registers_w_addr,
+    output reg [5:0] registers_w_addr,
     output reg [7:0] registers_w_data,
-    output reg [3:0] registers_r_addr_a,
-    output reg [3:0] registers_r_addr_b,
+    output reg [5:0] registers_r_addr_a,
+    output reg [5:0] registers_r_addr_b,
     input      [7:0] registers_r_data_a,
     input      [7:0] registers_r_data_b,
 
@@ -71,23 +71,23 @@ module decoder (
 
       LD: begin
         registers_w_enable = 1;
-        registers_w_addr   = arg_a[3:0];
-        registers_r_addr_a = arg_b[3:0];
+        registers_w_addr   = arg_a[5:0];
+        registers_r_addr_a = arg_b[5:0];
         registers_w_data   = registers_r_data_a;
       end
 
       LDR: begin
         registers_w_enable = 1;
-        registers_w_addr   = arg_a[3:0];
+        registers_w_addr   = arg_a[5:0];
         registers_w_data   = arg_b;
       end
 
       ADD: begin
         registers_w_enable = 1;
-        registers_w_addr   = arg_a[3:0];
+        registers_w_addr   = arg_a[5:0];
 
-        registers_r_addr_a = arg_a[3:0];
-        registers_r_addr_b = arg_b[3:0];
+        registers_r_addr_a = arg_a[5:0];
+        registers_r_addr_b = arg_b[5:0];
 
         flags_w_enable     = 1;
 
@@ -100,10 +100,10 @@ module decoder (
 
       SUB: begin
         registers_w_enable = 1;
-        registers_w_addr   = arg_a[3:0];
+        registers_w_addr   = arg_a[5:0];
 
-        registers_r_addr_a = arg_a[3:0];
-        registers_r_addr_b = arg_b[3:0];
+        registers_r_addr_a = arg_a[5:0];
+        registers_r_addr_b = arg_b[5:0];
 
         flags_w_enable     = 1;
 
@@ -116,9 +116,9 @@ module decoder (
 
       INC: begin
         registers_w_enable = 1;
-        registers_w_addr   = arg_a[3:0];
+        registers_w_addr   = arg_a[5:0];
 
-        registers_r_addr_a = arg_a[3:0];
+        registers_r_addr_a = arg_a[5:0];
 
         flags_w_enable     = 1;
 
@@ -130,9 +130,9 @@ module decoder (
 
       DEC: begin
         registers_w_enable = 1;
-        registers_w_addr   = arg_a[3:0];
+        registers_w_addr   = arg_a[5:0];
 
-        registers_r_addr_a = arg_a[3:0];
+        registers_r_addr_a = arg_a[5:0];
 
         flags_w_enable     = 1;
 
@@ -144,25 +144,25 @@ module decoder (
 
       CLR: begin
         registers_w_enable = 1;
-        registers_w_addr   = arg_a[3:0];
+        registers_w_addr   = arg_a[5:0];
         registers_w_data   = 8'h00;
       end
 
       FIL: begin
         registers_w_enable = 1;
-        registers_w_addr   = arg_a[3:0];
+        registers_w_addr   = arg_a[5:0];
         registers_w_data   = 8'hFF;
       end
 
       PSH: begin
-        registers_r_addr_a = arg_a[3:0];
+        registers_r_addr_a = arg_a[5:0];
         stack_push_enable  = 1;
         stack_push_data    = registers_r_data_a;
       end
 
       POP: begin
         registers_w_enable = 1;
-        registers_w_addr   = arg_a[3:0];
+        registers_w_addr   = arg_a[5:0];
         registers_w_data   = stack_pop_data;
 
         stack_pop_enable   = 1;
@@ -193,8 +193,8 @@ module decoder (
       end
 
       COM: begin
-        registers_r_addr_a = arg_a[3:0];
-        registers_r_addr_b = arg_b[3:0];
+        registers_r_addr_a = arg_a[5:0];
+        registers_r_addr_b = arg_b[5:0];
 
         flags_w_enable     = 1;
 
@@ -220,7 +220,7 @@ module decoder (
       end
 
       WR: begin
-        registers_r_addr_a = arg_a[3:0];
+        registers_r_addr_a = arg_a[5:0];
 
         ram_w_enable = 1;
         ram_w_data = registers_r_data_a;
@@ -228,7 +228,7 @@ module decoder (
 
       RD: begin
         registers_w_enable = 1;
-        registers_w_addr   = arg_a[3:0];
+        registers_w_addr   = arg_a[5:0];
 
         registers_w_data   = ram_r_data;
       end

@@ -27,13 +27,19 @@ module top (
   );
 
   wire        registers_w_enable;
-  wire [ 3:0] registers_w_addr;
+  wire [ 5:0] registers_w_addr;
   wire [ 7:0] registers_w_data;
-  wire [ 3:0] registers_r_addr_a;
-  wire [ 3:0] registers_r_addr_b;
+  wire [ 5:0] registers_r_addr_a;
+  wire [ 5:0] registers_r_addr_b;
   wire [ 7:0] registers_r_data_a;
   wire [ 7:0] registers_r_data_b;
   wire [11:0] registers_ram_addr;
+  wire [ 7:0] random_min;
+  wire [ 7:0] random_max;
+  wire        random_w_enable;
+  wire [ 7:0] random_seed;
+  wire [ 7:0] random_raw;
+  wire [ 7:0] random_range;
   registers(
       .clk(clk),
       .rst(rst),
@@ -44,7 +50,13 @@ module top (
       .r_addr_b(registers_r_addr_b),
       .r_data_a(registers_r_data_a),
       .r_data_b(registers_r_data_b),
-      .ram_addr(registers_ram_addr)
+      .ram_addr(registers_ram_addr),
+      .random_min(random_min),
+      .random_max(random_max),
+      .random_w_enable(random_w_enable),
+      .random_seed(random_seed),
+      .random_raw(random_raw),
+      .random_range(random_range)
   );
 
   wire flags_w_enable;
@@ -100,6 +112,18 @@ module top (
       .w_enable(ram_w_enable),
       .w_data(ram_w_data),
       .r_data(ram_r_data)
+  );
+
+  //
+  random(
+      .clk(clk),
+      .rst(rst),
+      .w_enable(random_w_enable),
+      .seed(random_seed),
+      .min(random_min),
+      .max(random_max),
+      .raw(random_raw),
+      .range(random_range)
   );
 
   //

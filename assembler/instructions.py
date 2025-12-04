@@ -36,6 +36,12 @@ class Registers(IntEnum):
     RJ = 8
     RM0 = 9
     RM1 = 10
+    RNDMIN = 11
+    RNDMAX = 12
+    RNDSEED = 13
+    RNDWE = 14
+    RNDRAW = 32
+    RNDRANGE = 33
 
 
 class Flag(IntEnum):

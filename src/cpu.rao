@@ -116,7 +116,6 @@
                 <Signal>alu_C[1]</Signal>
                 <Signal>alu_C[0]</Signal>
             </Bus>
-            <Signal capture_enable="true">registers_w_enable</Signal>
             <Bus capture_enable="true" name="GPR2" restorename="i8/registers_data[23:16]">
                 <Signal>i8/registers_data[23]</Signal>
                 <Signal>i8/registers_data[22]</Signal>
@@ -211,6 +210,77 @@
                 <Signal>i12/memory[1]</Signal>
                 <Signal>i12/memory[0]</Signal>
             </Bus>
+            <Bus capture_enable="true" name="random_min[7:0]">
+                <Signal>random_min[7]</Signal>
+                <Signal>random_min[6]</Signal>
+                <Signal>random_min[5]</Signal>
+                <Signal>random_min[4]</Signal>
+                <Signal>random_min[3]</Signal>
+                <Signal>random_min[2]</Signal>
+                <Signal>random_min[1]</Signal>
+                <Signal>random_min[0]</Signal>
+            </Bus>
+            <Bus capture_enable="true" name="random_max[7:0]">
+                <Signal>random_max[7]</Signal>
+                <Signal>random_max[6]</Signal>
+                <Signal>random_max[5]</Signal>
+                <Signal>random_max[4]</Signal>
+                <Signal>random_max[3]</Signal>
+                <Signal>random_max[2]</Signal>
+                <Signal>random_max[1]</Signal>
+                <Signal>random_max[0]</Signal>
+            </Bus>
+            <Bus capture_enable="true" name="random_raw[7:0]">
+                <Signal>random_raw[7]</Signal>
+                <Signal>random_raw[6]</Signal>
+                <Signal>random_raw[5]</Signal>
+                <Signal>random_raw[4]</Signal>
+                <Signal>random_raw[3]</Signal>
+                <Signal>random_raw[2]</Signal>
+                <Signal>random_raw[1]</Signal>
+                <Signal>random_raw[0]</Signal>
+            </Bus>
+            <Bus capture_enable="true" name="random_range[7:0]">
+                <Signal>random_range[7]</Signal>
+                <Signal>random_range[6]</Signal>
+                <Signal>random_range[5]</Signal>
+                <Signal>random_range[4]</Signal>
+                <Signal>random_range[3]</Signal>
+                <Signal>random_range[2]</Signal>
+                <Signal>random_range[1]</Signal>
+                <Signal>random_range[0]</Signal>
+            </Bus>
+            <Bus capture_enable="true" name="random_seed[7:0]">
+                <Signal>random_seed[7]</Signal>
+                <Signal>random_seed[6]</Signal>
+                <Signal>random_seed[5]</Signal>
+                <Signal>random_seed[4]</Signal>
+                <Signal>random_seed[3]</Signal>
+                <Signal>random_seed[2]</Signal>
+                <Signal>random_seed[1]</Signal>
+                <Signal>random_seed[0]</Signal>
+            </Bus>
+            <Bus capture_enable="true" name="i8/random_seed[7:0]">
+                <Signal>i8/random_seed[7]</Signal>
+                <Signal>i8/random_seed[6]</Signal>
+                <Signal>i8/random_seed[5]</Signal>
+                <Signal>i8/random_seed[4]</Signal>
+                <Signal>i8/random_seed[3]</Signal>
+                <Signal>i8/random_seed[2]</Signal>
+                <Signal>i8/random_seed[1]</Signal>
+                <Signal>i8/random_seed[0]</Signal>
+            </Bus>
+            <Bus capture_enable="true" name="i13/seed[7:0]">
+                <Signal>i13/seed[7]</Signal>
+                <Signal>i13/seed[6]</Signal>
+                <Signal>i13/seed[5]</Signal>
+                <Signal>i13/seed[4]</Signal>
+                <Signal>i13/seed[3]</Signal>
+                <Signal>i13/seed[2]</Signal>
+                <Signal>i13/seed[1]</Signal>
+                <Signal>i13/seed[0]</Signal>
+            </Bus>
+            <Signal capture_enable="true">random_w_enable</Signal>
         </SignalList>
         <Triggers>
             <Trigger index="0">
@@ -265,5 +335,5 @@
             <Expression>M0</Expression>
         </Expressions>
     </AoCore>
-    <GAO_ID>0101111000000000</GAO_ID>
+    <GAO_ID>1001011000011111</GAO_ID>
 </GAO_CONFIG>

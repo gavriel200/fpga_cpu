@@ -22,7 +22,7 @@ localparam RTN = 8'd16;
 localparam WR = 8'd17;
 localparam RD = 8'd18;
 
-// registers
+// registers rw
 localparam GPR0 = 4'd0;
 localparam GPR1 = 4'd1;
 localparam GPR2 = 4'd2;
@@ -34,6 +34,15 @@ localparam GPR7 = 4'd7;
 localparam RJ = 4'd8;  // jump register
 localparam RM0 = 4'd9;  // ram addr 0
 localparam RM1 = 4'd10;  // ram addr 1
+localparam RNDMIN = 8'd11;
+localparam RNDMAX = 8'd12;
+localparam RNDSEED = 8'd13;
+localparam RNDWE = 8'd14;
+
+// till 31
+// ro
+localparam RNDRAW = 8'd32;
+localparam RNDRANGE = 8'd33;
 
 // ALU
 localparam addition = 5'd0;
