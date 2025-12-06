@@ -113,8 +113,10 @@ def main():
         for line in f:
             if is_memory_location(line):
                 BaseInstruction.memory_locations[get_memory_locaiton(line)] = current_pc
-            if not comment_or_empty(line.strip()):
+            elif not comment_or_empty(line.strip()):
                 current_pc += 1
+
+    print(f"memory locations:{BaseInstruction.memory_locations}")
 
     with open(full_file_path, "r") as f:
         for line in f:

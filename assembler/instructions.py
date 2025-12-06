@@ -1,4 +1,3 @@
-import re
 from enum import IntEnum
 
 
@@ -25,6 +24,7 @@ class Instruction(IntEnum):
 
 
 class Registers(IntEnum):
+    # rw
     R0 = 0
     R1 = 1
     R2 = 2
@@ -40,8 +40,15 @@ class Registers(IntEnum):
     RNDMAX = 12
     RNDSEED = 13
     RNDWE = 14
+    RLD = 15
+    RTM0 = 16
+    RTM1 = 17
+    RTMS = 18
+
+    # ro
     RNDRAW = 32
     RNDRANGE = 33
+    RTMD = 34
 
 
 class Flag(IntEnum):

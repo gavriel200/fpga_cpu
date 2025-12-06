@@ -1,8 +1,8 @@
-- add random
 
-- timer
 
 - interrupt handle, start with timer
+
+- add in the assembler the ability to put instructions in specific memory location
 
 
 

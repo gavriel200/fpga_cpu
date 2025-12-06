@@ -2,6 +2,11 @@ module top (
     input clk,
 
     input  rst_btn,
+    output led0,
+    output led1,
+    output led2,
+    output led3,
+    output led4,
     output rst_led
 );
   wire rst;
@@ -26,20 +31,58 @@ module top (
       .jump_data(rom_jump_data)
   );
 
-  wire        registers_w_enable;
-  wire [ 5:0] registers_w_addr;
-  wire [ 7:0] registers_w_data;
-  wire [ 5:0] registers_r_addr_a;
-  wire [ 5:0] registers_r_addr_b;
-  wire [ 7:0] registers_r_data_a;
-  wire [ 7:0] registers_r_data_b;
+
   wire [11:0] registers_ram_addr;
-  wire [ 7:0] random_min;
-  wire [ 7:0] random_max;
-  wire        random_w_enable;
-  wire [ 7:0] random_seed;
-  wire [ 7:0] random_raw;
-  wire [ 7:0] random_range;
+  wire        ram_w_enable;
+  wire [ 7:0] ram_w_data;
+  wire [ 7:0] ram_r_data;
+  ram(
+      .clk(clk),
+      .rst(rst),
+      .addr(registers_ram_addr),
+      .w_enable(ram_w_enable),
+      .w_data(ram_w_data),
+      .r_data(ram_r_data)
+  );
+
+
+  wire [7:0] random_min;
+  wire [7:0] random_max;
+  wire       random_w_enable;
+  wire [7:0] random_seed;
+  wire [7:0] random_raw;
+  wire [7:0] random_range;
+  random(
+      .clk(clk),
+      .rst(rst),
+      .w_enable(random_w_enable),
+      .seed(random_seed),
+      .min(random_min),
+      .max(random_max),
+      .raw(random_raw),
+      .range(random_range)
+  );
+
+  wire [15:0] timer_time_ms;
+  wire timer_start;
+  wire timer_done;
+  timer(
+      .clk(clk), .rst(rst), .time_ms(timer_time_ms), .start(timer_start), .done(timer_done)
+  );
+
+  wire       registers_w_enable;
+  wire [5:0] registers_w_addr;
+  wire [7:0] registers_w_data;
+  wire [5:0] registers_r_addr_a;
+  wire [5:0] registers_r_addr_b;
+  wire [7:0] registers_r_data_a;
+  wire [7:0] registers_r_data_b;
+  wire [4:0] leds;
+  assign led0 = !leds[0];
+  assign led1 = !leds[1];
+  assign led2 = !leds[2];
+  assign led3 = !leds[3];
+  assign led4 = !leds[4];
   registers(
       .clk(clk),
       .rst(rst),
@@ -56,7 +99,11 @@ module top (
       .random_w_enable(random_w_enable),
       .random_seed(random_seed),
       .random_raw(random_raw),
-      .random_range(random_range)
+      .random_range(random_range),
+      .leds(leds),
+      .timer_time_ms(timer_time_ms),
+      .timer_start(timer_start),
+      .timer_done(timer_done)
   );
 
   wire flags_w_enable;
@@ -100,30 +147,6 @@ module top (
       .push_data(stack_push_data),
       .pop_enable(stack_pop_enable),
       .pop_data(stack_pop_data)
-  );
-
-  wire       ram_w_enable;
-  wire [7:0] ram_w_data;
-  wire [7:0] ram_r_data;
-  ram(
-      .clk(clk),
-      .rst(rst),
-      .addr(registers_ram_addr),
-      .w_enable(ram_w_enable),
-      .w_data(ram_w_data),
-      .r_data(ram_r_data)
-  );
-
-  //
-  random(
-      .clk(clk),
-      .rst(rst),
-      .w_enable(random_w_enable),
-      .seed(random_seed),
-      .min(random_min),
-      .max(random_max),
-      .raw(random_raw),
-      .range(random_range)
   );
 
   //
