@@ -21,6 +21,8 @@ localparam CAL = 8'd15;
 localparam RTN = 8'd16;
 localparam WR = 8'd17;
 localparam RD = 8'd18;
+localparam ICL = 8'd19;  // interrupt clear sets the status to 0
+localparam IRT = 8'd20;  // return to before interrupt 
 
 // registers
 // rw
@@ -49,6 +51,7 @@ localparam RTMS = 8'd18;  // timer value 0
 localparam RNDRAW = 8'd32;  // random raw value
 localparam RNDRANGE = 8'd33;  // random between min and max
 localparam RTMD = 8'd34;  // timer done
+localparam RI = 8'd35;  // interrupt type
 
 // ALU
 localparam addition = 5'd0;
@@ -61,5 +64,12 @@ localparam Z = 2'd0;
 localparam NZ = 2'd1;
 localparam C = 2'd2;
 localparam NC = 2'd3;
+
+// interrupts
+localparam INONE = 3'd0;  // no interrupt status
+localparam ITIMER = 3'd1;  // timer interrupt if enabled
+
+// interrupts memory locaiton
+localparam IML = 8'd249;
 
 `endif
