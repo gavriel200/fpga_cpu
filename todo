@@ -1,8 +1,19 @@
-
+- add in the assembler the ability to put instructions in specific memory location
 
 - interrupt handle, start with timer
 
-- add in the assembler the ability to put instructions in specific memory location
+- update the jump and call to already have if logic
+    - CAL [junp to value]
+    - CZ (call if zero)
+    - CNZ
+    - CC
+    - CNC
+    - JMP [junp to value]
+    - JMR [junp using jump register]
+    - JZ
+    - JNZ
+    - JC
+    - JNC
 
 
 

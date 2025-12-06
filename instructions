@@ -114,6 +114,15 @@ LDR RJ @example
 [example will be the loaction of INC R0]
 ```
 
+specific memory location to start from
+[number or hex]
+```
+LDR R0, 1
+[0xa0]
+LDR R1, 2
+[places the `LDR R1, 2` in memory location 0xa0]
+```
+
 CAL - used to call a function, pushes the current pc into stack and jumps to memory locaiton
 CAL [memory location]
 ```

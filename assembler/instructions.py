@@ -65,7 +65,10 @@ class BaseInstruction:
     arg2 = None
     arg_num = 0
     register_pattern = [r.name for r in Registers]
-    memory_locations = {}
+    jump_locations = {}
+
+    def __init__(self, line=""):
+        self.line = line
 
     def is_register(self, arg):
         return arg in self.register_pattern
@@ -94,7 +97,11 @@ class BaseInstruction:
     def value(self):
         pass
 
+    def generate_args(self):
+        pass
+
     def write(self):
+        self.generate_args()
         with open(self.hex_file, "a") as f:
             f.write(f"{self.value()}\n")
 
@@ -117,8 +124,8 @@ class BaseInstruction:
     def get_number(self, arg):
         if arg.startswith("@"):
             memory_place = arg.replace("@", "")
-            if memory_place in BaseInstruction.memory_locations:
-                return BaseInstruction.memory_locations[memory_place]
+            if memory_place in BaseInstruction.jump_locations:
+                return BaseInstruction.jump_locations[memory_place]
             else:
                 raise KeyError(f"unknown memory place {memory_place}")
         else:
@@ -145,8 +152,8 @@ class Ld(BaseInstruction):
     instruciton_id = Instruction.LD
     arg_num = 2
 
-    def __init__(self, line):
-        args = self.get_args(line)
+    def generate_args(self):
+        args = self.get_args(self.line)
         self.arg1 = self.get_reg(args[0])
         self.arg2 = self.get_reg(args[1])
 
@@ -158,8 +165,8 @@ class Ldr(BaseInstruction):
     instruciton_id = Instruction.LDR
     arg_num = 2
 
-    def __init__(self, line):
-        args = self.get_args(line)
+    def generate_args(self):
+        args = self.get_args(self.line)
         self.arg1 = self.get_reg(args[0])
         self.arg2 = self.get_number(args[1])
 
@@ -171,8 +178,8 @@ class Add(BaseInstruction):
     instruciton_id = Instruction.ADD
     arg_num = 2
 
-    def __init__(self, line):
-        args = self.get_args(line)
+    def generate_args(self):
+        args = self.get_args(self.line)
         self.arg1 = self.get_reg(args[0])
         self.arg2 = self.get_reg(args[1])
 
@@ -184,8 +191,8 @@ class Sub(BaseInstruction):
     instruciton_id = Instruction.SUB
     arg_num = 2
 
-    def __init__(self, line):
-        args = self.get_args(line)
+    def generate_args(self):
+        args = self.get_args(self.line)
         self.arg1 = self.get_reg(args[0])
         self.arg2 = self.get_reg(args[1])
 
@@ -197,8 +204,8 @@ class Inc(BaseInstruction):
     instruciton_id = Instruction.INC
     arg_num = 1
 
-    def __init__(self, line):
-        args = self.get_args(line)
+    def generate_args(self):
+        args = self.get_args(self.line)
         self.arg1 = self.get_reg(args[0])
 
     def value(self):
@@ -209,8 +216,8 @@ class Dec(BaseInstruction):
     instruciton_id = Instruction.DEC
     arg_num = 1
 
-    def __init__(self, line):
-        args = self.get_args(line)
+    def generate_args(self):
+        args = self.get_args(self.line)
         self.arg1 = self.get_reg(args[0])
 
     def value(self):
@@ -221,8 +228,8 @@ class Clr(BaseInstruction):
     instruciton_id = Instruction.CLR
     arg_num = 1
 
-    def __init__(self, line):
-        args = self.get_args(line)
+    def generate_args(self):
+        args = self.get_args(self.line)
         self.arg1 = self.get_reg(args[0])
 
     def value(self):
@@ -233,8 +240,8 @@ class Set(BaseInstruction):
     instruciton_id = Instruction.FIL
     arg_num = 1
 
-    def __init__(self, line):
-        args = self.get_args(line)
+    def generate_args(self):
+        args = self.get_args(self.line)
         self.arg1 = self.get_reg(args[0])
 
     def value(self):
@@ -245,8 +252,8 @@ class Psh(BaseInstruction):
     instruciton_id = Instruction.PSH
     arg_num = 1
 
-    def __init__(self, line):
-        args = self.get_args(line)
+    def generate_args(self):
+        args = self.get_args(self.line)
         self.arg1 = self.get_reg(args[0])
 
     def value(self):
@@ -257,8 +264,8 @@ class Pop(BaseInstruction):
     instruciton_id = Instruction.POP
     arg_num = 1
 
-    def __init__(self, line):
-        args = self.get_args(line)
+    def generate_args(self):
+        args = self.get_args(self.line)
         self.arg1 = self.get_reg(args[0])
 
     def value(self):
@@ -277,8 +284,8 @@ class Jmr(BaseInstruction):
     instruciton_id = Instruction.JMR
     arg_num = 1
 
-    def __init__(self, line):
-        args = self.get_args(line)
+    def generate_args(self):
+        args = self.get_args(self.line)
         self.arg1 = self.get_number(args[0])
 
     def value(self):
@@ -289,8 +296,8 @@ class Jmi(BaseInstruction):
     instruciton_id = Instruction.JMI
     arg_num = 1
 
-    def __init__(self, line):
-        args = self.get_args(line)
+    def generate_args(self):
+        args = self.get_args(self.line)
         self.arg1 = self.get_flag(args[0])
 
     def value(self):
@@ -301,8 +308,8 @@ class Com(BaseInstruction):
     instruciton_id = Instruction.COM
     arg_num = 2
 
-    def __init__(self, line):
-        args = self.get_args(line)
+    def generate_args(self):
+        args = self.get_args(self.line)
         self.arg1 = self.get_reg(args[0])
         self.arg2 = self.get_reg(args[1])
 
@@ -314,8 +321,8 @@ class Cal(BaseInstruction):
     instruciton_id = Instruction.CAL
     arg_num = 1
 
-    def __init__(self, line):
-        args = self.get_args(line)
+    def generate_args(self):
+        args = self.get_args(self.line)
         self.arg1 = self.get_number(args[0])
 
     def value(self):
@@ -334,8 +341,8 @@ class Wr(BaseInstruction):
     instruciton_id = Instruction.WR
     arg_num = 1
 
-    def __init__(self, line):
-        args = self.get_args(line)
+    def generate_args(self):
+        args = self.get_args(self.line)
         self.arg1 = self.get_reg(args[0])
 
     def value(self):
@@ -346,8 +353,8 @@ class Rd(BaseInstruction):
     instruciton_id = Instruction.RD
     arg_num = 1
 
-    def __init__(self, line):
-        args = self.get_args(line)
+    def generate_args(self):
+        args = self.get_args(self.line)
         self.arg1 = self.get_reg(args[0])
 
     def value(self):

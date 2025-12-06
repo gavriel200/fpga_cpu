@@ -77,7 +77,7 @@ def comment_or_empty(line: str):
     return False
 
 
-def is_memory_location(line: str):
+def is_jump_location(line: str):
     if line.startswith("&") and line.strip().endswith(":"):
         if len(line.strip().split(" ")) != 1:
             raise ValueError("bad memory locaiton")
@@ -85,12 +85,37 @@ def is_memory_location(line: str):
     return False
 
 
-def get_memory_locaiton(line: str):
+def get_jump_location(line: str):
     return line.strip().replace("&", "").replace(":", "")
 
 
 def clean_hex_file():
     open("src/main.hex", "w").close()
+
+
+def is_memory_location(line: str):
+    if line.startswith("[") and line.endswith("]"):
+        value = line.replace("[", "").replace("]", "").strip()
+        if value.startswith("0x"):
+            try:
+                int(value, 16)
+                return True
+            except ValueError:
+                return False
+        else:
+            try:
+                int(value, 10)
+                return True
+            except ValueError:
+                return False
+
+
+def get_memory_location(line: str):
+    value = line.replace("[", "").replace("]", "").strip()
+    if value.startswith("0x"):
+        return int(value, 16)
+    else:
+        return int(value, 10)
 
 
 def main():
@@ -107,22 +132,29 @@ def main():
 
     instructions = []
 
+    for i in range(0xFF):
+        instructions.append(Nop())
+
     current_pc = 0
 
     with open(full_file_path, "r") as f:
         for line in f:
-            if is_memory_location(line):
-                BaseInstruction.memory_locations[get_memory_locaiton(line)] = current_pc
+            if is_jump_location(line):
+                BaseInstruction.jump_locations[get_jump_location(line)] = current_pc
             elif not comment_or_empty(line.strip()):
-                current_pc += 1
+                if is_memory_location(line.strip()):
+                    memory_location = get_memory_location(line.strip())
+                    if memory_location >= current_pc:
+                        current_pc = memory_location
+                    else:
+                        raise IndexError(
+                            f"memory location cant be before current pc- {current_pc}, memory_locaiton- {memory_location}"
+                        )
+                else:
+                    instructions[current_pc] = instruction_factory(line.strip())
+                    current_pc += 1
 
-    print(f"memory locations:{BaseInstruction.memory_locations}")
-
-    with open(full_file_path, "r") as f:
-        for line in f:
-            striped_line = line.strip()
-            if not comment_or_empty(striped_line) and not is_memory_location(line):
-                instructions.append(instruction_factory(striped_line))
+    print(f"memory locations:{BaseInstruction.jump_locations}")
 
     clean_hex_file()
 
