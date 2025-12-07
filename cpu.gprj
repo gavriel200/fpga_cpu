@@ -1,0 +1,26 @@
+<?xml version="1" encoding="UTF-8"?>
+<!DOCTYPE gowin-fpga-project>
+<Project>
+    <Template>FPGA</Template>
+    <Version>5</Version>
+    <Device name="GW1NR-9C" pn="GW1NR-LV9QN88PC6/I5">gw1nr9c-004</Device>
+    <FileList>
+        <File path="src/alu.v" type="file.verilog" enable="1"/>
+        <File path="src/decoder.v" type="file.verilog" enable="1"/>
+        <File path="src/flags.v" type="file.verilog" enable="1"/>
+        <File path="src/global_params.vh" type="file.verilog" enable="1"/>
+        <File path="src/gpio.v" type="file.verilog" enable="1"/>
+        <File path="src/ram.v" type="file.verilog" enable="1"/>
+        <File path="src/random.v" type="file.verilog" enable="1"/>
+        <File path="src/registers.v" type="file.verilog" enable="1"/>
+        <File path="src/reset.v" type="file.verilog" enable="1"/>
+        <File path="src/rom.v" type="file.verilog" enable="1"/>
+        <File path="src/shifter.v" type="file.verilog" enable="1"/>
+        <File path="src/stack.v" type="file.verilog" enable="1"/>
+        <File path="src/timer.v" type="file.verilog" enable="1"/>
+        <File path="src/top.v" type="file.verilog" enable="1"/>
+        <File path="src/top.cst" type="file.cst" enable="1"/>
+        <File path="src/cpu.rao" type="file.gao" enable="1"/>
+        <File path="src/main.hex" type="file.other" enable="1"/>
+    </FileList>
+</Project>
