@@ -1,6 +1,9 @@
-- add in the assembler the ability to put instructions in specific memory location
-
 - interrupt handle, start with timer
+    - interrupt ro register for what interrupt came from (each bit is another interrupt type)
+    - all interrupt make you go to specific memory location there needed a jump to made function handle interrupt
+    - clear interrupt and read interrupt to handle it
+    - on interrupt save the memory where you were just before the interrupt
+    - return to old place
 
 - update the jump and call to already have if logic
     - CAL [junp to value]
