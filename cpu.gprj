@@ -10,6 +10,7 @@
         <File path="src/flags.v" type="file.verilog" enable="1"/>
         <File path="src/global_params.vh" type="file.verilog" enable="1"/>
         <File path="src/gpio.v" type="file.verilog" enable="1"/>
+        <File path="src/interrupt.v" type="file.verilog" enable="1"/>
         <File path="src/ram.v" type="file.verilog" enable="1"/>
         <File path="src/random.v" type="file.verilog" enable="1"/>
         <File path="src/registers.v" type="file.verilog" enable="1"/>

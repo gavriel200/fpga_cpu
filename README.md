@@ -3,7 +3,7 @@ cpu project:
 1. create the essembly code
     - create list of instructions to support
     - write script to compile the "essembly" into a bit stream into a verilog file, have the verilog file be in the `.gitignore` and be generated before compiling and all
-    - should be able in the "essembly" to place instruciton in specific places + function and routiens should be handeled by the script 
+    - should be able in the "essembly" to place instruction in specific places + function and routiens should be handeled by the script 
 2. build the CPU
     - think of all the modules needed connect all the relevant parts.
         - ALU

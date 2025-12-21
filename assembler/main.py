@@ -5,6 +5,7 @@ from assembler.instructions import (
     Add,
     BaseInstruction,
     Cal,
+    Cis,
     Clr,
     Com,
     Dec,
@@ -67,6 +68,8 @@ def instruction_factory(line):
             return Wr(line)
         case Instruction.RD.name:
             return Rd(line)
+        case Instruction.CIS.name:
+            return Cis()
         case _:
             raise ValueError(f"invalid instruction {instruction}")
 
@@ -80,7 +83,7 @@ def comment_or_empty(line: str):
 def is_jump_location(line: str):
     if line.startswith("&") and line.strip().endswith(":"):
         if len(line.strip().split(" ")) != 1:
-            raise ValueError("bad memory locaiton")
+            raise ValueError("bad memory location")
         return True
     return False
 
@@ -148,7 +151,7 @@ def main():
                         current_pc = memory_location
                     else:
                         raise IndexError(
-                            f"memory location cant be before current pc- {current_pc}, memory_locaiton- {memory_location}"
+                            f"memory location cant be before current pc- {current_pc}, memory_location- {memory_location}"
                         )
                 else:
                     instructions[current_pc] = instruction_factory(line.strip())

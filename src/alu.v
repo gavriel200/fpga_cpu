@@ -20,29 +20,29 @@ module alu (
     case (operation)
 
       addition: begin
-        tmp = {1'b0, A} + {1'b0, B};
-        C = tmp[7:0];
+        tmp         = {1'b0, A} + {1'b0, B};
+        C           = tmp[7:0];
 
         flags_c_val = tmp[8];
       end
 
-      substraction: begin
-        tmp = {1'b0, A} - {1'b0, B};
-        C = tmp[7:0];
+      subtraction: begin
+        tmp         = {1'b0, A} - {1'b0, B};
+        C           = tmp[7:0];
 
         flags_c_val = ~tmp[8];  // NOT borrow
       end
 
       increment: begin
-        tmp = {1'b0, A} + 1;
-        C = tmp[7:0];
+        tmp         = {1'b0, A} + 1;
+        C           = tmp[7:0];
 
         flags_c_val = tmp[8];
       end
 
       decrement: begin
-        tmp = {1'b0, A} - 1;
-        C = tmp[7:0];
+        tmp         = {1'b0, A} - 1;
+        C           = tmp[7:0];
 
         flags_c_val = ~tmp[8];  // NOT borrow
       end

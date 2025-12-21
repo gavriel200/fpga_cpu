@@ -38,7 +38,10 @@ module decoder (
     // ram
     input      [7:0] ram_r_data,
     output reg       ram_w_enable,
-    output reg [7:0] ram_w_data
+    output reg [7:0] ram_w_data,
+
+    // interrupt
+    output reg interrupt_clear_status
 );
 
   wire [7:0] instruction = rom_data[23:16];
@@ -47,22 +50,23 @@ module decoder (
 
   always @(*) begin
     // default values (avoid latches)
-    rom_jump_enable = 0;
-    rom_jump_data = 0;
-    registers_w_enable = 0;
-    registers_w_addr = 0;
-    registers_w_data = 0;
-    registers_r_addr_a = 0;
-    registers_r_addr_b = 0;
-    flags_w_enable = 0;
-    alu_operation = 0;
-    alu_A = 0;
-    alu_B = 0;
-    stack_push_enable = 0;
-    stack_push_data = 0;
-    stack_pop_enable = 0;
-    ram_w_enable = 0;
-    ram_w_data = 0;
+    rom_jump_enable        = 0;
+    rom_jump_data          = 0;
+    registers_w_enable     = 0;
+    registers_w_addr       = 0;
+    registers_w_data       = 0;
+    registers_r_addr_a     = 0;
+    registers_r_addr_b     = 0;
+    flags_w_enable         = 0;
+    alu_operation          = 0;
+    alu_A                  = 0;
+    alu_B                  = 0;
+    stack_push_enable      = 0;
+    stack_push_data        = 0;
+    stack_pop_enable       = 0;
+    ram_w_enable           = 0;
+    ram_w_data             = 0;
+    interrupt_clear_status = 0;
 
     case (instruction)
       NOP: begin
@@ -110,7 +114,7 @@ module decoder (
         alu_A              = registers_r_data_a;
         alu_B              = registers_r_data_b;
 
-        alu_operation      = substraction;
+        alu_operation      = subtraction;
         registers_w_data   = alu_C;
       end
 
@@ -169,9 +173,9 @@ module decoder (
       end
 
       JMP: begin
-        registers_r_addr_a    = RJ;
-        rom_jump_enable = 1;
-        rom_jump_data   = registers_r_data_a;
+        registers_r_addr_a = RJ;
+        rom_jump_enable    = 1;
+        rom_jump_data      = registers_r_data_a;
       end
 
       JMR: begin
@@ -186,9 +190,9 @@ module decoder (
           (arg_a == C && flags_c) || 
           (arg_a == NZ && !flags_z)
         ) begin
-          registers_r_addr_a    = RJ;
-          rom_jump_enable = 1;
-          rom_jump_data   = registers_r_data_a;
+          registers_r_addr_a = RJ;
+          rom_jump_enable    = 1;
+          rom_jump_data      = registers_r_data_a;
         end
       end
 
@@ -201,7 +205,7 @@ module decoder (
         alu_A              = registers_r_data_a;
         alu_B              = registers_r_data_b;
 
-        alu_operation      = substraction;
+        alu_operation      = subtraction;
       end
 
       CAL: begin
@@ -222,8 +226,8 @@ module decoder (
       WR: begin
         registers_r_addr_a = arg_a[5:0];
 
-        ram_w_enable = 1;
-        ram_w_data = registers_r_data_a;
+        ram_w_enable       = 1;
+        ram_w_data         = registers_r_data_a;
       end
 
       RD: begin
@@ -231,6 +235,10 @@ module decoder (
         registers_w_addr   = arg_a[5:0];
 
         registers_w_data   = ram_r_data;
+      end
+
+      CIS: begin
+        interrupt_clear_status = 1;
       end
     endcase
   end

@@ -21,6 +21,8 @@ module top (
   wire [    7:0] rom_pc;
   wire           rom_jump_enable;
   wire [    7:0] rom_jump_data;
+  wire           interrupt_jump;
+  wire           interrupt_clear_status;
   rom(
       .clk(clk),
       .rst(rst),
@@ -28,7 +30,9 @@ module top (
       .data(rom_data),
       .pc(rom_pc),
       .jump_enable(rom_jump_enable),
-      .jump_data(rom_jump_data)
+      .jump_data(rom_jump_data),
+      .interrupt_jump(interrupt_jump),
+      .interrupt_clear_status(interrupt_clear_status)
   );
 
 
@@ -65,9 +69,25 @@ module top (
 
   wire [15:0] timer_time_ms;
   wire timer_start;
+  wire timer_interrupt_enable;
   wire timer_done;
+  wire timer_interrupt;
   timer(
-      .clk(clk), .rst(rst), .time_ms(timer_time_ms), .start(timer_start), .done(timer_done)
+      .clk(clk),
+      .rst(rst),
+      .time_ms(timer_time_ms),
+      .start(timer_start),
+      .interrupt_enable(timer_interrupt_enable),
+      .done(timer_done),
+      .interrupt(timer_interrupt)
+  );
+
+  wire interrupt_status;
+  interrupt(
+      .clear_status(interrupt_clear_status),
+      .status(interrupt_status),
+      .jump(interrupt_jump),
+      .timer_interrupt(timer_interrupt)
   );
 
   wire       registers_w_enable;
@@ -103,7 +123,9 @@ module top (
       .leds(leds),
       .timer_time_ms(timer_time_ms),
       .timer_start(timer_start),
-      .timer_done(timer_done)
+      .timer_done(timer_done),
+      .timer_interrupt_enable(timer_interrupt_enable),
+      .interrupt_status(interrupt_status)
   );
 
   wire flags_w_enable;
@@ -175,7 +197,8 @@ module top (
       .stack_pop_data(stack_pop_data),
       .ram_w_enable(ram_w_enable),
       .ram_w_data(ram_w_data),
-      .ram_r_data(ram_r_data)
+      .ram_r_data(ram_r_data),
+      .interrupt_clear_status(interrupt_clear_status)
   );
 
 endmodule

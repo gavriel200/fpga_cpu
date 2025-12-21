@@ -11,7 +11,7 @@ localparam INC = 8'd5;
 localparam DEC = 8'd6;
 localparam CLR = 8'd7;
 localparam FIL = 8'd8;
-localparam PSH = 8'd9;  // maybe later change to PUSH
+localparam PSH = 8'd9;
 localparam POP = 8'd10;
 localparam JMP = 8'd11;
 localparam JMR = 8'd12;
@@ -21,6 +21,7 @@ localparam CAL = 8'd15;
 localparam RTN = 8'd16;
 localparam WR = 8'd17;
 localparam RD = 8'd18;
+localparam CIS = 8'd19; // clear interrupt status
 
 // registers
 // rw
@@ -43,6 +44,8 @@ localparam RLD = 8'd15;  // leds
 localparam RTM0 = 8'd16;  // timer value 0
 localparam RTM1 = 8'd17;  // timer value 0
 localparam RTMS = 8'd18;  // timer value 0
+localparam RTIE = 8'd19; // timer interrupt enable
+localparam RIS = 8'd20; // interrupt status
 
 // till 31
 // ro
@@ -52,7 +55,7 @@ localparam RTMD = 8'd34;  // timer done
 
 // ALU
 localparam addition = 5'd0;
-localparam substraction = 5'd1;
+localparam subtraction = 5'd1;
 localparam increment = 5'd2;
 localparam decrement = 5'd3;
 

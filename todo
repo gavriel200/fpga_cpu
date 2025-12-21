@@ -1,7 +1,3 @@
-- add in the assembler the ability to put instructions in specific memory location
-
-- interrupt handle, start with timer
-
 - update the jump and call to already have if logic
     - CAL [junp to value]
     - CZ (call if zero)
@@ -22,4 +18,7 @@
     - 2 args for JMP
     - support for JMI instead of having the arg be the logic have the instruction be different
     JZ/JNZ/JC/JNC and the memory be first and second arg
+
+
+- hdmi support
 

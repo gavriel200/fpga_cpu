@@ -29,29 +29,34 @@ module registers (
     // leds
     output [4:0] leds,
 
+    // timer
     output [15:0] timer_time_ms,
     output        timer_start,
-    input         timer_done
+    output        timer_interrupt_enable,
+    input         timer_done,
+
+    input [0:7] interrupt_status
 );
   localparam REGISTER_NUM = 40;
   reg [8*REGISTER_NUM-1:0] registers_data;
 
 
-  assign r_data_a        = read_reg(r_addr_a);
-  assign r_data_b        = read_reg(r_addr_b);
+  assign r_data_a               = read_reg(r_addr_a);
+  assign r_data_b               = read_reg(r_addr_b);
 
   // ram
-  assign ram_addr        = registers_data[RM0*8+:12];
+  assign ram_addr               = registers_data[RM0*8+:12];
   // random
-  assign random_min      = registers_data[RNDMIN*8+:8];
-  assign random_max      = registers_data[RNDMAX*8+:8];
-  assign random_w_enable = registers_data[RNDWE*8+:8];
-  assign random_seed     = registers_data[RNDSEED*8+:8];
+  assign random_min             = registers_data[RNDMIN*8+:8];
+  assign random_max             = registers_data[RNDMAX*8+:8];
+  assign random_w_enable        = registers_data[RNDWE*8+:8];
+  assign random_seed            = registers_data[RNDSEED*8+:8];
   // leds
-  assign leds            = registers_data[RLD*8+:5];
+  assign leds                   = registers_data[RLD*8+:5];
   // timer
-  assign timer_time_ms   = registers_data[RTM0*8+:16];
-  assign timer_start     = registers_data[RTMS*8+:8];
+  assign timer_time_ms          = registers_data[RTM0*8+:16];
+  assign timer_start            = registers_data[RTMS*8+:8];
+  assign timer_interrupt_enable = registers_data[RTIE*8+:8];
 
   always @(posedge clk) begin
     if (rst) begin
@@ -72,6 +77,7 @@ module registers (
           RNDRAW:   read_reg = random_raw;
           RNDRANGE: read_reg = random_range;
           RTMD:     read_reg = timer_done;
+          RIS:      read_reg = interrupt_status;
           default:  read_reg = registers_data[(REGISTER_NUM-1)*8+:8];
         endcase
       end

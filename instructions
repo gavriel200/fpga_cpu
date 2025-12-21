@@ -24,7 +24,7 @@ ADD R1, R2
 R1 = R1 + R2
 ```
 
-SUB - substracks registers
+SUB - subtract  registers
 SUB [to registers], [with registers]
 ```
 SUB R1, R2
@@ -95,7 +95,7 @@ JMI Z
 [no jump]
 ```
 
-COM - compairs 2 registers doing substraction but does not save it
+COM - compares 2 registers doing subtraction but does not save it
 COM [register] [register]
 ```
 COM R0, R1
@@ -103,7 +103,7 @@ COM R0, R1
 ```
 
 memory locations
-to allow easier jump address locaiton added mmeory locations
+to allow easier jump address location added memory locations
 string starting with '&' ending with ':'
 this will point to the instruction right after it
 to access it when passing raw value use @ and the name of the memory location
@@ -111,7 +111,7 @@ to access it when passing raw value use @ and the name of the memory location
 &example:
 INC R0
 LDR RJ @example
-[example will be the loaction of INC R0]
+[example will be the location of INC R0]
 ```
 
 specific memory location to start from
@@ -123,7 +123,7 @@ LDR R1, 2
 [places the `LDR R1, 2` in memory location 0xa0]
 ```
 
-CAL - used to call a function, pushes the current pc into stack and jumps to memory locaiton
+CAL - used to call a function, pushes the current pc into stack and jumps to memory location
 CAL [memory location]
 ```
 CAL @example
@@ -151,7 +151,7 @@ WR R0
 [writes R0 value to address 0]
 ```
 
-RD - raad value from ram to register
+RD - read value from ram to register
 RD [register to write to]
 ```
 LDR RM0 0
@@ -159,4 +159,11 @@ LDR RM1 0
 // address 0 in ram
 RD R0
 [writes value from ram address 0 to R0]
+```
+
+CIS - clear interrupt status
+```
+[after getting interrupt with the call to handle it]
+CIS
+[returns to where we were before the interrupt and sets the status of the interrupt to 0]
 ```
