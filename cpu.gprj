@@ -11,6 +11,8 @@
         <File path="src/global_params.vh" type="file.verilog" enable="1"/>
         <File path="src/gpio.v" type="file.verilog" enable="1"/>
         <File path="src/interrupt.v" type="file.verilog" enable="1"/>
+        <File path="src/lcd/frame_buffer.v" type="file.verilog" enable="1"/>
+        <File path="src/lcd/lcd.v" type="file.verilog" enable="1"/>
         <File path="src/ram.v" type="file.verilog" enable="1"/>
         <File path="src/random.v" type="file.verilog" enable="1"/>
         <File path="src/registers.v" type="file.verilog" enable="1"/>
@@ -21,7 +23,6 @@
         <File path="src/timer.v" type="file.verilog" enable="1"/>
         <File path="src/top.v" type="file.verilog" enable="1"/>
         <File path="src/top.cst" type="file.cst" enable="1"/>
-        <File path="src/cpu.rao" type="file.gao" enable="1"/>
         <File path="src/main.hex" type="file.other" enable="1"/>
     </FileList>
 </Project>

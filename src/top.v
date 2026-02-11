@@ -7,7 +7,14 @@ module top (
     output led2,
     output led3,
     output led4,
-    output rst_led
+    output rst_led,
+
+    output lcd_data,
+    output lcd_clk,
+
+    output lcd_cs,
+    output lcd_rs,
+    output lcd_resetn
 );
   wire rst;
   reset(
@@ -15,6 +22,44 @@ module top (
   );
 
   assign rst_led = !rst;
+
+  wire [5:0] framebuffer_x_update;
+  wire [5:0] framebuffer_y_update;
+  wire [3:0] framebuffer_data_update;
+  wire framebuffer_enable_update;
+  wire [5:0] framebuffer_x_output;
+  wire [5:0] framebuffer_y_output;
+  wire [3:0] framebuffer_frame;
+  framebuffer(
+      .clk(clk),
+      .rst(rst),
+      .x_update(framebuffer_x_update),
+      .y_update(framebuffer_y_update),
+      .data_update(framebuffer_data_update),
+      .enable_update(framebuffer_enable_update),
+      .x_output(framebuffer_x_output),
+      .y_output(framebuffer_y_output),
+      .frame(framebuffer_frame)
+  );
+
+  wire lcd_update;
+  lcd(
+      .clk(clk),
+      .rst(rst),
+
+      .lcd_resetn(lcd_resetn),
+      .lcd_clk(lcd_clk),
+      .lcd_cs(lcd_cs),
+      .lcd_rs(lcd_rs),
+      .lcd_data(lcd_data),
+
+      .framebuffer_x_output(framebuffer_x_output),
+      .framebuffer_y_output(framebuffer_y_output),
+      .framebuffer_frame(framebuffer_frame),
+
+      .update(lcd_update)
+  );
+
 
   reg            rom_enable = 1;
   wire [8*3-1:0] rom_data;
