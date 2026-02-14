@@ -9,6 +9,9 @@ LDR RTM1, 0x03
 // wait for init lcd
 CAL @wait_for_lcd_ready
 
+// clean frame buffer
+CAL @clean_frame_buffer
+
 // init frame buffer
 LDR RFBX, 0
 LDR RFBY, 0
@@ -42,5 +45,35 @@ LDR R0, 1
 LDR RJ, @check_lcd_ready
 &check_lcd_ready:
 COM R0, RLCDR
+JMI NZ
+RTN
+
+&clean_frame_buffer:
+LDR RFBD, 0
+CAL @loop_y
+RTN
+
+&loop_y:
+LDR RFBY, 0
+LDR R0, 31
+LDR RJ, @y_target
+&y_target:
+CAL @loop_x
+LDR RFBE, 1
+LDR RFBE, 0
+INC RFBY
+COM RFBY, R0
+JMI NZ
+RTN
+
+&loop_x:
+LDR RFBX, 0
+LDR R1, 59
+LDR RJ, @x_target
+&x_target:
+LDR RFBE, 1
+LDR RFBE, 0
+INC RFBX
+COM RFBX, R1
 JMI NZ
 RTN

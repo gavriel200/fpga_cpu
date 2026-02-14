@@ -113,6 +113,7 @@ module lcd (
   localparam INIT_WORKING = 4'b0100;  // write command & data
   localparam INIT_DONE = 4'b0101;  // all done
   localparam IDLE = 4'b0110;  // wait for update
+  localparam RESET_TERMINATE = 4'b0111;  // new state to clean up before reset
 
 `ifdef MODELTECH
 
@@ -173,22 +174,20 @@ module lcd (
     if (rst) begin
       clk_cnt <= 0;
       cmd_index <= 0;
-      init_state <= INIT_RESET;
+      init_state <= RESET_TERMINATE;
 
-      lcd_cs_r <= 1;
+      lcd_cs_r <= 1;  // Deselect chip
       lcd_rs_r <= 1;
-      lcd_reset_r <= 0;
+      lcd_reset_r <= 1;  // Keep reset HIGH initially
       spi_data <= 8'hFF;
       bit_loop <= 0;
 
       pixel_cnt <= 0;
-
       framebuffer_x_output <= 0;
       framebuffer_y_output <= 0;
       x_counter <= 0;
       y_counter <= 0;
     end else begin
-
       case (init_state)
 
         INIT_RESET: begin
@@ -324,6 +323,16 @@ module lcd (
             x_counter <= 0;
             init_state <= INIT_WORKING;
             cmd_index <= 69;
+          end
+        end
+
+        RESET_TERMINATE: begin
+          if (clk_cnt == CNT_100MS) begin  // Wait a bit with CS high
+            clk_cnt <= 0;
+            lcd_reset_r <= 0;  // Now pull reset LOW
+            init_state <= INIT_RESET;
+          end else begin
+            clk_cnt <= clk_cnt + 1;
           end
         end
       endcase
