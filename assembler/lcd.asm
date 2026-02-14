@@ -55,10 +55,10 @@ RTN
 
 &loop_y:
 LDR RFBY, 0
-LDR R0, 31
-LDR RJ, @y_target
+LDR R0, 32
 &y_target:
 CAL @loop_x
+LDR RJ, @y_target
 LDR RFBE, 1
 LDR RFBE, 0
 INC RFBY
@@ -68,9 +68,9 @@ RTN
 
 &loop_x:
 LDR RFBX, 0
-LDR R1, 59
-LDR RJ, @x_target
+LDR R1, 60
 &x_target:
+LDR RJ, @x_target
 LDR RFBE, 1
 LDR RFBE, 0
 INC RFBX
