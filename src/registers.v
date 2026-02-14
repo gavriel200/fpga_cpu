@@ -35,28 +35,44 @@ module registers (
     output        timer_interrupt_enable,
     input         timer_done,
 
-    input [0:7] interrupt_status
+    input [0:7] interrupt_status,
+
+    // frame buffer 
+    output [5:0] framebuffer_x_update,
+    output [5:0] framebuffer_y_update,
+    output [3:0] framebuffer_data_update,
+    output       framebuffer_enable_update,
+
+    // lcd
+    input  lcd_ready,
+    output lcd_update
 );
   localparam REGISTER_NUM = 40;
   reg [8*REGISTER_NUM-1:0] registers_data;
 
 
-  assign r_data_a               = read_reg(r_addr_a);
-  assign r_data_b               = read_reg(r_addr_b);
+  assign r_data_a                  = read_reg(r_addr_a);
+  assign r_data_b                  = read_reg(r_addr_b);
 
   // ram
-  assign ram_addr               = registers_data[RM0*8+:12];
+  assign ram_addr                  = registers_data[RM0*8+:12];
   // random
-  assign random_min             = registers_data[RNDMIN*8+:8];
-  assign random_max             = registers_data[RNDMAX*8+:8];
-  assign random_w_enable        = registers_data[RNDWE*8+:8];
-  assign random_seed            = registers_data[RNDSEED*8+:8];
+  assign random_min                = registers_data[RNDMIN*8+:8];
+  assign random_max                = registers_data[RNDMAX*8+:8];
+  assign random_w_enable           = registers_data[RNDWE*8+:8];
+  assign random_seed               = registers_data[RNDSEED*8+:8];
   // leds
-  assign leds                   = registers_data[RLD*8+:5];
+  assign leds                      = registers_data[RLD*8+:5];
   // timer
-  assign timer_time_ms          = registers_data[RTM0*8+:16];
-  assign timer_start            = registers_data[RTMS*8+:8];
-  assign timer_interrupt_enable = registers_data[RTIE*8+:8];
+  assign timer_time_ms             = registers_data[RTM0*8+:16];
+  assign timer_start               = registers_data[RTMS*8+:8];
+  assign timer_interrupt_enable    = registers_data[RTIE*8+:8];
+  // frame buffer
+  assign framebuffer_x_update      = registers_data[RFBX*8+:8];
+  assign framebuffer_y_update      = registers_data[RFBY*8+:8];
+  assign framebuffer_data_update   = registers_data[RFBD*8+:8];
+  assign framebuffer_enable_update = registers_data[RFBE*8+:8];
+  assign lcd_update                = registers_data[RLCDU*8+:8];
 
   always @(posedge clk) begin
     if (rst) begin
@@ -78,6 +94,7 @@ module registers (
           RNDRANGE: read_reg = random_range;
           RTMD:     read_reg = timer_done;
           RIS:      read_reg = interrupt_status;
+          RLCDR:    read_reg = lcd_ready;
           default:  read_reg = registers_data[(REGISTER_NUM-1)*8+:8];
         endcase
       end

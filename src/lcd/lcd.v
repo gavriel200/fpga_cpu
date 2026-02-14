@@ -18,7 +18,8 @@ module lcd (
     output reg [5:0] framebuffer_y_output,
     input [3:0] framebuffer_frame,
 
-    input update
+    output ready,
+    input  update
 );
 
   initial begin
@@ -148,8 +149,10 @@ module lcd (
   assign lcd_rs     = lcd_rs_r;
   assign lcd_data   = spi_data[7];  // MSB
 
+  assign ready      = init_state == IDLE;
+
   // gen color bar
-  wire [15:0] pixel = (framebuffer_frame == 4'd0) ? 16'h2fe0 :  //  hFFFF white 
+  wire [15:0] pixel = (framebuffer_frame == 4'd0) ? 16'hFFFF :  //  hFFFF white 
   (framebuffer_frame == 4'd1) ? 16'h0000 :  // black
   (framebuffer_frame == 4'd2) ? 16'hffc0 :  // yellow
   (framebuffer_frame == 4'd3) ? 16'h2fe0 :  // green
@@ -179,6 +182,11 @@ module lcd (
       bit_loop <= 0;
 
       pixel_cnt <= 0;
+
+      framebuffer_x_output <= 0;
+      framebuffer_y_output <= 0;
+      x_counter <= 0;
+      y_counter <= 0;
     end else begin
 
       case (init_state)
@@ -314,7 +322,8 @@ module lcd (
             y_counter <= 0;
             framebuffer_x_output <= 0;
             x_counter <= 0;
-            init_state <= INIT_DONE;
+            init_state <= INIT_WORKING;
+            cmd_index <= 69;
           end
         end
       endcase

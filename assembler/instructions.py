@@ -47,11 +47,17 @@ class Registers(IntEnum):
     RTMS = 18
     RTIE = 19
     RIS = 20
+    RFBX = 21
+    RFBY = 22
+    RFBD = 23
+    RFBE = 24
+    RLCDU = 25
 
     # ro
     RNDRAW = 32
     RNDRANGE = 33
     RTMD = 34
+    RLCDR = 35
 
 
 class Flag(IntEnum):

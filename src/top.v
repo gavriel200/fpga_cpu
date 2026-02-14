@@ -42,6 +42,7 @@ module top (
       .frame(framebuffer_frame)
   );
 
+  wire lcd_ready;
   wire lcd_update;
   lcd(
       .clk(clk),
@@ -57,6 +58,7 @@ module top (
       .framebuffer_y_output(framebuffer_y_output),
       .framebuffer_frame(framebuffer_frame),
 
+      .ready(lcd_ready),
       .update(lcd_update)
   );
 
@@ -170,7 +172,13 @@ module top (
       .timer_start(timer_start),
       .timer_done(timer_done),
       .timer_interrupt_enable(timer_interrupt_enable),
-      .interrupt_status(interrupt_status)
+      .interrupt_status(interrupt_status),
+      .framebuffer_x_update(framebuffer_x_update),
+      .framebuffer_y_update(framebuffer_y_update),
+      .framebuffer_data_update(framebuffer_data_update),
+      .framebuffer_enable_update(framebuffer_enable_update),
+      .lcd_ready(lcd_ready),
+      .lcd_update(lcd_update)
   );
 
   wire flags_w_enable;

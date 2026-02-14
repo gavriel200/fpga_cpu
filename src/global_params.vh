@@ -46,12 +46,18 @@ localparam RTM1 = 8'd17;  // timer value 0
 localparam RTMS = 8'd18;  // timer value 0
 localparam RTIE = 8'd19; // timer interrupt enable
 localparam RIS = 8'd20; // interrupt status
+localparam RFBX = 8'd21; // frame buffer x
+localparam RFBY = 8'd22; // frame buffer y
+localparam RFBD = 8'd23; // frame buffer data
+localparam RFBE = 8'd24; // frame buffer enable
+localparam RLCDU = 8'd25; // lcd update
 
 // till 31
 // ro
 localparam RNDRAW = 8'd32;  // random raw value
 localparam RNDRANGE = 8'd33;  // random between min and max
 localparam RTMD = 8'd34;  // timer done
+localparam RLCDR = 8'd35; // lcd ready
 
 // ALU
 localparam addition = 5'd0;
