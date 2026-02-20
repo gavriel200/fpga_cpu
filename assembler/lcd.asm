@@ -28,24 +28,22 @@ INC RFBX
 INC RFBY
 LDR RFBE, 1
 LDR RFBE, 0
-JMR @update_pixel
+JMP @update_pixel
 
 &wait_1_sec:
 LDR R0, 1
 LDR RTMS, 1
 LDR RTMS, 0
-LDR RJ, @check_timer_done
 &check_timer_done:
 COM R0, RTMD
-JMI NZ
+JNZ @check_timer_done
 RTN
 
 &wait_for_lcd_ready:
 LDR R0, 1
-LDR RJ, @check_lcd_ready
 &check_lcd_ready:
 COM R0, RLCDR
-JMI NZ
+JNZ @check_lcd_ready
 RTN
 
 &clean_frame_buffer:
@@ -58,22 +56,20 @@ LDR RFBY, 0
 LDR R0, 32
 &y_target:
 CAL @loop_x
-LDR RJ, @y_target
 LDR RFBE, 1
 LDR RFBE, 0
 INC RFBY
 COM RFBY, R0
-JMI NZ
+JNZ @y_target
 RTN
 
 &loop_x:
 LDR RFBX, 0
 LDR R1, 60
 &x_target:
-LDR RJ, @x_target
 LDR RFBE, 1
 LDR RFBE, 0
 INC RFBX
 COM RFBX, R1
-JMI NZ
+JNZ @x_target
 RTN

@@ -1,18 +1,25 @@
 module interrupt (
+    input clk,
+    input rst,
+
     input            clear_status,
     output reg [7:0] status,
-    output reg       jump,
+    output           jump,
 
     input timer_interrupt
 );
-  always @(*) begin
-    jump = 0;
+  assign jump = timer_interrupt && !clear_status;
 
-    if (clear_status) begin
-      status = 8'd0;
-    end else if (timer_interrupt) begin
-      status = status | 1;
-      jump   = 1;
+
+  always @(posedge clk) begin
+    if (rst) begin
+      status <= 0;
+    end else begin
+      if (clear_status) begin
+        status <= 8'd0;
+      end else if (timer_interrupt) begin
+        status <= status | 1;
+      end
     end
   end
 endmodule

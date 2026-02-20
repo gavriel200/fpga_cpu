@@ -65,9 +65,9 @@ module top (
 
   reg            rom_enable = 1;
   wire [8*3-1:0] rom_data;
-  wire [    7:0] rom_pc;
+  wire [   10:0] rom_pc;
   wire           rom_jump_enable;
-  wire [    7:0] rom_jump_data;
+  wire [   10:0] rom_jump_data;
   wire           interrupt_jump;
   wire           interrupt_clear_status;
   rom(
@@ -83,7 +83,7 @@ module top (
   );
 
 
-  wire [11:0] registers_ram_addr;
+  wire [10:0] registers_ram_addr;
   wire        ram_w_enable;
   wire [ 7:0] ram_w_data;
   wire [ 7:0] ram_r_data;
@@ -129,8 +129,10 @@ module top (
       .interrupt(timer_interrupt)
   );
 
-  wire interrupt_status;
+  wire [7:0] interrupt_status;
   interrupt(
+      .clk(clk),
+      .rst(rst),
       .clear_status(interrupt_clear_status),
       .status(interrupt_status),
       .jump(interrupt_jump),
@@ -197,7 +199,7 @@ module top (
   );
 
 
-  wire [4:0] alu_operation;
+  wire [2:0] alu_operation;
   wire [7:0] alu_A;
   wire [7:0] alu_B;
   wire [7:0] alu_C;
@@ -210,6 +212,19 @@ module top (
       .flags_c_val(flags_c_val)
   );
 
+
+  wire pc_stack_push_enable;
+  wire [10:0] pc_stack_push_data;
+  wire pc_stack_pop_enable;
+  wire [10:0] pc_stack_pop_data;
+  pc_stack(
+      .clk(clk),
+      .rst(rst),
+      .push_enable(pc_stack_push_enable),
+      .push_data(pc_stack_push_data),
+      .pop_enable(pc_stack_pop_enable),
+      .pop_data(pc_stack_pop_data)
+  );
 
   wire stack_push_enable;
   wire [7:0] stack_push_data;
@@ -248,6 +263,10 @@ module top (
       .stack_push_data(stack_push_data),
       .stack_pop_enable(stack_pop_enable),
       .stack_pop_data(stack_pop_data),
+      .pc_stack_push_enable(pc_stack_push_enable),
+      .pc_stack_push_data(pc_stack_push_data),
+      .pc_stack_pop_enable(pc_stack_pop_enable),
+      .pc_stack_pop_data(pc_stack_pop_data),
       .ram_w_enable(ram_w_enable),
       .ram_w_data(ram_w_data),
       .ram_r_data(ram_r_data),

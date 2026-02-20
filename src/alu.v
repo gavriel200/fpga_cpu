@@ -15,6 +15,9 @@ module alu (
   reg [8:0] tmp;
 
   always @(*) begin
+    tmp         = 0;
+    C           = 0;
+    flags_z_val = 0;
     flags_c_val = 0;
 
     case (operation)

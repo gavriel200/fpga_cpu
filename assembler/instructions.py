@@ -14,14 +14,16 @@ class Instruction(IntEnum):
     PSH = 9
     POP = 10
     JMP = 11
-    JMR = 12
-    JMI = 13
-    COM = 14
-    CAL = 15
-    RTN = 16
-    WR = 17
-    RD = 18
-    CIS = 19
+    JZ = 12
+    JNZ = 13
+    JC = 14
+    JNC = 15
+    COM = 16
+    CAL = 17
+    RTN = 18
+    WR = 19
+    RD = 20
+    CIS = 21
 
 
 class Registers(IntEnum):
@@ -34,37 +36,31 @@ class Registers(IntEnum):
     R5 = 5
     R6 = 6
     R7 = 7
-    RJ = 8
-    RM0 = 9
-    RM1 = 10
-    RNDMIN = 11
-    RNDMAX = 12
-    RNDSEED = 13
-    RNDWE = 14
-    RLD = 15
-    RTM0 = 16
-    RTM1 = 17
-    RTMS = 18
-    RTIE = 19
-    RIS = 20
-    RFBX = 21
-    RFBY = 22
-    RFBD = 23
-    RFBE = 24
-    RLCDU = 25
+    RJ0 = 8
+    RJ1 = 9
+    RM0 = 10
+    RM1 = 11
+    RNDMIN = 12
+    RNDMAX = 13
+    RNDSEED = 14
+    RNDWE = 15
+    RLD = 16
+    RTM0 = 17
+    RTM1 = 18
+    RTMS = 19
+    RTIE = 20
+    RIS = 21
+    RFBX = 22
+    RFBY = 23
+    RFBD = 24
+    RFBE = 25
+    RLCDU = 26
 
     # ro
     RNDRAW = 32
     RNDRANGE = 33
     RTMD = 34
     RLCDR = 35
-
-
-class Flag(IntEnum):
-    Z = 0
-    NZ = 1
-    C = 2
-    NC = 3
 
 
 class BaseInstruction:
@@ -100,9 +96,6 @@ class BaseInstruction:
         except ValueError:
             return False
 
-    def is_flag(self, arg):
-        return arg == "Z" or arg == "NZ" or arg == "C" or arg == "NC"
-
     def value(self):
         pass
 
@@ -131,22 +124,27 @@ class BaseInstruction:
         return Registers[arg].value
 
     def get_number(self, arg):
+        self.validate_arg(arg, self.is_number)
+        if arg.startswith("0x"):
+            return int(arg, 16)
+        else:
+            return int(arg, 10)
+
+    def get_number_16_bit(self, arg):
         if arg.startswith("@"):
             memory_place = arg.replace("@", "")
             if memory_place in BaseInstruction.jump_locations:
-                return BaseInstruction.jump_locations[memory_place]
+                return (
+                    BaseInstruction.jump_locations[memory_place] >> 8
+                ) & 0xFF, BaseInstruction.jump_locations[memory_place] & 0xFF
             else:
                 raise KeyError(f"unknown memory place {memory_place}")
         else:
             self.validate_arg(arg, self.is_number)
             if arg.startswith("0x"):
-                return int(arg, 16)
+                return (int(arg, 16) >> 8) & 0xFF, int(arg, 16) & 0xFF
             else:
-                return int(arg, 10)
-
-    def get_flag(self, arg):
-        self.validate_arg(arg, self.is_flag)
-        return Flag[arg].value
+                return (int(arg, 10) >> 8) & 0xFF, int(arg, 16) & 0xFF
 
 
 class Nop(BaseInstruction):
@@ -283,34 +281,62 @@ class Pop(BaseInstruction):
 
 class Jmp(BaseInstruction):
     instruction_id = Instruction.JMP
-    arg_num = 0
-
-    def value(self):
-        return f"{self.instruction_id:02X}{0:02X}{0:02X}"
-
-
-class Jmr(BaseInstruction):
-    instruction_id = Instruction.JMR
     arg_num = 1
 
     def generate_args(self):
         args = self.get_args(self.line)
-        self.arg1 = self.get_number(args[0])
+        self.arg1, self.arg2 = self.get_number_16_bit(args[0])
 
     def value(self):
-        return f"{self.instruction_id:02X}{self.arg1:02X}{0:02X}"
+        return f"{self.instruction_id:02X}{self.arg1:02X}{self.arg2:02X}"
 
 
-class Jmi(BaseInstruction):
-    instruction_id = Instruction.JMI
+class Jz(BaseInstruction):
+    instruction_id = Instruction.JZ
     arg_num = 1
 
     def generate_args(self):
         args = self.get_args(self.line)
-        self.arg1 = self.get_flag(args[0])
+        self.arg1, self.arg2 = self.get_number_16_bit(args[0])
 
     def value(self):
-        return f"{self.instruction_id:02X}{self.arg1:02X}{0:02X}"
+        return f"{self.instruction_id:02X}{self.arg1:02X}{self.arg2:02X}"
+
+
+class Jnz(BaseInstruction):
+    instruction_id = Instruction.JNZ
+    arg_num = 1
+
+    def generate_args(self):
+        args = self.get_args(self.line)
+        self.arg1, self.arg2 = self.get_number_16_bit(args[0])
+
+    def value(self):
+        return f"{self.instruction_id:02X}{self.arg1:02X}{self.arg2:02X}"
+
+
+class Jc(BaseInstruction):
+    instruction_id = Instruction.JC
+    arg_num = 1
+
+    def generate_args(self):
+        args = self.get_args(self.line)
+        self.arg1, self.arg2 = self.get_number_16_bit(args[0])
+
+    def value(self):
+        return f"{self.instruction_id:02X}{self.arg1:02X}{self.arg2:02X}"
+
+
+class Jnc(BaseInstruction):
+    instruction_id = Instruction.JNC
+    arg_num = 1
+
+    def generate_args(self):
+        args = self.get_args(self.line)
+        self.arg1, self.arg2 = self.get_number_16_bit(args[0])
+
+    def value(self):
+        return f"{self.instruction_id:02X}{self.arg1:02X}{self.arg2:02X}"
 
 
 class Com(BaseInstruction):
@@ -332,10 +358,10 @@ class Cal(BaseInstruction):
 
     def generate_args(self):
         args = self.get_args(self.line)
-        self.arg1 = self.get_number(args[0])
+        self.arg1, self.arg2 = self.get_number_16_bit(args[0])
 
     def value(self):
-        return f"{self.instruction_id:02X}{self.arg1:02X}{0:02X}"
+        return f"{self.instruction_id:02X}{self.arg1:02X}{self.arg2:02X}"
 
 
 class Rtn(BaseInstruction):

@@ -16,7 +16,7 @@ module registers (
     output [7:0] r_data_b,
 
     // ram
-    output [11:0] ram_addr,
+    output [10:0] ram_addr,
 
     // random
     output [7:0] random_min,
@@ -35,7 +35,7 @@ module registers (
     output        timer_interrupt_enable,
     input         timer_done,
 
-    input [0:7] interrupt_status,
+    input [7:0] interrupt_status,
 
     // frame buffer 
     output [5:0] framebuffer_x_update,
@@ -55,7 +55,7 @@ module registers (
   assign r_data_b                  = read_reg(r_addr_b);
 
   // ram
-  assign ram_addr                  = registers_data[RM0*8+:12];
+  assign ram_addr                  = registers_data[RM0*8+:11];
   // random
   assign random_min                = registers_data[RNDMIN*8+:8];
   assign random_max                = registers_data[RNDMAX*8+:8];

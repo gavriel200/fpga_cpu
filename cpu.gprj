@@ -13,6 +13,7 @@
         <File path="src/interrupt.v" type="file.verilog" enable="1"/>
         <File path="src/lcd/frame_buffer.v" type="file.verilog" enable="1"/>
         <File path="src/lcd/lcd.v" type="file.verilog" enable="1"/>
+        <File path="src/pc_stack.v" type="file.verilog" enable="1"/>
         <File path="src/ram.v" type="file.verilog" enable="1"/>
         <File path="src/random.v" type="file.verilog" enable="1"/>
         <File path="src/registers.v" type="file.verilog" enable="1"/>
@@ -23,7 +24,7 @@
         <File path="src/timer.v" type="file.verilog" enable="1"/>
         <File path="src/top.v" type="file.verilog" enable="1"/>
         <File path="src/top.cst" type="file.cst" enable="1"/>
-        <File path="src/cpu.sdc" type="file.sdc" enable="1"/>
+        <File path="src/top.sdc" type="file.sdc" enable="1"/>
         <File path="src/cpu.rao" type="file.gao" enable="1"/>
         <File path="src/main.hex" type="file.other" enable="1"/>
     </FileList>

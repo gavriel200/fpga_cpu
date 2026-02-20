@@ -3,9 +3,9 @@
 module decoder (
     // rom
     input      [23:0] rom_data,
-    input      [ 7:0] rom_pc,
+    input      [10:0] rom_pc,
     output reg        rom_jump_enable,
-    output reg [ 7:0] rom_jump_data,
+    output reg [10:0] rom_jump_data,
 
     // registers
     output reg       registers_w_enable,
@@ -28,6 +28,11 @@ module decoder (
     input flags_z,
     input flags_c,
 
+    // pc stack
+    output reg        pc_stack_push_enable,
+    output reg [10:0] pc_stack_push_data,
+    output reg        pc_stack_pop_enable,
+    input      [10:0] pc_stack_pop_data,
 
     // stack
     output reg       stack_push_enable,
@@ -64,6 +69,9 @@ module decoder (
     stack_push_enable      = 0;
     stack_push_data        = 0;
     stack_pop_enable       = 0;
+    pc_stack_push_enable   = 0;
+    pc_stack_push_data     = 0;
+    pc_stack_pop_enable    = 0;
     ram_w_enable           = 0;
     ram_w_data             = 0;
     interrupt_clear_status = 0;
@@ -173,26 +181,40 @@ module decoder (
       end
 
       JMP: begin
-        registers_r_addr_a = RJ;
-        rom_jump_enable    = 1;
-        rom_jump_data      = registers_r_data_a;
-      end
-
-      JMR: begin
         rom_jump_enable = 1;
-        rom_jump_data   = arg_a;
+        rom_jump_data[7:0] = arg_b;
+        rom_jump_data[10:8] = arg_a[2:0];
       end
 
-      JMI: begin
-        if (
-          (arg_a == Z && flags_z) ||
-          (arg_a == NZ && !flags_z) || 
-          (arg_a == C && flags_c) || 
-          (arg_a == NZ && !flags_z)
-        ) begin
-          registers_r_addr_a = RJ;
-          rom_jump_enable    = 1;
-          rom_jump_data      = registers_r_data_a;
+      JZ: begin
+        if (flags_z) begin
+          rom_jump_enable = 1;
+          rom_jump_data[7:0] = arg_b;
+          rom_jump_data[10:8] = arg_a[2:0];
+        end
+      end
+
+      JNZ: begin
+        if (!flags_z) begin
+          rom_jump_enable = 1;
+          rom_jump_data[7:0] = arg_b;
+          rom_jump_data[10:8] = arg_a[2:0];
+        end
+      end
+
+      JC: begin
+        if (flags_c) begin
+          rom_jump_enable = 1;
+          rom_jump_data[7:0] = arg_b;
+          rom_jump_data[10:8] = arg_a[2:0];
+        end
+      end
+
+      JNC: begin
+        if (!flags_c) begin
+          rom_jump_enable = 1;
+          rom_jump_data[7:0] = arg_b;
+          rom_jump_data[10:8] = arg_a[2:0];
         end
       end
 
@@ -209,18 +231,19 @@ module decoder (
       end
 
       CAL: begin
-        stack_push_enable = 1;
-        stack_push_data   = rom_pc + 1;
+        pc_stack_push_enable = 1;
+        pc_stack_push_data   = rom_pc + 1;
 
-        rom_jump_enable   = 1;
-        rom_jump_data     = arg_a;
+        rom_jump_enable      = 1;
+        rom_jump_data[7:0]   = arg_b;
+        rom_jump_data[10:8]  = arg_a[2:0];
       end
 
       RTN: begin
-        stack_pop_enable = 1;
+        pc_stack_pop_enable = 1;
 
         rom_jump_enable  = 1;
-        rom_jump_data    = stack_pop_data;
+        rom_jump_data    = pc_stack_pop_data;
       end
 
       WR: begin

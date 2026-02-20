@@ -2,7 +2,7 @@ module ram (
     input clk,
     input rst,
 
-    input [11:0] addr,
+    input [10:0] addr,
 
     input       w_enable,
     input [7:0] w_data,

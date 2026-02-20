@@ -11,9 +11,11 @@ from assembler.instructions import (
     Dec,
     Inc,
     Instruction,
-    Jmi,
     Jmp,
-    Jmr,
+    Jz,
+    Jnz,
+    Jc,
+    Jnc,
     Ld,
     Ldr,
     Nop,
@@ -53,11 +55,15 @@ def instruction_factory(line):
         case Instruction.POP.name:
             return Pop(line)
         case Instruction.JMP.name:
-            return Jmp()
-        case Instruction.JMR.name:
-            return Jmr(line)
-        case Instruction.JMI.name:
-            return Jmi(line)
+            return Jmp(line)
+        case Instruction.JZ.name:
+            return Jz(line)
+        case Instruction.JNZ.name:
+            return Jnz(line)
+        case Instruction.JC.name:
+            return Jc(line)
+        case Instruction.JNC.name:
+            return Jnc(line)
         case Instruction.COM.name:
             return Com(line)
         case Instruction.CAL.name:
@@ -135,7 +141,7 @@ def main():
 
     instructions = []
 
-    for i in range(0xFF):
+    for i in range(0x400):
         instructions.append(Nop())
 
     current_pc = 0

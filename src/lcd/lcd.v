@@ -145,12 +145,12 @@ module lcd (
   reg [7:0] spi_data;
 
   assign lcd_resetn = lcd_reset_r;
-  assign lcd_clk    = ~clk;
-  assign lcd_cs     = lcd_cs_r;
-  assign lcd_rs     = lcd_rs_r;
-  assign lcd_data   = spi_data[7];  // MSB
+  assign lcd_clk  = ~clk;
+  assign lcd_cs   = lcd_cs_r;
+  assign lcd_rs   = lcd_rs_r;
+  assign lcd_data = spi_data[7];  // MSB
 
-  assign ready      = init_state == IDLE;
+  assign ready    = init_state == IDLE;
 
   // gen color bar
   wire [15:0] pixel = (framebuffer_frame == 4'd0) ? 16'hFFFF :  //  hFFFF white 

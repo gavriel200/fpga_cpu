@@ -4,7 +4,10 @@
     <Mode>Standard</Mode>
     <AoCore index="0" sample_clock="clk" trig_type="0" storage_depth="1024" window_num="1" capture_amount="1024" implementation="0" trigger_pos="0" module_name="top" force_trigger_by_falling_edge="false" capture_init_data_enabled="false">
         <SignalList>
-            <Bus capture_enable="true" name="rom_pc[7:0]">
+            <Bus capture_enable="true" name="rom_pc[10:0]">
+                <Signal>rom_pc[10]</Signal>
+                <Signal>rom_pc[9]</Signal>
+                <Signal>rom_pc[8]</Signal>
                 <Signal>rom_pc[7]</Signal>
                 <Signal>rom_pc[6]</Signal>
                 <Signal>rom_pc[5]</Signal>
@@ -14,69 +17,44 @@
                 <Signal>rom_pc[1]</Signal>
                 <Signal>rom_pc[0]</Signal>
             </Bus>
-            <Bus capture_enable="true" name="i23/instruction[7:0]">
-                <Signal>i23/instruction[7]</Signal>
-                <Signal>i23/instruction[6]</Signal>
-                <Signal>i23/instruction[5]</Signal>
-                <Signal>i23/instruction[4]</Signal>
-                <Signal>i23/instruction[3]</Signal>
-                <Signal>i23/instruction[2]</Signal>
-                <Signal>i23/instruction[1]</Signal>
-                <Signal>i23/instruction[0]</Signal>
+            <Bus capture_enable="true" name="i24/arg_a[7:0]">
+                <Signal>i24/arg_a[7]</Signal>
+                <Signal>i24/arg_a[6]</Signal>
+                <Signal>i24/arg_a[5]</Signal>
+                <Signal>i24/arg_a[4]</Signal>
+                <Signal>i24/arg_a[3]</Signal>
+                <Signal>i24/arg_a[2]</Signal>
+                <Signal>i24/arg_a[1]</Signal>
+                <Signal>i24/arg_a[0]</Signal>
             </Bus>
-            <Bus capture_enable="true" name="framebuffer_x_update[5:0]">
-                <Signal>framebuffer_x_update[5]</Signal>
-                <Signal>framebuffer_x_update[4]</Signal>
-                <Signal>framebuffer_x_update[3]</Signal>
-                <Signal>framebuffer_x_update[2]</Signal>
-                <Signal>framebuffer_x_update[1]</Signal>
-                <Signal>framebuffer_x_update[0]</Signal>
+            <Bus capture_enable="true" name="i24/arg_b[7:0]">
+                <Signal>i24/arg_b[7]</Signal>
+                <Signal>i24/arg_b[6]</Signal>
+                <Signal>i24/arg_b[5]</Signal>
+                <Signal>i24/arg_b[4]</Signal>
+                <Signal>i24/arg_b[3]</Signal>
+                <Signal>i24/arg_b[2]</Signal>
+                <Signal>i24/arg_b[1]</Signal>
+                <Signal>i24/arg_b[0]</Signal>
             </Bus>
-            <Bus capture_enable="true" name="framebuffer_y_update[5:0]">
-                <Signal>framebuffer_y_update[5]</Signal>
-                <Signal>framebuffer_y_update[4]</Signal>
-                <Signal>framebuffer_y_update[3]</Signal>
-                <Signal>framebuffer_y_update[2]</Signal>
-                <Signal>framebuffer_y_update[1]</Signal>
-                <Signal>framebuffer_y_update[0]</Signal>
+            <Bus capture_enable="true" name="i24/instruction[7:0]">
+                <Signal>i24/instruction[7]</Signal>
+                <Signal>i24/instruction[6]</Signal>
+                <Signal>i24/instruction[5]</Signal>
+                <Signal>i24/instruction[4]</Signal>
+                <Signal>i24/instruction[3]</Signal>
+                <Signal>i24/instruction[2]</Signal>
+                <Signal>i24/instruction[1]</Signal>
+                <Signal>i24/instruction[0]</Signal>
             </Bus>
-            <Bus capture_enable="true" name="framebuffer_data_update[3:0]">
-                <Signal>framebuffer_data_update[3]</Signal>
-                <Signal>framebuffer_data_update[2]</Signal>
-                <Signal>framebuffer_data_update[1]</Signal>
-                <Signal>framebuffer_data_update[0]</Signal>
-            </Bus>
-            <Bus capture_enable="true" name="framebuffer_x_output[5:0]">
-                <Signal>framebuffer_x_output[5]</Signal>
-                <Signal>framebuffer_x_output[4]</Signal>
-                <Signal>framebuffer_x_output[3]</Signal>
-                <Signal>framebuffer_x_output[2]</Signal>
-                <Signal>framebuffer_x_output[1]</Signal>
-                <Signal>framebuffer_x_output[0]</Signal>
-            </Bus>
-            <Bus capture_enable="true" name="framebuffer_y_output[5:0]">
-                <Signal>framebuffer_y_output[5]</Signal>
-                <Signal>framebuffer_y_output[4]</Signal>
-                <Signal>framebuffer_y_output[3]</Signal>
-                <Signal>framebuffer_y_output[2]</Signal>
-                <Signal>framebuffer_y_output[1]</Signal>
-                <Signal>framebuffer_y_output[0]</Signal>
-            </Bus>
-            <Bus capture_enable="true" name="framebuffer_frame[3:0]">
-                <Signal>framebuffer_frame[3]</Signal>
-                <Signal>framebuffer_frame[2]</Signal>
-                <Signal>framebuffer_frame[1]</Signal>
-                <Signal>framebuffer_frame[0]</Signal>
-            </Bus>
-            <Signal capture_enable="true">flags_z</Signal>
-            <Signal capture_enable="true">lcd_ready</Signal>
-            <Signal capture_enable="true">lcd_update</Signal>
-            <Signal capture_enable="true">framebuffer_enable_update</Signal>
         </SignalList>
         <Triggers>
             <Trigger index="0">
                 <SignalList>
-                    <Bus restorename="rom_pc[7:0]">
+                    <Bus restorename="rom_pc[10:0]">
+                        <Signal>rom_pc[10]</Signal>
+                        <Signal>rom_pc[9]</Signal>
+                        <Signal>rom_pc[8]</Signal>
                         <Signal>rom_pc[7]</Signal>
                         <Signal>rom_pc[6]</Signal>
                         <Signal>rom_pc[5]</Signal>
@@ -88,11 +66,7 @@
                     </Bus>
                 </SignalList>
             </Trigger>
-            <Trigger index="1">
-                <SignalList>
-                    <Signal>lcd_ready</Signal>
-                </SignalList>
-            </Trigger>
+            <Trigger index="1"/>
             <Trigger index="2"/>
             <Trigger index="3"/>
             <Trigger index="4"/>
@@ -109,8 +83,8 @@
             <Trigger index="15"/>
         </Triggers>
         <MatchUnits>
-            <MatchUnit index="0" enabled="0" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="00000001" value1="00000000" trigger="0"/>
-            <MatchUnit index="1" enabled="1" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="1" value1="0" trigger="1"/>
+            <MatchUnit index="0" enabled="1" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="00000000001" value1="00000000000" trigger="0"/>
+            <MatchUnit index="1" enabled="0" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="" value1=""/>
             <MatchUnit index="2" enabled="0" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="" value1=""/>
             <MatchUnit index="3" enabled="0" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="" value1=""/>
             <MatchUnit index="4" enabled="0" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="" value1=""/>
@@ -127,8 +101,8 @@
             <MatchUnit index="15" enabled="0" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="" value1=""/>
         </MatchUnits>
         <Expressions type="Static">
-            <Expression>M1</Expression>
+            <Expression>M0</Expression>
         </Expressions>
     </AoCore>
-    <GAO_ID>1000001011001101</GAO_ID>
+    <GAO_ID>1010000111010010</GAO_ID>
 </GAO_CONFIG>
