@@ -2,14 +2,14 @@ module ram (
     input clk,
     input rst,
 
-    input [10:0] addr,
+    input [7:0] addr,
 
     input       w_enable,
     input [7:0] w_data,
 
     output [7:0] r_data
 );
-  reg [8*128-1:0] memory;
+  reg [8*32-1:0] memory;
 
   assign r_data = memory[addr*8+:8];
 

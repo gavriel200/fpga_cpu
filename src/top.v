@@ -83,10 +83,10 @@ module top (
   );
 
 
-  wire [10:0] registers_ram_addr;
-  wire        ram_w_enable;
-  wire [ 7:0] ram_w_data;
-  wire [ 7:0] ram_r_data;
+  wire [7:0] registers_ram_addr;
+  wire       ram_w_enable;
+  wire [7:0] ram_w_data;
+  wire [7:0] ram_r_data;
   ram(
       .clk(clk),
       .rst(rst),
