@@ -100,7 +100,7 @@ def get_jump_location(line: str):
 
 def clean_hex_file():
     open("src/main.hex", "w").close()
-    open("debug_file", "w").close()
+    open("assembler/debug_file_asm", "w").close()
 
 
 def is_memory_location(line: str):

@@ -65,7 +65,7 @@ class Registers(IntEnum):
 
 class BaseInstruction:
     hex_file = "src/main.hex"
-    debug_file = "debug_file"
+    debug_file = "assembler/debug_file_asm"
     instruction_id = None
     arg1 = None
     arg2 = None
