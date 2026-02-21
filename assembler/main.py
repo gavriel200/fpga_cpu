@@ -100,6 +100,7 @@ def get_jump_location(line: str):
 
 def clean_hex_file():
     open("src/main.hex", "w").close()
+    open("debug_file", "w").close()
 
 
 def is_memory_location(line: str):
@@ -167,8 +168,10 @@ def main():
 
     clean_hex_file()
 
+    write_pc = 0
     for i in instructions:
-        i.write()
+        i.write(write_pc)
+        write_pc += 1
 
 
 if __name__ == "__main__":

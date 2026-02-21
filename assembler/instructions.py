@@ -1,5 +1,7 @@
 from enum import IntEnum
 
+debug = True
+
 
 class Instruction(IntEnum):
     NOP = 0
@@ -63,12 +65,14 @@ class Registers(IntEnum):
 
 class BaseInstruction:
     hex_file = "src/main.hex"
+    debug_file = "debug_file"
     instruction_id = None
     arg1 = None
     arg2 = None
     arg_num = 0
     register_pattern = [r.name for r in Registers]
     jump_locations = {}
+    memory_place = None
 
     def __init__(self, line=""):
         self.line = line
@@ -100,10 +104,21 @@ class BaseInstruction:
     def generate_args(self):
         pass
 
-    def write(self):
+    def write(self, pc):
         self.generate_args()
         with open(self.hex_file, "a") as f:
             f.write(f"{self.value()}\n")
+
+        if debug:
+            with open(self.debug_file, "a") as f:
+                f.write(
+                    f"{self.value()} -- {pc:08X} -- {self.instruction_id.name} {self.arg1}, {self.arg2}{f' | to: {self.memory_place}' if self.memory_place else ''} {f' | @{self.debug_get_pc_name(pc)}' if pc in BaseInstruction.jump_locations.values() else ''}\n"
+                )
+
+    def debug_get_pc_name(self, pc):
+        for key, value in BaseInstruction.jump_locations.items():
+            if value == pc:
+                return key
 
     def get_args(self, line):
         args = line.split(" ", 1)[1]
@@ -132,6 +147,7 @@ class BaseInstruction:
         if arg.startswith("@"):
             memory_place = arg.replace("@", "")
             if memory_place in BaseInstruction.jump_locations:
+                self.memory_place = memory_place
                 return (
                     BaseInstruction.jump_locations[memory_place] >> 8
                 ) & 0xFF, BaseInstruction.jump_locations[memory_place] & 0xFF
