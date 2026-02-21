@@ -110,9 +110,16 @@ class BaseInstruction:
             f.write(f"{self.value()}\n")
 
         if debug:
+            arg1 = f"{self.arg1:02X}" if self.arg1 else f"{0:02X}"
+            arg2 = f"{self.arg2:02X}" if self.arg2 else f"{0:02X}"
+            memory_location = (
+                f"&{self.debug_get_pc_name(pc)}:\n"
+                if pc in BaseInstruction.jump_locations.values()
+                else None
+            )
             with open(self.debug_file, "a") as f:
                 f.write(
-                    f"{self.value()} -- {pc:08X} -- {self.instruction_id.name} {self.arg1}, {self.arg2}{f' | to: {self.memory_place}' if self.memory_place else ''} {f' | @{self.debug_get_pc_name(pc)}' if pc in BaseInstruction.jump_locations.values() else ''}\n"
+                    f"{memory_location if memory_location else ''}{self.value()} -- pc: {pc:08X} -- instruction: {self.instruction_id.name} arg1: {arg1}, arg2: {arg2} {f' | @{self.memory_place}' if self.memory_place else ''}\n"
                 )
 
     def debug_get_pc_name(self, pc):

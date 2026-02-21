@@ -1,18 +1,7 @@
-- update the jump and call to already have if logic
-    - CAL [junp to value]
-    - CZ (call if zero)
-    - CNZ
-    - CC
-    - CNC
-    - JMP [junp to value]
-    - JMR [junp using jump register]
-    - JZ
-    - JNZ
-    - JC
-    - JNC
+update list of instructions
+move the instructions to the th readme
+update readme
+add to the assembler debug also the register names
+add input IO with interrupts to add button to the fpga
 
-- make the rom bigger
-    - support 2 arg memory location
-    - 2 args for JMP
-    - support for JMI instead of having the arg be the logic have the instruction be different
-    JZ/JNZ/JC/JNC and the memory be first and second arg
+write a game using assembler on the CPU
