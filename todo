@@ -1,3 +1,7 @@
+add new instruction:
+bit wise operations
+setting/unsetting specific bits 
+
 update list of instructions
 move the instructions to the th readme
 update readme
@@ -5,3 +9,17 @@ add to the assembler debug also the register names
 add input IO with interrupts to add button to the fpga
 
 write a game using assembler on the CPU
+simple black jack game
+generate 52 cards array with the relevant values and bit if used or not
+draw cards using random from the deck
+show on the screen
+
+allow chose of bet and have score logic showing max score
+3 buttons:
+
+when betting add more or less money inc dec by 1
+and enter
+
+while playing 3 buttons:
+hit, stay, enter
+enter is used only after game is over to restart
