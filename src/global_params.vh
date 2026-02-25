@@ -24,6 +24,10 @@ localparam RTN = 8'd18;
 localparam WR  = 8'd19;
 localparam RD  = 8'd20;
 localparam CIS = 8'd21; // clear interrupt status
+localparam AND = 8'd22; // and
+localparam OR = 8'd23; // or
+localparam XOR = 8'd24; //xor
+localparam XNR = 8'd25; // xnor
 
 // registers
 // rw
@@ -65,5 +69,9 @@ localparam addition = 3'd0;
 localparam subtraction = 3'd1;
 localparam increment = 3'd2;
 localparam decrement = 3'd3;
+localparam bitwise_and = 3'd4;
+localparam bitwise_or = 3'd5;
+localparam bitwise_xor = 3'd6;
+localparam bitwise_xnor = 3'd7;
 
 `endif

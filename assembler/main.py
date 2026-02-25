@@ -26,6 +26,10 @@ from assembler.instructions import (
     Set,
     Sub,
     Wr,
+    And,
+    Or,
+    Xor,
+    Xnr,
 )
 
 
@@ -76,6 +80,14 @@ def instruction_factory(line):
             return Rd(line)
         case Instruction.CIS.name:
             return Cis()
+        case Instruction.AND.name:
+            return And()
+        case Instruction.OR.name:
+            return Or()
+        case Instruction.XOR.name:
+            return Xor()
+        case Instruction.XNR.name:
+            return Xnr()
         case _:
             raise ValueError(f"invalid instruction {instruction}")
 

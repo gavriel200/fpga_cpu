@@ -263,6 +263,70 @@ module decoder (
       CIS: begin
         interrupt_clear_status = 1;
       end
+
+      AND: begin
+        registers_w_enable = 1;
+        registers_w_addr   = arg_a[5:0];
+
+        registers_r_addr_a = arg_a[5:0];
+        registers_r_addr_b = arg_b[5:0];
+
+        flags_w_enable     = 1;
+
+        alu_A              = registers_r_data_a;
+        alu_B              = registers_r_data_b;
+
+        alu_operation      = bitwise_and;
+        registers_w_data   = alu_C;
+      end
+
+      OR: begin
+        registers_w_enable = 1;
+        registers_w_addr   = arg_a[5:0];
+
+        registers_r_addr_a = arg_a[5:0];
+        registers_r_addr_b = arg_b[5:0];
+
+        flags_w_enable     = 1;
+
+        alu_A              = registers_r_data_a;
+        alu_B              = registers_r_data_b;
+
+        alu_operation      = bitwise_or;
+        registers_w_data   = alu_C;
+      end
+
+      XOR: begin
+        registers_w_enable = 1;
+        registers_w_addr   = arg_a[5:0];
+
+        registers_r_addr_a = arg_a[5:0];
+        registers_r_addr_b = arg_b[5:0];
+
+        flags_w_enable     = 1;
+
+        alu_A              = registers_r_data_a;
+        alu_B              = registers_r_data_b;
+
+        alu_operation      = bitwise_xor;
+        registers_w_data   = alu_C;
+      end
+
+      XNR: begin
+        registers_w_enable = 1;
+        registers_w_addr   = arg_a[5:0];
+
+        registers_r_addr_a = arg_a[5:0];
+        registers_r_addr_b = arg_b[5:0];
+
+        flags_w_enable     = 1;
+
+        alu_A              = registers_r_data_a;
+        alu_B              = registers_r_data_b;
+
+        alu_operation      = bitwise_xnor;
+        registers_w_data   = alu_C;
+      end
     endcase
   end
 endmodule

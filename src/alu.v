@@ -49,6 +49,22 @@ module alu (
 
         flags_c_val = ~tmp[8];  // NOT borrow
       end
+
+      bitwise_and: begin
+        C = A & B;
+      end
+
+      bitwise_or: begin
+        C = A | B;
+      end
+
+      bitwise_xor: begin
+        C = A ^ B;
+      end
+
+      bitwise_xnor: begin
+        C = A ~^ B;
+      end
     endcase
 
     flags_z_val = (C == 8'd0);

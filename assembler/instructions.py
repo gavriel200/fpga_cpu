@@ -26,6 +26,10 @@ class Instruction(IntEnum):
     WR = 19
     RD = 20
     CIS = 21
+    AND = 22
+    OR = 23
+    XOR = 24
+    XNR = 25
 
 
 class Registers(IntEnum):
@@ -168,16 +172,7 @@ class BaseInstruction:
                 return (int(arg, 10) >> 8) & 0xFF, int(arg, 16) & 0xFF
 
 
-class Nop(BaseInstruction):
-    instruction_id = Instruction.NOP
-    arg_num = 0
-
-    def value(self):
-        return f"{0:02X}{0:02X}{0:02X}"
-
-
-class Ld(BaseInstruction):
-    instruction_id = Instruction.LD
+class BaseTwoRegistersInstruction(BaseInstruction):
     arg_num = 2
 
     def generate_args(self):
@@ -187,6 +182,47 @@ class Ld(BaseInstruction):
 
     def value(self):
         return f"{self.instruction_id:02X}{self.arg1:02X}{self.arg2:02X}"
+
+
+class BaseOneRegisterInstruction(BaseInstruction):
+    arg_num = 1
+
+    def generate_args(self):
+        args = self.get_args(self.line)
+        self.arg1 = self.get_reg(args[0])
+
+    def value(self):
+        return f"{self.instruction_id:02X}{self.arg1:02X}{0:02X}"
+
+
+class BaseJumpInstruction(BaseInstruction):
+    arg_num = 1
+
+    def generate_args(self):
+        args = self.get_args(self.line)
+        self.arg1, self.arg2 = self.get_number_16_bit(args[0])
+
+    def value(self):
+        return f"{self.instruction_id:02X}{self.arg1:02X}{self.arg2:02X}"
+
+
+class BaseReturnInstruction(BaseInstruction):
+    arg_num = 0
+
+    def value(self):
+        return f"{self.instruction_id:02X}{0:02X}{0:02X}"
+
+
+class Nop(BaseInstruction):
+    instruction_id = Instruction.NOP
+    arg_num = 0
+
+    def value(self):
+        return f"{0:02X}{0:02X}{0:02X}"
+
+
+class Ld(BaseTwoRegistersInstruction):
+    instruction_id = Instruction.LD
 
 
 class Ldr(BaseInstruction):
@@ -202,224 +238,93 @@ class Ldr(BaseInstruction):
         return f"{self.instruction_id:02X}{self.arg1:02X}{self.arg2:02X}"
 
 
-class Add(BaseInstruction):
+class Add(BaseTwoRegistersInstruction):
     instruction_id = Instruction.ADD
-    arg_num = 2
-
-    def generate_args(self):
-        args = self.get_args(self.line)
-        self.arg1 = self.get_reg(args[0])
-        self.arg2 = self.get_reg(args[1])
-
-    def value(self):
-        return f"{self.instruction_id:02X}{self.arg1:02X}{self.arg2:02X}"
 
 
-class Sub(BaseInstruction):
+class Sub(BaseTwoRegistersInstruction):
     instruction_id = Instruction.SUB
-    arg_num = 2
-
-    def generate_args(self):
-        args = self.get_args(self.line)
-        self.arg1 = self.get_reg(args[0])
-        self.arg2 = self.get_reg(args[1])
-
-    def value(self):
-        return f"{self.instruction_id:02X}{self.arg1:02X}{self.arg2:02X}"
 
 
-class Inc(BaseInstruction):
+class Inc(BaseOneRegisterInstruction):
     instruction_id = Instruction.INC
-    arg_num = 1
-
-    def generate_args(self):
-        args = self.get_args(self.line)
-        self.arg1 = self.get_reg(args[0])
-
-    def value(self):
-        return f"{self.instruction_id:02X}{self.arg1:02X}{0:02X}"
 
 
-class Dec(BaseInstruction):
+class Dec(BaseOneRegisterInstruction):
     instruction_id = Instruction.DEC
-    arg_num = 1
-
-    def generate_args(self):
-        args = self.get_args(self.line)
-        self.arg1 = self.get_reg(args[0])
-
-    def value(self):
-        return f"{self.instruction_id:02X}{self.arg1:02X}{0:02X}"
 
 
-class Clr(BaseInstruction):
+class Clr(BaseOneRegisterInstruction):
     instruction_id = Instruction.CLR
-    arg_num = 1
-
-    def generate_args(self):
-        args = self.get_args(self.line)
-        self.arg1 = self.get_reg(args[0])
-
-    def value(self):
-        return f"{self.instruction_id:02X}{self.arg1:02X}{0:02X}"
 
 
-class Set(BaseInstruction):
+class Set(BaseOneRegisterInstruction):
     instruction_id = Instruction.FIL
-    arg_num = 1
-
-    def generate_args(self):
-        args = self.get_args(self.line)
-        self.arg1 = self.get_reg(args[0])
-
-    def value(self):
-        return f"{self.instruction_id:02X}{self.arg1:02X}{0:02X}"
 
 
-class Psh(BaseInstruction):
+class Psh(BaseOneRegisterInstruction):
     instruction_id = Instruction.PSH
-    arg_num = 1
-
-    def generate_args(self):
-        args = self.get_args(self.line)
-        self.arg1 = self.get_reg(args[0])
-
-    def value(self):
-        return f"{self.instruction_id:02X}{self.arg1:02X}{0:02X}"
 
 
-class Pop(BaseInstruction):
+class Pop(BaseOneRegisterInstruction):
     instruction_id = Instruction.POP
-    arg_num = 1
-
-    def generate_args(self):
-        args = self.get_args(self.line)
-        self.arg1 = self.get_reg(args[0])
-
-    def value(self):
-        return f"{self.instruction_id:02X}{self.arg1:02X}{0:02X}"
 
 
-class Jmp(BaseInstruction):
+class Jmp(BaseJumpInstruction):
     instruction_id = Instruction.JMP
-    arg_num = 1
-
-    def generate_args(self):
-        args = self.get_args(self.line)
-        self.arg1, self.arg2 = self.get_number_16_bit(args[0])
-
-    def value(self):
-        return f"{self.instruction_id:02X}{self.arg1:02X}{self.arg2:02X}"
 
 
-class Jz(BaseInstruction):
+class Jz(BaseJumpInstruction):
     instruction_id = Instruction.JZ
-    arg_num = 1
-
-    def generate_args(self):
-        args = self.get_args(self.line)
-        self.arg1, self.arg2 = self.get_number_16_bit(args[0])
-
-    def value(self):
-        return f"{self.instruction_id:02X}{self.arg1:02X}{self.arg2:02X}"
 
 
-class Jnz(BaseInstruction):
+class Jnz(BaseJumpInstruction):
     instruction_id = Instruction.JNZ
-    arg_num = 1
-
-    def generate_args(self):
-        args = self.get_args(self.line)
-        self.arg1, self.arg2 = self.get_number_16_bit(args[0])
-
-    def value(self):
-        return f"{self.instruction_id:02X}{self.arg1:02X}{self.arg2:02X}"
 
 
-class Jc(BaseInstruction):
+class Jc(BaseJumpInstruction):
     instruction_id = Instruction.JC
-    arg_num = 1
-
-    def generate_args(self):
-        args = self.get_args(self.line)
-        self.arg1, self.arg2 = self.get_number_16_bit(args[0])
-
-    def value(self):
-        return f"{self.instruction_id:02X}{self.arg1:02X}{self.arg2:02X}"
 
 
-class Jnc(BaseInstruction):
+class Jnc(BaseJumpInstruction):
     instruction_id = Instruction.JNC
-    arg_num = 1
-
-    def generate_args(self):
-        args = self.get_args(self.line)
-        self.arg1, self.arg2 = self.get_number_16_bit(args[0])
-
-    def value(self):
-        return f"{self.instruction_id:02X}{self.arg1:02X}{self.arg2:02X}"
 
 
-class Com(BaseInstruction):
+class Com(BaseTwoRegistersInstruction):
     instruction_id = Instruction.COM
-    arg_num = 2
-
-    def generate_args(self):
-        args = self.get_args(self.line)
-        self.arg1 = self.get_reg(args[0])
-        self.arg2 = self.get_reg(args[1])
-
-    def value(self):
-        return f"{self.instruction_id:02X}{self.arg1:02X}{self.arg2:02X}"
 
 
-class Cal(BaseInstruction):
+class Cal(BaseJumpInstruction):
     instruction_id = Instruction.CAL
-    arg_num = 1
-
-    def generate_args(self):
-        args = self.get_args(self.line)
-        self.arg1, self.arg2 = self.get_number_16_bit(args[0])
-
-    def value(self):
-        return f"{self.instruction_id:02X}{self.arg1:02X}{self.arg2:02X}"
 
 
-class Rtn(BaseInstruction):
+class Rtn(BaseReturnInstruction):
     instruction_id = Instruction.RTN
-    arg_num = 0
-
-    def value(self):
-        return f"{self.instruction_id:02X}{0:02X}{0:02X}"
 
 
-class Wr(BaseInstruction):
+class Wr(BaseOneRegisterInstruction):
     instruction_id = Instruction.WR
-    arg_num = 1
-
-    def generate_args(self):
-        args = self.get_args(self.line)
-        self.arg1 = self.get_reg(args[0])
-
-    def value(self):
-        return f"{self.instruction_id:02X}{self.arg1:02X}{0:02X}"
 
 
-class Rd(BaseInstruction):
+class Rd(BaseOneRegisterInstruction):
     instruction_id = Instruction.RD
-    arg_num = 1
-
-    def generate_args(self):
-        args = self.get_args(self.line)
-        self.arg1 = self.get_reg(args[0])
-
-    def value(self):
-        return f"{self.instruction_id:02X}{self.arg1:02X}{0:02X}"
 
 
-class Cis(BaseInstruction):
+class Cis(BaseReturnInstruction):
     instruction_id = Instruction.CIS
-    arg_num = 0
 
-    def value(self):
-        return f"{self.instruction_id:02X}{0:02X}{0:02X}"
+
+class And(BaseTwoRegistersInstruction):
+    instruction_id = Instruction.AND
+
+
+class Or(BaseTwoRegistersInstruction):
+    instruction_id = Instruction.OR
+
+
+class Xor(BaseTwoRegistersInstruction):
+    instruction_id = Instruction.XOR
+
+
+class Xnr(BaseTwoRegistersInstruction):
+    instruction_id = Instruction.XNR
