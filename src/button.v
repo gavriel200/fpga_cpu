@@ -19,7 +19,7 @@ module button (
 
   reg [22:0] counter = 0;
 
-  assign interrupt = output_button & ~output_button_prev & interrupt_enable;
+  assign interrupt = ~output_button & output_button_prev & interrupt_enable;
 
   always @(posedge clk) begin
     output_button_prev <= output_button;
