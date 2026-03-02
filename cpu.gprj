@@ -6,6 +6,7 @@
     <Device name="GW1NR-9C" pn="GW1NR-LV9QN88PC6/I5">gw1nr9c-004</Device>
     <FileList>
         <File path="src/alu.v" type="file.verilog" enable="1"/>
+        <File path="src/button.v" type="file.verilog" enable="1"/>
         <File path="src/decoder.v" type="file.verilog" enable="1"/>
         <File path="src/flags.v" type="file.verilog" enable="1"/>
         <File path="src/global_params.vh" type="file.verilog" enable="1"/>
@@ -19,7 +20,6 @@
         <File path="src/registers.v" type="file.verilog" enable="1"/>
         <File path="src/reset.v" type="file.verilog" enable="1"/>
         <File path="src/rom.v" type="file.verilog" enable="1"/>
-        <File path="src/shifter.v" type="file.verilog" enable="1"/>
         <File path="src/stack.v" type="file.verilog" enable="1"/>
         <File path="src/timer.v" type="file.verilog" enable="1"/>
         <File path="src/top.v" type="file.verilog" enable="1"/>

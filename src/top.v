@@ -14,7 +14,11 @@ module top (
 
     output lcd_cs,
     output lcd_rs,
-    output lcd_resetn
+    output lcd_resetn,
+
+    input button1,
+    input button2,
+    input button3
 );
   wire rst;
   reset(
@@ -60,6 +64,42 @@ module top (
 
       .ready(lcd_ready),
       .update(lcd_update)
+  );
+
+  wire button_1_interrupt_enable;
+  wire button_1_output;
+  wire button_1_interrupt;
+  button button_1 (
+      .clk(clk),
+      .rst(rst),
+      .input_button(button1),
+      .interrupt_enable(button_1_interrupt_enable),
+      .output_button(button_1_output),
+      .interrupt(button_1_interrupt)
+  );
+
+  wire button_2_interrupt_enable;
+  wire button_2_output;
+  wire button_2_interrupt;
+  button button_2 (
+      .clk(clk),
+      .rst(rst),
+      .input_button(button2),
+      .interrupt_enable(button_2_interrupt_enable),
+      .output_button(button_2_output),
+      .interrupt(button_2_interrupt)
+  );
+
+  wire button_3_interrupt_enable;
+  wire button_3_output;
+  wire button_3_interrupt;
+  button button_3 (
+      .clk(clk),
+      .rst(rst),
+      .input_button(button3),
+      .interrupt_enable(button_3_interrupt_enable),
+      .output_button(button_3_output),
+      .interrupt(button_3_interrupt)
   );
 
 
@@ -136,7 +176,10 @@ module top (
       .clear_status(interrupt_clear_status),
       .status(interrupt_status),
       .jump(interrupt_jump),
-      .timer_interrupt(timer_interrupt)
+      .timer_interrupt(timer_interrupt),
+      .button_1_interrupt(button_1_interrupt),
+      .button_2_interrupt(button_2_interrupt),
+      .button_3_interrupt(button_3_interrupt)
   );
 
   wire       registers_w_enable;
@@ -180,7 +223,13 @@ module top (
       .framebuffer_data_update(framebuffer_data_update),
       .framebuffer_enable_update(framebuffer_enable_update),
       .lcd_ready(lcd_ready),
-      .lcd_update(lcd_update)
+      .lcd_update(lcd_update),
+      .button_1_output(button_1_output),
+      .button_2_output(button_2_output),
+      .button_3_output(button_3_output),
+      .button_1_interrupt_enable(button_1_interrupt_enable),
+      .button_2_interrupt_enable(button_2_interrupt_enable),
+      .button_3_interrupt_enable(button_3_interrupt_enable)
   );
 
   wire flags_w_enable;

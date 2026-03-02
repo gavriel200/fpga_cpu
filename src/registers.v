@@ -45,7 +45,15 @@ module registers (
 
     // lcd
     input  lcd_ready,
-    output lcd_update
+    output lcd_update,
+
+    // buttons
+    input  button_1_output,
+    input  button_2_output,
+    input  button_3_output,
+    output button_1_interrupt_enable,
+    output button_2_interrupt_enable,
+    output button_3_interrupt_enable
 );
   localparam REGISTER_NUM = 40;
   reg [8*REGISTER_NUM-1:0] registers_data;
@@ -73,6 +81,10 @@ module registers (
   assign framebuffer_data_update   = registers_data[RFBD*8+:8];
   assign framebuffer_enable_update = registers_data[RFBE*8+:8];
   assign lcd_update                = registers_data[RLCDU*8+:8];
+  // buttons
+  assign button_1_interrupt_enable = registers_data[RB1IE*8+:8];
+  assign button_2_interrupt_enable = registers_data[RB2IE*8+:8];
+  assign button_3_interrupt_enable = registers_data[RB3IE*8+:8];
 
   always @(posedge clk) begin
     if (rst) begin
@@ -95,6 +107,9 @@ module registers (
           RTMD:     read_reg = timer_done;
           RIS:      read_reg = interrupt_status;
           RLCDR:    read_reg = lcd_ready;
+          RBO1:     read_reg = button_1_output;
+          RBO2:     read_reg = button_2_output;
+          RBO3:     read_reg = button_3_output;
           default:  read_reg = registers_data[(REGISTER_NUM-1)*8+:8];
         endcase
       end

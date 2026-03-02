@@ -59,12 +59,18 @@ class Registers(IntEnum):
     RFBD = 22
     RFBE = 23
     RLCDU = 24
+    RB1IE = 25
+    RB2IE = 26
+    RB3IE = 27
 
     # ro
     RNDRAW = 32
     RNDRANGE = 33
     RTMD = 34
     RLCDR = 35
+    RBO1 = 36
+    RBO2 = 37
+    RBO3 = 38
 
 
 class BaseInstruction:

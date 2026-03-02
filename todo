@@ -1,10 +1,7 @@
-write assembly code to check the bitwise operations
-
 update list of instructions
 move the instructions to the th readme
 update readme
 add to the assembler debug also the register names
-add input IO with interrupts to add button to the fpga
 
 write a game using assembler on the CPU
 simple black jack game

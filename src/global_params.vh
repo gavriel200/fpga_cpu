@@ -56,6 +56,9 @@ localparam RFBY = 8'd21; // frame buffer y
 localparam RFBD = 8'd22; // frame buffer data
 localparam RFBE = 8'd23; // frame buffer enable
 localparam RLCDU = 8'd24; // lcd update
+localparam RB1IE = 8'd25; // button 1 interrupt enable
+localparam RB2IE = 8'd26; // button 2 interrupt enable
+localparam RB3IE = 8'd27; // button 3 interrupt enable
 
 // till 31
 // ro
@@ -63,6 +66,10 @@ localparam RNDRAW = 8'd32;  // random raw value
 localparam RNDRANGE = 8'd33;  // random between min and max
 localparam RTMD = 8'd34;  // timer done
 localparam RLCDR = 8'd35; // lcd ready
+localparam RBO1 = 8'd36; // button 1 output
+localparam RBO2 = 8'd37; // button 2 output
+localparam RBO3 = 8'd38; // button 3 output
+
 
 // ALU
 localparam addition = 3'd0;

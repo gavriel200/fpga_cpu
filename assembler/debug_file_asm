@@ -1,62 +1,56 @@
 000000 -- pc: 00000000 -- instruction: NOP arg1: 00, arg2: 00 
-020FE8 -- pc: 00000001 -- instruction: LDR arg1: 0F, arg2: E8 
-021003 -- pc: 00000002 -- instruction: LDR arg1: 10, arg2: 03 
-110019 -- pc: 00000003 -- instruction: CAL arg1: 00, arg2: 19  | @wait_for_lcd_ready
-11001D -- pc: 00000004 -- instruction: CAL arg1: 00, arg2: 1D  | @clean_frame_buffer
-021400 -- pc: 00000005 -- instruction: LDR arg1: 14, arg2: 00 
-021500 -- pc: 00000006 -- instruction: LDR arg1: 15, arg2: 00 
-021607 -- pc: 00000007 -- instruction: LDR arg1: 16, arg2: 07 
-021701 -- pc: 00000008 -- instruction: LDR arg1: 17, arg2: 01 
-021700 -- pc: 00000009 -- instruction: LDR arg1: 17, arg2: 00 
-&update_pixel:
-110013 -- pc: 0000000A -- instruction: CAL arg1: 00, arg2: 13  | @wait_1_sec
-021801 -- pc: 0000000B -- instruction: LDR arg1: 18, arg2: 01 
-021800 -- pc: 0000000C -- instruction: LDR arg1: 18, arg2: 00 
-110019 -- pc: 0000000D -- instruction: CAL arg1: 00, arg2: 19  | @wait_for_lcd_ready
-051400 -- pc: 0000000E -- instruction: INC arg1: 14, arg2: 00 
-051500 -- pc: 0000000F -- instruction: INC arg1: 15, arg2: 00 
-021701 -- pc: 00000010 -- instruction: LDR arg1: 17, arg2: 01 
-021700 -- pc: 00000011 -- instruction: LDR arg1: 17, arg2: 00 
-0B000A -- pc: 00000012 -- instruction: JMP arg1: 00, arg2: 0A  | @update_pixel
-&wait_1_sec:
-020001 -- pc: 00000013 -- instruction: LDR arg1: 00, arg2: 01 
-021101 -- pc: 00000014 -- instruction: LDR arg1: 11, arg2: 01 
-021100 -- pc: 00000015 -- instruction: LDR arg1: 11, arg2: 00 
-&check_timer_done:
-100022 -- pc: 00000016 -- instruction: COM arg1: 00, arg2: 22 
-0D0016 -- pc: 00000017 -- instruction: JNZ arg1: 00, arg2: 16  | @check_timer_done
-120000 -- pc: 00000018 -- instruction: RTN arg1: 00, arg2: 00 
-&wait_for_lcd_ready:
-020001 -- pc: 00000019 -- instruction: LDR arg1: 00, arg2: 01 
-&check_lcd_ready:
-100023 -- pc: 0000001A -- instruction: COM arg1: 00, arg2: 23 
-0D001A -- pc: 0000001B -- instruction: JNZ arg1: 00, arg2: 1A  | @check_lcd_ready
-120000 -- pc: 0000001C -- instruction: RTN arg1: 00, arg2: 00 
-&clean_frame_buffer:
-021600 -- pc: 0000001D -- instruction: LDR arg1: 16, arg2: 00 
-110020 -- pc: 0000001E -- instruction: CAL arg1: 00, arg2: 20  | @loop_y
-120000 -- pc: 0000001F -- instruction: RTN arg1: 00, arg2: 00 
-&loop_y:
-021500 -- pc: 00000020 -- instruction: LDR arg1: 15, arg2: 00 
-020020 -- pc: 00000021 -- instruction: LDR arg1: 00, arg2: 20 
-&y_target:
-110029 -- pc: 00000022 -- instruction: CAL arg1: 00, arg2: 29  | @loop_x
-021701 -- pc: 00000023 -- instruction: LDR arg1: 17, arg2: 01 
-021700 -- pc: 00000024 -- instruction: LDR arg1: 17, arg2: 00 
-051500 -- pc: 00000025 -- instruction: INC arg1: 15, arg2: 00 
-101500 -- pc: 00000026 -- instruction: COM arg1: 15, arg2: 00 
-0D0022 -- pc: 00000027 -- instruction: JNZ arg1: 00, arg2: 22  | @y_target
-120000 -- pc: 00000028 -- instruction: RTN arg1: 00, arg2: 00 
-&loop_x:
-021400 -- pc: 00000029 -- instruction: LDR arg1: 14, arg2: 00 
-02013C -- pc: 0000002A -- instruction: LDR arg1: 01, arg2: 3C 
-&x_target:
-021701 -- pc: 0000002B -- instruction: LDR arg1: 17, arg2: 01 
-021700 -- pc: 0000002C -- instruction: LDR arg1: 17, arg2: 00 
-051400 -- pc: 0000002D -- instruction: INC arg1: 14, arg2: 00 
-101401 -- pc: 0000002E -- instruction: COM arg1: 14, arg2: 01 
-0D002B -- pc: 0000002F -- instruction: JNZ arg1: 00, arg2: 2B  | @x_target
-120000 -- pc: 00000030 -- instruction: RTN arg1: 00, arg2: 00 
+021901 -- pc: 00000001 -- instruction: LDR arg1: 19, arg2: 01 
+&while_true:
+0B0002 -- pc: 00000002 -- instruction: JMP arg1: 00, arg2: 02  | @while_true
+&handle_button_interrupt:
+020001 -- pc: 00000003 -- instruction: LDR arg1: 00, arg2: 01 
+10000E -- pc: 00000004 -- instruction: COM arg1: 00, arg2: 0E 
+0C0009 -- pc: 00000005 -- instruction: JZ arg1: 00, arg2: 09  | @turn_off
+0D0007 -- pc: 00000006 -- instruction: JNZ arg1: 00, arg2: 07  | @turn_on
+&turn_on:
+020E01 -- pc: 00000007 -- instruction: LDR arg1: 0E, arg2: 01 
+150000 -- pc: 00000008 -- instruction: CIS arg1: 00, arg2: 00 
+&turn_off:
+020E00 -- pc: 00000009 -- instruction: LDR arg1: 0E, arg2: 00 
+150000 -- pc: 0000000A -- instruction: CIS arg1: 00, arg2: 00 
+000000 -- pc: 0000000B -- instruction: NOP arg1: 00, arg2: 00 
+000000 -- pc: 0000000C -- instruction: NOP arg1: 00, arg2: 00 
+000000 -- pc: 0000000D -- instruction: NOP arg1: 00, arg2: 00 
+000000 -- pc: 0000000E -- instruction: NOP arg1: 00, arg2: 00 
+000000 -- pc: 0000000F -- instruction: NOP arg1: 00, arg2: 00 
+000000 -- pc: 00000010 -- instruction: NOP arg1: 00, arg2: 00 
+000000 -- pc: 00000011 -- instruction: NOP arg1: 00, arg2: 00 
+000000 -- pc: 00000012 -- instruction: NOP arg1: 00, arg2: 00 
+000000 -- pc: 00000013 -- instruction: NOP arg1: 00, arg2: 00 
+000000 -- pc: 00000014 -- instruction: NOP arg1: 00, arg2: 00 
+000000 -- pc: 00000015 -- instruction: NOP arg1: 00, arg2: 00 
+000000 -- pc: 00000016 -- instruction: NOP arg1: 00, arg2: 00 
+000000 -- pc: 00000017 -- instruction: NOP arg1: 00, arg2: 00 
+000000 -- pc: 00000018 -- instruction: NOP arg1: 00, arg2: 00 
+000000 -- pc: 00000019 -- instruction: NOP arg1: 00, arg2: 00 
+000000 -- pc: 0000001A -- instruction: NOP arg1: 00, arg2: 00 
+000000 -- pc: 0000001B -- instruction: NOP arg1: 00, arg2: 00 
+000000 -- pc: 0000001C -- instruction: NOP arg1: 00, arg2: 00 
+000000 -- pc: 0000001D -- instruction: NOP arg1: 00, arg2: 00 
+000000 -- pc: 0000001E -- instruction: NOP arg1: 00, arg2: 00 
+000000 -- pc: 0000001F -- instruction: NOP arg1: 00, arg2: 00 
+000000 -- pc: 00000020 -- instruction: NOP arg1: 00, arg2: 00 
+000000 -- pc: 00000021 -- instruction: NOP arg1: 00, arg2: 00 
+000000 -- pc: 00000022 -- instruction: NOP arg1: 00, arg2: 00 
+000000 -- pc: 00000023 -- instruction: NOP arg1: 00, arg2: 00 
+000000 -- pc: 00000024 -- instruction: NOP arg1: 00, arg2: 00 
+000000 -- pc: 00000025 -- instruction: NOP arg1: 00, arg2: 00 
+000000 -- pc: 00000026 -- instruction: NOP arg1: 00, arg2: 00 
+000000 -- pc: 00000027 -- instruction: NOP arg1: 00, arg2: 00 
+000000 -- pc: 00000028 -- instruction: NOP arg1: 00, arg2: 00 
+000000 -- pc: 00000029 -- instruction: NOP arg1: 00, arg2: 00 
+000000 -- pc: 0000002A -- instruction: NOP arg1: 00, arg2: 00 
+000000 -- pc: 0000002B -- instruction: NOP arg1: 00, arg2: 00 
+000000 -- pc: 0000002C -- instruction: NOP arg1: 00, arg2: 00 
+000000 -- pc: 0000002D -- instruction: NOP arg1: 00, arg2: 00 
+000000 -- pc: 0000002E -- instruction: NOP arg1: 00, arg2: 00 
+000000 -- pc: 0000002F -- instruction: NOP arg1: 00, arg2: 00 
+000000 -- pc: 00000030 -- instruction: NOP arg1: 00, arg2: 00 
 000000 -- pc: 00000031 -- instruction: NOP arg1: 00, arg2: 00 
 000000 -- pc: 00000032 -- instruction: NOP arg1: 00, arg2: 00 
 000000 -- pc: 00000033 -- instruction: NOP arg1: 00, arg2: 00 
@@ -1008,7 +1002,7 @@
 000000 -- pc: 000003E5 -- instruction: NOP arg1: 00, arg2: 00 
 000000 -- pc: 000003E6 -- instruction: NOP arg1: 00, arg2: 00 
 000000 -- pc: 000003E7 -- instruction: NOP arg1: 00, arg2: 00 
-000000 -- pc: 000003E8 -- instruction: NOP arg1: 00, arg2: 00 
+0B0003 -- pc: 000003E8 -- instruction: JMP arg1: 00, arg2: 03  | @handle_button_interrupt
 000000 -- pc: 000003E9 -- instruction: NOP arg1: 00, arg2: 00 
 000000 -- pc: 000003EA -- instruction: NOP arg1: 00, arg2: 00 
 000000 -- pc: 000003EB -- instruction: NOP arg1: 00, arg2: 00 
