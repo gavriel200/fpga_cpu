@@ -156,29 +156,50 @@ def main():
     print(f"compiling: {asm_file}")
 
     instructions = []
+    len_of_instructions = 0x400
 
-    for i in range(0x400):
+    for i in range(len_of_instructions):
         instructions.append(Nop())
 
     current_pc = 0
 
+    lines = []
+    replace_params = {}
+
     with open(full_file_path, "r") as f:
         for line in f:
-            if is_jump_location(line):
-                BaseInstruction.jump_locations[get_jump_location(line)] = current_pc
-            elif not comment_or_empty(line.strip()):
-                if is_memory_location(line.strip()):
-                    memory_location = get_memory_location(line.strip())
-                    if memory_location >= current_pc:
-                        current_pc = memory_location
-                    else:
-                        raise IndexError(
-                            f"memory location cant be before current pc- {current_pc}, memory_location- {memory_location}"
-                        )
-                else:
-                    instructions[current_pc] = instruction_factory(line.strip())
-                    current_pc += 1
+            lines.append(line)
+            if line.strip().startswith("$"):
+                if "=" not in line.strip():
+                    raise ValueError(f"bad param on line - {line}")
+                params = line.strip().split("=")
+                if len(params) != 2:
+                    raise ValueError(f"bad number of params on line - {line}")
+                replace_params[params[0].strip().replace("$", "")] = params[1].strip()
 
+    for line in lines:
+        if is_jump_location(line):
+            BaseInstruction.jump_locations[get_jump_location(line)] = current_pc
+        elif not comment_or_empty(line.strip()) and not line.strip().startswith("$"):
+            for param in list(replace_params.keys()):
+                if param in line:
+                    line = line.replace(param, replace_params[param])
+            if is_memory_location(line.strip()):
+                memory_location = get_memory_location(line.strip())
+                if memory_location >= current_pc:
+                    current_pc = memory_location
+                else:
+                    raise IndexError(
+                        f"memory location cant be before current pc- {current_pc}, memory_location- {memory_location}"
+                    )
+            else:
+                instructions[current_pc] = instruction_factory(line.strip())
+                current_pc += 1
+
+    print(
+        f"usage: used {len([i for i in instructions if not isinstance(i, Nop)])} instructions out of the available {len_of_instructions}, {len_of_instructions - len([i for i in instructions if not isinstance(i, Nop)])} remaining"
+    )
+    print(f"params : {replace_params}")
     print(f"memory locations:{BaseInstruction.jump_locations}")
 
     clean_hex_file()

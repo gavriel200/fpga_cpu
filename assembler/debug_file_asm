@@ -1,18 +1,14 @@
-000000 -- pc: 00000000 -- instruction: NOP arg1: 00, arg2: 00 
-021901 -- pc: 00000001 -- instruction: LDR arg1: 19, arg2: 01 
-&while_true:
-0B0002 -- pc: 00000002 -- instruction: JMP arg1: 00, arg2: 02  | @while_true
-&handle_button_interrupt:
-020001 -- pc: 00000003 -- instruction: LDR arg1: 00, arg2: 01 
-10000E -- pc: 00000004 -- instruction: COM arg1: 00, arg2: 0E 
-0C0009 -- pc: 00000005 -- instruction: JZ arg1: 00, arg2: 09  | @turn_off
-0D0007 -- pc: 00000006 -- instruction: JNZ arg1: 00, arg2: 07  | @turn_on
-&turn_on:
-020E01 -- pc: 00000007 -- instruction: LDR arg1: 0E, arg2: 01 
-150000 -- pc: 00000008 -- instruction: CIS arg1: 00, arg2: 00 
-&turn_off:
-020E00 -- pc: 00000009 -- instruction: LDR arg1: 0E, arg2: 00 
-150000 -- pc: 0000000A -- instruction: CIS arg1: 00, arg2: 00 
+020102 -- pc: 00000000 -- instruction: LDR arg1: 01, arg2: 02 
+020003 -- pc: 00000001 -- instruction: LDR arg1: 00, arg2: 03 
+000000 -- pc: 00000002 -- instruction: NOP arg1: 00, arg2: 00 
+000000 -- pc: 00000003 -- instruction: NOP arg1: 00, arg2: 00 
+000000 -- pc: 00000004 -- instruction: NOP arg1: 00, arg2: 00 
+000000 -- pc: 00000005 -- instruction: NOP arg1: 00, arg2: 00 
+000000 -- pc: 00000006 -- instruction: NOP arg1: 00, arg2: 00 
+000000 -- pc: 00000007 -- instruction: NOP arg1: 00, arg2: 00 
+000000 -- pc: 00000008 -- instruction: NOP arg1: 00, arg2: 00 
+000000 -- pc: 00000009 -- instruction: NOP arg1: 00, arg2: 00 
+000000 -- pc: 0000000A -- instruction: NOP arg1: 00, arg2: 00 
 000000 -- pc: 0000000B -- instruction: NOP arg1: 00, arg2: 00 
 000000 -- pc: 0000000C -- instruction: NOP arg1: 00, arg2: 00 
 000000 -- pc: 0000000D -- instruction: NOP arg1: 00, arg2: 00 
@@ -1002,7 +998,7 @@
 000000 -- pc: 000003E5 -- instruction: NOP arg1: 00, arg2: 00 
 000000 -- pc: 000003E6 -- instruction: NOP arg1: 00, arg2: 00 
 000000 -- pc: 000003E7 -- instruction: NOP arg1: 00, arg2: 00 
-0B0003 -- pc: 000003E8 -- instruction: JMP arg1: 00, arg2: 03  | @handle_button_interrupt
+000000 -- pc: 000003E8 -- instruction: NOP arg1: 00, arg2: 00 
 000000 -- pc: 000003E9 -- instruction: NOP arg1: 00, arg2: 00 
 000000 -- pc: 000003EA -- instruction: NOP arg1: 00, arg2: 00 
 000000 -- pc: 000003EB -- instruction: NOP arg1: 00, arg2: 00 

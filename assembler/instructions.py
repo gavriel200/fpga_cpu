@@ -104,7 +104,7 @@ class BaseInstruction:
 
         # Check decimal
         try:
-            num = int(arg, 10)
+            num = int(str(int(eval(arg))), 10)
             return 0 <= num <= 255
         except ValueError:
             return False
@@ -159,7 +159,7 @@ class BaseInstruction:
         if arg.startswith("0x"):
             return int(arg, 16)
         else:
-            return int(arg, 10)
+            return int(str(int(eval(arg))), 10)
 
     def get_number_16_bit(self, arg):
         if arg.startswith("@"):
@@ -176,7 +176,9 @@ class BaseInstruction:
             if arg.startswith("0x"):
                 return (int(arg, 16) >> 8) & 0xFF, int(arg, 16) & 0xFF
             else:
-                return (int(arg, 10) >> 8) & 0xFF, int(arg, 16) & 0xFF
+                return (int(str(int(eval(arg))), 10) >> 8) & 0xFF, int(
+                    str(int(eval(arg))), 10
+                ) & 0xFF
 
 
 class BaseTwoRegistersInstruction(BaseInstruction):
