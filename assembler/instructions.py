@@ -24,12 +24,13 @@ class Instruction(IntEnum):
     CAL = 17
     RTN = 18
     WR = 19
-    RD = 20
-    CIS = 21
-    AND = 22
-    OR = 23
-    XOR = 24
-    XNR = 25
+    WD = 20
+    RR = 21
+    CIS = 22
+    AND = 23
+    OR = 24
+    XOR = 25
+    XNR = 26
 
 
 class Registers(IntEnum):
@@ -42,7 +43,7 @@ class Registers(IntEnum):
     R5 = 5
     R6 = 6
     R7 = 7
-    RM = 8
+    # RM = 8
     # RM1 = 9
     RNDMIN = 10
     RNDMAX = 11
@@ -201,6 +202,18 @@ class BaseOneRegisterInstruction(BaseInstruction):
         return f"{self.instruction_id:02X}{self.arg1:02X}{0:02X}"
 
 
+class BaseOneRegisterOneNumberInstruction(BaseInstruction):
+    arg_num = 2
+
+    def generate_args(self):
+        args = self.get_args(self.line)
+        self.arg1 = self.get_reg(args[0])
+        self.arg2 = self.get_number(args[1])
+
+    def value(self):
+        return f"{self.instruction_id:02X}{self.arg1:02X}{self.arg2:02X}"
+
+
 class BaseJumpInstruction(BaseInstruction):
     arg_num = 1
 
@@ -231,17 +244,8 @@ class Ld(BaseTwoRegistersInstruction):
     instruction_id = Instruction.LD
 
 
-class Ldr(BaseInstruction):
+class Ldr(BaseOneRegisterOneNumberInstruction):
     instruction_id = Instruction.LDR
-    arg_num = 2
-
-    def generate_args(self):
-        args = self.get_args(self.line)
-        self.arg1 = self.get_reg(args[0])
-        self.arg2 = self.get_number(args[1])
-
-    def value(self):
-        return f"{self.instruction_id:02X}{self.arg1:02X}{self.arg2:02X}"
 
 
 class Add(BaseTwoRegistersInstruction):
@@ -308,12 +312,34 @@ class Rtn(BaseReturnInstruction):
     instruction_id = Instruction.RTN
 
 
-class Wr(BaseOneRegisterInstruction):
+class Wr(BaseInstruction):
     instruction_id = Instruction.WR
+    arg_num = 2
+
+    def generate_args(self):
+        args = self.get_args(self.line)
+        self.arg1 = self.get_number(args[0])
+        self.arg2 = self.get_reg(args[1])
+
+    def value(self):
+        return f"{self.instruction_id:02X}{self.arg1:02X}{self.arg2:02X}"
 
 
-class Rd(BaseOneRegisterInstruction):
-    instruction_id = Instruction.RD
+class Wd(BaseInstruction):
+    instruction_id = Instruction.WD
+    arg_num = 2
+
+    def generate_args(self):
+        args = self.get_args(self.line)
+        self.arg1 = self.get_number(args[0])
+        self.arg2 = self.get_number(args[1])
+
+    def value(self):
+        return f"{self.instruction_id:02X}{self.arg1:02X}{self.arg2:02X}"
+
+
+class Rr(BaseOneRegisterOneNumberInstruction):
+    instruction_id = Instruction.RR
 
 
 class Cis(BaseReturnInstruction):

@@ -21,13 +21,14 @@ localparam JNC = 8'd15;
 localparam COM = 8'd16;
 localparam CAL = 8'd17;
 localparam RTN = 8'd18;
-localparam WR  = 8'd19;
-localparam RD  = 8'd20;
-localparam CIS = 8'd21; // clear interrupt status
-localparam AND = 8'd22; // and
-localparam OR = 8'd23; // or
-localparam XOR = 8'd24; //xor
-localparam XNR = 8'd25; // xnor
+localparam WR  = 8'd19; // write register to addr
+localparam WD  = 8'd20; // write data to addr
+localparam RR  = 8'd21; // read to register from addr
+localparam CIS = 8'd22; // clear interrupt status
+localparam AND = 8'd23; // and
+localparam OR  = 8'd24; // or
+localparam XOR = 8'd25; //xor
+localparam XNR = 8'd26; // xnor
 
 // registers
 // rw
@@ -39,7 +40,7 @@ localparam GPR4 = 4'd4;
 localparam GPR5 = 4'd5;
 localparam GPR6 = 4'd6;
 localparam GPR7 = 4'd7;
-localparam RM = 4'd8;  // ram addr 0
+// localparam RM = 4'd8;  // ram addr 0
 // localparam RM1 = 4'd9;  // ram addr 1
 localparam RNDMIN = 8'd10;  // random min
 localparam RNDMAX = 8'd11;  // random max

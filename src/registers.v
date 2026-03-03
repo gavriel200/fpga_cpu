@@ -15,9 +15,6 @@ module registers (
     output [7:0] r_data_a,
     output [7:0] r_data_b,
 
-    // ram
-    output [7:0] ram_addr,
-
     // random
     output [7:0] random_min,
     output [7:0] random_max,
@@ -62,8 +59,6 @@ module registers (
   assign r_data_a                  = read_reg(r_addr_a);
   assign r_data_b                  = read_reg(r_addr_b);
 
-  // ram
-  assign ram_addr                  = registers_data[RM*8+:8];
   // random
   assign random_min                = registers_data[RNDMIN*8+:8];
   assign random_max                = registers_data[RNDMAX*8+:8];

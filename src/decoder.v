@@ -44,6 +44,7 @@ module decoder (
     input      [7:0] ram_r_data,
     output reg       ram_w_enable,
     output reg [7:0] ram_w_data,
+    output reg [7:0] ram_addr,
 
     // interrupt
     output reg interrupt_clear_status
@@ -74,6 +75,7 @@ module decoder (
     pc_stack_pop_enable    = 0;
     ram_w_enable           = 0;
     ram_w_data             = 0;
+    ram_addr               = 0;
     interrupt_clear_status = 0;
 
     case (instruction)
@@ -247,15 +249,24 @@ module decoder (
       end
 
       WR: begin
-        registers_r_addr_a = arg_a[5:0];
+        ram_addr           = arg_a;
+        registers_r_addr_a = arg_b[5:0];
 
         ram_w_enable       = 1;
         ram_w_data         = registers_r_data_a;
       end
 
-      RD: begin
+      WD: begin
+        ram_addr = arg_a;
+        ram_w_data = arg_b;
+
+        ram_w_enable = 1;
+      end
+
+      RR: begin
         registers_w_enable = 1;
         registers_w_addr   = arg_a[5:0];
+        ram_addr           = arg_b;
 
         registers_w_data   = ram_r_data;
       end

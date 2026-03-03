@@ -123,14 +123,14 @@ module top (
   );
 
 
-  wire [7:0] registers_ram_addr;
+  wire [7:0] ram_addr;
   wire       ram_w_enable;
   wire [7:0] ram_w_data;
   wire [7:0] ram_r_data;
   ram(
       .clk(clk),
       .rst(rst),
-      .addr(registers_ram_addr),
+      .addr(ram_addr),
       .w_enable(ram_w_enable),
       .w_data(ram_w_data),
       .r_data(ram_r_data)
@@ -205,7 +205,6 @@ module top (
       .r_addr_b(registers_r_addr_b),
       .r_data_a(registers_r_data_a),
       .r_data_b(registers_r_data_b),
-      .ram_addr(registers_ram_addr),
       .random_min(random_min),
       .random_max(random_max),
       .random_w_enable(random_w_enable),
@@ -319,6 +318,7 @@ module top (
       .ram_w_enable(ram_w_enable),
       .ram_w_data(ram_w_data),
       .ram_r_data(ram_r_data),
+      .ram_addr(ram_addr),
       .interrupt_clear_status(interrupt_clear_status)
   );
 

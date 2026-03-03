@@ -3,6 +3,7 @@ import sys
 
 from assembler.instructions import (
     Add,
+    And,
     BaseInstruction,
     Cal,
     Cis,
@@ -11,25 +12,25 @@ from assembler.instructions import (
     Dec,
     Inc,
     Instruction,
-    Jmp,
-    Jz,
-    Jnz,
     Jc,
+    Jmp,
     Jnc,
+    Jnz,
+    Jz,
     Ld,
     Ldr,
     Nop,
+    Or,
     Pop,
     Psh,
-    Rd,
+    Rr,
     Rtn,
     Set,
     Sub,
+    Wd,
     Wr,
-    And,
-    Or,
-    Xor,
     Xnr,
+    Xor,
 )
 
 
@@ -76,8 +77,10 @@ def instruction_factory(line):
             return Rtn()
         case Instruction.WR.name:
             return Wr(line)
-        case Instruction.RD.name:
-            return Rd(line)
+        case Instruction.WD.name:
+            return Wd(line)
+        case Instruction.RR.name:
+            return Rr(line)
         case Instruction.CIS.name:
             return Cis()
         case Instruction.AND.name:
