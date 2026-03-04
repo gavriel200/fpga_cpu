@@ -26,11 +26,14 @@ class Instruction(IntEnum):
     WR = 19
     WD = 20
     RR = 21
-    CIS = 22
-    AND = 23
-    OR = 24
-    XOR = 25
-    XNR = 26
+    RWR = 22
+    RWD = 23
+    RRR = 24
+    CIS = 25
+    AND = 26
+    OR = 27
+    XOR = 28
+    XNR = 29
 
 
 class Registers(IntEnum):
@@ -121,8 +124,17 @@ class BaseInstruction:
             f.write(f"{self.value()}\n")
 
         if debug:
-            arg1 = f"{self.arg1:02X}" if self.arg1 else f"{0:02X}"
-            arg2 = f"{self.arg2:02X}" if self.arg2 else f"{0:02X}"
+            if isinstance(self, BaseOneRegisterOneNumberInstruction) or isinstance(
+                self, BaseOneRegisterInstruction
+            ):
+                arg1 = f"{Registers(self.arg1).name}"
+                arg2 = f"{self.arg2:02X}" if self.arg2 else f"{0:02X}"
+            elif isinstance(self, BaseTwoRegistersInstruction):
+                arg1 = f"{Registers(self.arg1).name}"
+                arg2 = f"{Registers(self.arg2).name}"
+            else:
+                arg1 = f"{self.arg1:02X}" if self.arg1 else f"{0:02X}"
+                arg2 = f"{self.arg2:02X}" if self.arg2 else f"{0:02X}"
             memory_location = (
                 f"&{self.debug_get_pc_name(pc)}:\n"
                 if pc in BaseInstruction.jump_locations.values()
@@ -130,7 +142,7 @@ class BaseInstruction:
             )
             with open(self.debug_file, "a") as f:
                 f.write(
-                    f"{memory_location if memory_location else ''}{self.value()} -- pc: {pc:08X} -- instruction: {self.instruction_id.name} arg1: {arg1}, arg2: {arg2} {f' | @{self.memory_place}' if self.memory_place else ''}\n"
+                    f"{memory_location if memory_location else ''}{self.value()} -- pc: {pc:08X} -- instruction: {self.instruction_id.name.ljust(3, ' ')} arg1: {arg1}, arg2: {arg2} {f' | @{self.memory_place}' if self.memory_place else ''}\n"
                 )
 
     def debug_get_pc_name(self, pc):
@@ -342,6 +354,18 @@ class Wd(BaseInstruction):
 
 class Rr(BaseOneRegisterOneNumberInstruction):
     instruction_id = Instruction.RR
+
+
+class Rwr(BaseTwoRegistersInstruction):
+    instruction_id = Instruction.RWR
+
+
+class Rwd(BaseTwoRegistersInstruction):
+    instruction_id = Instruction.RWD
+
+
+class Rrr(BaseTwoRegistersInstruction):
+    instruction_id = Instruction.RRR
 
 
 class Cis(BaseReturnInstruction):

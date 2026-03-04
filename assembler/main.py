@@ -1,5 +1,6 @@
 import os
 import sys
+import re
 
 from assembler.instructions import (
     Add,
@@ -24,7 +25,10 @@ from assembler.instructions import (
     Pop,
     Psh,
     Rr,
+    Rrr,
     Rtn,
+    Rwd,
+    Rwr,
     Set,
     Sub,
     Wd,
@@ -81,16 +85,22 @@ def instruction_factory(line):
             return Wd(line)
         case Instruction.RR.name:
             return Rr(line)
+        case Instruction.RWR.name:
+            return Rwr(line)
+        case Instruction.RWD.name:
+            return Rwd(line)
+        case Instruction.RRR.name:
+            return Rrr(line)
         case Instruction.CIS.name:
             return Cis()
         case Instruction.AND.name:
-            return And()
+            return And(line)
         case Instruction.OR.name:
-            return Or()
+            return Or(line)
         case Instruction.XOR.name:
-            return Xor()
+            return Xor(line)
         case Instruction.XNR.name:
-            return Xnr()
+            return Xnr(line)
         case _:
             raise ValueError(f"invalid instruction {instruction}")
 
@@ -181,9 +191,9 @@ def main():
         if is_jump_location(line):
             BaseInstruction.jump_locations[get_jump_location(line)] = current_pc
         elif not comment_or_empty(line.strip()) and not line.strip().startswith("$"):
-            for param in list(replace_params.keys()):
-                if param in line:
-                    line = line.replace(param, replace_params[param])
+            for param, value in replace_params.items():
+                pattern = rf"(?:(?<=^)|(?<=[ ,])){re.escape(param)}(?:(?=$)|(?=[ ,]))"
+                line = re.sub(pattern, value, line)
             if is_memory_location(line.strip()):
                 memory_location = get_memory_location(line.strip())
                 if memory_location >= current_pc:

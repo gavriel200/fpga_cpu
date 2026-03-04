@@ -24,11 +24,14 @@ localparam RTN = 8'd18;
 localparam WR  = 8'd19; // write register to addr
 localparam WD  = 8'd20; // write data to addr
 localparam RR  = 8'd21; // read to register from addr
-localparam CIS = 8'd22; // clear interrupt status
-localparam AND = 8'd23; // and
-localparam OR  = 8'd24; // or
-localparam XOR = 8'd25; //xor
-localparam XNR = 8'd26; // xnor
+localparam RWR  = 8'd22; // write register to addr that is read from register
+localparam RWD  = 8'd23; // write data to addr that is read from register
+localparam RRR  = 8'd24; // read to register from addr that is read from register
+localparam CIS = 8'd25; // clear interrupt status
+localparam AND = 8'd26; // and
+localparam OR  = 8'd27; // or
+localparam XOR = 8'd28; //xor
+localparam XNR = 8'd29; // xnor
 
 // registers
 // rw

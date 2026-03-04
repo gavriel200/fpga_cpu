@@ -271,6 +271,34 @@ module decoder (
         registers_w_data   = ram_r_data;
       end
 
+      RWR: begin
+        registers_r_addr_a = arg_a[5:0];
+        registers_r_addr_b = arg_b[5:0];
+
+        ram_w_enable       = 1;
+        ram_addr           = registers_r_data_a;
+        ram_w_data         = registers_r_data_b;
+      end
+
+      RWD: begin
+        registers_r_addr_a = arg_a[5:0];
+
+        ram_addr = registers_r_data_a;
+        ram_w_data = arg_b;
+
+        ram_w_enable = 1;
+      end
+
+      RRR: begin
+        registers_w_addr   = arg_a[5:0];
+        registers_r_addr_a = arg_b[5:0];
+
+        registers_w_enable = 1;
+        ram_addr           = registers_r_data_a;
+
+        registers_w_data   = ram_r_data;
+      end
+
       CIS: begin
         interrupt_clear_status = 1;
       end

@@ -1,15 +1,17 @@
-020102 -- pc: 00000000 -- instruction: LDR arg1: 01, arg2: 02 
-020003 -- pc: 00000001 -- instruction: LDR arg1: 00, arg2: 03 
-000000 -- pc: 00000002 -- instruction: NOP arg1: 00, arg2: 00 
-000000 -- pc: 00000003 -- instruction: NOP arg1: 00, arg2: 00 
-000000 -- pc: 00000004 -- instruction: NOP arg1: 00, arg2: 00 
-000000 -- pc: 00000005 -- instruction: NOP arg1: 00, arg2: 00 
-000000 -- pc: 00000006 -- instruction: NOP arg1: 00, arg2: 00 
-000000 -- pc: 00000007 -- instruction: NOP arg1: 00, arg2: 00 
-000000 -- pc: 00000008 -- instruction: NOP arg1: 00, arg2: 00 
-000000 -- pc: 00000009 -- instruction: NOP arg1: 00, arg2: 00 
-000000 -- pc: 0000000A -- instruction: NOP arg1: 00, arg2: 00 
-000000 -- pc: 0000000B -- instruction: NOP arg1: 00, arg2: 00 
+&init_suits:
+143400 -- pc: 00000000 -- instruction: WD  arg1: 34, arg2: 00 
+143520 -- pc: 00000001 -- instruction: WD  arg1: 35, arg2: 20 
+143640 -- pc: 00000002 -- instruction: WD  arg1: 36, arg2: 40 
+143760 -- pc: 00000003 -- instruction: WD  arg1: 37, arg2: 60 
+&init_cards:
+02040D -- pc: 00000004 -- instruction: LDR arg1: R4, arg2: 0D 
+020504 -- pc: 00000005 -- instruction: LDR arg1: R5, arg2: 04 
+020000 -- pc: 00000006 -- instruction: LDR arg1: R0, arg2: 00 
+020134 -- pc: 00000007 -- instruction: LDR arg1: R1, arg2: 34 
+020201 -- pc: 00000008 -- instruction: LDR arg1: R2, arg2: 01 
+180301 -- pc: 00000009 -- instruction: RRR arg1: R3, arg2: R1 
+1B0402 -- pc: 0000000A -- instruction: OR  arg1: R4, arg2: R2 
+1B0403 -- pc: 0000000B -- instruction: OR  arg1: R4, arg2: R3 
 000000 -- pc: 0000000C -- instruction: NOP arg1: 00, arg2: 00 
 000000 -- pc: 0000000D -- instruction: NOP arg1: 00, arg2: 00 
 000000 -- pc: 0000000E -- instruction: NOP arg1: 00, arg2: 00 
