@@ -1,26 +1,29 @@
+000000 -- pc: 00000000 -- instruction: NOP arg1: 00, arg2: 00 
 &init_suits:
-143400 -- pc: 00000000 -- instruction: WD  arg1: 34, arg2: 00 
-143520 -- pc: 00000001 -- instruction: WD  arg1: 35, arg2: 20 
-143640 -- pc: 00000002 -- instruction: WD  arg1: 36, arg2: 40 
-143760 -- pc: 00000003 -- instruction: WD  arg1: 37, arg2: 60 
+143400 -- pc: 00000001 -- instruction: WD  arg1: 34, arg2: 00 
+143520 -- pc: 00000002 -- instruction: WD  arg1: 35, arg2: 20 
+143640 -- pc: 00000003 -- instruction: WD  arg1: 36, arg2: 40 
+143760 -- pc: 00000004 -- instruction: WD  arg1: 37, arg2: 60 
 &init_cards:
-02040D -- pc: 00000004 -- instruction: LDR arg1: R4, arg2: 0D 
-020504 -- pc: 00000005 -- instruction: LDR arg1: R5, arg2: 04 
-020000 -- pc: 00000006 -- instruction: LDR arg1: R0, arg2: 00 
-020134 -- pc: 00000007 -- instruction: LDR arg1: R1, arg2: 34 
-020201 -- pc: 00000008 -- instruction: LDR arg1: R2, arg2: 01 
-180301 -- pc: 00000009 -- instruction: RRR arg1: R3, arg2: R1 
-1B0402 -- pc: 0000000A -- instruction: OR  arg1: R4, arg2: R2 
-1B0403 -- pc: 0000000B -- instruction: OR  arg1: R4, arg2: R3 
-000000 -- pc: 0000000C -- instruction: NOP arg1: 00, arg2: 00 
-000000 -- pc: 0000000D -- instruction: NOP arg1: 00, arg2: 00 
-000000 -- pc: 0000000E -- instruction: NOP arg1: 00, arg2: 00 
-000000 -- pc: 0000000F -- instruction: NOP arg1: 00, arg2: 00 
-000000 -- pc: 00000010 -- instruction: NOP arg1: 00, arg2: 00 
-000000 -- pc: 00000011 -- instruction: NOP arg1: 00, arg2: 00 
-000000 -- pc: 00000012 -- instruction: NOP arg1: 00, arg2: 00 
-000000 -- pc: 00000013 -- instruction: NOP arg1: 00, arg2: 00 
-000000 -- pc: 00000014 -- instruction: NOP arg1: 00, arg2: 00 
+020000 -- pc: 00000005 -- instruction: LDR arg1: R0, arg2: 00 
+020133 -- pc: 00000006 -- instruction: LDR arg1: R1, arg2: 33 
+020605 -- pc: 00000007 -- instruction: LDR arg1: R6, arg2: 05 
+&next_suit:
+02050D -- pc: 00000008 -- instruction: LDR arg1: R5, arg2: 0D 
+060600 -- pc: 00000009 -- instruction: DEC arg1: R6, arg2: 00 
+0C0015 -- pc: 0000000A -- instruction: JZ  arg1: 00, arg2: 15  | @init_cards_done
+050100 -- pc: 0000000B -- instruction: INC arg1: R1, arg2: 00 
+020201 -- pc: 0000000C -- instruction: LDR arg1: R2, arg2: 01 
+180301 -- pc: 0000000D -- instruction: RRR arg1: R3, arg2: R1 
+1B0203 -- pc: 0000000E -- instruction: OR  arg1: R2, arg2: R3 
+&next_card:
+160002 -- pc: 0000000F -- instruction: RWR arg1: R0, arg2: R2 
+050200 -- pc: 00000010 -- instruction: INC arg1: R2, arg2: 00 
+050000 -- pc: 00000011 -- instruction: INC arg1: R0, arg2: 00 
+060500 -- pc: 00000012 -- instruction: DEC arg1: R5, arg2: 00 
+0C0008 -- pc: 00000013 -- instruction: JZ  arg1: 00, arg2: 08  | @next_suit
+0B000F -- pc: 00000014 -- instruction: JMP arg1: 00, arg2: 0F  | @next_card
+&init_cards_done:
 000000 -- pc: 00000015 -- instruction: NOP arg1: 00, arg2: 00 
 000000 -- pc: 00000016 -- instruction: NOP arg1: 00, arg2: 00 
 000000 -- pc: 00000017 -- instruction: NOP arg1: 00, arg2: 00 

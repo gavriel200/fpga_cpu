@@ -8,7 +8,7 @@ module stack (
     input pop_enable,
     output [7:0] pop_data
 );
-  reg [8*256-1:0] memory = 0;
+  reg [8*32-1:0] memory = 0;
   reg [7:0] pointer = 0;
 
   assign pop_data = memory[(pointer-1)*8+:8];

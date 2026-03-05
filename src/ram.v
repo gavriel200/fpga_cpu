@@ -9,7 +9,7 @@ module ram (
 
     output [7:0] r_data
 );
-  reg [8*32-1:0] memory;
+  reg [8*256-1:0] memory;
 
   assign r_data = memory[addr*8+:8];
 
