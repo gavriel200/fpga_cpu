@@ -24,21 +24,24 @@
 0C0008 -- pc: 00000013 -- instruction: JZ  arg1: 00, arg2: 08  | @next_suit
 0B000F -- pc: 00000014 -- instruction: JMP arg1: 00, arg2: 0F  | @next_card
 &init_cards_done:
-000000 -- pc: 00000015 -- instruction: NOP arg1: 00, arg2: 00 
-000000 -- pc: 00000016 -- instruction: NOP arg1: 00, arg2: 00 
-000000 -- pc: 00000017 -- instruction: NOP arg1: 00, arg2: 00 
-000000 -- pc: 00000018 -- instruction: NOP arg1: 00, arg2: 00 
-000000 -- pc: 00000019 -- instruction: NOP arg1: 00, arg2: 00 
-000000 -- pc: 0000001A -- instruction: NOP arg1: 00, arg2: 00 
-000000 -- pc: 0000001B -- instruction: NOP arg1: 00, arg2: 00 
-000000 -- pc: 0000001C -- instruction: NOP arg1: 00, arg2: 00 
-000000 -- pc: 0000001D -- instruction: NOP arg1: 00, arg2: 00 
-000000 -- pc: 0000001E -- instruction: NOP arg1: 00, arg2: 00 
-000000 -- pc: 0000001F -- instruction: NOP arg1: 00, arg2: 00 
-000000 -- pc: 00000020 -- instruction: NOP arg1: 00, arg2: 00 
-000000 -- pc: 00000021 -- instruction: NOP arg1: 00, arg2: 00 
-000000 -- pc: 00000022 -- instruction: NOP arg1: 00, arg2: 00 
-000000 -- pc: 00000023 -- instruction: NOP arg1: 00, arg2: 00 
+020000 -- pc: 00000015 -- instruction: LDR arg1: R0, arg2: 00 
+020120 -- pc: 00000016 -- instruction: LDR arg1: R1, arg2: 20 
+021608 -- pc: 00000017 -- instruction: LDR arg1: RFBD, arg2: 08 
+0215FF -- pc: 00000018 -- instruction: LDR arg1: RFBY, arg2: FF 
+&next_row:
+051500 -- pc: 00000019 -- instruction: INC arg1: RFBY, arg2: 00 
+100115 -- pc: 0000001A -- instruction: COM arg1: R1, arg2: RFBY 
+0C0022 -- pc: 0000001B -- instruction: JZ  arg1: 00, arg2: 22  | @clean_screen_done
+02143C -- pc: 0000001C -- instruction: LDR arg1: RFBX, arg2: 3C 
+&next_col:
+061400 -- pc: 0000001D -- instruction: DEC arg1: RFBX, arg2: 00 
+021701 -- pc: 0000001E -- instruction: LDR arg1: RFBE, arg2: 01 
+021700 -- pc: 0000001F -- instruction: LDR arg1: RFBE, arg2: 00 
+0C0019 -- pc: 00000020 -- instruction: JZ  arg1: 00, arg2: 19  | @next_row
+0B001D -- pc: 00000021 -- instruction: JMP arg1: 00, arg2: 1D  | @next_col
+&clean_screen_done:
+021801 -- pc: 00000022 -- instruction: LDR arg1: RLCDU, arg2: 01 
+021800 -- pc: 00000023 -- instruction: LDR arg1: RLCDU, arg2: 00 
 000000 -- pc: 00000024 -- instruction: NOP arg1: 00, arg2: 00 
 000000 -- pc: 00000025 -- instruction: NOP arg1: 00, arg2: 00 
 000000 -- pc: 00000026 -- instruction: NOP arg1: 00, arg2: 00 

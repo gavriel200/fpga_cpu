@@ -1,0 +1,24 @@
+[0:51] cards
+| card struct [0:7]:
+| [0] taken (used to symbol the taken cards from the deck)
+| [1:2] suit (4 suits)
+| [3:7] card value (1-13)
+
+[52:55] suits
+| suit struct [0:7]:
+| [1:2] suit value
+| used as or with a card on init
+
+[56:109] draw card on screen logic
+[56:58] input params:
+| [56] value (address of the element to draw)
+| [57] starting x axis
+| [58] starting y axis
+[59:109] elements to draw pixels
+| struct [0:23] 3 bytes:
+| [0:3]   first row
+| [4:7]   second row
+| [8:11]  third row
+| [12:15] forth row
+| [16:19] fifth row
+| [20:23] sixth row
