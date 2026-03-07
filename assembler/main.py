@@ -178,18 +178,30 @@ def main():
 
     with open(full_file_path, "r") as f:
         for line in f:
-            lines.append(line)
-            if line.strip().startswith("$"):
-                if "=" not in line.strip():
-                    raise ValueError(f"bad param on line - {line}")
-                params = line.strip().split("=")
-                if len(params) != 2:
-                    raise ValueError(f"bad number of params on line - {line}")
-                if params[0].strip().replace("$", "") in replace_params:
-                    raise ValueError(
-                        f"param {params[0].strip().replace('$', '')} already in use - {line}"
-                    )
-                replace_params[params[0].strip().replace("$", "")] = params[1].strip()
+            if line.strip().startswith("import "):
+                file = line.strip().split(" ")[1].strip()
+                if not os.path.exists(file):
+                    raise FileNotFoundError(f"import {file} not found")
+                else:
+                    with open(file, "r") as file:
+                        import_lines = [li for li in file]
+                lines += import_lines
+            else:
+                lines.append(line)
+
+    for line in lines:
+        print(line)
+        if line.strip().startswith("$"):
+            if "=" not in line.strip():
+                raise ValueError(f"bad param on line - {line}")
+            params = line.strip().split("=")
+            if len(params) != 2:
+                raise ValueError(f"bad number of params on line - {line}")
+            if params[0].strip().replace("$", "") in replace_params:
+                raise ValueError(
+                    f"param {params[0].strip().replace('$', '')} already in use - {line}"
+                )
+            replace_params[params[0].strip().replace("$", "")] = params[1].strip()
 
     for line in lines:
         if is_jump_location(line):
