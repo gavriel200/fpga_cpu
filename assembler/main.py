@@ -205,6 +205,10 @@ def main():
 
     for line in lines:
         if is_jump_location(line):
+            if get_jump_location(line) in BaseInstruction.jump_locations:
+                raise ValueError(
+                    f"jump location {get_jump_location(line)} already used"
+                )
             BaseInstruction.jump_locations[get_jump_location(line)] = current_pc
         elif not comment_or_empty(line.strip()) and not line.strip().startswith("$"):
             for param, value in replace_params.items():

@@ -90,7 +90,7 @@ next byte and from the start
 
 
 for _ range 3: // 3 bytes
-    i = addr of or
+    i = addr of and
     for _ rage 2: // 2 rows
         for _ range 4: // 4 columns
             do AND with addr[i]
@@ -98,3 +98,64 @@ for _ range 3: // 3 bytes
             x ++
         y ++
         
+
+
+params:
+symbol 1 - 17 (last 4 are the suits not cards)
+x axis
+y axis
+
+param_symbol_addr = symbol * 3 + 59 - 3
+
+param_current_byte = [param_symbol_addr]
+
+
+param_current_and_logic_addr = base_and_logic_addr
+param_current_and_logic = [param_current_and_logic_addr]
+
+param_byte_loop = 3
+param_row_loop = 2
+param_col_loop = 4
+
+param starting x
+
+
+
+
+byte counter = 3
+
+@ byte
+COM byte counter, 0
+JZ @end
+
+row counter = 2
+load current byte
+reset logic addr
+
+DEC byte counter
+
+@ row
+COM row counter, 0
+JZ @byte
+
+col counter = 4
+reset x axis to start
+y axis ++
+
+DEC row counter
+
+@ col
+COM col counter, 0
+JZ @row
+
+load current and logic
+check if and logic and current byte
+if yes draw pixel
+
+and logic addr ++
+
+DEC col counter
+
+JMP @col
+
+@ end

@@ -38,6 +38,466 @@
                 <Signal>i24/arg_b[0]</Signal>
             </Bus>
             <Signal capture_enable="true">flags_z</Signal>
+            <Bus capture_enable="true" name="LCDU" restorename="i19/registers_data[199:192]">
+                <Signal>i19/registers_data[199]</Signal>
+                <Signal>i19/registers_data[198]</Signal>
+                <Signal>i19/registers_data[197]</Signal>
+                <Signal>i19/registers_data[196]</Signal>
+                <Signal>i19/registers_data[195]</Signal>
+                <Signal>i19/registers_data[194]</Signal>
+                <Signal>i19/registers_data[193]</Signal>
+                <Signal>i19/registers_data[192]</Signal>
+            </Bus>
+            <Bus capture_enable="true" name="FBE" restorename="i19/registers_data[191:184]">
+                <Signal>i19/registers_data[191]</Signal>
+                <Signal>i19/registers_data[190]</Signal>
+                <Signal>i19/registers_data[189]</Signal>
+                <Signal>i19/registers_data[188]</Signal>
+                <Signal>i19/registers_data[187]</Signal>
+                <Signal>i19/registers_data[186]</Signal>
+                <Signal>i19/registers_data[185]</Signal>
+                <Signal>i19/registers_data[184]</Signal>
+            </Bus>
+            <Bus capture_enable="true" name="FBD" restorename="i19/registers_data[183:176]">
+                <Signal>i19/registers_data[183]</Signal>
+                <Signal>i19/registers_data[182]</Signal>
+                <Signal>i19/registers_data[181]</Signal>
+                <Signal>i19/registers_data[180]</Signal>
+                <Signal>i19/registers_data[179]</Signal>
+                <Signal>i19/registers_data[178]</Signal>
+                <Signal>i19/registers_data[177]</Signal>
+                <Signal>i19/registers_data[176]</Signal>
+            </Bus>
+            <Bus capture_enable="true" name="FBY" restorename="i19/registers_data[175:168]">
+                <Signal>i19/registers_data[175]</Signal>
+                <Signal>i19/registers_data[174]</Signal>
+                <Signal>i19/registers_data[173]</Signal>
+                <Signal>i19/registers_data[172]</Signal>
+                <Signal>i19/registers_data[171]</Signal>
+                <Signal>i19/registers_data[170]</Signal>
+                <Signal>i19/registers_data[169]</Signal>
+                <Signal>i19/registers_data[168]</Signal>
+            </Bus>
+            <Bus capture_enable="true" name="FBX" restorename="i19/registers_data[167:160]">
+                <Signal>i19/registers_data[167]</Signal>
+                <Signal>i19/registers_data[166]</Signal>
+                <Signal>i19/registers_data[165]</Signal>
+                <Signal>i19/registers_data[164]</Signal>
+                <Signal>i19/registers_data[163]</Signal>
+                <Signal>i19/registers_data[162]</Signal>
+                <Signal>i19/registers_data[161]</Signal>
+                <Signal>i19/registers_data[160]</Signal>
+            </Bus>
+            <Bus capture_enable="true" name="R7" restorename="i19/registers_data[63:56]">
+                <Signal>i19/registers_data[63]</Signal>
+                <Signal>i19/registers_data[62]</Signal>
+                <Signal>i19/registers_data[61]</Signal>
+                <Signal>i19/registers_data[60]</Signal>
+                <Signal>i19/registers_data[59]</Signal>
+                <Signal>i19/registers_data[58]</Signal>
+                <Signal>i19/registers_data[57]</Signal>
+                <Signal>i19/registers_data[56]</Signal>
+            </Bus>
+            <Bus capture_enable="true" name="R6" restorename="i19/registers_data[55:48]">
+                <Signal>i19/registers_data[55]</Signal>
+                <Signal>i19/registers_data[54]</Signal>
+                <Signal>i19/registers_data[53]</Signal>
+                <Signal>i19/registers_data[52]</Signal>
+                <Signal>i19/registers_data[51]</Signal>
+                <Signal>i19/registers_data[50]</Signal>
+                <Signal>i19/registers_data[49]</Signal>
+                <Signal>i19/registers_data[48]</Signal>
+            </Bus>
+            <Bus capture_enable="true" name="R5" restorename="i19/registers_data[47:40]">
+                <Signal>i19/registers_data[47]</Signal>
+                <Signal>i19/registers_data[46]</Signal>
+                <Signal>i19/registers_data[45]</Signal>
+                <Signal>i19/registers_data[44]</Signal>
+                <Signal>i19/registers_data[43]</Signal>
+                <Signal>i19/registers_data[42]</Signal>
+                <Signal>i19/registers_data[41]</Signal>
+                <Signal>i19/registers_data[40]</Signal>
+            </Bus>
+            <Bus capture_enable="true" name="R4" restorename="i19/registers_data[39:32]">
+                <Signal>i19/registers_data[39]</Signal>
+                <Signal>i19/registers_data[38]</Signal>
+                <Signal>i19/registers_data[37]</Signal>
+                <Signal>i19/registers_data[36]</Signal>
+                <Signal>i19/registers_data[35]</Signal>
+                <Signal>i19/registers_data[34]</Signal>
+                <Signal>i19/registers_data[33]</Signal>
+                <Signal>i19/registers_data[32]</Signal>
+            </Bus>
+            <Bus capture_enable="true" name="R3" restorename="i19/registers_data[31:24]">
+                <Signal>i19/registers_data[31]</Signal>
+                <Signal>i19/registers_data[30]</Signal>
+                <Signal>i19/registers_data[29]</Signal>
+                <Signal>i19/registers_data[28]</Signal>
+                <Signal>i19/registers_data[27]</Signal>
+                <Signal>i19/registers_data[26]</Signal>
+                <Signal>i19/registers_data[25]</Signal>
+                <Signal>i19/registers_data[24]</Signal>
+            </Bus>
+            <Bus capture_enable="true" name="R2" restorename="i19/registers_data[23:16]">
+                <Signal>i19/registers_data[23]</Signal>
+                <Signal>i19/registers_data[22]</Signal>
+                <Signal>i19/registers_data[21]</Signal>
+                <Signal>i19/registers_data[20]</Signal>
+                <Signal>i19/registers_data[19]</Signal>
+                <Signal>i19/registers_data[18]</Signal>
+                <Signal>i19/registers_data[17]</Signal>
+                <Signal>i19/registers_data[16]</Signal>
+            </Bus>
+            <Bus capture_enable="true" name="R1" restorename="i19/registers_data[15:8]">
+                <Signal>i19/registers_data[15]</Signal>
+                <Signal>i19/registers_data[14]</Signal>
+                <Signal>i19/registers_data[13]</Signal>
+                <Signal>i19/registers_data[12]</Signal>
+                <Signal>i19/registers_data[11]</Signal>
+                <Signal>i19/registers_data[10]</Signal>
+                <Signal>i19/registers_data[9]</Signal>
+                <Signal>i19/registers_data[8]</Signal>
+            </Bus>
+            <Bus capture_enable="true" name="R0" restorename="i19/registers_data[7:0]">
+                <Signal>i19/registers_data[7]</Signal>
+                <Signal>i19/registers_data[6]</Signal>
+                <Signal>i19/registers_data[5]</Signal>
+                <Signal>i19/registers_data[4]</Signal>
+                <Signal>i19/registers_data[3]</Signal>
+                <Signal>i19/registers_data[2]</Signal>
+                <Signal>i19/registers_data[1]</Signal>
+                <Signal>i19/registers_data[0]</Signal>
+            </Bus>
+            <Bus capture_enable="true" name="i10/memory[519:512]">
+                <Signal>i10/memory[519]</Signal>
+                <Signal>i10/memory[518]</Signal>
+                <Signal>i10/memory[517]</Signal>
+                <Signal>i10/memory[516]</Signal>
+                <Signal>i10/memory[515]</Signal>
+                <Signal>i10/memory[514]</Signal>
+                <Signal>i10/memory[513]</Signal>
+                <Signal>i10/memory[512]</Signal>
+            </Bus>
+            <Bus capture_enable="true" name="i10/memory[511:504]">
+                <Signal>i10/memory[511]</Signal>
+                <Signal>i10/memory[510]</Signal>
+                <Signal>i10/memory[509]</Signal>
+                <Signal>i10/memory[508]</Signal>
+                <Signal>i10/memory[507]</Signal>
+                <Signal>i10/memory[506]</Signal>
+                <Signal>i10/memory[505]</Signal>
+                <Signal>i10/memory[504]</Signal>
+            </Bus>
+            <Bus capture_enable="true" name="i10/memory[503:496]">
+                <Signal>i10/memory[503]</Signal>
+                <Signal>i10/memory[502]</Signal>
+                <Signal>i10/memory[501]</Signal>
+                <Signal>i10/memory[500]</Signal>
+                <Signal>i10/memory[499]</Signal>
+                <Signal>i10/memory[498]</Signal>
+                <Signal>i10/memory[497]</Signal>
+                <Signal>i10/memory[496]</Signal>
+            </Bus>
+            <Bus capture_enable="true" name="i10/memory[495:488]">
+                <Signal>i10/memory[495]</Signal>
+                <Signal>i10/memory[494]</Signal>
+                <Signal>i10/memory[493]</Signal>
+                <Signal>i10/memory[492]</Signal>
+                <Signal>i10/memory[491]</Signal>
+                <Signal>i10/memory[490]</Signal>
+                <Signal>i10/memory[489]</Signal>
+                <Signal>i10/memory[488]</Signal>
+            </Bus>
+            <Bus capture_enable="true" name="i10/memory[487:480]">
+                <Signal>i10/memory[487]</Signal>
+                <Signal>i10/memory[486]</Signal>
+                <Signal>i10/memory[485]</Signal>
+                <Signal>i10/memory[484]</Signal>
+                <Signal>i10/memory[483]</Signal>
+                <Signal>i10/memory[482]</Signal>
+                <Signal>i10/memory[481]</Signal>
+                <Signal>i10/memory[480]</Signal>
+            </Bus>
+            <Bus capture_enable="true" name="i10/memory[479:472]">
+                <Signal>i10/memory[479]</Signal>
+                <Signal>i10/memory[478]</Signal>
+                <Signal>i10/memory[477]</Signal>
+                <Signal>i10/memory[476]</Signal>
+                <Signal>i10/memory[475]</Signal>
+                <Signal>i10/memory[474]</Signal>
+                <Signal>i10/memory[473]</Signal>
+                <Signal>i10/memory[472]</Signal>
+            </Bus>
+            <Bus capture_enable="false" name="i19/registers_data[159:152]">
+                <Signal>i19/registers_data[159]</Signal>
+                <Signal>i19/registers_data[158]</Signal>
+                <Signal>i19/registers_data[157]</Signal>
+                <Signal>i19/registers_data[156]</Signal>
+                <Signal>i19/registers_data[155]</Signal>
+                <Signal>i19/registers_data[154]</Signal>
+                <Signal>i19/registers_data[153]</Signal>
+                <Signal>i19/registers_data[152]</Signal>
+            </Bus>
+            <Bus capture_enable="false" name="i19/registers_data[151:144]">
+                <Signal>i19/registers_data[151]</Signal>
+                <Signal>i19/registers_data[150]</Signal>
+                <Signal>i19/registers_data[149]</Signal>
+                <Signal>i19/registers_data[148]</Signal>
+                <Signal>i19/registers_data[147]</Signal>
+                <Signal>i19/registers_data[146]</Signal>
+                <Signal>i19/registers_data[145]</Signal>
+                <Signal>i19/registers_data[144]</Signal>
+            </Bus>
+            <Bus capture_enable="false" name="i19/registers_data[143:136]">
+                <Signal>i19/registers_data[143]</Signal>
+                <Signal>i19/registers_data[142]</Signal>
+                <Signal>i19/registers_data[141]</Signal>
+                <Signal>i19/registers_data[140]</Signal>
+                <Signal>i19/registers_data[139]</Signal>
+                <Signal>i19/registers_data[138]</Signal>
+                <Signal>i19/registers_data[137]</Signal>
+                <Signal>i19/registers_data[136]</Signal>
+            </Bus>
+            <Bus capture_enable="false" name="i19/registers_data[135:128]">
+                <Signal>i19/registers_data[135]</Signal>
+                <Signal>i19/registers_data[134]</Signal>
+                <Signal>i19/registers_data[133]</Signal>
+                <Signal>i19/registers_data[132]</Signal>
+                <Signal>i19/registers_data[131]</Signal>
+                <Signal>i19/registers_data[130]</Signal>
+                <Signal>i19/registers_data[129]</Signal>
+                <Signal>i19/registers_data[128]</Signal>
+            </Bus>
+            <Bus capture_enable="false" name="i19/registers_data[127:120]">
+                <Signal>i19/registers_data[127]</Signal>
+                <Signal>i19/registers_data[126]</Signal>
+                <Signal>i19/registers_data[125]</Signal>
+                <Signal>i19/registers_data[124]</Signal>
+                <Signal>i19/registers_data[123]</Signal>
+                <Signal>i19/registers_data[122]</Signal>
+                <Signal>i19/registers_data[121]</Signal>
+                <Signal>i19/registers_data[120]</Signal>
+            </Bus>
+            <Bus capture_enable="false" name="i19/registers_data[119:112]">
+                <Signal>i19/registers_data[119]</Signal>
+                <Signal>i19/registers_data[118]</Signal>
+                <Signal>i19/registers_data[117]</Signal>
+                <Signal>i19/registers_data[116]</Signal>
+                <Signal>i19/registers_data[115]</Signal>
+                <Signal>i19/registers_data[114]</Signal>
+                <Signal>i19/registers_data[113]</Signal>
+                <Signal>i19/registers_data[112]</Signal>
+            </Bus>
+            <Bus capture_enable="false" name="i19/registers_data[111:104]">
+                <Signal>i19/registers_data[111]</Signal>
+                <Signal>i19/registers_data[110]</Signal>
+                <Signal>i19/registers_data[109]</Signal>
+                <Signal>i19/registers_data[108]</Signal>
+                <Signal>i19/registers_data[107]</Signal>
+                <Signal>i19/registers_data[106]</Signal>
+                <Signal>i19/registers_data[105]</Signal>
+                <Signal>i19/registers_data[104]</Signal>
+            </Bus>
+            <Bus capture_enable="false" name="i19/registers_data[103:96]">
+                <Signal>i19/registers_data[103]</Signal>
+                <Signal>i19/registers_data[102]</Signal>
+                <Signal>i19/registers_data[101]</Signal>
+                <Signal>i19/registers_data[100]</Signal>
+                <Signal>i19/registers_data[99]</Signal>
+                <Signal>i19/registers_data[98]</Signal>
+                <Signal>i19/registers_data[97]</Signal>
+                <Signal>i19/registers_data[96]</Signal>
+            </Bus>
+            <Bus capture_enable="false" name="i19/registers_data[95:88]">
+                <Signal>i19/registers_data[95]</Signal>
+                <Signal>i19/registers_data[94]</Signal>
+                <Signal>i19/registers_data[93]</Signal>
+                <Signal>i19/registers_data[92]</Signal>
+                <Signal>i19/registers_data[91]</Signal>
+                <Signal>i19/registers_data[90]</Signal>
+                <Signal>i19/registers_data[89]</Signal>
+                <Signal>i19/registers_data[88]</Signal>
+            </Bus>
+            <Bus capture_enable="false" name="i19/registers_data[87:80]">
+                <Signal>i19/registers_data[87]</Signal>
+                <Signal>i19/registers_data[86]</Signal>
+                <Signal>i19/registers_data[85]</Signal>
+                <Signal>i19/registers_data[84]</Signal>
+                <Signal>i19/registers_data[83]</Signal>
+                <Signal>i19/registers_data[82]</Signal>
+                <Signal>i19/registers_data[81]</Signal>
+                <Signal>i19/registers_data[80]</Signal>
+            </Bus>
+            <Bus capture_enable="false" name="i19/registers_data[79:72]">
+                <Signal>i19/registers_data[79]</Signal>
+                <Signal>i19/registers_data[78]</Signal>
+                <Signal>i19/registers_data[77]</Signal>
+                <Signal>i19/registers_data[76]</Signal>
+                <Signal>i19/registers_data[75]</Signal>
+                <Signal>i19/registers_data[74]</Signal>
+                <Signal>i19/registers_data[73]</Signal>
+                <Signal>i19/registers_data[72]</Signal>
+            </Bus>
+            <Bus capture_enable="false" name="i19/registers_data[71:64]">
+                <Signal>i19/registers_data[71]</Signal>
+                <Signal>i19/registers_data[70]</Signal>
+                <Signal>i19/registers_data[69]</Signal>
+                <Signal>i19/registers_data[68]</Signal>
+                <Signal>i19/registers_data[67]</Signal>
+                <Signal>i19/registers_data[66]</Signal>
+                <Signal>i19/registers_data[65]</Signal>
+                <Signal>i19/registers_data[64]</Signal>
+            </Bus>
+            <Bus capture_enable="false" name="i19/registers_data[319:312]">
+                <Signal>i19/registers_data[319]</Signal>
+                <Signal>i19/registers_data[318]</Signal>
+                <Signal>i19/registers_data[317]</Signal>
+                <Signal>i19/registers_data[316]</Signal>
+                <Signal>i19/registers_data[315]</Signal>
+                <Signal>i19/registers_data[314]</Signal>
+                <Signal>i19/registers_data[313]</Signal>
+                <Signal>i19/registers_data[312]</Signal>
+            </Bus>
+            <Bus capture_enable="false" name="i19/registers_data[311:304]">
+                <Signal>i19/registers_data[311]</Signal>
+                <Signal>i19/registers_data[310]</Signal>
+                <Signal>i19/registers_data[309]</Signal>
+                <Signal>i19/registers_data[308]</Signal>
+                <Signal>i19/registers_data[307]</Signal>
+                <Signal>i19/registers_data[306]</Signal>
+                <Signal>i19/registers_data[305]</Signal>
+                <Signal>i19/registers_data[304]</Signal>
+            </Bus>
+            <Bus capture_enable="false" name="i19/registers_data[303:296]">
+                <Signal>i19/registers_data[303]</Signal>
+                <Signal>i19/registers_data[302]</Signal>
+                <Signal>i19/registers_data[301]</Signal>
+                <Signal>i19/registers_data[300]</Signal>
+                <Signal>i19/registers_data[299]</Signal>
+                <Signal>i19/registers_data[298]</Signal>
+                <Signal>i19/registers_data[297]</Signal>
+                <Signal>i19/registers_data[296]</Signal>
+            </Bus>
+            <Bus capture_enable="false" name="i19/registers_data[295:288]">
+                <Signal>i19/registers_data[295]</Signal>
+                <Signal>i19/registers_data[294]</Signal>
+                <Signal>i19/registers_data[293]</Signal>
+                <Signal>i19/registers_data[292]</Signal>
+                <Signal>i19/registers_data[291]</Signal>
+                <Signal>i19/registers_data[290]</Signal>
+                <Signal>i19/registers_data[289]</Signal>
+                <Signal>i19/registers_data[288]</Signal>
+            </Bus>
+            <Bus capture_enable="false" name="i19/registers_data[287:280]">
+                <Signal>i19/registers_data[287]</Signal>
+                <Signal>i19/registers_data[286]</Signal>
+                <Signal>i19/registers_data[285]</Signal>
+                <Signal>i19/registers_data[284]</Signal>
+                <Signal>i19/registers_data[283]</Signal>
+                <Signal>i19/registers_data[282]</Signal>
+                <Signal>i19/registers_data[281]</Signal>
+                <Signal>i19/registers_data[280]</Signal>
+            </Bus>
+            <Bus capture_enable="false" name="i19/registers_data[279:272]">
+                <Signal>i19/registers_data[279]</Signal>
+                <Signal>i19/registers_data[278]</Signal>
+                <Signal>i19/registers_data[277]</Signal>
+                <Signal>i19/registers_data[276]</Signal>
+                <Signal>i19/registers_data[275]</Signal>
+                <Signal>i19/registers_data[274]</Signal>
+                <Signal>i19/registers_data[273]</Signal>
+                <Signal>i19/registers_data[272]</Signal>
+            </Bus>
+            <Bus capture_enable="false" name="i19/registers_data[271:264]">
+                <Signal>i19/registers_data[271]</Signal>
+                <Signal>i19/registers_data[270]</Signal>
+                <Signal>i19/registers_data[269]</Signal>
+                <Signal>i19/registers_data[268]</Signal>
+                <Signal>i19/registers_data[267]</Signal>
+                <Signal>i19/registers_data[266]</Signal>
+                <Signal>i19/registers_data[265]</Signal>
+                <Signal>i19/registers_data[264]</Signal>
+            </Bus>
+            <Bus capture_enable="false" name="i19/registers_data[263:256]">
+                <Signal>i19/registers_data[263]</Signal>
+                <Signal>i19/registers_data[262]</Signal>
+                <Signal>i19/registers_data[261]</Signal>
+                <Signal>i19/registers_data[260]</Signal>
+                <Signal>i19/registers_data[259]</Signal>
+                <Signal>i19/registers_data[258]</Signal>
+                <Signal>i19/registers_data[257]</Signal>
+                <Signal>i19/registers_data[256]</Signal>
+            </Bus>
+            <Bus capture_enable="false" name="i19/registers_data[255:248]">
+                <Signal>i19/registers_data[255]</Signal>
+                <Signal>i19/registers_data[254]</Signal>
+                <Signal>i19/registers_data[253]</Signal>
+                <Signal>i19/registers_data[252]</Signal>
+                <Signal>i19/registers_data[251]</Signal>
+                <Signal>i19/registers_data[250]</Signal>
+                <Signal>i19/registers_data[249]</Signal>
+                <Signal>i19/registers_data[248]</Signal>
+            </Bus>
+            <Bus capture_enable="false" name="i19/registers_data[247:240]">
+                <Signal>i19/registers_data[247]</Signal>
+                <Signal>i19/registers_data[246]</Signal>
+                <Signal>i19/registers_data[245]</Signal>
+                <Signal>i19/registers_data[244]</Signal>
+                <Signal>i19/registers_data[243]</Signal>
+                <Signal>i19/registers_data[242]</Signal>
+                <Signal>i19/registers_data[241]</Signal>
+                <Signal>i19/registers_data[240]</Signal>
+            </Bus>
+            <Bus capture_enable="false" name="i19/registers_data[239:232]">
+                <Signal>i19/registers_data[239]</Signal>
+                <Signal>i19/registers_data[238]</Signal>
+                <Signal>i19/registers_data[237]</Signal>
+                <Signal>i19/registers_data[236]</Signal>
+                <Signal>i19/registers_data[235]</Signal>
+                <Signal>i19/registers_data[234]</Signal>
+                <Signal>i19/registers_data[233]</Signal>
+                <Signal>i19/registers_data[232]</Signal>
+            </Bus>
+            <Bus capture_enable="false" name="i19/registers_data[231:224]">
+                <Signal>i19/registers_data[231]</Signal>
+                <Signal>i19/registers_data[230]</Signal>
+                <Signal>i19/registers_data[229]</Signal>
+                <Signal>i19/registers_data[228]</Signal>
+                <Signal>i19/registers_data[227]</Signal>
+                <Signal>i19/registers_data[226]</Signal>
+                <Signal>i19/registers_data[225]</Signal>
+                <Signal>i19/registers_data[224]</Signal>
+            </Bus>
+            <Bus capture_enable="false" name="i19/registers_data[223:216]">
+                <Signal>i19/registers_data[223]</Signal>
+                <Signal>i19/registers_data[222]</Signal>
+                <Signal>i19/registers_data[221]</Signal>
+                <Signal>i19/registers_data[220]</Signal>
+                <Signal>i19/registers_data[219]</Signal>
+                <Signal>i19/registers_data[218]</Signal>
+                <Signal>i19/registers_data[217]</Signal>
+                <Signal>i19/registers_data[216]</Signal>
+            </Bus>
+            <Bus capture_enable="false" name="i19/registers_data[215:208]">
+                <Signal>i19/registers_data[215]</Signal>
+                <Signal>i19/registers_data[214]</Signal>
+                <Signal>i19/registers_data[213]</Signal>
+                <Signal>i19/registers_data[212]</Signal>
+                <Signal>i19/registers_data[211]</Signal>
+                <Signal>i19/registers_data[210]</Signal>
+                <Signal>i19/registers_data[209]</Signal>
+                <Signal>i19/registers_data[208]</Signal>
+            </Bus>
+            <Bus capture_enable="false" name="i19/registers_data[207:200]">
+                <Signal>i19/registers_data[207]</Signal>
+                <Signal>i19/registers_data[206]</Signal>
+                <Signal>i19/registers_data[205]</Signal>
+                <Signal>i19/registers_data[204]</Signal>
+                <Signal>i19/registers_data[203]</Signal>
+                <Signal>i19/registers_data[202]</Signal>
+                <Signal>i19/registers_data[201]</Signal>
+                <Signal>i19/registers_data[200]</Signal>
+            </Bus>
         </SignalList>
         <Triggers>
             <Trigger index="0">
@@ -57,7 +517,23 @@
                     </Bus>
                 </SignalList>
             </Trigger>
-            <Trigger index="1"/>
+            <Trigger index="1">
+                <SignalList>
+                    <Bus restorename="rom_pc[10:0]">
+                        <Signal>rom_pc[10]</Signal>
+                        <Signal>rom_pc[9]</Signal>
+                        <Signal>rom_pc[8]</Signal>
+                        <Signal>rom_pc[7]</Signal>
+                        <Signal>rom_pc[6]</Signal>
+                        <Signal>rom_pc[5]</Signal>
+                        <Signal>rom_pc[4]</Signal>
+                        <Signal>rom_pc[3]</Signal>
+                        <Signal>rom_pc[2]</Signal>
+                        <Signal>rom_pc[1]</Signal>
+                        <Signal>rom_pc[0]</Signal>
+                    </Bus>
+                </SignalList>
+            </Trigger>
             <Trigger index="2"/>
             <Trigger index="3"/>
             <Trigger index="4"/>
@@ -74,8 +550,8 @@
             <Trigger index="15"/>
         </Triggers>
         <MatchUnits>
-            <MatchUnit index="0" enabled="1" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="11111111111" value1="00000000000" trigger="0"/>
-            <MatchUnit index="1" enabled="0" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="" value1=""/>
+            <MatchUnit index="0" enabled="1" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="00001110001" value1="00000000000" trigger="0"/>
+            <MatchUnit index="1" enabled="0" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="00000110000" value1="00000000000" trigger="1"/>
             <MatchUnit index="2" enabled="0" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="" value1=""/>
             <MatchUnit index="3" enabled="0" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="" value1=""/>
             <MatchUnit index="4" enabled="0" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="" value1=""/>
@@ -95,5 +571,5 @@
             <Expression>M0</Expression>
         </Expressions>
     </AoCore>
-    <GAO_ID>1110110001011111</GAO_ID>
+    <GAO_ID>0110001101100000</GAO_ID>
 </GAO_CONFIG>
