@@ -88,3 +88,13 @@ x+1
 then and with 00000001
 next byte and from the start
 
+
+for _ range 3: // 3 bytes
+    i = addr of or
+    for _ rage 2: // 2 rows
+        for _ range 4: // 4 columns
+            do AND with addr[i]
+            i ++
+            x ++
+        y ++
+        

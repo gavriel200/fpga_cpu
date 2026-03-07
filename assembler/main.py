@@ -185,6 +185,10 @@ def main():
                 params = line.strip().split("=")
                 if len(params) != 2:
                     raise ValueError(f"bad number of params on line - {line}")
+                if params[0].strip().replace("$", "") in replace_params:
+                    raise ValueError(
+                        f"param {params[0].strip().replace('$', '')} already in use - {line}"
+                    )
                 replace_params[params[0].strip().replace("$", "")] = params[1].strip()
 
     for line in lines:
