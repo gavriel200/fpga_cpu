@@ -1,4 +1,20 @@
-$test = 6
-$ gaa = 3
-LDR R1, test / gaa
-LDR R0, 1+2
+LDR R1, 3
+LDR R2, 4
+LDR R3, 5
+LDR R4, 6
+LDR R5, 7
+
+LDR R0, 5
+SUB R0, R1
+
+LDR R0, 5
+SUB R0, R2
+
+LDR R0, 5
+SUB R0, R3
+
+LDR R0, 5
+SUB R0, R4
+
+LDR R0, 5
+SUB R0, R5

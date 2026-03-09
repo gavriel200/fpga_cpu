@@ -6,7 +6,7 @@ CAL @clean_screen
 CAL @init_draw
 
 
-WD p_symbol_addr, 62
+WD p_symbol_addr, 17
 WD p_x_axis_addr, 5
 WD p_y_axis_addr, 5
 

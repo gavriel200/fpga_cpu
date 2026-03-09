@@ -17,6 +17,16 @@
                 <Signal>rom_pc[1]</Signal>
                 <Signal>rom_pc[0]</Signal>
             </Bus>
+            <Bus capture_enable="true" name="i26/instruction[7:0]">
+                <Signal>i26/instruction[7]</Signal>
+                <Signal>i26/instruction[6]</Signal>
+                <Signal>i26/instruction[5]</Signal>
+                <Signal>i26/instruction[4]</Signal>
+                <Signal>i26/instruction[3]</Signal>
+                <Signal>i26/instruction[2]</Signal>
+                <Signal>i26/instruction[1]</Signal>
+                <Signal>i26/instruction[0]</Signal>
+            </Bus>
             <Bus capture_enable="true" name="i26/arg_a[7:0]">
                 <Signal>i26/arg_a[7]</Signal>
                 <Signal>i26/arg_a[6]</Signal>
@@ -37,6 +47,8 @@
                 <Signal>i26/arg_b[1]</Signal>
                 <Signal>i26/arg_b[0]</Signal>
             </Bus>
+            <Signal capture_enable="true">flags_z</Signal>
+            <Signal capture_enable="true">flags_c</Signal>
             <Bus capture_enable="true" name="R7" restorename="i21/registers_data[63:56]">
                 <Signal>i21/registers_data[63]</Signal>
                 <Signal>i21/registers_data[62]</Signal>
@@ -169,8 +181,8 @@
             <Trigger index="15"/>
         </Triggers>
         <MatchUnits>
-            <MatchUnit index="0" enabled="1" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="00000110001" value1="00000000000" trigger="0"/>
-            <MatchUnit index="1" enabled="0" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="00000000001" value1="00000000000" trigger="1"/>
+            <MatchUnit index="0" enabled="0" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="00000110001" value1="00000000000" trigger="0"/>
+            <MatchUnit index="1" enabled="1" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="00000000001" value1="00000000000" trigger="1"/>
             <MatchUnit index="2" enabled="0" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="" value1=""/>
             <MatchUnit index="3" enabled="0" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="" value1=""/>
             <MatchUnit index="4" enabled="0" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="" value1=""/>
@@ -187,8 +199,8 @@
             <MatchUnit index="15" enabled="0" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="" value1=""/>
         </MatchUnits>
         <Expressions type="Static">
-            <Expression>M0</Expression>
+            <Expression>M1</Expression>
         </Expressions>
     </AoCore>
-    <GAO_ID>0010111001001000</GAO_ID>
+    <GAO_ID>1101011101011101</GAO_ID>
 </GAO_CONFIG>

@@ -13,7 +13,7 @@ $r_y_axis_com=R1
 LDR r_y_axis_com, 32
 
 $r_pixel_color=RFBD
-$pixel_color=8
+$pixel_color=0
 
 $r_framebuffer_e=RFBE
 

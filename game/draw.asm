@@ -55,22 +55,22 @@ WD draw_base_addr + 35, 175
 WD draw_base_addr + 36, 153
 WD draw_base_addr + 37, 233
 WD draw_base_addr + 38, 153
-// diamond
-WD draw_base_addr + 39, 90
-WD draw_base_addr + 40, 90
-WD draw_base_addr + 41, 90
-// heart
-WD draw_base_addr + 42, 95
-WD draw_base_addr + 43, 255
-WD draw_base_addr + 44, 114
 // club
-WD draw_base_addr + 45, 39
-WD draw_base_addr + 46, 247
-WD draw_base_addr + 47, 34
+WD draw_base_addr + 39, 39
+WD draw_base_addr + 40, 247
+WD draw_base_addr + 41, 34
 // spade
-WD draw_base_addr + 48, 90
-WD draw_base_addr + 49, 90
-WD draw_base_addr + 50, 90
+WD draw_base_addr + 42, 90
+WD draw_base_addr + 43, 90
+WD draw_base_addr + 44, 90
+// diamond
+WD draw_base_addr + 45, 90
+WD draw_base_addr + 46, 90
+WD draw_base_addr + 47, 90
+// heart
+WD draw_base_addr + 48, 95
+WD draw_base_addr + 49, 255
+WD draw_base_addr + 50, 114
 
 // AND logic
 $draw_and_logic_addr=110
@@ -91,7 +91,6 @@ $p_x_axis_addr=57
 $p_y_axis_addr=58
 
 
-LDR r_pixel_color, 1
 
 $r_current_byte=R0
 $r_current_byte_addr=R1
@@ -108,6 +107,21 @@ RR r_y_axis, p_y_axis_addr
 DEC r_y_axis
 
 RR r_current_byte_addr, p_symbol_addr
+
+LDR r_com, 16
+SUB r_current_byte_addr, r_com
+LDR r_pixel_color, 8
+JC @color_red
+LDR r_pixel_color, 1
+&color_red:
+
+RR r_current_byte_addr, p_symbol_addr
+LD r_com, r_current_byte_addr
+// symbol * 3 + 59 - 3
+ADD r_current_byte_addr, r_com
+ADD r_current_byte_addr, r_com
+LDR r_com, 59 - 3
+ADD r_current_byte_addr, r_com
 
 LDR r_com, 0
 
