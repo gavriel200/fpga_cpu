@@ -47,7 +47,9 @@ module decoder (
     output reg [7:0] ram_addr,
 
     // interrupt
-    output reg interrupt_clear_status
+    output reg interrupt_clear_status,
+    output reg stall,
+    input stall_reg
 );
 
   wire [7:0] instruction = rom_data[23:16];
@@ -77,6 +79,7 @@ module decoder (
     ram_w_data             = 0;
     ram_addr               = 0;
     interrupt_clear_status = 0;
+    stall                  = 0;
 
     case (instruction)
       NOP: begin
@@ -264,12 +267,28 @@ module decoder (
       end
 
       RR: begin
-        registers_w_enable = 1;
-        registers_w_addr   = arg_a[5:0];
-        ram_addr           = arg_b;
+        ram_addr = arg_b;
 
-        registers_w_data   = ram_r_data;
+        if (!stall_reg) begin
+          stall = 1;
+        end else begin
+          registers_w_enable = 1;
+          registers_w_addr   = arg_a[5:0];
+          registers_w_data   = ram_r_data;
+        end
       end
+
+
+      // RR: begin
+      //   ram_addr = arg_b;
+
+      //   if (!stall_reg) begin
+      //     stall = 1;
+      //     registers_w_enable = 1;
+      //     registers_w_addr = arg_a[5:0];
+      //     registers_w_data = ram_r_data;
+      //   end
+      // end
 
       RWR: begin
         registers_r_addr_a = arg_a[5:0];
@@ -290,14 +309,29 @@ module decoder (
       end
 
       RRR: begin
-        registers_w_addr   = arg_a[5:0];
         registers_r_addr_a = arg_b[5:0];
-
-        registers_w_enable = 1;
         ram_addr           = registers_r_data_a;
 
-        registers_w_data   = ram_r_data;
+        if (!stall_reg) begin
+          stall = 1;
+        end else begin
+          registers_w_enable = 1;
+          registers_w_addr   = arg_a[5:0];
+          registers_w_data   = ram_r_data;
+        end
       end
+
+      // RRR: begin
+      //   registers_r_addr_a = arg_b[5:0];
+      //   ram_addr           = registers_r_data_a;
+
+      //   if (!stall_reg) begin
+      //     stall = 1;
+      //     registers_w_enable = 1;
+      //     registers_w_addr = arg_a[5:0];
+      //     registers_w_data = ram_r_data;
+      //   end
+      // end
 
       CIS: begin
         interrupt_clear_status = 1;

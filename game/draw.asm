@@ -2,6 +2,7 @@
 // init for the drawing
 // load all the symbols:
 $draw_base_addr=59
+&init_draw:
 // 1
 WD draw_base_addr, 34
 WD draw_base_addr + 1, 34
@@ -73,14 +74,16 @@ WD draw_base_addr + 50, 90
 
 // AND logic
 $draw_and_logic_addr=110
-WD draw_and_logic_addr, 1
-WD draw_and_logic_addr + 1, 2
-WD draw_and_logic_addr + 2, 4
-WD draw_and_logic_addr + 3, 8
-WD draw_and_logic_addr + 4, 16
-WD draw_and_logic_addr + 5, 32
-WD draw_and_logic_addr + 6, 64
-WD draw_and_logic_addr + 7, 128
+WD draw_and_logic_addr, 128
+WD draw_and_logic_addr + 1, 64
+WD draw_and_logic_addr + 2, 32
+WD draw_and_logic_addr + 3, 16
+WD draw_and_logic_addr + 4, 8
+WD draw_and_logic_addr + 5, 4
+WD draw_and_logic_addr + 6, 2
+WD draw_and_logic_addr + 7, 1
+RTN
+
 
 &draw_symbol:
 $p_symbol_addr=56
@@ -118,6 +121,7 @@ LDR r_row_counter, 2
 RRR r_current_byte, r_current_byte_addr
 LDR r_current_and_logic_addr, draw_and_logic_addr
 
+INC r_current_byte_addr
 DEC r_byte_counter
 
 &row_loop:

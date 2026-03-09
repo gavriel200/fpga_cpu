@@ -103,7 +103,14 @@ module top (
   );
 
 
-  reg            rom_enable = 1;
+  wire stall;
+  reg  stall_reg;
+
+  always @(posedge clk) begin
+    stall_reg <= stall;
+  end
+
+  assign rom_enable = !stall;
   wire [8*3-1:0] rom_data;
   wire [   10:0] rom_pc;
   wire           rom_jump_enable;
@@ -129,7 +136,7 @@ module top (
   wire [7:0] ram_r_data;
   ram(
       .clk(clk),
-      .rst(rst),
+      //   .rst(rst),
       .addr(ram_addr),
       .w_enable(ram_w_enable),
       .w_data(ram_w_data),
@@ -319,8 +326,12 @@ module top (
       .ram_w_data(ram_w_data),
       .ram_r_data(ram_r_data),
       .ram_addr(ram_addr),
-      .interrupt_clear_status(interrupt_clear_status)
+      .interrupt_clear_status(interrupt_clear_status),
+      .stall(stall),
+      .stall_reg(stall_reg)
   );
+
+
 
 endmodule
 

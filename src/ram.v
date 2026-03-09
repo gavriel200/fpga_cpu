@@ -1,23 +1,26 @@
 module ram (
     input clk,
-    input rst,
 
     input [7:0] addr,
 
     input       w_enable,
     input [7:0] w_data,
 
-    output [7:0] r_data
+    output reg [7:0] r_data
 );
-  reg [8*256-1:0] memory;
 
-  assign r_data = memory[addr*8+:8];
+  (* ram_style = "block" *)
+  reg [7:0] memory[0:255];
+
+
+  // assign r_data = memory[addr*8+:8];
 
   always @(posedge clk) begin
-    if (rst) begin
-      memory <= 0;
-    end else if (w_enable) begin
-      memory[addr*8+:8] <= w_data;
+    if (w_enable) begin
+      memory[addr] <= w_data;
     end
+
+    r_data <= memory[addr];
   end
+
 endmodule
