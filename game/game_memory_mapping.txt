@@ -10,11 +10,12 @@
 | used as or with a card on init
 
 [56:117] draw card on screen logic
-[56:58] input params:
+[56:59] input params:
 | [56] value (address of the element to draw)
 | [57] starting x axis
 | [58] starting y axis
-[59:109] elements to draw pixels
+| [59] pixel color
+[60:149] elements to draw pixels
 | struct [0:23] 3 bytes:
 | [0:3]   first row
 | [4:7]   second row
@@ -22,5 +23,5 @@
 | [12:15] forth row
 | [16:19] fifth row
 | [20:23] sixth row
-[110:117] and logic
+[150:157] and logic
 | struct [0:7] having the relevant bit be 1 for AND

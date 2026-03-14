@@ -190,7 +190,6 @@ def main():
                 lines.append(line)
 
     for line in lines:
-        print(line)
         if line.strip().startswith("$"):
             if "=" not in line.strip():
                 raise ValueError(f"bad param on line - {line}")
