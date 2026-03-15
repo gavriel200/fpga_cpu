@@ -235,8 +235,12 @@ def main():
 
     write_pc = 0
     for i in instructions:
-        i.write(write_pc)
-        write_pc += 1
+        try:
+            i.write(write_pc)
+            write_pc += 1
+        except Exception as e:
+            print(i)
+            raise e
 
 
 if __name__ == "__main__":

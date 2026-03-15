@@ -9,7 +9,7 @@
 | [1:2] suit value
 | used as or with a card on init
 
-[56:117] draw card on screen logic
+[56:157] draw card on screen logic
 [56:59] input params:
 | [56] value (address of the element to draw)
 | [57] starting x axis
@@ -25,3 +25,19 @@
 | [20:23] sixth row
 [150:157] and logic
 | struct [0:7] having the relevant bit be 1 for AND
+
+(max hand)
+1 + 1 + 1 + 1 (4Xaces) + 2 + 2 + 2 + 2 (4X2) + 3 + 3 + 3 (3X3) = 21 (value) | len (11)
+≈ 1 in 39.5 billion
+
+[158:171] player hand
+| [158] len
+| [159:170] cards
+| [171] value
+
+[172:184] dealer hand
+| [172] len
+| [183] cards
+| [184] value
+
+[185] state

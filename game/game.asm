@@ -1,9 +1,11 @@
 NOP
 
+CAL @clean_ram
 CAL @init_suits
 CAL @init_cards
 CAL @clean_screen
 CAL @init_draw
+CAL @init_card_select
 
 
 WD p_symbol_addr, symbol_K
@@ -38,8 +40,10 @@ CAL @draw_symbol
 
 JMP @done
 
+import game/clean_ram.asm
 import game/cards.asm
 import game/screen.asm
 import game/draw.asm
+import game/card_select.asm
 
 &done:

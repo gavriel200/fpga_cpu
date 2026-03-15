@@ -45,6 +45,8 @@ states:
     else go to choose 
 
 - player choose to ether stay or hit
+    draw stay or hit on screen
+
     wait for button press
 
     if stay go to dealer turn
@@ -58,6 +60,8 @@ states:
     else go back to player choose to ether stay or hit
 
 - dealer turn
+    clean the drawing of hit or stay
+
     if dealer has more then 21 go to win
     if dealer has more then player go to lose
     else check if dealer has less then 17

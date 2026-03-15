@@ -192,6 +192,9 @@ class BaseInstruction:
                     str(int(eval(arg))), 10
                 ) & 0xFF
 
+    def __str__(self):
+        return f"arg a={self.arg1}, arg b={self.arg2}\n{self.line}"
+
 
 class BaseTwoRegistersInstruction(BaseInstruction):
     arg_num = 2
@@ -360,7 +363,7 @@ class Rwr(BaseTwoRegistersInstruction):
     instruction_id = Instruction.RWR
 
 
-class Rwd(BaseTwoRegistersInstruction):
+class Rwd(BaseOneRegisterOneNumberInstruction):
     instruction_id = Instruction.RWD
 
 
