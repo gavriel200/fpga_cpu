@@ -35,9 +35,9 @@
 | [159:170] cards
 | [171] value
 
-[172:184] dealer hand
+[172:185] dealer hand
 | [172] len
-| [183] cards
-| [184] value
+| [173:184] cards
+| [185] value
 
-[185] state
+[186] state
