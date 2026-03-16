@@ -15,6 +15,11 @@ module registers (
     output [7:0] r_data_a,
     output [7:0] r_data_b,
 
+    // cal stack
+    input           registers_from_stack_enable,
+    input  [64-1:0] registers_pop_data,
+    output [64-1:0] registers_push_data,
+
     // random
     output [7:0] random_min,
     output [7:0] random_max,
@@ -59,6 +64,8 @@ module registers (
   assign r_data_a                  = read_reg(r_addr_a);
   assign r_data_b                  = read_reg(r_addr_b);
 
+  assign registers_push_data       = registers_data[0+:64];
+
   // random
   assign random_min                = registers_data[RNDMIN*8+:8];
   assign random_max                = registers_data[RNDMAX*8+:8];
@@ -84,6 +91,8 @@ module registers (
   always @(posedge clk) begin
     if (rst) begin
       registers_data <= 0;
+    end else if (registers_from_stack_enable) begin
+      registers_data[0+:64] <= registers_pop_data;
     end else if (w_enable && !is_readonly(w_addr)) begin
       registers_data[w_addr*8+:8] <= w_data;
     end

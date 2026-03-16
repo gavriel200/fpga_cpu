@@ -8,6 +8,8 @@ module decoder (
     output reg [10:0] rom_jump_data,
 
     // registers
+    output reg registers_from_stack_enable,
+
     output reg       registers_w_enable,
     output reg [5:0] registers_w_addr,
     output reg [7:0] registers_w_data,
@@ -58,28 +60,29 @@ module decoder (
 
   always @(*) begin
     // default values (avoid latches)
-    rom_jump_enable        = 0;
-    rom_jump_data          = 0;
-    registers_w_enable     = 0;
-    registers_w_addr       = 0;
-    registers_w_data       = 0;
-    registers_r_addr_a     = 0;
-    registers_r_addr_b     = 0;
-    flags_w_enable         = 0;
-    alu_operation          = 0;
-    alu_A                  = 0;
-    alu_B                  = 0;
-    stack_push_enable      = 0;
-    stack_push_data        = 0;
-    stack_pop_enable       = 0;
-    pc_stack_push_enable   = 0;
-    pc_stack_push_data     = 0;
-    pc_stack_pop_enable    = 0;
-    ram_w_enable           = 0;
-    ram_w_data             = 0;
-    ram_addr               = 0;
-    interrupt_clear_status = 0;
-    stall                  = 0;
+    rom_jump_enable             = 0;
+    registers_from_stack_enable = 0;
+    rom_jump_data               = 0;
+    registers_w_enable          = 0;
+    registers_w_addr            = 0;
+    registers_w_data            = 0;
+    registers_r_addr_a          = 0;
+    registers_r_addr_b          = 0;
+    flags_w_enable              = 0;
+    alu_operation               = 0;
+    alu_A                       = 0;
+    alu_B                       = 0;
+    stack_push_enable           = 0;
+    stack_push_data             = 0;
+    stack_pop_enable            = 0;
+    pc_stack_push_enable        = 0;
+    pc_stack_push_data          = 0;
+    pc_stack_pop_enable         = 0;
+    ram_w_enable                = 0;
+    ram_w_data                  = 0;
+    ram_addr                    = 0;
+    interrupt_clear_status      = 0;
+    stall                       = 0;
 
     case (instruction)
       NOP: begin
@@ -245,10 +248,11 @@ module decoder (
       end
 
       RTN: begin
-        pc_stack_pop_enable = 1;
+        pc_stack_pop_enable         = 1;
 
-        rom_jump_enable  = 1;
-        rom_jump_data    = pc_stack_pop_data;
+        registers_from_stack_enable = 1;
+        rom_jump_enable             = 1;
+        rom_jump_data               = pc_stack_pop_data;
       end
 
       WR: begin
@@ -277,18 +281,6 @@ module decoder (
           registers_w_data   = ram_r_data;
         end
       end
-
-
-      // RR: begin
-      //   ram_addr = arg_b;
-
-      //   if (!stall_reg) begin
-      //     stall = 1;
-      //     registers_w_enable = 1;
-      //     registers_w_addr = arg_a[5:0];
-      //     registers_w_data = ram_r_data;
-      //   end
-      // end
 
       RWR: begin
         registers_r_addr_a = arg_a[5:0];
@@ -320,18 +312,6 @@ module decoder (
           registers_w_data   = ram_r_data;
         end
       end
-
-      // RRR: begin
-      //   registers_r_addr_a = arg_b[5:0];
-      //   ram_addr           = registers_r_data_a;
-
-      //   if (!stall_reg) begin
-      //     stall = 1;
-      //     registers_w_enable = 1;
-      //     registers_w_addr = arg_a[5:0];
-      //     registers_w_data = ram_r_data;
-      //   end
-      // end
 
       CIS: begin
         interrupt_clear_status = 1;

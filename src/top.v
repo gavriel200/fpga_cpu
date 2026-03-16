@@ -189,14 +189,17 @@ module top (
       .button_3_interrupt(button_3_interrupt)
   );
 
-  wire       registers_w_enable;
-  wire [5:0] registers_w_addr;
-  wire [7:0] registers_w_data;
-  wire [5:0] registers_r_addr_a;
-  wire [5:0] registers_r_addr_b;
-  wire [7:0] registers_r_data_a;
-  wire [7:0] registers_r_data_b;
-  wire [4:0] leds;
+  wire          registers_w_enable;
+  wire [   5:0] registers_w_addr;
+  wire [   7:0] registers_w_data;
+  wire [   5:0] registers_r_addr_a;
+  wire [   5:0] registers_r_addr_b;
+  wire [   7:0] registers_r_data_a;
+  wire [   7:0] registers_r_data_b;
+  wire          registers_from_stack_enable;
+  wire [64-1:0] registers_pop_data;
+  wire [64-1:0] registers_push_data;
+  wire [   4:0] leds;
   assign led0 = !leds[0];
   assign led1 = !leds[1];
   assign led2 = !leds[2];
@@ -212,6 +215,9 @@ module top (
       .r_addr_b(registers_r_addr_b),
       .r_data_a(registers_r_data_a),
       .r_data_b(registers_r_data_b),
+      .registers_from_stack_enable(registers_from_stack_enable),
+      .registers_pop_data(registers_pop_data),
+      .registers_push_data(registers_push_data),
       .random_min(random_min),
       .random_max(random_max),
       .random_w_enable(random_w_enable),
@@ -277,8 +283,10 @@ module top (
       .rst(rst),
       .push_enable(pc_stack_push_enable),
       .push_data(pc_stack_push_data),
+      .registers_push_data(registers_push_data),
       .pop_enable(pc_stack_pop_enable),
-      .pop_data(pc_stack_pop_data)
+      .pop_data(pc_stack_pop_data),
+      .registers_pop_data(registers_pop_data)
   );
 
   wire stack_push_enable;
@@ -300,6 +308,7 @@ module top (
       .rom_pc(rom_pc),
       .rom_jump_enable(rom_jump_enable),
       .rom_jump_data(rom_jump_data),
+      .registers_from_stack_enable(registers_from_stack_enable),
       .registers_w_enable(registers_w_enable),
       .registers_w_addr(registers_w_addr),
       .registers_w_data(registers_w_data),
