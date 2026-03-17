@@ -61,7 +61,7 @@ RTN
 ===============================
 ===============================
 
-$r_random_value=RNDRANGE
+$r_get_random_random_value=RNDRANGE
 
 $r_get_random_card_index=R0
 $r_get_random_card_value=R1
@@ -72,7 +72,7 @@ $r_get_random_card_taken_card=R2
 &get_random_card:
 LDR r_get_random_card_taken_card, taken
 
-LD r_get_random_card_index, r_random_value
+LD r_get_random_card_index, r_get_random_random_value
 DEC r_get_random_card_index
 
 RRR r_get_random_card_value, r_get_random_card_index

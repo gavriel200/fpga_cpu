@@ -12,9 +12,11 @@ module random (
     output     [7:0] range
 );
   always @(posedge clk) begin
-    if (rst) begin
-      raw <= 0;
-    end else if (w_enable) begin
+    // if (rst) begin
+    //   raw <= 0;
+    // end else
+    // try so that the random will keep changing after we do reset for testing
+    if (w_enable) begin
       raw <= seed;
     end else begin
       raw <= {raw[6:0], raw[7] ^ raw[5] ^ raw[4] ^ raw[3]};
