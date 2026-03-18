@@ -163,4 +163,5 @@ WD draw_and_logic_addr + 4, 8
 WD draw_and_logic_addr + 5, 4
 WD draw_and_logic_addr + 6, 2
 WD draw_and_logic_addr + 7, 1
+&init_draw_done:
 RTN

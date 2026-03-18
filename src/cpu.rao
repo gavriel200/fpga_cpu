@@ -4,7 +4,50 @@
     <Mode>Standard</Mode>
     <AoCore index="0" sample_clock="clk" trig_type="0" storage_depth="1024" window_num="1" capture_amount="1024" implementation="0" trigger_pos="0" module_name="top" force_trigger_by_falling_edge="false" capture_init_data_enabled="false">
         <SignalList>
-            <Bus capture_enable="true" name="i21/registers_data[63:56]">
+            <Bus capture_enable="true" name="PC" restorename="rom_pc[10:0]">
+                <Signal>rom_pc[10]</Signal>
+                <Signal>rom_pc[9]</Signal>
+                <Signal>rom_pc[8]</Signal>
+                <Signal>rom_pc[7]</Signal>
+                <Signal>rom_pc[6]</Signal>
+                <Signal>rom_pc[5]</Signal>
+                <Signal>rom_pc[4]</Signal>
+                <Signal>rom_pc[3]</Signal>
+                <Signal>rom_pc[2]</Signal>
+                <Signal>rom_pc[1]</Signal>
+                <Signal>rom_pc[0]</Signal>
+            </Bus>
+            <Bus capture_enable="true" name="instruction" restorename="i26/instruction[7:0]">
+                <Signal>i26/instruction[7]</Signal>
+                <Signal>i26/instruction[6]</Signal>
+                <Signal>i26/instruction[5]</Signal>
+                <Signal>i26/instruction[4]</Signal>
+                <Signal>i26/instruction[3]</Signal>
+                <Signal>i26/instruction[2]</Signal>
+                <Signal>i26/instruction[1]</Signal>
+                <Signal>i26/instruction[0]</Signal>
+            </Bus>
+            <Bus capture_enable="true" name="arg_a" restorename="i26/arg_a[7:0]">
+                <Signal>i26/arg_a[7]</Signal>
+                <Signal>i26/arg_a[6]</Signal>
+                <Signal>i26/arg_a[5]</Signal>
+                <Signal>i26/arg_a[4]</Signal>
+                <Signal>i26/arg_a[3]</Signal>
+                <Signal>i26/arg_a[2]</Signal>
+                <Signal>i26/arg_a[1]</Signal>
+                <Signal>i26/arg_a[0]</Signal>
+            </Bus>
+            <Bus capture_enable="true" name="arg_b" restorename="i26/arg_b[7:0]">
+                <Signal>i26/arg_b[7]</Signal>
+                <Signal>i26/arg_b[6]</Signal>
+                <Signal>i26/arg_b[5]</Signal>
+                <Signal>i26/arg_b[4]</Signal>
+                <Signal>i26/arg_b[3]</Signal>
+                <Signal>i26/arg_b[2]</Signal>
+                <Signal>i26/arg_b[1]</Signal>
+                <Signal>i26/arg_b[0]</Signal>
+            </Bus>
+            <Bus capture_enable="true" name="R7" restorename="i21/registers_data[63:56]">
                 <Signal>i21/registers_data[63]</Signal>
                 <Signal>i21/registers_data[62]</Signal>
                 <Signal>i21/registers_data[61]</Signal>
@@ -14,7 +57,7 @@
                 <Signal>i21/registers_data[57]</Signal>
                 <Signal>i21/registers_data[56]</Signal>
             </Bus>
-            <Bus capture_enable="true" name="i21/registers_data[55:48]">
+            <Bus capture_enable="true" name="R6" restorename="i21/registers_data[55:48]">
                 <Signal>i21/registers_data[55]</Signal>
                 <Signal>i21/registers_data[54]</Signal>
                 <Signal>i21/registers_data[53]</Signal>
@@ -24,7 +67,7 @@
                 <Signal>i21/registers_data[49]</Signal>
                 <Signal>i21/registers_data[48]</Signal>
             </Bus>
-            <Bus capture_enable="true" name="i21/registers_data[47:40]">
+            <Bus capture_enable="true" name="R5" restorename="i21/registers_data[47:40]">
                 <Signal>i21/registers_data[47]</Signal>
                 <Signal>i21/registers_data[46]</Signal>
                 <Signal>i21/registers_data[45]</Signal>
@@ -34,7 +77,7 @@
                 <Signal>i21/registers_data[41]</Signal>
                 <Signal>i21/registers_data[40]</Signal>
             </Bus>
-            <Bus capture_enable="true" name="i21/registers_data[39:32]">
+            <Bus capture_enable="true" name="R4" restorename="i21/registers_data[39:32]">
                 <Signal>i21/registers_data[39]</Signal>
                 <Signal>i21/registers_data[38]</Signal>
                 <Signal>i21/registers_data[37]</Signal>
@@ -44,7 +87,7 @@
                 <Signal>i21/registers_data[33]</Signal>
                 <Signal>i21/registers_data[32]</Signal>
             </Bus>
-            <Bus capture_enable="true" name="i21/registers_data[31:24]">
+            <Bus capture_enable="true" name="R3" restorename="i21/registers_data[31:24]">
                 <Signal>i21/registers_data[31]</Signal>
                 <Signal>i21/registers_data[30]</Signal>
                 <Signal>i21/registers_data[29]</Signal>
@@ -54,7 +97,7 @@
                 <Signal>i21/registers_data[25]</Signal>
                 <Signal>i21/registers_data[24]</Signal>
             </Bus>
-            <Bus capture_enable="true" name="i21/registers_data[23:16]">
+            <Bus capture_enable="true" name="R2" restorename="i21/registers_data[23:16]">
                 <Signal>i21/registers_data[23]</Signal>
                 <Signal>i21/registers_data[22]</Signal>
                 <Signal>i21/registers_data[21]</Signal>
@@ -64,7 +107,7 @@
                 <Signal>i21/registers_data[17]</Signal>
                 <Signal>i21/registers_data[16]</Signal>
             </Bus>
-            <Bus capture_enable="true" name="i21/registers_data[15:8]">
+            <Bus capture_enable="true" name="R1" restorename="i21/registers_data[15:8]">
                 <Signal>i21/registers_data[15]</Signal>
                 <Signal>i21/registers_data[14]</Signal>
                 <Signal>i21/registers_data[13]</Signal>
@@ -74,7 +117,7 @@
                 <Signal>i21/registers_data[9]</Signal>
                 <Signal>i21/registers_data[8]</Signal>
             </Bus>
-            <Bus capture_enable="true" name="i21/registers_data[7:0]">
+            <Bus capture_enable="true" name="R0" restorename="i21/registers_data[7:0]">
                 <Signal>i21/registers_data[7]</Signal>
                 <Signal>i21/registers_data[6]</Signal>
                 <Signal>i21/registers_data[5]</Signal>
@@ -141,5 +184,5 @@
             <Expression>M0</Expression>
         </Expressions>
     </AoCore>
-    <GAO_ID>0101111001100000</GAO_ID>
+    <GAO_ID>1011111000000111</GAO_ID>
 </GAO_CONFIG>
