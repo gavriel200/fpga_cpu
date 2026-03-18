@@ -1,12 +1,12 @@
 // loop over screen and set all pixels white
 
-$clean_screen.r.y_axis=RFBY
 $clean_screen.r.x_axis=RFBX
+$clean_screen.r.y_axis=RFBY
 $clean_screen.r.pixel_color=RFBD
 $clean_screen.r.framebuffer_e=RFBE
 
-$clean_screen.v.y_axis=0xff
 $clean_screen.v.x_axis=60
+$clean_screen.v.y_axis=0xff
 
 $clean_screen.r.x_axis_com=R0
 $clean_screen.r.y_axis_com=R1

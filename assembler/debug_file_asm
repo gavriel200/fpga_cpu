@@ -157,6 +157,7 @@
 149B04 -- pc: 00000091 -- instruction: WD  arg1: 9B, arg2: 04 
 149C02 -- pc: 00000092 -- instruction: WD  arg1: 9C, arg2: 02 
 149D01 -- pc: 00000093 -- instruction: WD  arg1: 9D, arg2: 01 
+&init_draw_done:
 120000 -- pc: 00000094 -- instruction: RTN arg1: 00, arg2: 00 
 &init_card_select:
 020000 -- pc: 00000095 -- instruction: LDR arg1: R0, arg2: 00 
@@ -168,6 +169,7 @@
 &seed_already_set:
 020B34 -- pc: 0000009B -- instruction: LDR arg1: RNDMAX, arg2: 34 
 020A01 -- pc: 0000009C -- instruction: LDR arg1: RNDMIN, arg2: 01 
+&init_card_select_done:
 120000 -- pc: 0000009D -- instruction: RTN arg1: 00, arg2: 00 
 &deal:
 0A0100 -- pc: 0000009E -- instruction: POP arg1: R1, arg2: 00 
@@ -234,7 +236,7 @@
 02040F -- pc: 000000D3 -- instruction: LDR arg1: R4, arg2: 0F 
 1A0401 -- pc: 000000D4 -- instruction: AND arg1: R4, arg2: R1 
 010204 -- pc: 000000D5 -- instruction: LD  arg1: R2, arg2: R4 
-02051E -- pc: 000000D6 -- instruction: LDR arg1: R5, arg2: 1E 
+020560 -- pc: 000000D6 -- instruction: LDR arg1: R5, arg2: 60 
 1A0501 -- pc: 000000D7 -- instruction: AND arg1: R5, arg2: R1 
 010305 -- pc: 000000D8 -- instruction: LD  arg1: R3, arg2: R5 
 090000 -- pc: 000000D9 -- instruction: PSH arg1: R0, arg2: 00 
@@ -242,13 +244,13 @@
 020600 -- pc: 000000DB -- instruction: LDR arg1: R6, arg2: 00 
 100603 -- pc: 000000DC -- instruction: COM arg1: R6, arg2: R3 
 0C00E7 -- pc: 000000DD -- instruction: JZ  arg1: 00, arg2: E7  | @draw_heart_symbol
-020608 -- pc: 000000DE -- instruction: LDR arg1: R6, arg2: 08 
+020620 -- pc: 000000DE -- instruction: LDR arg1: R6, arg2: 20 
 100603 -- pc: 000000DF -- instruction: COM arg1: R6, arg2: R3 
 0C00EB -- pc: 000000E0 -- instruction: JZ  arg1: 00, arg2: EB  | @draw_spade_symbol
-02060A -- pc: 000000E1 -- instruction: LDR arg1: R6, arg2: 0A 
+020640 -- pc: 000000E1 -- instruction: LDR arg1: R6, arg2: 40 
 100603 -- pc: 000000E2 -- instruction: COM arg1: R6, arg2: R3 
 0C00EF -- pc: 000000E3 -- instruction: JZ  arg1: 00, arg2: EF  | @draw_diamond_symbol
-02061E -- pc: 000000E4 -- instruction: LDR arg1: R6, arg2: 1E 
+020660 -- pc: 000000E4 -- instruction: LDR arg1: R6, arg2: 60 
 100603 -- pc: 000000E5 -- instruction: COM arg1: R6, arg2: R3 
 0C00F3 -- pc: 000000E6 -- instruction: JZ  arg1: 00, arg2: F3  | @draw_club_symbol
 &draw_heart_symbol:
@@ -282,7 +284,7 @@
 &set_suit_x_axis:
 110109 -- pc: 000000FD -- instruction: CAL arg1: 01, arg2: 09  | @len_times_10
 0A0000 -- pc: 000000FE -- instruction: POP arg1: R0, arg2: 00 
-02010A -- pc: 000000FF -- instruction: LDR arg1: R1, arg2: 0A 
+020101 -- pc: 000000FF -- instruction: LDR arg1: R1, arg2: 01 
 030001 -- pc: 00000100 -- instruction: ADD arg1: R0, arg2: R1 
 133900 -- pc: 00000101 -- instruction: WR  arg1: 39, arg2: 00 
 &set_suit_x_axis_done:
@@ -290,7 +292,7 @@
 &set_card_x_axis:
 110109 -- pc: 00000103 -- instruction: CAL arg1: 01, arg2: 09  | @len_times_10
 0A0000 -- pc: 00000104 -- instruction: POP arg1: R0, arg2: 00 
-020105 -- pc: 00000105 -- instruction: LDR arg1: R1, arg2: 05 
+020106 -- pc: 00000105 -- instruction: LDR arg1: R1, arg2: 06 
 030001 -- pc: 00000106 -- instruction: ADD arg1: R0, arg2: R1 
 133900 -- pc: 00000107 -- instruction: WR  arg1: 39, arg2: 00 
 &set_card_x_axis_done:
@@ -337,7 +339,7 @@
 0C0123 -- pc: 0000012B -- instruction: JZ  arg1: 01, arg2: 23  | @byte_loop
 020604 -- pc: 0000012C -- instruction: LDR arg1: R6, arg2: 04 
 151439 -- pc: 0000012D -- instruction: RR  arg1: RFBX, arg2: 39 
-051400 -- pc: 0000012E -- instruction: INC arg1: RFBX, arg2: 00 
+051500 -- pc: 0000012E -- instruction: INC arg1: RFBY, arg2: 00 
 060500 -- pc: 0000012F -- instruction: DEC arg1: R5, arg2: 00 
 &col_loop:
 100607 -- pc: 00000130 -- instruction: COM arg1: R6, arg2: R7 

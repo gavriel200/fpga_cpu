@@ -127,6 +127,46 @@
                 <Signal>i21/registers_data[1]</Signal>
                 <Signal>i21/registers_data[0]</Signal>
             </Bus>
+            <Bus capture_enable="true" name="RFBE" restorename="i21/registers_data[191:184]">
+                <Signal>i21/registers_data[191]</Signal>
+                <Signal>i21/registers_data[190]</Signal>
+                <Signal>i21/registers_data[189]</Signal>
+                <Signal>i21/registers_data[188]</Signal>
+                <Signal>i21/registers_data[187]</Signal>
+                <Signal>i21/registers_data[186]</Signal>
+                <Signal>i21/registers_data[185]</Signal>
+                <Signal>i21/registers_data[184]</Signal>
+            </Bus>
+            <Bus capture_enable="true" name="RFBD" restorename="i21/registers_data[183:176]">
+                <Signal>i21/registers_data[183]</Signal>
+                <Signal>i21/registers_data[182]</Signal>
+                <Signal>i21/registers_data[181]</Signal>
+                <Signal>i21/registers_data[180]</Signal>
+                <Signal>i21/registers_data[179]</Signal>
+                <Signal>i21/registers_data[178]</Signal>
+                <Signal>i21/registers_data[177]</Signal>
+                <Signal>i21/registers_data[176]</Signal>
+            </Bus>
+            <Bus capture_enable="true" name="RFBY" restorename="i21/registers_data[175:168]">
+                <Signal>i21/registers_data[175]</Signal>
+                <Signal>i21/registers_data[174]</Signal>
+                <Signal>i21/registers_data[173]</Signal>
+                <Signal>i21/registers_data[172]</Signal>
+                <Signal>i21/registers_data[171]</Signal>
+                <Signal>i21/registers_data[170]</Signal>
+                <Signal>i21/registers_data[169]</Signal>
+                <Signal>i21/registers_data[168]</Signal>
+            </Bus>
+            <Bus capture_enable="true" name="RFBX" restorename="i21/registers_data[167:160]">
+                <Signal>i21/registers_data[167]</Signal>
+                <Signal>i21/registers_data[166]</Signal>
+                <Signal>i21/registers_data[165]</Signal>
+                <Signal>i21/registers_data[164]</Signal>
+                <Signal>i21/registers_data[163]</Signal>
+                <Signal>i21/registers_data[162]</Signal>
+                <Signal>i21/registers_data[161]</Signal>
+                <Signal>i21/registers_data[160]</Signal>
+            </Bus>
         </SignalList>
         <Triggers>
             <Trigger index="0">
@@ -146,7 +186,18 @@
                     </Bus>
                 </SignalList>
             </Trigger>
-            <Trigger index="1"/>
+            <Trigger index="1">
+                <SignalList>
+                    <Signal>i21/registers_data[174]</Signal>
+                    <Signal>i21/registers_data[173]</Signal>
+                    <Signal>i21/registers_data[172]</Signal>
+                    <Signal>i21/registers_data[171]</Signal>
+                    <Signal>i21/registers_data[170]</Signal>
+                    <Signal>i21/registers_data[169]</Signal>
+                    <Signal>i21/registers_data[168]</Signal>
+                    <Signal>i21/registers_data[167]</Signal>
+                </SignalList>
+            </Trigger>
             <Trigger index="2"/>
             <Trigger index="3"/>
             <Trigger index="4"/>
@@ -163,8 +214,8 @@
             <Trigger index="15"/>
         </Triggers>
         <MatchUnits>
-            <MatchUnit index="0" enabled="1" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="00000000001" value1="00000000000" trigger="0"/>
-            <MatchUnit index="1" enabled="0" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="" value1=""/>
+            <MatchUnit index="0" enabled="1" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="00010011110" value1="00000000000" trigger="0"/>
+            <MatchUnit index="1" enabled="0" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="00001111" value1="00000000" trigger="1"/>
             <MatchUnit index="2" enabled="0" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="" value1=""/>
             <MatchUnit index="3" enabled="0" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="" value1=""/>
             <MatchUnit index="4" enabled="0" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="" value1=""/>
@@ -184,5 +235,5 @@
             <Expression>M0</Expression>
         </Expressions>
     </AoCore>
-    <GAO_ID>1011111000000111</GAO_ID>
+    <GAO_ID>1011001111010101</GAO_ID>
 </GAO_CONFIG>

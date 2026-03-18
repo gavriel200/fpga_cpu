@@ -62,7 +62,7 @@ JZ @byte_loop
 
 LDR draw_symbol.r.col_counter, 4
 RR clean_screen.r.x_axis, draw_symbol.r.param_x_axis_addr
-INC clean_screen.r.x_axis
+INC clean_screen.r.y_axis
 
 DEC draw_symbol.r.row_counter
 

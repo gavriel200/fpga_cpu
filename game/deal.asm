@@ -156,19 +156,19 @@ $draw_card.r.value_and=R4
 $draw_card.v.value_and=15
 
 $draw_card.r.suit_and=R5
-// 00110000
-$draw_card.v.suit_and=30
+// 01100000
+$draw_card.v.suit_and=96
 
 $draw_card.r.suit_find=R6
 
 // 00000000
 $draw_card.v.heart=0
-// 00010000
-$draw_card.v.spade=8
 // 00100000
-$draw_card.v.diamond=10
-// 00110000
-$draw_card.v.club=30
+$draw_card.v.spade=32
+// 01000000
+$draw_card.v.diamond=64
+// 01100000
+$draw_card.v.club=96
 
 // input param len
 // input param card
@@ -258,7 +258,7 @@ $set_suit_x_axis.r.adder=R1
 &set_suit_x_axis:
 CAL @len_times_10
 POP set_suit_x_axis.r.multi_result
-LDR set_suit_x_axis.r.adder, 10
+LDR set_suit_x_axis.r.adder, 1
 ADD set_suit_x_axis.r.multi_result, set_suit_x_axis.r.adder
 WR draw_symbol.r.param_x_axis_addr, set_suit_x_axis.r.multi_result
 
@@ -276,7 +276,7 @@ $set_card_x_axis.r.adder=R1
 &set_card_x_axis:
 CAL @len_times_10
 POP set_card_x_axis.r.multi_result
-LDR set_card_x_axis.r.adder, 5
+LDR set_card_x_axis.r.adder, 6
 ADD set_card_x_axis.r.multi_result, set_card_x_axis.r.adder
 WR draw_symbol.r.param_x_axis_addr, set_card_x_axis.r.multi_result
 
