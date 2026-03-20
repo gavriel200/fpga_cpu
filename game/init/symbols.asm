@@ -142,19 +142,24 @@ $symbol_!=28
 WD draw_base_addr + 81, 34
 WD draw_base_addr + 82, 34
 WD draw_base_addr + 83, 2
+// V
+$symbol_V=29
+WD draw_base_addr + 84, 153
+WD draw_base_addr + 85, 153
+WD draw_base_addr + 86, 246
 // -> [0]
-$symbol_->0=29
-WD draw_base_addr + 84, 52
-WD draw_base_addr + 85, 136
-WD draw_base_addr + 86, 67
+$symbol_->0=30
+WD draw_base_addr + 87, 52
+WD draw_base_addr + 88, 136
+WD draw_base_addr + 89, 67
 // -> [1]
-$symbol_->1=30
-WD draw_base_addr + 87, 149
-WD draw_base_addr + 88, 63
-WD draw_base_addr + 89, 12
+$symbol_->1=31
+WD draw_base_addr + 90, 149
+WD draw_base_addr + 91, 63
+WD draw_base_addr + 92, 12
 
 // AND logic
-$draw_and_logic_addr=150
+$draw_and_logic_addr=153
 WD draw_and_logic_addr, 128
 WD draw_and_logic_addr + 1, 64
 WD draw_and_logic_addr + 2, 32

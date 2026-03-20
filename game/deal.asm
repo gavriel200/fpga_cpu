@@ -1,10 +1,10 @@
-$player_len_addr=158
-$player_cards_addr=159
-$player_value_addr=171
+$player_len_addr=161
+$player_cards_addr=162
+$player_value_addr=174
 
-$dealer_len_addr=172
-$dealer_cards_addr=173
-$dealer_value_addr=185
+$dealer_len_addr=175
+$dealer_cards_addr=176
+$dealer_value_addr=188
 
 // ===============================
 // ===============================
@@ -43,7 +43,6 @@ CAL @get_random_card
 POP deal.r.card
 
 RRR deal.r.len, deal.r.len_addr
-RRR deal.r.value_addr, deal.r.value
 
 ADD deal.r.cards_addr, deal.r.len
 RWR deal.r.cards_addr, deal.r.card
@@ -114,8 +113,8 @@ $get_card_value.r.10=R2
 
 // after 10 should return 10
 $get_card_value.v.10=10
-// 00001111
-$get_card_value.v.card_value_and=15
+// 00011111
+$get_card_value.v.card_value_and=31
 
 
 // input param card
@@ -131,13 +130,12 @@ LDR get_card_value.r.card_value_and, get_card_value.v.card_value_and
 AND get_card_value.r.card, get_card_value.r.card_value_and
 
 COM get_card_value.r.card, get_card_value.r.10
-JNC @more_then_10
+JC @more_then_10
 PSH get_card_value.r.card
 JMP @get_card_value_done
 
 &more_then_10:
 PSH get_card_value.r.10
-JMP @get_card_value_done
 
 &get_card_value_done:
 RTN

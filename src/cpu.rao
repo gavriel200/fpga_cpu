@@ -47,6 +47,8 @@
                 <Signal>i26/arg_b[1]</Signal>
                 <Signal>i26/arg_b[0]</Signal>
             </Bus>
+            <Signal capture_enable="true">flags_z</Signal>
+            <Signal capture_enable="true">flags_c</Signal>
             <Bus capture_enable="true" name="R7" restorename="i21/registers_data[63:56]">
                 <Signal>i21/registers_data[63]</Signal>
                 <Signal>i21/registers_data[62]</Signal>
@@ -167,6 +169,36 @@
                 <Signal>i21/registers_data[161]</Signal>
                 <Signal>i21/registers_data[160]</Signal>
             </Bus>
+            <Bus capture_enable="true" name="button 3" restorename="i21/registers_data[311:304]">
+                <Signal>i21/registers_data[311]</Signal>
+                <Signal>i21/registers_data[310]</Signal>
+                <Signal>i21/registers_data[309]</Signal>
+                <Signal>i21/registers_data[308]</Signal>
+                <Signal>i21/registers_data[307]</Signal>
+                <Signal>i21/registers_data[306]</Signal>
+                <Signal>i21/registers_data[305]</Signal>
+                <Signal>i21/registers_data[304]</Signal>
+            </Bus>
+            <Bus capture_enable="true" name="button 2" restorename="i21/registers_data[303:296]">
+                <Signal>i21/registers_data[303]</Signal>
+                <Signal>i21/registers_data[302]</Signal>
+                <Signal>i21/registers_data[301]</Signal>
+                <Signal>i21/registers_data[300]</Signal>
+                <Signal>i21/registers_data[299]</Signal>
+                <Signal>i21/registers_data[298]</Signal>
+                <Signal>i21/registers_data[297]</Signal>
+                <Signal>i21/registers_data[296]</Signal>
+            </Bus>
+            <Bus capture_enable="true" name="button 1" restorename="i21/registers_data[295:288]">
+                <Signal>i21/registers_data[295]</Signal>
+                <Signal>i21/registers_data[294]</Signal>
+                <Signal>i21/registers_data[293]</Signal>
+                <Signal>i21/registers_data[292]</Signal>
+                <Signal>i21/registers_data[291]</Signal>
+                <Signal>i21/registers_data[290]</Signal>
+                <Signal>i21/registers_data[289]</Signal>
+                <Signal>i21/registers_data[288]</Signal>
+            </Bus>
         </SignalList>
         <Triggers>
             <Trigger index="0">
@@ -214,7 +246,7 @@
             <Trigger index="15"/>
         </Triggers>
         <MatchUnits>
-            <MatchUnit index="0" enabled="1" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="00010011110" value1="00000000000" trigger="0"/>
+            <MatchUnit index="0" enabled="1" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="00010111100" value1="00000000000" trigger="0"/>
             <MatchUnit index="1" enabled="0" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="00001111" value1="00000000" trigger="1"/>
             <MatchUnit index="2" enabled="0" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="" value1=""/>
             <MatchUnit index="3" enabled="0" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="" value1=""/>
@@ -235,5 +267,5 @@
             <Expression>M0</Expression>
         </Expressions>
     </AoCore>
-    <GAO_ID>1011001111010101</GAO_ID>
+    <GAO_ID>0000100010110011</GAO_ID>
 </GAO_CONFIG>

@@ -15,7 +15,7 @@
 | [57] starting x axis
 | [58] starting y axis
 | [59] pixel color
-[60:149] elements to draw pixels
+[60:152] elements to draw pixels
 | struct [0:23] 3 bytes:
 | [0:3]   first row
 | [4:7]   second row
@@ -23,21 +23,21 @@
 | [12:15] forth row
 | [16:19] fifth row
 | [20:23] sixth row
-[150:157] and logic
+[153:160] and logic
 | struct [0:7] having the relevant bit be 1 for AND
 
 (max hand)
 1 + 1 + 1 + 1 (4Xaces) + 2 + 2 + 2 + 2 (4X2) + 3 + 3 + 3 (3X3) = 21 (value) | len (11)
 ≈ 1 in 39.5 billion
 
-[158:171] player hand
-| [158] len
-| [159:170] cards
-| [171] value
+[161:174] player hand
+| [161] len
+| [162:173] cards
+| [174] value
 
-[172:185] dealer hand
-| [172] len
-| [173:184] cards
-| [185] value
+[175:188] dealer hand
+| [175] len
+| [176:187] cards
+| [188] value
 
-[186] state
+[189] state

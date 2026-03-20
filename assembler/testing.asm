@@ -1,19 +1,16 @@
 NOP
-LDR R1, 3
-LDR R2, 4
-LDR R3, 5
-LDR R4, 6
-LDR R5, 7
-CAL @test1
-CAL @test2
+LDR R0, 6
+LDR R1, 5
+LDR R2, 6
+LDR R3, 7
 
-&test1:
-LDR R1, 1
-LDR R2, 2
-RTN
 
-&test2:
-LDR R1, 6
-LDR R3, 2
-LDR R6, 12
-RTN
+// 6 - 5 = 1
+// C = 1, Z = 0
+COM R0, R1
+// 6 - 6 = 0
+// C = 1, Z = 1
+COM R0, R2
+// 6 - 7 = -1 
+// C = 0, Z = 0
+COM R0, R3
