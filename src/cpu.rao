@@ -4,7 +4,7 @@
     <Mode>Standard</Mode>
     <AoCore index="0" sample_clock="clk" trig_type="0" storage_depth="1024" window_num="1" capture_amount="1024" implementation="0" trigger_pos="0" module_name="top" force_trigger_by_falling_edge="false" capture_init_data_enabled="false">
         <SignalList>
-            <Bus capture_enable="true" name="PC" restorename="rom_pc[10:0]">
+            <Bus capture_enable="true" name="rom_pc[10:0]">
                 <Signal>rom_pc[10]</Signal>
                 <Signal>rom_pc[9]</Signal>
                 <Signal>rom_pc[8]</Signal>
@@ -16,188 +16,6 @@
                 <Signal>rom_pc[2]</Signal>
                 <Signal>rom_pc[1]</Signal>
                 <Signal>rom_pc[0]</Signal>
-            </Bus>
-            <Bus capture_enable="true" name="instruction" restorename="i26/instruction[7:0]">
-                <Signal>i26/instruction[7]</Signal>
-                <Signal>i26/instruction[6]</Signal>
-                <Signal>i26/instruction[5]</Signal>
-                <Signal>i26/instruction[4]</Signal>
-                <Signal>i26/instruction[3]</Signal>
-                <Signal>i26/instruction[2]</Signal>
-                <Signal>i26/instruction[1]</Signal>
-                <Signal>i26/instruction[0]</Signal>
-            </Bus>
-            <Bus capture_enable="true" name="arg_a" restorename="i26/arg_a[7:0]">
-                <Signal>i26/arg_a[7]</Signal>
-                <Signal>i26/arg_a[6]</Signal>
-                <Signal>i26/arg_a[5]</Signal>
-                <Signal>i26/arg_a[4]</Signal>
-                <Signal>i26/arg_a[3]</Signal>
-                <Signal>i26/arg_a[2]</Signal>
-                <Signal>i26/arg_a[1]</Signal>
-                <Signal>i26/arg_a[0]</Signal>
-            </Bus>
-            <Bus capture_enable="true" name="arg_b" restorename="i26/arg_b[7:0]">
-                <Signal>i26/arg_b[7]</Signal>
-                <Signal>i26/arg_b[6]</Signal>
-                <Signal>i26/arg_b[5]</Signal>
-                <Signal>i26/arg_b[4]</Signal>
-                <Signal>i26/arg_b[3]</Signal>
-                <Signal>i26/arg_b[2]</Signal>
-                <Signal>i26/arg_b[1]</Signal>
-                <Signal>i26/arg_b[0]</Signal>
-            </Bus>
-            <Signal capture_enable="true">flags_z</Signal>
-            <Signal capture_enable="true">flags_c</Signal>
-            <Bus capture_enable="true" name="R7" restorename="i21/registers_data[63:56]">
-                <Signal>i21/registers_data[63]</Signal>
-                <Signal>i21/registers_data[62]</Signal>
-                <Signal>i21/registers_data[61]</Signal>
-                <Signal>i21/registers_data[60]</Signal>
-                <Signal>i21/registers_data[59]</Signal>
-                <Signal>i21/registers_data[58]</Signal>
-                <Signal>i21/registers_data[57]</Signal>
-                <Signal>i21/registers_data[56]</Signal>
-            </Bus>
-            <Bus capture_enable="true" name="R6" restorename="i21/registers_data[55:48]">
-                <Signal>i21/registers_data[55]</Signal>
-                <Signal>i21/registers_data[54]</Signal>
-                <Signal>i21/registers_data[53]</Signal>
-                <Signal>i21/registers_data[52]</Signal>
-                <Signal>i21/registers_data[51]</Signal>
-                <Signal>i21/registers_data[50]</Signal>
-                <Signal>i21/registers_data[49]</Signal>
-                <Signal>i21/registers_data[48]</Signal>
-            </Bus>
-            <Bus capture_enable="true" name="R5" restorename="i21/registers_data[47:40]">
-                <Signal>i21/registers_data[47]</Signal>
-                <Signal>i21/registers_data[46]</Signal>
-                <Signal>i21/registers_data[45]</Signal>
-                <Signal>i21/registers_data[44]</Signal>
-                <Signal>i21/registers_data[43]</Signal>
-                <Signal>i21/registers_data[42]</Signal>
-                <Signal>i21/registers_data[41]</Signal>
-                <Signal>i21/registers_data[40]</Signal>
-            </Bus>
-            <Bus capture_enable="true" name="R4" restorename="i21/registers_data[39:32]">
-                <Signal>i21/registers_data[39]</Signal>
-                <Signal>i21/registers_data[38]</Signal>
-                <Signal>i21/registers_data[37]</Signal>
-                <Signal>i21/registers_data[36]</Signal>
-                <Signal>i21/registers_data[35]</Signal>
-                <Signal>i21/registers_data[34]</Signal>
-                <Signal>i21/registers_data[33]</Signal>
-                <Signal>i21/registers_data[32]</Signal>
-            </Bus>
-            <Bus capture_enable="true" name="R3" restorename="i21/registers_data[31:24]">
-                <Signal>i21/registers_data[31]</Signal>
-                <Signal>i21/registers_data[30]</Signal>
-                <Signal>i21/registers_data[29]</Signal>
-                <Signal>i21/registers_data[28]</Signal>
-                <Signal>i21/registers_data[27]</Signal>
-                <Signal>i21/registers_data[26]</Signal>
-                <Signal>i21/registers_data[25]</Signal>
-                <Signal>i21/registers_data[24]</Signal>
-            </Bus>
-            <Bus capture_enable="true" name="R2" restorename="i21/registers_data[23:16]">
-                <Signal>i21/registers_data[23]</Signal>
-                <Signal>i21/registers_data[22]</Signal>
-                <Signal>i21/registers_data[21]</Signal>
-                <Signal>i21/registers_data[20]</Signal>
-                <Signal>i21/registers_data[19]</Signal>
-                <Signal>i21/registers_data[18]</Signal>
-                <Signal>i21/registers_data[17]</Signal>
-                <Signal>i21/registers_data[16]</Signal>
-            </Bus>
-            <Bus capture_enable="true" name="R1" restorename="i21/registers_data[15:8]">
-                <Signal>i21/registers_data[15]</Signal>
-                <Signal>i21/registers_data[14]</Signal>
-                <Signal>i21/registers_data[13]</Signal>
-                <Signal>i21/registers_data[12]</Signal>
-                <Signal>i21/registers_data[11]</Signal>
-                <Signal>i21/registers_data[10]</Signal>
-                <Signal>i21/registers_data[9]</Signal>
-                <Signal>i21/registers_data[8]</Signal>
-            </Bus>
-            <Bus capture_enable="true" name="R0" restorename="i21/registers_data[7:0]">
-                <Signal>i21/registers_data[7]</Signal>
-                <Signal>i21/registers_data[6]</Signal>
-                <Signal>i21/registers_data[5]</Signal>
-                <Signal>i21/registers_data[4]</Signal>
-                <Signal>i21/registers_data[3]</Signal>
-                <Signal>i21/registers_data[2]</Signal>
-                <Signal>i21/registers_data[1]</Signal>
-                <Signal>i21/registers_data[0]</Signal>
-            </Bus>
-            <Bus capture_enable="true" name="RFBE" restorename="i21/registers_data[191:184]">
-                <Signal>i21/registers_data[191]</Signal>
-                <Signal>i21/registers_data[190]</Signal>
-                <Signal>i21/registers_data[189]</Signal>
-                <Signal>i21/registers_data[188]</Signal>
-                <Signal>i21/registers_data[187]</Signal>
-                <Signal>i21/registers_data[186]</Signal>
-                <Signal>i21/registers_data[185]</Signal>
-                <Signal>i21/registers_data[184]</Signal>
-            </Bus>
-            <Bus capture_enable="true" name="RFBD" restorename="i21/registers_data[183:176]">
-                <Signal>i21/registers_data[183]</Signal>
-                <Signal>i21/registers_data[182]</Signal>
-                <Signal>i21/registers_data[181]</Signal>
-                <Signal>i21/registers_data[180]</Signal>
-                <Signal>i21/registers_data[179]</Signal>
-                <Signal>i21/registers_data[178]</Signal>
-                <Signal>i21/registers_data[177]</Signal>
-                <Signal>i21/registers_data[176]</Signal>
-            </Bus>
-            <Bus capture_enable="true" name="RFBY" restorename="i21/registers_data[175:168]">
-                <Signal>i21/registers_data[175]</Signal>
-                <Signal>i21/registers_data[174]</Signal>
-                <Signal>i21/registers_data[173]</Signal>
-                <Signal>i21/registers_data[172]</Signal>
-                <Signal>i21/registers_data[171]</Signal>
-                <Signal>i21/registers_data[170]</Signal>
-                <Signal>i21/registers_data[169]</Signal>
-                <Signal>i21/registers_data[168]</Signal>
-            </Bus>
-            <Bus capture_enable="true" name="RFBX" restorename="i21/registers_data[167:160]">
-                <Signal>i21/registers_data[167]</Signal>
-                <Signal>i21/registers_data[166]</Signal>
-                <Signal>i21/registers_data[165]</Signal>
-                <Signal>i21/registers_data[164]</Signal>
-                <Signal>i21/registers_data[163]</Signal>
-                <Signal>i21/registers_data[162]</Signal>
-                <Signal>i21/registers_data[161]</Signal>
-                <Signal>i21/registers_data[160]</Signal>
-            </Bus>
-            <Bus capture_enable="true" name="button 3" restorename="i21/registers_data[311:304]">
-                <Signal>i21/registers_data[311]</Signal>
-                <Signal>i21/registers_data[310]</Signal>
-                <Signal>i21/registers_data[309]</Signal>
-                <Signal>i21/registers_data[308]</Signal>
-                <Signal>i21/registers_data[307]</Signal>
-                <Signal>i21/registers_data[306]</Signal>
-                <Signal>i21/registers_data[305]</Signal>
-                <Signal>i21/registers_data[304]</Signal>
-            </Bus>
-            <Bus capture_enable="true" name="button 2" restorename="i21/registers_data[303:296]">
-                <Signal>i21/registers_data[303]</Signal>
-                <Signal>i21/registers_data[302]</Signal>
-                <Signal>i21/registers_data[301]</Signal>
-                <Signal>i21/registers_data[300]</Signal>
-                <Signal>i21/registers_data[299]</Signal>
-                <Signal>i21/registers_data[298]</Signal>
-                <Signal>i21/registers_data[297]</Signal>
-                <Signal>i21/registers_data[296]</Signal>
-            </Bus>
-            <Bus capture_enable="true" name="button 1" restorename="i21/registers_data[295:288]">
-                <Signal>i21/registers_data[295]</Signal>
-                <Signal>i21/registers_data[294]</Signal>
-                <Signal>i21/registers_data[293]</Signal>
-                <Signal>i21/registers_data[292]</Signal>
-                <Signal>i21/registers_data[291]</Signal>
-                <Signal>i21/registers_data[290]</Signal>
-                <Signal>i21/registers_data[289]</Signal>
-                <Signal>i21/registers_data[288]</Signal>
             </Bus>
         </SignalList>
         <Triggers>
@@ -218,18 +36,7 @@
                     </Bus>
                 </SignalList>
             </Trigger>
-            <Trigger index="1">
-                <SignalList>
-                    <Signal>i21/registers_data[174]</Signal>
-                    <Signal>i21/registers_data[173]</Signal>
-                    <Signal>i21/registers_data[172]</Signal>
-                    <Signal>i21/registers_data[171]</Signal>
-                    <Signal>i21/registers_data[170]</Signal>
-                    <Signal>i21/registers_data[169]</Signal>
-                    <Signal>i21/registers_data[168]</Signal>
-                    <Signal>i21/registers_data[167]</Signal>
-                </SignalList>
-            </Trigger>
+            <Trigger index="1"/>
             <Trigger index="2"/>
             <Trigger index="3"/>
             <Trigger index="4"/>
@@ -246,13 +53,13 @@
             <Trigger index="15"/>
         </Triggers>
         <MatchUnits>
-            <MatchUnit index="0" enabled="1" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="00010111100" value1="00000000000" trigger="0"/>
-            <MatchUnit index="1" enabled="0" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="00001111" value1="00000000" trigger="1"/>
-            <MatchUnit index="2" enabled="0" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="" value1=""/>
-            <MatchUnit index="3" enabled="0" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="" value1=""/>
-            <MatchUnit index="4" enabled="0" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="" value1=""/>
-            <MatchUnit index="5" enabled="0" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="" value1=""/>
-            <MatchUnit index="6" enabled="0" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="" value1=""/>
+            <MatchUnit index="0" enabled="1" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="00011101001" value1="00000000000" trigger="0"/>
+            <MatchUnit index="1" enabled="0" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="1" value1="0" trigger="1"/>
+            <MatchUnit index="2" enabled="0" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="1" value1="0" trigger="2"/>
+            <MatchUnit index="3" enabled="0" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="1" value1="0" trigger="3"/>
+            <MatchUnit index="4" enabled="0" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="1" value0="00000000" value1="00000000" trigger="4"/>
+            <MatchUnit index="5" enabled="0" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="1" value0="00000000" value1="00000000" trigger="5"/>
+            <MatchUnit index="6" enabled="0" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="1" value0="00000000" value1="00000000" trigger="6"/>
             <MatchUnit index="7" enabled="0" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="" value1=""/>
             <MatchUnit index="8" enabled="0" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="" value1=""/>
             <MatchUnit index="9" enabled="0" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="" value1=""/>
@@ -267,5 +74,5 @@
             <Expression>M0</Expression>
         </Expressions>
     </AoCore>
-    <GAO_ID>0000100010110011</GAO_ID>
+    <GAO_ID>0000011111101011</GAO_ID>
 </GAO_CONFIG>

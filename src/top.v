@@ -72,7 +72,7 @@ module top (
   button button_1 (
       .clk(clk),
       .rst(rst),
-      .input_button(button1),
+      .input_button(~button1),
       .interrupt_enable(button_1_interrupt_enable),
       .output_button(button_1_output),
       .interrupt(button_1_interrupt)
@@ -84,7 +84,7 @@ module top (
   button button_2 (
       .clk(clk),
       .rst(rst),
-      .input_button(button2),
+      .input_button(~button2),
       .interrupt_enable(button_2_interrupt_enable),
       .output_button(button_2_output),
       .interrupt(button_2_interrupt)
@@ -96,7 +96,7 @@ module top (
   button button_3 (
       .clk(clk),
       .rst(rst),
-      .input_button(button3),
+      .input_button(~button3),
       .interrupt_enable(button_3_interrupt_enable),
       .output_button(button_3_output),
       .interrupt(button_3_interrupt)

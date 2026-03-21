@@ -9,6 +9,7 @@ CAL @wait_for_button_click
 WD state_addr, e_state_init
 
 &state_player_win_done:
+RTN
 
 // ===============================
 // ===============================

@@ -1,7 +1,7 @@
 000000 -- pc: 00000000 -- instruction: NOP arg1: 00, arg2: 00 
 14BD00 -- pc: 00000001 -- instruction: WD  arg1: BD, arg2: 00 
 &game_loop:
-11022C -- pc: 00000002 -- instruction: CAL arg1: 02, arg2: 2C  | @sleep
+110235 -- pc: 00000002 -- instruction: CAL arg1: 02, arg2: 35  | @sleep
 1500BD -- pc: 00000003 -- instruction: RR  arg1: R0, arg2: BD 
 020100 -- pc: 00000004 -- instruction: LDR arg1: R1, arg2: 00 
 100100 -- pc: 00000005 -- instruction: COM arg1: R1, arg2: R0 
@@ -31,21 +31,21 @@
 1100E6 -- pc: 0000001B -- instruction: CAL arg1: 00, arg2: E6  | @state_player_turn
 0B0002 -- pc: 0000001C -- instruction: JMP arg1: 00, arg2: 02  | @game_loop
 &case_hit:
-110109 -- pc: 0000001D -- instruction: CAL arg1: 01, arg2: 09  | @state_hit
+11010A -- pc: 0000001D -- instruction: CAL arg1: 01, arg2: 0A  | @state_hit
 0B0002 -- pc: 0000001E -- instruction: JMP arg1: 00, arg2: 02  | @game_loop
 &case_dealer_hit:
-110118 -- pc: 0000001F -- instruction: CAL arg1: 01, arg2: 18  | @state_dealer_hit
+11011A -- pc: 0000001F -- instruction: CAL arg1: 01, arg2: 1A  | @state_dealer_hit
 0B0002 -- pc: 00000020 -- instruction: JMP arg1: 00, arg2: 02  | @game_loop
 &case_player_win:
-110131 -- pc: 00000021 -- instruction: CAL arg1: 01, arg2: 31  | @state_player_win
+110137 -- pc: 00000021 -- instruction: CAL arg1: 01, arg2: 37  | @state_player_win
 0B0002 -- pc: 00000022 -- instruction: JMP arg1: 00, arg2: 02  | @game_loop
 &case_dealer_win:
-110151 -- pc: 00000023 -- instruction: CAL arg1: 01, arg2: 51  | @state_dealer_win
+110158 -- pc: 00000023 -- instruction: CAL arg1: 01, arg2: 58  | @state_dealer_win
 0B0002 -- pc: 00000024 -- instruction: JMP arg1: 00, arg2: 02  | @game_loop
 &case_draw:
-11016C -- pc: 00000025 -- instruction: CAL arg1: 01, arg2: 6C  | @state_draw
+110174 -- pc: 00000025 -- instruction: CAL arg1: 01, arg2: 74  | @state_draw
 0B0002 -- pc: 00000026 -- instruction: JMP arg1: 00, arg2: 02  | @game_loop
-0B0234 -- pc: 00000027 -- instruction: JMP arg1: 02, arg2: 34  | @done
+0B023D -- pc: 00000027 -- instruction: JMP arg1: 02, arg2: 3D  | @done
 &clean_ram:
 020100 -- pc: 00000028 -- instruction: LDR arg1: R1, arg2: 00 
 0200FF -- pc: 00000029 -- instruction: LDR arg1: R0, arg2: FF 
@@ -203,16 +203,16 @@
 120000 -- pc: 000000B4 -- instruction: RTN arg1: 00, arg2: 00 
 &state_init:
 110028 -- pc: 000000B5 -- instruction: CAL arg1: 00, arg2: 28  | @clean_ram
-11021A -- pc: 000000B6 -- instruction: CAL arg1: 02, arg2: 1A  | @clean_screen
+110223 -- pc: 000000B6 -- instruction: CAL arg1: 02, arg2: 23  | @clean_screen
 110030 -- pc: 000000B7 -- instruction: CAL arg1: 00, arg2: 30  | @init_suits
 110035 -- pc: 000000B8 -- instruction: CAL arg1: 00, arg2: 35  | @init_cards
 1100AC -- pc: 000000B9 -- instruction: CAL arg1: 00, arg2: AC  | @init_card_select
 110046 -- pc: 000000BA -- instruction: CAL arg1: 00, arg2: 46  | @init_draw
 1100C1 -- pc: 000000BB -- instruction: CAL arg1: 00, arg2: C1  | @draw_start
 1100D3 -- pc: 000000BC -- instruction: CAL arg1: 00, arg2: D3  | @wait_for_button_click
-11021A -- pc: 000000BD -- instruction: CAL arg1: 02, arg2: 1A  | @clean_screen
+110223 -- pc: 000000BD -- instruction: CAL arg1: 02, arg2: 23  | @clean_screen
 1100DC -- pc: 000000BE -- instruction: CAL arg1: 00, arg2: DC  | @deal_init_cards
-14BD00 -- pc: 000000BF -- instruction: WD  arg1: BD, arg2: 00 
+14BD01 -- pc: 000000BF -- instruction: WD  arg1: BD, arg2: 01 
 &state_init_done:
 120000 -- pc: 000000C0 -- instruction: RTN arg1: 00, arg2: 00 
 &draw_start:
@@ -220,19 +220,19 @@
 143A0A -- pc: 000000C2 -- instruction: WD  arg1: 3A, arg2: 0A 
 143914 -- pc: 000000C3 -- instruction: WD  arg1: 39, arg2: 14 
 143812 -- pc: 000000C4 -- instruction: WD  arg1: 38, arg2: 12 
-1101F4 -- pc: 000000C5 -- instruction: CAL arg1: 01, arg2: F4  | @draw_symbol
+1101FD -- pc: 000000C5 -- instruction: CAL arg1: 01, arg2: FD  | @draw_symbol
 143919 -- pc: 000000C6 -- instruction: WD  arg1: 39, arg2: 19 
 143813 -- pc: 000000C7 -- instruction: WD  arg1: 38, arg2: 13 
-1101F4 -- pc: 000000C8 -- instruction: CAL arg1: 01, arg2: F4  | @draw_symbol
+1101FD -- pc: 000000C8 -- instruction: CAL arg1: 01, arg2: FD  | @draw_symbol
 14391E -- pc: 000000C9 -- instruction: WD  arg1: 39, arg2: 1E 
 143814 -- pc: 000000CA -- instruction: WD  arg1: 38, arg2: 14 
-1101F4 -- pc: 000000CB -- instruction: CAL arg1: 01, arg2: F4  | @draw_symbol
+1101FD -- pc: 000000CB -- instruction: CAL arg1: 01, arg2: FD  | @draw_symbol
 143923 -- pc: 000000CC -- instruction: WD  arg1: 39, arg2: 23 
 14381B -- pc: 000000CD -- instruction: WD  arg1: 38, arg2: 1B 
-1101F4 -- pc: 000000CE -- instruction: CAL arg1: 01, arg2: F4  | @draw_symbol
+1101FD -- pc: 000000CE -- instruction: CAL arg1: 01, arg2: FD  | @draw_symbol
 143928 -- pc: 000000CF -- instruction: WD  arg1: 39, arg2: 28 
 143813 -- pc: 000000D0 -- instruction: WD  arg1: 38, arg2: 13 
-1101F4 -- pc: 000000D1 -- instruction: CAL arg1: 01, arg2: F4  | @draw_symbol
+1101FD -- pc: 000000D1 -- instruction: CAL arg1: 01, arg2: FD  | @draw_symbol
 &draw_start_done:
 120000 -- pc: 000000D2 -- instruction: RTN arg1: 00, arg2: 00 
 &wait_for_button_click:
@@ -249,13 +249,13 @@
 &deal_init_cards:
 020000 -- pc: 000000DC -- instruction: LDR arg1: R0, arg2: 00 
 090000 -- pc: 000000DD -- instruction: PSH arg1: R0, arg2: 00 
-11017D -- pc: 000000DE -- instruction: CAL arg1: 01, arg2: 7D  | @deal
+110186 -- pc: 000000DE -- instruction: CAL arg1: 01, arg2: 86  | @deal
 020000 -- pc: 000000DF -- instruction: LDR arg1: R0, arg2: 00 
 090000 -- pc: 000000E0 -- instruction: PSH arg1: R0, arg2: 00 
-11017D -- pc: 000000E1 -- instruction: CAL arg1: 01, arg2: 7D  | @deal
+110186 -- pc: 000000E1 -- instruction: CAL arg1: 01, arg2: 86  | @deal
 020001 -- pc: 000000E2 -- instruction: LDR arg1: R0, arg2: 01 
 090000 -- pc: 000000E3 -- instruction: PSH arg1: R0, arg2: 00 
-11017D -- pc: 000000E4 -- instruction: CAL arg1: 01, arg2: 7D  | @deal
+110186 -- pc: 000000E4 -- instruction: CAL arg1: 01, arg2: 86  | @deal
 &deal_init_cards_done:
 120000 -- pc: 000000E5 -- instruction: RTN arg1: 00, arg2: 00 
 &state_player_turn:
@@ -280,390 +280,396 @@
 143A0A -- pc: 000000F3 -- instruction: WD  arg1: 3A, arg2: 0A 
 14390A -- pc: 000000F4 -- instruction: WD  arg1: 39, arg2: 0A 
 143816 -- pc: 000000F5 -- instruction: WD  arg1: 38, arg2: 16 
-1101F4 -- pc: 000000F6 -- instruction: CAL arg1: 01, arg2: F4  | @draw_symbol
+1101FD -- pc: 000000F6 -- instruction: CAL arg1: 01, arg2: FD  | @draw_symbol
 14390F -- pc: 000000F7 -- instruction: WD  arg1: 39, arg2: 0F 
 143801 -- pc: 000000F8 -- instruction: WD  arg1: 38, arg2: 01 
-1101F4 -- pc: 000000F9 -- instruction: CAL arg1: 01, arg2: F4  | @draw_symbol
+1101FD -- pc: 000000F9 -- instruction: CAL arg1: 01, arg2: FD  | @draw_symbol
 143914 -- pc: 000000FA -- instruction: WD  arg1: 39, arg2: 14 
 143813 -- pc: 000000FB -- instruction: WD  arg1: 38, arg2: 13 
-1101F4 -- pc: 000000FC -- instruction: CAL arg1: 01, arg2: F4  | @draw_symbol
+1101FD -- pc: 000000FC -- instruction: CAL arg1: 01, arg2: FD  | @draw_symbol
 14391E -- pc: 000000FD -- instruction: WD  arg1: 39, arg2: 1E 
 143812 -- pc: 000000FE -- instruction: WD  arg1: 38, arg2: 12 
-1101F4 -- pc: 000000FF -- instruction: CAL arg1: 01, arg2: F4  | @draw_symbol
+1101FD -- pc: 000000FF -- instruction: CAL arg1: 01, arg2: FD  | @draw_symbol
 143923 -- pc: 00000100 -- instruction: WD  arg1: 39, arg2: 23 
 143813 -- pc: 00000101 -- instruction: WD  arg1: 38, arg2: 13 
-1101F4 -- pc: 00000102 -- instruction: CAL arg1: 01, arg2: F4  | @draw_symbol
+1101FD -- pc: 00000102 -- instruction: CAL arg1: 01, arg2: FD  | @draw_symbol
 143928 -- pc: 00000103 -- instruction: WD  arg1: 39, arg2: 28 
 143814 -- pc: 00000104 -- instruction: WD  arg1: 38, arg2: 14 
-1101F4 -- pc: 00000105 -- instruction: CAL arg1: 01, arg2: F4  | @draw_symbol
+1101FD -- pc: 00000105 -- instruction: CAL arg1: 01, arg2: FD  | @draw_symbol
 14392D -- pc: 00000106 -- instruction: WD  arg1: 39, arg2: 2D 
 143815 -- pc: 00000107 -- instruction: WD  arg1: 38, arg2: 15 
-1101F4 -- pc: 00000108 -- instruction: CAL arg1: 01, arg2: F4  | @draw_symbol
+1101FD -- pc: 00000108 -- instruction: CAL arg1: 01, arg2: FD  | @draw_symbol
 &draw_hit_stay_done:
-020000 -- pc: 00000109 -- instruction: LDR arg1: R0, arg2: 00 
-090000 -- pc: 0000010A -- instruction: PSH arg1: R0, arg2: 00 
-11017D -- pc: 0000010B -- instruction: CAL arg1: 01, arg2: 7D  | @deal
-1501AE -- pc: 0000010C -- instruction: RR  arg1: R1, arg2: AE 
-020215 -- pc: 0000010D -- instruction: LDR arg1: R2, arg2: 15 
-100201 -- pc: 0000010E -- instruction: COM arg1: R2, arg2: R1 
-0C0116 -- pc: 0000010F -- instruction: JZ  arg1: 01, arg2: 16  | @player_exactly_21
-0E0112 -- pc: 00000110 -- instruction: JC  arg1: 01, arg2: 12  | @player_less_then_21
-0F0114 -- pc: 00000111 -- instruction: JNC arg1: 01, arg2: 14  | @player_more_then_21
+120000 -- pc: 00000109 -- instruction: RTN arg1: 00, arg2: 00 
+&state_hit:
+020000 -- pc: 0000010A -- instruction: LDR arg1: R0, arg2: 00 
+090000 -- pc: 0000010B -- instruction: PSH arg1: R0, arg2: 00 
+110186 -- pc: 0000010C -- instruction: CAL arg1: 01, arg2: 86  | @deal
+1501AE -- pc: 0000010D -- instruction: RR  arg1: R1, arg2: AE 
+020215 -- pc: 0000010E -- instruction: LDR arg1: R2, arg2: 15 
+100201 -- pc: 0000010F -- instruction: COM arg1: R2, arg2: R1 
+0C0117 -- pc: 00000110 -- instruction: JZ  arg1: 01, arg2: 17  | @player_exactly_21
+0E0113 -- pc: 00000111 -- instruction: JC  arg1: 01, arg2: 13  | @player_less_then_21
+0F0115 -- pc: 00000112 -- instruction: JNC arg1: 01, arg2: 15  | @player_more_then_21
 &player_less_then_21:
-14BD01 -- pc: 00000112 -- instruction: WD  arg1: BD, arg2: 01 
-0B0118 -- pc: 00000113 -- instruction: JMP arg1: 01, arg2: 18  | @state_hit_done
+14BD01 -- pc: 00000113 -- instruction: WD  arg1: BD, arg2: 01 
+0B0119 -- pc: 00000114 -- instruction: JMP arg1: 01, arg2: 19  | @state_hit_done
 &player_more_then_21:
-14BD05 -- pc: 00000114 -- instruction: WD  arg1: BD, arg2: 05 
-0B0118 -- pc: 00000115 -- instruction: JMP arg1: 01, arg2: 18  | @state_hit_done
+14BD05 -- pc: 00000115 -- instruction: WD  arg1: BD, arg2: 05 
+0B0119 -- pc: 00000116 -- instruction: JMP arg1: 01, arg2: 19  | @state_hit_done
 &player_exactly_21:
-14BD04 -- pc: 00000116 -- instruction: WD  arg1: BD, arg2: 04 
-0B0118 -- pc: 00000117 -- instruction: JMP arg1: 01, arg2: 18  | @state_hit_done
+14BD04 -- pc: 00000117 -- instruction: WD  arg1: BD, arg2: 04 
+0B0119 -- pc: 00000118 -- instruction: JMP arg1: 01, arg2: 19  | @state_hit_done
 &state_hit_done:
-020001 -- pc: 00000118 -- instruction: LDR arg1: R0, arg2: 01 
-090000 -- pc: 00000119 -- instruction: PSH arg1: R0, arg2: 00 
-11017D -- pc: 0000011A -- instruction: CAL arg1: 01, arg2: 7D  | @deal
-1501BC -- pc: 0000011B -- instruction: RR  arg1: R1, arg2: BC 
-1502AE -- pc: 0000011C -- instruction: RR  arg1: R2, arg2: AE 
-020315 -- pc: 0000011D -- instruction: LDR arg1: R3, arg2: 15 
-020410 -- pc: 0000011E -- instruction: LDR arg1: R4, arg2: 10 
-100301 -- pc: 0000011F -- instruction: COM arg1: R3, arg2: R1 
-0F0127 -- pc: 00000120 -- instruction: JNC arg1: 01, arg2: 27  | @dealer_more_then_21
-100401 -- pc: 00000121 -- instruction: COM arg1: R4, arg2: R1 
-0E0129 -- pc: 00000122 -- instruction: JC  arg1: 01, arg2: 29  | @dealer_has_16_or_less
-100102 -- pc: 00000123 -- instruction: COM arg1: R1, arg2: R2 
-0C012B -- pc: 00000124 -- instruction: JZ  arg1: 01, arg2: 2B  | @dealer_equal_player
-0E012D -- pc: 00000125 -- instruction: JC  arg1: 01, arg2: 2D  | @dealer_more_then_player
-0F012F -- pc: 00000126 -- instruction: JNC arg1: 01, arg2: 2F  | @dealer_less_then_player
+120000 -- pc: 00000119 -- instruction: RTN arg1: 00, arg2: 00 
+&state_dealer_hit:
+020001 -- pc: 0000011A -- instruction: LDR arg1: R0, arg2: 01 
+090000 -- pc: 0000011B -- instruction: PSH arg1: R0, arg2: 00 
+110186 -- pc: 0000011C -- instruction: CAL arg1: 01, arg2: 86  | @deal
+1501BC -- pc: 0000011D -- instruction: RR  arg1: R1, arg2: BC 
+1502AE -- pc: 0000011E -- instruction: RR  arg1: R2, arg2: AE 
+020315 -- pc: 0000011F -- instruction: LDR arg1: R3, arg2: 15 
+020410 -- pc: 00000120 -- instruction: LDR arg1: R4, arg2: 10 
+100301 -- pc: 00000121 -- instruction: COM arg1: R3, arg2: R1 
+0F0129 -- pc: 00000122 -- instruction: JNC arg1: 01, arg2: 29  | @dealer_more_then_21
+100401 -- pc: 00000123 -- instruction: COM arg1: R4, arg2: R1 
+0E012B -- pc: 00000124 -- instruction: JC  arg1: 01, arg2: 2B  | @dealer_has_16_or_less
+100102 -- pc: 00000125 -- instruction: COM arg1: R1, arg2: R2 
+0C012D -- pc: 00000126 -- instruction: JZ  arg1: 01, arg2: 2D  | @dealer_equal_player
+0E0130 -- pc: 00000127 -- instruction: JC  arg1: 01, arg2: 30  | @dealer_more_then_player
+0F0133 -- pc: 00000128 -- instruction: JNC arg1: 01, arg2: 33  | @dealer_less_then_player
 &dealer_more_then_21:
-14BD04 -- pc: 00000127 -- instruction: WD  arg1: BD, arg2: 04 
-0B0131 -- pc: 00000128 -- instruction: JMP arg1: 01, arg2: 31  | @state_dealer_hit_done
+14BD04 -- pc: 00000129 -- instruction: WD  arg1: BD, arg2: 04 
+0B0136 -- pc: 0000012A -- instruction: JMP arg1: 01, arg2: 36  | @state_dealer_hit_done
 &dealer_has_16_or_less:
-14BD03 -- pc: 00000129 -- instruction: WD  arg1: BD, arg2: 03 
-0B0131 -- pc: 0000012A -- instruction: JMP arg1: 01, arg2: 31  | @state_dealer_hit_done
+14BD03 -- pc: 0000012B -- instruction: WD  arg1: BD, arg2: 03 
+0B0136 -- pc: 0000012C -- instruction: JMP arg1: 01, arg2: 36  | @state_dealer_hit_done
 &dealer_equal_player:
-14BD06 -- pc: 0000012B -- instruction: WD  arg1: BD, arg2: 06 
-0B0131 -- pc: 0000012C -- instruction: JMP arg1: 01, arg2: 31  | @state_dealer_hit_done
+14BD06 -- pc: 0000012D -- instruction: WD  arg1: BD, arg2: 06 
+110235 -- pc: 0000012E -- instruction: CAL arg1: 02, arg2: 35  | @sleep
+0B0136 -- pc: 0000012F -- instruction: JMP arg1: 01, arg2: 36  | @state_dealer_hit_done
 &dealer_more_then_player:
-14BD05 -- pc: 0000012D -- instruction: WD  arg1: BD, arg2: 05 
-0B0131 -- pc: 0000012E -- instruction: JMP arg1: 01, arg2: 31  | @state_dealer_hit_done
+14BD05 -- pc: 00000130 -- instruction: WD  arg1: BD, arg2: 05 
+110235 -- pc: 00000131 -- instruction: CAL arg1: 02, arg2: 35  | @sleep
+0B0136 -- pc: 00000132 -- instruction: JMP arg1: 01, arg2: 36  | @state_dealer_hit_done
 &dealer_less_then_player:
-14BD04 -- pc: 0000012F -- instruction: WD  arg1: BD, arg2: 04 
-0B0131 -- pc: 00000130 -- instruction: JMP arg1: 01, arg2: 31  | @state_dealer_hit_done
+14BD04 -- pc: 00000133 -- instruction: WD  arg1: BD, arg2: 04 
+110235 -- pc: 00000134 -- instruction: CAL arg1: 02, arg2: 35  | @sleep
+0B0136 -- pc: 00000135 -- instruction: JMP arg1: 01, arg2: 36  | @state_dealer_hit_done
 &state_dealer_hit_done:
-11021A -- pc: 00000131 -- instruction: CAL arg1: 02, arg2: 1A  | @clean_screen
-110136 -- pc: 00000132 -- instruction: CAL arg1: 01, arg2: 36  | @draw_victory
-110165 -- pc: 00000133 -- instruction: CAL arg1: 01, arg2: 65  | @draw_again
-1100D3 -- pc: 00000134 -- instruction: CAL arg1: 00, arg2: D3  | @wait_for_button_click
-14BD00 -- pc: 00000135 -- instruction: WD  arg1: BD, arg2: 00 
+120000 -- pc: 00000136 -- instruction: RTN arg1: 00, arg2: 00 
+&state_player_win:
+110223 -- pc: 00000137 -- instruction: CAL arg1: 02, arg2: 23  | @clean_screen
+11013D -- pc: 00000138 -- instruction: CAL arg1: 01, arg2: 3D  | @draw_victory
+11016D -- pc: 00000139 -- instruction: CAL arg1: 01, arg2: 6D  | @draw_again
+1100D3 -- pc: 0000013A -- instruction: CAL arg1: 00, arg2: D3  | @wait_for_button_click
+14BD00 -- pc: 0000013B -- instruction: WD  arg1: BD, arg2: 00 
 &state_player_win_done:
-143B03 -- pc: 00000136 -- instruction: WD  arg1: 3B, arg2: 03 
-143A0A -- pc: 00000137 -- instruction: WD  arg1: 3A, arg2: 0A 
-143905 -- pc: 00000138 -- instruction: WD  arg1: 39, arg2: 05 
-14381D -- pc: 00000139 -- instruction: WD  arg1: 38, arg2: 1D 
-1101F4 -- pc: 0000013A -- instruction: CAL arg1: 01, arg2: F4  | @draw_symbol
-14390A -- pc: 0000013B -- instruction: WD  arg1: 39, arg2: 0A 
-143801 -- pc: 0000013C -- instruction: WD  arg1: 38, arg2: 01 
-1101F4 -- pc: 0000013D -- instruction: CAL arg1: 01, arg2: F4  | @draw_symbol
-14390F -- pc: 0000013E -- instruction: WD  arg1: 39, arg2: 0F 
-143819 -- pc: 0000013F -- instruction: WD  arg1: 38, arg2: 19 
-1101F4 -- pc: 00000140 -- instruction: CAL arg1: 01, arg2: F4  | @draw_symbol
-143914 -- pc: 00000141 -- instruction: WD  arg1: 39, arg2: 14 
-143813 -- pc: 00000142 -- instruction: WD  arg1: 38, arg2: 13 
-1101F4 -- pc: 00000143 -- instruction: CAL arg1: 01, arg2: F4  | @draw_symbol
-143919 -- pc: 00000144 -- instruction: WD  arg1: 39, arg2: 19 
-143818 -- pc: 00000145 -- instruction: WD  arg1: 38, arg2: 18 
-1101F4 -- pc: 00000146 -- instruction: CAL arg1: 01, arg2: F4  | @draw_symbol
-14391E -- pc: 00000147 -- instruction: WD  arg1: 39, arg2: 1E 
-14381B -- pc: 00000148 -- instruction: WD  arg1: 38, arg2: 1B 
-1101F4 -- pc: 00000149 -- instruction: CAL arg1: 01, arg2: F4  | @draw_symbol
-143923 -- pc: 0000014A -- instruction: WD  arg1: 39, arg2: 23 
-143815 -- pc: 0000014B -- instruction: WD  arg1: 38, arg2: 15 
-1101F4 -- pc: 0000014C -- instruction: CAL arg1: 01, arg2: F4  | @draw_symbol
-143928 -- pc: 0000014D -- instruction: WD  arg1: 39, arg2: 28 
-14381C -- pc: 0000014E -- instruction: WD  arg1: 38, arg2: 1C 
-1101F4 -- pc: 0000014F -- instruction: CAL arg1: 01, arg2: F4  | @draw_symbol
+120000 -- pc: 0000013C -- instruction: RTN arg1: 00, arg2: 00 
+&draw_victory:
+143B03 -- pc: 0000013D -- instruction: WD  arg1: 3B, arg2: 03 
+143A0A -- pc: 0000013E -- instruction: WD  arg1: 3A, arg2: 0A 
+143905 -- pc: 0000013F -- instruction: WD  arg1: 39, arg2: 05 
+14381D -- pc: 00000140 -- instruction: WD  arg1: 38, arg2: 1D 
+1101FD -- pc: 00000141 -- instruction: CAL arg1: 01, arg2: FD  | @draw_symbol
+14390A -- pc: 00000142 -- instruction: WD  arg1: 39, arg2: 0A 
+143801 -- pc: 00000143 -- instruction: WD  arg1: 38, arg2: 01 
+1101FD -- pc: 00000144 -- instruction: CAL arg1: 01, arg2: FD  | @draw_symbol
+14390F -- pc: 00000145 -- instruction: WD  arg1: 39, arg2: 0F 
+143819 -- pc: 00000146 -- instruction: WD  arg1: 38, arg2: 19 
+1101FD -- pc: 00000147 -- instruction: CAL arg1: 01, arg2: FD  | @draw_symbol
+143914 -- pc: 00000148 -- instruction: WD  arg1: 39, arg2: 14 
+143813 -- pc: 00000149 -- instruction: WD  arg1: 38, arg2: 13 
+1101FD -- pc: 0000014A -- instruction: CAL arg1: 01, arg2: FD  | @draw_symbol
+143919 -- pc: 0000014B -- instruction: WD  arg1: 39, arg2: 19 
+143818 -- pc: 0000014C -- instruction: WD  arg1: 38, arg2: 18 
+1101FD -- pc: 0000014D -- instruction: CAL arg1: 01, arg2: FD  | @draw_symbol
+14391E -- pc: 0000014E -- instruction: WD  arg1: 39, arg2: 1E 
+14381B -- pc: 0000014F -- instruction: WD  arg1: 38, arg2: 1B 
+1101FD -- pc: 00000150 -- instruction: CAL arg1: 01, arg2: FD  | @draw_symbol
+143923 -- pc: 00000151 -- instruction: WD  arg1: 39, arg2: 23 
+143815 -- pc: 00000152 -- instruction: WD  arg1: 38, arg2: 15 
+1101FD -- pc: 00000153 -- instruction: CAL arg1: 01, arg2: FD  | @draw_symbol
+143928 -- pc: 00000154 -- instruction: WD  arg1: 39, arg2: 28 
+14381C -- pc: 00000155 -- instruction: WD  arg1: 38, arg2: 1C 
+1101FD -- pc: 00000156 -- instruction: CAL arg1: 01, arg2: FD  | @draw_symbol
 &draw_victory_done:
-120000 -- pc: 00000150 -- instruction: RTN arg1: 00, arg2: 00 
+120000 -- pc: 00000157 -- instruction: RTN arg1: 00, arg2: 00 
 &state_dealer_win:
-11021A -- pc: 00000151 -- instruction: CAL arg1: 02, arg2: 1A  | @clean_screen
-110156 -- pc: 00000152 -- instruction: CAL arg1: 01, arg2: 56  | @draw_lost
-110165 -- pc: 00000153 -- instruction: CAL arg1: 01, arg2: 65  | @draw_again
-1100D3 -- pc: 00000154 -- instruction: CAL arg1: 00, arg2: D3  | @wait_for_button_click
-14BD00 -- pc: 00000155 -- instruction: WD  arg1: BD, arg2: 00 
+110223 -- pc: 00000158 -- instruction: CAL arg1: 02, arg2: 23  | @clean_screen
+11015E -- pc: 00000159 -- instruction: CAL arg1: 01, arg2: 5E  | @draw_lost
+11016D -- pc: 0000015A -- instruction: CAL arg1: 01, arg2: 6D  | @draw_again
+1100D3 -- pc: 0000015B -- instruction: CAL arg1: 00, arg2: D3  | @wait_for_button_click
+14BD00 -- pc: 0000015C -- instruction: WD  arg1: BD, arg2: 00 
 &state_dealer_win_done:
-143B01 -- pc: 00000156 -- instruction: WD  arg1: 3B, arg2: 01 
-143A0A -- pc: 00000157 -- instruction: WD  arg1: 3A, arg2: 0A 
-143914 -- pc: 00000158 -- instruction: WD  arg1: 39, arg2: 14 
-143817 -- pc: 00000159 -- instruction: WD  arg1: 38, arg2: 17 
-1101F4 -- pc: 0000015A -- instruction: CAL arg1: 01, arg2: F4  | @draw_symbol
-143919 -- pc: 0000015B -- instruction: WD  arg1: 39, arg2: 19 
-143818 -- pc: 0000015C -- instruction: WD  arg1: 38, arg2: 18 
-1101F4 -- pc: 0000015D -- instruction: CAL arg1: 01, arg2: F4  | @draw_symbol
-14391E -- pc: 0000015E -- instruction: WD  arg1: 39, arg2: 1E 
-143812 -- pc: 0000015F -- instruction: WD  arg1: 38, arg2: 12 
-1101F4 -- pc: 00000160 -- instruction: CAL arg1: 01, arg2: F4  | @draw_symbol
-143923 -- pc: 00000161 -- instruction: WD  arg1: 39, arg2: 23 
-143813 -- pc: 00000162 -- instruction: WD  arg1: 38, arg2: 13 
-1101F4 -- pc: 00000163 -- instruction: CAL arg1: 01, arg2: F4  | @draw_symbol
+120000 -- pc: 0000015D -- instruction: RTN arg1: 00, arg2: 00 
+&draw_lost:
+143B01 -- pc: 0000015E -- instruction: WD  arg1: 3B, arg2: 01 
+143A0A -- pc: 0000015F -- instruction: WD  arg1: 3A, arg2: 0A 
+143914 -- pc: 00000160 -- instruction: WD  arg1: 39, arg2: 14 
+143817 -- pc: 00000161 -- instruction: WD  arg1: 38, arg2: 17 
+1101FD -- pc: 00000162 -- instruction: CAL arg1: 01, arg2: FD  | @draw_symbol
+143919 -- pc: 00000163 -- instruction: WD  arg1: 39, arg2: 19 
+143818 -- pc: 00000164 -- instruction: WD  arg1: 38, arg2: 18 
+1101FD -- pc: 00000165 -- instruction: CAL arg1: 01, arg2: FD  | @draw_symbol
+14391E -- pc: 00000166 -- instruction: WD  arg1: 39, arg2: 1E 
+143812 -- pc: 00000167 -- instruction: WD  arg1: 38, arg2: 12 
+1101FD -- pc: 00000168 -- instruction: CAL arg1: 01, arg2: FD  | @draw_symbol
+143923 -- pc: 00000169 -- instruction: WD  arg1: 39, arg2: 23 
+143813 -- pc: 0000016A -- instruction: WD  arg1: 38, arg2: 13 
+1101FD -- pc: 0000016B -- instruction: CAL arg1: 01, arg2: FD  | @draw_symbol
 &draw_lost_done:
-120000 -- pc: 00000164 -- instruction: RTN arg1: 00, arg2: 00 
+120000 -- pc: 0000016C -- instruction: RTN arg1: 00, arg2: 00 
 &draw_again:
-14392D -- pc: 00000165 -- instruction: WD  arg1: 39, arg2: 2D 
-14381E -- pc: 00000166 -- instruction: WD  arg1: 38, arg2: 1E 
-1101F4 -- pc: 00000167 -- instruction: CAL arg1: 01, arg2: F4  | @draw_symbol
-143931 -- pc: 00000168 -- instruction: WD  arg1: 39, arg2: 31 
-14381F -- pc: 00000169 -- instruction: WD  arg1: 38, arg2: 1F 
-1101F4 -- pc: 0000016A -- instruction: CAL arg1: 01, arg2: F4  | @draw_symbol
+14392D -- pc: 0000016D -- instruction: WD  arg1: 39, arg2: 2D 
+14381E -- pc: 0000016E -- instruction: WD  arg1: 38, arg2: 1E 
+1101FD -- pc: 0000016F -- instruction: CAL arg1: 01, arg2: FD  | @draw_symbol
+143931 -- pc: 00000170 -- instruction: WD  arg1: 39, arg2: 31 
+14381F -- pc: 00000171 -- instruction: WD  arg1: 38, arg2: 1F 
+1101FD -- pc: 00000172 -- instruction: CAL arg1: 01, arg2: FD  | @draw_symbol
 &draw_again_done:
-120000 -- pc: 0000016B -- instruction: RTN arg1: 00, arg2: 00 
+120000 -- pc: 00000173 -- instruction: RTN arg1: 00, arg2: 00 
 &state_draw:
-11021A -- pc: 0000016C -- instruction: CAL arg1: 02, arg2: 1A  | @clean_screen
-110171 -- pc: 0000016D -- instruction: CAL arg1: 01, arg2: 71  | @draw_draw
-110165 -- pc: 0000016E -- instruction: CAL arg1: 01, arg2: 65  | @draw_again
-1100D3 -- pc: 0000016F -- instruction: CAL arg1: 00, arg2: D3  | @wait_for_button_click
-14BD00 -- pc: 00000170 -- instruction: WD  arg1: BD, arg2: 00 
+110223 -- pc: 00000174 -- instruction: CAL arg1: 02, arg2: 23  | @clean_screen
+11017A -- pc: 00000175 -- instruction: CAL arg1: 01, arg2: 7A  | @draw_draw
+11016D -- pc: 00000176 -- instruction: CAL arg1: 01, arg2: 6D  | @draw_again
+1100D3 -- pc: 00000177 -- instruction: CAL arg1: 00, arg2: D3  | @wait_for_button_click
+14BD00 -- pc: 00000178 -- instruction: WD  arg1: BD, arg2: 00 
 &state_draw_done:
-143B03 -- pc: 00000171 -- instruction: WD  arg1: 3B, arg2: 03 
-143A0A -- pc: 00000172 -- instruction: WD  arg1: 3A, arg2: 0A 
-143919 -- pc: 00000173 -- instruction: WD  arg1: 39, arg2: 19 
-143813 -- pc: 00000174 -- instruction: WD  arg1: 38, arg2: 13 
-1101F4 -- pc: 00000175 -- instruction: CAL arg1: 01, arg2: F4  | @draw_symbol
-14391E -- pc: 00000176 -- instruction: WD  arg1: 39, arg2: 1E 
-143801 -- pc: 00000177 -- instruction: WD  arg1: 38, arg2: 01 
-1101F4 -- pc: 00000178 -- instruction: CAL arg1: 01, arg2: F4  | @draw_symbol
-143923 -- pc: 00000179 -- instruction: WD  arg1: 39, arg2: 23 
-14381A -- pc: 0000017A -- instruction: WD  arg1: 38, arg2: 1A 
-1101F4 -- pc: 0000017B -- instruction: CAL arg1: 01, arg2: F4  | @draw_symbol
+120000 -- pc: 00000179 -- instruction: RTN arg1: 00, arg2: 00 
+&draw_draw:
+143B03 -- pc: 0000017A -- instruction: WD  arg1: 3B, arg2: 03 
+143A0A -- pc: 0000017B -- instruction: WD  arg1: 3A, arg2: 0A 
+143919 -- pc: 0000017C -- instruction: WD  arg1: 39, arg2: 19 
+143813 -- pc: 0000017D -- instruction: WD  arg1: 38, arg2: 13 
+1101FD -- pc: 0000017E -- instruction: CAL arg1: 01, arg2: FD  | @draw_symbol
+14391E -- pc: 0000017F -- instruction: WD  arg1: 39, arg2: 1E 
+143801 -- pc: 00000180 -- instruction: WD  arg1: 38, arg2: 01 
+1101FD -- pc: 00000181 -- instruction: CAL arg1: 01, arg2: FD  | @draw_symbol
+143923 -- pc: 00000182 -- instruction: WD  arg1: 39, arg2: 23 
+14381A -- pc: 00000183 -- instruction: WD  arg1: 38, arg2: 1A 
+1101FD -- pc: 00000184 -- instruction: CAL arg1: 01, arg2: FD  | @draw_symbol
 &draw_draw_done:
-120000 -- pc: 0000017C -- instruction: RTN arg1: 00, arg2: 00 
+120000 -- pc: 00000185 -- instruction: RTN arg1: 00, arg2: 00 
 &deal:
-0A0100 -- pc: 0000017D -- instruction: POP arg1: R1, arg2: 00 
-060100 -- pc: 0000017E -- instruction: DEC arg1: R1, arg2: 00 
-0202AF -- pc: 0000017F -- instruction: LDR arg1: R2, arg2: AF 
-0204B0 -- pc: 00000180 -- instruction: LDR arg1: R4, arg2: B0 
-0205BC -- pc: 00000181 -- instruction: LDR arg1: R5, arg2: BC 
-143A01 -- pc: 00000182 -- instruction: WD  arg1: 3A, arg2: 01 
-0C0188 -- pc: 00000183 -- instruction: JZ  arg1: 01, arg2: 88  | @dealer
-0202A1 -- pc: 00000184 -- instruction: LDR arg1: R2, arg2: A1 
-0204A2 -- pc: 00000185 -- instruction: LDR arg1: R4, arg2: A2 
-0205AE -- pc: 00000186 -- instruction: LDR arg1: R5, arg2: AE 
-143A10 -- pc: 00000187 -- instruction: WD  arg1: 3A, arg2: 10 
+0A0100 -- pc: 00000186 -- instruction: POP arg1: R1, arg2: 00 
+060100 -- pc: 00000187 -- instruction: DEC arg1: R1, arg2: 00 
+0202AF -- pc: 00000188 -- instruction: LDR arg1: R2, arg2: AF 
+0204B0 -- pc: 00000189 -- instruction: LDR arg1: R4, arg2: B0 
+0205BC -- pc: 0000018A -- instruction: LDR arg1: R5, arg2: BC 
+143A01 -- pc: 0000018B -- instruction: WD  arg1: 3A, arg2: 01 
+0C0191 -- pc: 0000018C -- instruction: JZ  arg1: 01, arg2: 91  | @dealer
+0202A1 -- pc: 0000018D -- instruction: LDR arg1: R2, arg2: A1 
+0204A2 -- pc: 0000018E -- instruction: LDR arg1: R4, arg2: A2 
+0205AE -- pc: 0000018F -- instruction: LDR arg1: R5, arg2: AE 
+143A10 -- pc: 00000190 -- instruction: WD  arg1: 3A, arg2: 10 
 &dealer:
-110199 -- pc: 00000188 -- instruction: CAL arg1: 01, arg2: 99  | @get_random_card
-0A0000 -- pc: 00000189 -- instruction: POP arg1: R0, arg2: 00 
-180302 -- pc: 0000018A -- instruction: RRR arg1: R3, arg2: R2 
-030403 -- pc: 0000018B -- instruction: ADD arg1: R4, arg2: R3 
-160400 -- pc: 0000018C -- instruction: RWR arg1: R4, arg2: R0 
-050300 -- pc: 0000018D -- instruction: INC arg1: R3, arg2: 00 
-160203 -- pc: 0000018E -- instruction: RWR arg1: R2, arg2: R3 
-090000 -- pc: 0000018F -- instruction: PSH arg1: R0, arg2: 00 
-1101A4 -- pc: 00000190 -- instruction: CAL arg1: 01, arg2: A4  | @get_card_value
-0A0600 -- pc: 00000191 -- instruction: POP arg1: R6, arg2: 00 
-180705 -- pc: 00000192 -- instruction: RRR arg1: R7, arg2: R5 
-030607 -- pc: 00000193 -- instruction: ADD arg1: R6, arg2: R7 
-160506 -- pc: 00000194 -- instruction: RWR arg1: R5, arg2: R6 
-090000 -- pc: 00000195 -- instruction: PSH arg1: R0, arg2: 00 
-090300 -- pc: 00000196 -- instruction: PSH arg1: R3, arg2: 00 
-1101AE -- pc: 00000197 -- instruction: CAL arg1: 01, arg2: AE  | @draw_card
+1101A2 -- pc: 00000191 -- instruction: CAL arg1: 01, arg2: A2  | @get_random_card
+0A0000 -- pc: 00000192 -- instruction: POP arg1: R0, arg2: 00 
+180302 -- pc: 00000193 -- instruction: RRR arg1: R3, arg2: R2 
+030403 -- pc: 00000194 -- instruction: ADD arg1: R4, arg2: R3 
+160400 -- pc: 00000195 -- instruction: RWR arg1: R4, arg2: R0 
+050300 -- pc: 00000196 -- instruction: INC arg1: R3, arg2: 00 
+160203 -- pc: 00000197 -- instruction: RWR arg1: R2, arg2: R3 
+090000 -- pc: 00000198 -- instruction: PSH arg1: R0, arg2: 00 
+1101AD -- pc: 00000199 -- instruction: CAL arg1: 01, arg2: AD  | @get_card_value
+0A0600 -- pc: 0000019A -- instruction: POP arg1: R6, arg2: 00 
+180705 -- pc: 0000019B -- instruction: RRR arg1: R7, arg2: R5 
+030607 -- pc: 0000019C -- instruction: ADD arg1: R6, arg2: R7 
+160506 -- pc: 0000019D -- instruction: RWR arg1: R5, arg2: R6 
+090000 -- pc: 0000019E -- instruction: PSH arg1: R0, arg2: 00 
+090300 -- pc: 0000019F -- instruction: PSH arg1: R3, arg2: 00 
+1101B7 -- pc: 000001A0 -- instruction: CAL arg1: 01, arg2: B7  | @draw_card
 &deal_done:
-120000 -- pc: 00000198 -- instruction: RTN arg1: 00, arg2: 00 
+120000 -- pc: 000001A1 -- instruction: RTN arg1: 00, arg2: 00 
 &get_random_card:
-020280 -- pc: 00000199 -- instruction: LDR arg1: R2, arg2: 80 
-010021 -- pc: 0000019A -- instruction: LD  arg1: R0, arg2: RNDRANGE 
-060000 -- pc: 0000019B -- instruction: DEC arg1: R0, arg2: 00 
-180100 -- pc: 0000019C -- instruction: RRR arg1: R1, arg2: R0 
-1A0201 -- pc: 0000019D -- instruction: AND arg1: R2, arg2: R1 
-0D0199 -- pc: 0000019E -- instruction: JNZ arg1: 01, arg2: 99  | @get_random_card
-020380 -- pc: 0000019F -- instruction: LDR arg1: R3, arg2: 80 
-1B0103 -- pc: 000001A0 -- instruction: OR  arg1: R1, arg2: R3 
-160001 -- pc: 000001A1 -- instruction: RWR arg1: R0, arg2: R1 
-090100 -- pc: 000001A2 -- instruction: PSH arg1: R1, arg2: 00 
+020280 -- pc: 000001A2 -- instruction: LDR arg1: R2, arg2: 80 
+010021 -- pc: 000001A3 -- instruction: LD  arg1: R0, arg2: RNDRANGE 
+060000 -- pc: 000001A4 -- instruction: DEC arg1: R0, arg2: 00 
+180100 -- pc: 000001A5 -- instruction: RRR arg1: R1, arg2: R0 
+1A0201 -- pc: 000001A6 -- instruction: AND arg1: R2, arg2: R1 
+0D01A2 -- pc: 000001A7 -- instruction: JNZ arg1: 01, arg2: A2  | @get_random_card
+020380 -- pc: 000001A8 -- instruction: LDR arg1: R3, arg2: 80 
+1B0103 -- pc: 000001A9 -- instruction: OR  arg1: R1, arg2: R3 
+160001 -- pc: 000001AA -- instruction: RWR arg1: R0, arg2: R1 
+090100 -- pc: 000001AB -- instruction: PSH arg1: R1, arg2: 00 
 &get_random_card_done:
-120000 -- pc: 000001A3 -- instruction: RTN arg1: 00, arg2: 00 
+120000 -- pc: 000001AC -- instruction: RTN arg1: 00, arg2: 00 
 &get_card_value:
-0A0000 -- pc: 000001A4 -- instruction: POP arg1: R0, arg2: 00 
-02020A -- pc: 000001A5 -- instruction: LDR arg1: R2, arg2: 0A 
-02011F -- pc: 000001A6 -- instruction: LDR arg1: R1, arg2: 1F 
-1A0001 -- pc: 000001A7 -- instruction: AND arg1: R0, arg2: R1 
-100002 -- pc: 000001A8 -- instruction: COM arg1: R0, arg2: R2 
-0E01AC -- pc: 000001A9 -- instruction: JC  arg1: 01, arg2: AC  | @more_then_10
-090000 -- pc: 000001AA -- instruction: PSH arg1: R0, arg2: 00 
-0B01AD -- pc: 000001AB -- instruction: JMP arg1: 01, arg2: AD  | @get_card_value_done
+0A0000 -- pc: 000001AD -- instruction: POP arg1: R0, arg2: 00 
+02020A -- pc: 000001AE -- instruction: LDR arg1: R2, arg2: 0A 
+02011F -- pc: 000001AF -- instruction: LDR arg1: R1, arg2: 1F 
+1A0001 -- pc: 000001B0 -- instruction: AND arg1: R0, arg2: R1 
+100002 -- pc: 000001B1 -- instruction: COM arg1: R0, arg2: R2 
+0E01B5 -- pc: 000001B2 -- instruction: JC  arg1: 01, arg2: B5  | @more_then_10
+090000 -- pc: 000001B3 -- instruction: PSH arg1: R0, arg2: 00 
+0B01B6 -- pc: 000001B4 -- instruction: JMP arg1: 01, arg2: B6  | @get_card_value_done
 &more_then_10:
-090200 -- pc: 000001AC -- instruction: PSH arg1: R2, arg2: 00 
+090200 -- pc: 000001B5 -- instruction: PSH arg1: R2, arg2: 00 
 &get_card_value_done:
-120000 -- pc: 000001AD -- instruction: RTN arg1: 00, arg2: 00 
+120000 -- pc: 000001B6 -- instruction: RTN arg1: 00, arg2: 00 
 &draw_card:
-0A0000 -- pc: 000001AE -- instruction: POP arg1: R0, arg2: 00 
-0A0100 -- pc: 000001AF -- instruction: POP arg1: R1, arg2: 00 
-02040F -- pc: 000001B0 -- instruction: LDR arg1: R4, arg2: 0F 
-1A0401 -- pc: 000001B1 -- instruction: AND arg1: R4, arg2: R1 
-010204 -- pc: 000001B2 -- instruction: LD  arg1: R2, arg2: R4 
-020560 -- pc: 000001B3 -- instruction: LDR arg1: R5, arg2: 60 
-1A0501 -- pc: 000001B4 -- instruction: AND arg1: R5, arg2: R1 
-010305 -- pc: 000001B5 -- instruction: LD  arg1: R3, arg2: R5 
-090000 -- pc: 000001B6 -- instruction: PSH arg1: R0, arg2: 00 
-1101DA -- pc: 000001B7 -- instruction: CAL arg1: 01, arg2: DA  | @set_suit_x_axis
-020600 -- pc: 000001B8 -- instruction: LDR arg1: R6, arg2: 00 
-100603 -- pc: 000001B9 -- instruction: COM arg1: R6, arg2: R3 
-0C01C4 -- pc: 000001BA -- instruction: JZ  arg1: 01, arg2: C4  | @draw_heart_symbol
-020620 -- pc: 000001BB -- instruction: LDR arg1: R6, arg2: 20 
-100603 -- pc: 000001BC -- instruction: COM arg1: R6, arg2: R3 
-0C01C8 -- pc: 000001BD -- instruction: JZ  arg1: 01, arg2: C8  | @draw_spade_symbol
-020640 -- pc: 000001BE -- instruction: LDR arg1: R6, arg2: 40 
-100603 -- pc: 000001BF -- instruction: COM arg1: R6, arg2: R3 
-0C01CC -- pc: 000001C0 -- instruction: JZ  arg1: 01, arg2: CC  | @draw_diamond_symbol
-020660 -- pc: 000001C1 -- instruction: LDR arg1: R6, arg2: 60 
+0A0000 -- pc: 000001B7 -- instruction: POP arg1: R0, arg2: 00 
+0A0100 -- pc: 000001B8 -- instruction: POP arg1: R1, arg2: 00 
+02040F -- pc: 000001B9 -- instruction: LDR arg1: R4, arg2: 0F 
+1A0401 -- pc: 000001BA -- instruction: AND arg1: R4, arg2: R1 
+010204 -- pc: 000001BB -- instruction: LD  arg1: R2, arg2: R4 
+020560 -- pc: 000001BC -- instruction: LDR arg1: R5, arg2: 60 
+1A0501 -- pc: 000001BD -- instruction: AND arg1: R5, arg2: R1 
+010305 -- pc: 000001BE -- instruction: LD  arg1: R3, arg2: R5 
+090000 -- pc: 000001BF -- instruction: PSH arg1: R0, arg2: 00 
+1101E3 -- pc: 000001C0 -- instruction: CAL arg1: 01, arg2: E3  | @set_suit_x_axis
+020600 -- pc: 000001C1 -- instruction: LDR arg1: R6, arg2: 00 
 100603 -- pc: 000001C2 -- instruction: COM arg1: R6, arg2: R3 
-0C01D0 -- pc: 000001C3 -- instruction: JZ  arg1: 01, arg2: D0  | @draw_club_symbol
+0C01CD -- pc: 000001C3 -- instruction: JZ  arg1: 01, arg2: CD  | @draw_heart_symbol
+020620 -- pc: 000001C4 -- instruction: LDR arg1: R6, arg2: 20 
+100603 -- pc: 000001C5 -- instruction: COM arg1: R6, arg2: R3 
+0C01D1 -- pc: 000001C6 -- instruction: JZ  arg1: 01, arg2: D1  | @draw_spade_symbol
+020640 -- pc: 000001C7 -- instruction: LDR arg1: R6, arg2: 40 
+100603 -- pc: 000001C8 -- instruction: COM arg1: R6, arg2: R3 
+0C01D5 -- pc: 000001C9 -- instruction: JZ  arg1: 01, arg2: D5  | @draw_diamond_symbol
+020660 -- pc: 000001CA -- instruction: LDR arg1: R6, arg2: 60 
+100603 -- pc: 000001CB -- instruction: COM arg1: R6, arg2: R3 
+0C01D9 -- pc: 000001CC -- instruction: JZ  arg1: 01, arg2: D9  | @draw_club_symbol
 &draw_heart_symbol:
-143811 -- pc: 000001C4 -- instruction: WD  arg1: 38, arg2: 11 
-143B08 -- pc: 000001C5 -- instruction: WD  arg1: 3B, arg2: 08 
-1101F4 -- pc: 000001C6 -- instruction: CAL arg1: 01, arg2: F4  | @draw_symbol
-0B01D4 -- pc: 000001C7 -- instruction: JMP arg1: 01, arg2: D4  | @draw_card_symbol
+143811 -- pc: 000001CD -- instruction: WD  arg1: 38, arg2: 11 
+143B08 -- pc: 000001CE -- instruction: WD  arg1: 3B, arg2: 08 
+1101FD -- pc: 000001CF -- instruction: CAL arg1: 01, arg2: FD  | @draw_symbol
+0B01DD -- pc: 000001D0 -- instruction: JMP arg1: 01, arg2: DD  | @draw_card_symbol
 &draw_spade_symbol:
-14380F -- pc: 000001C8 -- instruction: WD  arg1: 38, arg2: 0F 
-143B01 -- pc: 000001C9 -- instruction: WD  arg1: 3B, arg2: 01 
-1101F4 -- pc: 000001CA -- instruction: CAL arg1: 01, arg2: F4  | @draw_symbol
-0B01D4 -- pc: 000001CB -- instruction: JMP arg1: 01, arg2: D4  | @draw_card_symbol
+14380F -- pc: 000001D1 -- instruction: WD  arg1: 38, arg2: 0F 
+143B01 -- pc: 000001D2 -- instruction: WD  arg1: 3B, arg2: 01 
+1101FD -- pc: 000001D3 -- instruction: CAL arg1: 01, arg2: FD  | @draw_symbol
+0B01DD -- pc: 000001D4 -- instruction: JMP arg1: 01, arg2: DD  | @draw_card_symbol
 &draw_diamond_symbol:
-143810 -- pc: 000001CC -- instruction: WD  arg1: 38, arg2: 10 
-143B08 -- pc: 000001CD -- instruction: WD  arg1: 3B, arg2: 08 
-1101F4 -- pc: 000001CE -- instruction: CAL arg1: 01, arg2: F4  | @draw_symbol
-0B01D4 -- pc: 000001CF -- instruction: JMP arg1: 01, arg2: D4  | @draw_card_symbol
+143810 -- pc: 000001D5 -- instruction: WD  arg1: 38, arg2: 10 
+143B08 -- pc: 000001D6 -- instruction: WD  arg1: 3B, arg2: 08 
+1101FD -- pc: 000001D7 -- instruction: CAL arg1: 01, arg2: FD  | @draw_symbol
+0B01DD -- pc: 000001D8 -- instruction: JMP arg1: 01, arg2: DD  | @draw_card_symbol
 &draw_club_symbol:
-14380E -- pc: 000001D0 -- instruction: WD  arg1: 38, arg2: 0E 
-143B01 -- pc: 000001D1 -- instruction: WD  arg1: 3B, arg2: 01 
-1101F4 -- pc: 000001D2 -- instruction: CAL arg1: 01, arg2: F4  | @draw_symbol
-0B01D4 -- pc: 000001D3 -- instruction: JMP arg1: 01, arg2: D4  | @draw_card_symbol
+14380E -- pc: 000001D9 -- instruction: WD  arg1: 38, arg2: 0E 
+143B01 -- pc: 000001DA -- instruction: WD  arg1: 3B, arg2: 01 
+1101FD -- pc: 000001DB -- instruction: CAL arg1: 01, arg2: FD  | @draw_symbol
+0B01DD -- pc: 000001DC -- instruction: JMP arg1: 01, arg2: DD  | @draw_card_symbol
 &draw_card_symbol:
-090000 -- pc: 000001D4 -- instruction: PSH arg1: R0, arg2: 00 
-1101E0 -- pc: 000001D5 -- instruction: CAL arg1: 01, arg2: E0  | @set_card_x_axis
-133802 -- pc: 000001D6 -- instruction: WR  arg1: 38, arg2: 02 
-143B01 -- pc: 000001D7 -- instruction: WD  arg1: 3B, arg2: 01 
-1101F4 -- pc: 000001D8 -- instruction: CAL arg1: 01, arg2: F4  | @draw_symbol
+090000 -- pc: 000001DD -- instruction: PSH arg1: R0, arg2: 00 
+1101E9 -- pc: 000001DE -- instruction: CAL arg1: 01, arg2: E9  | @set_card_x_axis
+133802 -- pc: 000001DF -- instruction: WR  arg1: 38, arg2: 02 
+143B01 -- pc: 000001E0 -- instruction: WD  arg1: 3B, arg2: 01 
+1101FD -- pc: 000001E1 -- instruction: CAL arg1: 01, arg2: FD  | @draw_symbol
 &draw_card_done:
-120000 -- pc: 000001D9 -- instruction: RTN arg1: 00, arg2: 00 
+120000 -- pc: 000001E2 -- instruction: RTN arg1: 00, arg2: 00 
 &set_suit_x_axis:
-1101E6 -- pc: 000001DA -- instruction: CAL arg1: 01, arg2: E6  | @len_times_10
-0A0000 -- pc: 000001DB -- instruction: POP arg1: R0, arg2: 00 
-020101 -- pc: 000001DC -- instruction: LDR arg1: R1, arg2: 01 
-030001 -- pc: 000001DD -- instruction: ADD arg1: R0, arg2: R1 
-133900 -- pc: 000001DE -- instruction: WR  arg1: 39, arg2: 00 
+1101EF -- pc: 000001E3 -- instruction: CAL arg1: 01, arg2: EF  | @len_times_10
+0A0000 -- pc: 000001E4 -- instruction: POP arg1: R0, arg2: 00 
+020101 -- pc: 000001E5 -- instruction: LDR arg1: R1, arg2: 01 
+030001 -- pc: 000001E6 -- instruction: ADD arg1: R0, arg2: R1 
+133900 -- pc: 000001E7 -- instruction: WR  arg1: 39, arg2: 00 
 &set_suit_x_axis_done:
-120000 -- pc: 000001DF -- instruction: RTN arg1: 00, arg2: 00 
+120000 -- pc: 000001E8 -- instruction: RTN arg1: 00, arg2: 00 
 &set_card_x_axis:
-1101E6 -- pc: 000001E0 -- instruction: CAL arg1: 01, arg2: E6  | @len_times_10
-0A0000 -- pc: 000001E1 -- instruction: POP arg1: R0, arg2: 00 
-020106 -- pc: 000001E2 -- instruction: LDR arg1: R1, arg2: 06 
-030001 -- pc: 000001E3 -- instruction: ADD arg1: R0, arg2: R1 
-133900 -- pc: 000001E4 -- instruction: WR  arg1: 39, arg2: 00 
-&set_card_x_axis_done:
-120000 -- pc: 000001E5 -- instruction: RTN arg1: 00, arg2: 00 
-&len_times_10:
-0A0000 -- pc: 000001E6 -- instruction: POP arg1: R0, arg2: 00 
-060000 -- pc: 000001E7 -- instruction: DEC arg1: R0, arg2: 00 
-010100 -- pc: 000001E8 -- instruction: LD  arg1: R1, arg2: R0 
-030001 -- pc: 000001E9 -- instruction: ADD arg1: R0, arg2: R1 
-030001 -- pc: 000001EA -- instruction: ADD arg1: R0, arg2: R1 
-030001 -- pc: 000001EB -- instruction: ADD arg1: R0, arg2: R1 
+1101EF -- pc: 000001E9 -- instruction: CAL arg1: 01, arg2: EF  | @len_times_10
+0A0000 -- pc: 000001EA -- instruction: POP arg1: R0, arg2: 00 
+020106 -- pc: 000001EB -- instruction: LDR arg1: R1, arg2: 06 
 030001 -- pc: 000001EC -- instruction: ADD arg1: R0, arg2: R1 
-030001 -- pc: 000001ED -- instruction: ADD arg1: R0, arg2: R1 
-030001 -- pc: 000001EE -- instruction: ADD arg1: R0, arg2: R1 
-030001 -- pc: 000001EF -- instruction: ADD arg1: R0, arg2: R1 
-030001 -- pc: 000001F0 -- instruction: ADD arg1: R0, arg2: R1 
-030001 -- pc: 000001F1 -- instruction: ADD arg1: R0, arg2: R1 
-090000 -- pc: 000001F2 -- instruction: PSH arg1: R0, arg2: 00 
+133900 -- pc: 000001ED -- instruction: WR  arg1: 39, arg2: 00 
+&set_card_x_axis_done:
+120000 -- pc: 000001EE -- instruction: RTN arg1: 00, arg2: 00 
+&len_times_10:
+0A0000 -- pc: 000001EF -- instruction: POP arg1: R0, arg2: 00 
+060000 -- pc: 000001F0 -- instruction: DEC arg1: R0, arg2: 00 
+010100 -- pc: 000001F1 -- instruction: LD  arg1: R1, arg2: R0 
+030001 -- pc: 000001F2 -- instruction: ADD arg1: R0, arg2: R1 
+030001 -- pc: 000001F3 -- instruction: ADD arg1: R0, arg2: R1 
+030001 -- pc: 000001F4 -- instruction: ADD arg1: R0, arg2: R1 
+030001 -- pc: 000001F5 -- instruction: ADD arg1: R0, arg2: R1 
+030001 -- pc: 000001F6 -- instruction: ADD arg1: R0, arg2: R1 
+030001 -- pc: 000001F7 -- instruction: ADD arg1: R0, arg2: R1 
+030001 -- pc: 000001F8 -- instruction: ADD arg1: R0, arg2: R1 
+030001 -- pc: 000001F9 -- instruction: ADD arg1: R0, arg2: R1 
+030001 -- pc: 000001FA -- instruction: ADD arg1: R0, arg2: R1 
+090000 -- pc: 000001FB -- instruction: PSH arg1: R0, arg2: 00 
 &len_times_10_done:
-120000 -- pc: 000001F3 -- instruction: RTN arg1: 00, arg2: 00 
+120000 -- pc: 000001FC -- instruction: RTN arg1: 00, arg2: 00 
 &draw_symbol:
-15153A -- pc: 000001F4 -- instruction: RR  arg1: RFBY, arg2: 3A 
-061500 -- pc: 000001F5 -- instruction: DEC arg1: RFBY, arg2: 00 
-150138 -- pc: 000001F6 -- instruction: RR  arg1: R1, arg2: 38 
-15163B -- pc: 000001F7 -- instruction: RR  arg1: RFBD, arg2: 3B 
-150138 -- pc: 000001F8 -- instruction: RR  arg1: R1, arg2: 38 
-010701 -- pc: 000001F9 -- instruction: LD  arg1: R7, arg2: R1 
-030107 -- pc: 000001FA -- instruction: ADD arg1: R1, arg2: R7 
-030107 -- pc: 000001FB -- instruction: ADD arg1: R1, arg2: R7 
-020739 -- pc: 000001FC -- instruction: LDR arg1: R7, arg2: 39 
-030107 -- pc: 000001FD -- instruction: ADD arg1: R1, arg2: R7 
-020700 -- pc: 000001FE -- instruction: LDR arg1: R7, arg2: 00 
-020403 -- pc: 000001FF -- instruction: LDR arg1: R4, arg2: 03 
+15153A -- pc: 000001FD -- instruction: RR  arg1: RFBY, arg2: 3A 
+061500 -- pc: 000001FE -- instruction: DEC arg1: RFBY, arg2: 00 
+150138 -- pc: 000001FF -- instruction: RR  arg1: R1, arg2: 38 
+15163B -- pc: 00000200 -- instruction: RR  arg1: RFBD, arg2: 3B 
+150138 -- pc: 00000201 -- instruction: RR  arg1: R1, arg2: 38 
+010701 -- pc: 00000202 -- instruction: LD  arg1: R7, arg2: R1 
+030107 -- pc: 00000203 -- instruction: ADD arg1: R1, arg2: R7 
+030107 -- pc: 00000204 -- instruction: ADD arg1: R1, arg2: R7 
+020739 -- pc: 00000205 -- instruction: LDR arg1: R7, arg2: 39 
+030107 -- pc: 00000206 -- instruction: ADD arg1: R1, arg2: R7 
+020700 -- pc: 00000207 -- instruction: LDR arg1: R7, arg2: 00 
+020403 -- pc: 00000208 -- instruction: LDR arg1: R4, arg2: 03 
 &byte_loop:
-100407 -- pc: 00000200 -- instruction: COM arg1: R4, arg2: R7 
-0C0218 -- pc: 00000201 -- instruction: JZ  arg1: 02, arg2: 18  | @draw_symbol_done
-020502 -- pc: 00000202 -- instruction: LDR arg1: R5, arg2: 02 
-180001 -- pc: 00000203 -- instruction: RRR arg1: R0, arg2: R1 
-020399 -- pc: 00000204 -- instruction: LDR arg1: R3, arg2: 99 
-050100 -- pc: 00000205 -- instruction: INC arg1: R1, arg2: 00 
-060400 -- pc: 00000206 -- instruction: DEC arg1: R4, arg2: 00 
+100407 -- pc: 00000209 -- instruction: COM arg1: R4, arg2: R7 
+0C0221 -- pc: 0000020A -- instruction: JZ  arg1: 02, arg2: 21  | @draw_symbol_done
+020502 -- pc: 0000020B -- instruction: LDR arg1: R5, arg2: 02 
+180001 -- pc: 0000020C -- instruction: RRR arg1: R0, arg2: R1 
+020399 -- pc: 0000020D -- instruction: LDR arg1: R3, arg2: 99 
+050100 -- pc: 0000020E -- instruction: INC arg1: R1, arg2: 00 
+060400 -- pc: 0000020F -- instruction: DEC arg1: R4, arg2: 00 
 &row_loop:
-100507 -- pc: 00000207 -- instruction: COM arg1: R5, arg2: R7 
-0C0200 -- pc: 00000208 -- instruction: JZ  arg1: 02, arg2: 00  | @byte_loop
-020604 -- pc: 00000209 -- instruction: LDR arg1: R6, arg2: 04 
-151439 -- pc: 0000020A -- instruction: RR  arg1: RFBX, arg2: 39 
-051500 -- pc: 0000020B -- instruction: INC arg1: RFBY, arg2: 00 
-060500 -- pc: 0000020C -- instruction: DEC arg1: R5, arg2: 00 
+100507 -- pc: 00000210 -- instruction: COM arg1: R5, arg2: R7 
+0C0209 -- pc: 00000211 -- instruction: JZ  arg1: 02, arg2: 09  | @byte_loop
+020604 -- pc: 00000212 -- instruction: LDR arg1: R6, arg2: 04 
+151439 -- pc: 00000213 -- instruction: RR  arg1: RFBX, arg2: 39 
+051500 -- pc: 00000214 -- instruction: INC arg1: RFBY, arg2: 00 
+060500 -- pc: 00000215 -- instruction: DEC arg1: R5, arg2: 00 
 &col_loop:
-100607 -- pc: 0000020D -- instruction: COM arg1: R6, arg2: R7 
-0C0207 -- pc: 0000020E -- instruction: JZ  arg1: 02, arg2: 07  | @row_loop
-180203 -- pc: 0000020F -- instruction: RRR arg1: R2, arg2: R3 
-1A0200 -- pc: 00000210 -- instruction: AND arg1: R2, arg2: R0 
-0C0214 -- pc: 00000211 -- instruction: JZ  arg1: 02, arg2: 14  | @continue
-021701 -- pc: 00000212 -- instruction: LDR arg1: RFBE, arg2: 01 
-021700 -- pc: 00000213 -- instruction: LDR arg1: RFBE, arg2: 00 
+100607 -- pc: 00000216 -- instruction: COM arg1: R6, arg2: R7 
+0C0210 -- pc: 00000217 -- instruction: JZ  arg1: 02, arg2: 10  | @row_loop
+180203 -- pc: 00000218 -- instruction: RRR arg1: R2, arg2: R3 
+1A0200 -- pc: 00000219 -- instruction: AND arg1: R2, arg2: R0 
+0C021D -- pc: 0000021A -- instruction: JZ  arg1: 02, arg2: 1D  | @continue
+021701 -- pc: 0000021B -- instruction: LDR arg1: RFBE, arg2: 01 
+021700 -- pc: 0000021C -- instruction: LDR arg1: RFBE, arg2: 00 
 &continue:
-050300 -- pc: 00000214 -- instruction: INC arg1: R3, arg2: 00 
-051400 -- pc: 00000215 -- instruction: INC arg1: RFBX, arg2: 00 
-060600 -- pc: 00000216 -- instruction: DEC arg1: R6, arg2: 00 
-0B020D -- pc: 00000217 -- instruction: JMP arg1: 02, arg2: 0D  | @col_loop
+050300 -- pc: 0000021D -- instruction: INC arg1: R3, arg2: 00 
+051400 -- pc: 0000021E -- instruction: INC arg1: RFBX, arg2: 00 
+060600 -- pc: 0000021F -- instruction: DEC arg1: R6, arg2: 00 
+0B0216 -- pc: 00000220 -- instruction: JMP arg1: 02, arg2: 16  | @col_loop
 &draw_symbol_done:
-110229 -- pc: 00000218 -- instruction: CAL arg1: 02, arg2: 29  | @update_screen
-120000 -- pc: 00000219 -- instruction: RTN arg1: 00, arg2: 00 
+110232 -- pc: 00000221 -- instruction: CAL arg1: 02, arg2: 32  | @update_screen
+120000 -- pc: 00000222 -- instruction: RTN arg1: 00, arg2: 00 
 &clean_screen:
-020000 -- pc: 0000021A -- instruction: LDR arg1: R0, arg2: 00 
-020120 -- pc: 0000021B -- instruction: LDR arg1: R1, arg2: 20 
-021600 -- pc: 0000021C -- instruction: LDR arg1: RFBD, arg2: 00 
-0215FF -- pc: 0000021D -- instruction: LDR arg1: RFBY, arg2: FF 
+020000 -- pc: 00000223 -- instruction: LDR arg1: R0, arg2: 00 
+020120 -- pc: 00000224 -- instruction: LDR arg1: R1, arg2: 20 
+021600 -- pc: 00000225 -- instruction: LDR arg1: RFBD, arg2: 00 
+0215FF -- pc: 00000226 -- instruction: LDR arg1: RFBY, arg2: FF 
 &next_row:
-051500 -- pc: 0000021E -- instruction: INC arg1: RFBY, arg2: 00 
-100115 -- pc: 0000021F -- instruction: COM arg1: R1, arg2: RFBY 
-0C0227 -- pc: 00000220 -- instruction: JZ  arg1: 02, arg2: 27  | @clean_screen_done
-02143C -- pc: 00000221 -- instruction: LDR arg1: RFBX, arg2: 3C 
+051500 -- pc: 00000227 -- instruction: INC arg1: RFBY, arg2: 00 
+100115 -- pc: 00000228 -- instruction: COM arg1: R1, arg2: RFBY 
+0C0230 -- pc: 00000229 -- instruction: JZ  arg1: 02, arg2: 30  | @clean_screen_done
+02143C -- pc: 0000022A -- instruction: LDR arg1: RFBX, arg2: 3C 
 &next_col:
-061400 -- pc: 00000222 -- instruction: DEC arg1: RFBX, arg2: 00 
-021701 -- pc: 00000223 -- instruction: LDR arg1: RFBE, arg2: 01 
-021700 -- pc: 00000224 -- instruction: LDR arg1: RFBE, arg2: 00 
-0C021E -- pc: 00000225 -- instruction: JZ  arg1: 02, arg2: 1E  | @next_row
-0B0222 -- pc: 00000226 -- instruction: JMP arg1: 02, arg2: 22  | @next_col
+061400 -- pc: 0000022B -- instruction: DEC arg1: RFBX, arg2: 00 
+021701 -- pc: 0000022C -- instruction: LDR arg1: RFBE, arg2: 01 
+021700 -- pc: 0000022D -- instruction: LDR arg1: RFBE, arg2: 00 
+0C0227 -- pc: 0000022E -- instruction: JZ  arg1: 02, arg2: 27  | @next_row
+0B022B -- pc: 0000022F -- instruction: JMP arg1: 02, arg2: 2B  | @next_col
 &clean_screen_done:
-110229 -- pc: 00000227 -- instruction: CAL arg1: 02, arg2: 29  | @update_screen
-120000 -- pc: 00000228 -- instruction: RTN arg1: 00, arg2: 00 
+110232 -- pc: 00000230 -- instruction: CAL arg1: 02, arg2: 32  | @update_screen
+120000 -- pc: 00000231 -- instruction: RTN arg1: 00, arg2: 00 
 &update_screen:
-021801 -- pc: 00000229 -- instruction: LDR arg1: RLCDU, arg2: 01 
-021800 -- pc: 0000022A -- instruction: LDR arg1: RLCDU, arg2: 00 
-120000 -- pc: 0000022B -- instruction: RTN arg1: 00, arg2: 00 
+021801 -- pc: 00000232 -- instruction: LDR arg1: RLCDU, arg2: 01 
+021800 -- pc: 00000233 -- instruction: LDR arg1: RLCDU, arg2: 00 
+120000 -- pc: 00000234 -- instruction: RTN arg1: 00, arg2: 00 
 &sleep:
-020001 -- pc: 0000022C -- instruction: LDR arg1: R0, arg2: 01 
-020FE8 -- pc: 0000022D -- instruction: LDR arg1: RTM0, arg2: E8 
-021003 -- pc: 0000022E -- instruction: LDR arg1: RTM1, arg2: 03 
-021101 -- pc: 0000022F -- instruction: LDR arg1: RTMS, arg2: 01 
-021100 -- pc: 00000230 -- instruction: LDR arg1: RTMS, arg2: 00 
+020001 -- pc: 00000235 -- instruction: LDR arg1: R0, arg2: 01 
+020FE8 -- pc: 00000236 -- instruction: LDR arg1: RTM0, arg2: E8 
+021003 -- pc: 00000237 -- instruction: LDR arg1: RTM1, arg2: 03 
+021101 -- pc: 00000238 -- instruction: LDR arg1: RTMS, arg2: 01 
+021100 -- pc: 00000239 -- instruction: LDR arg1: RTMS, arg2: 00 
 &check_timer_done:
-100122 -- pc: 00000231 -- instruction: COM arg1: R1, arg2: RTMD 
-0D0231 -- pc: 00000232 -- instruction: JNZ arg1: 02, arg2: 31  | @check_timer_done
+100022 -- pc: 0000023A -- instruction: COM arg1: R0, arg2: RTMD 
+0D023A -- pc: 0000023B -- instruction: JNZ arg1: 02, arg2: 3A  | @check_timer_done
 &sleep_done:
-120000 -- pc: 00000233 -- instruction: RTN arg1: 00, arg2: 00 
+120000 -- pc: 0000023C -- instruction: RTN arg1: 00, arg2: 00 
 &done:
-000000 -- pc: 00000234 -- instruction: NOP arg1: 00, arg2: 00 
-000000 -- pc: 00000235 -- instruction: NOP arg1: 00, arg2: 00 
-000000 -- pc: 00000236 -- instruction: NOP arg1: 00, arg2: 00 
-000000 -- pc: 00000237 -- instruction: NOP arg1: 00, arg2: 00 
-000000 -- pc: 00000238 -- instruction: NOP arg1: 00, arg2: 00 
-000000 -- pc: 00000239 -- instruction: NOP arg1: 00, arg2: 00 
-000000 -- pc: 0000023A -- instruction: NOP arg1: 00, arg2: 00 
-000000 -- pc: 0000023B -- instruction: NOP arg1: 00, arg2: 00 
-000000 -- pc: 0000023C -- instruction: NOP arg1: 00, arg2: 00 
 000000 -- pc: 0000023D -- instruction: NOP arg1: 00, arg2: 00 
 000000 -- pc: 0000023E -- instruction: NOP arg1: 00, arg2: 00 
 000000 -- pc: 0000023F -- instruction: NOP arg1: 00, arg2: 00 

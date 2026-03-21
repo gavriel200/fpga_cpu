@@ -34,3 +34,4 @@ WD state_addr, e_state_player_win
 JMP @state_hit_done
 
 &state_hit_done:
+RTN

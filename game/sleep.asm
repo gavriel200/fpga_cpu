@@ -9,7 +9,7 @@ LDR RTMS, 1
 LDR RTMS, 0
 
 &check_timer_done:
-COM R1, RTMD
+COM R0, RTMD
 JNZ @check_timer_done
 
 &sleep_done:

@@ -58,4 +58,6 @@ CAL @draw_symbol
 WD draw_symbol.r.param_x_axis_addr, 45
 WD draw_symbol.r.param_symbol_key, symbol_Y
 CAL @draw_symbol
+
 &draw_hit_stay_done:
+RTN
