@@ -157,9 +157,14 @@ $symbol_->1=31
 WD draw_base_addr + 90, 149
 WD draw_base_addr + 91, 63
 WD draw_base_addr + 92, 12
+// none
+$symbol_none=32
+WD draw_base_addr + 93, 0
+WD draw_base_addr + 94, 0
+WD draw_base_addr + 95, 0
 
 // AND logic
-$draw_and_logic_addr=153
+$draw_and_logic_addr=156
 WD draw_and_logic_addr, 128
 WD draw_and_logic_addr + 1, 64
 WD draw_and_logic_addr + 2, 32

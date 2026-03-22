@@ -1,14 +1,5 @@
 NOP
 
-$state_addr=189
-$e_state_init=0
-$e_state_player_turn=1
-$e_state_hit=2
-$e_state_dealer_hit=3
-$e_state_player_win=4
-$e_state_dealer_win=5
-$e_state_draw=6
-
 WD state_addr, e_state_init
 
 &game_loop:
@@ -86,6 +77,7 @@ import game/init/cards.asm
 import game/init/symbols.asm
 import game/init/random.asm
 
+import game/states/state.asm
 import game/states/init.asm
 import game/states/player_turn.asm
 import game/states/hit.asm
