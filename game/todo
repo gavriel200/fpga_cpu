@@ -1,0 +1,17 @@
+- fix L symbol
+- add empty symbol to clean
+- fix positioning of everything
+- have the cards stay after win/lost/draw
+- make ace be symbol A
+- add symbol I
+- make ace logic 11/1 - each draw of ace add to counter ace if [value > 21] if [ace counter > 0] do [value - 10] and [counter - 1] else lose
+- make the main.hex -> binary
+- make it so that the instruction is not 8 bits but less (as much as needed for all the current instructions)
+- code cleaning .asm
+- code clean and renaming .v
+- code clean and improve .py
+- update readme
+- list of instructions
+- game readme
+
+DONE
