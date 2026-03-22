@@ -1,10 +1,10 @@
-$player_len_addr=164
-$player_cards_addr=165
-$player_value_addr=177
+$player_len_addr=170
+$player_cards_addr=171
+$player_value_addr=183
 
-$dealer_len_addr=179
-$dealer_cards_addr=180
-$dealer_value_addr=192
+$dealer_len_addr=185
+$dealer_cards_addr=186
+$dealer_value_addr=198
 
 // ===============================
 // ===============================

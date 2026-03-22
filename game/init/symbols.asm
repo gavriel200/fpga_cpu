@@ -2,11 +2,11 @@
 // load all the symbols:
 $draw_base_addr=60
 &init_draw:
-// 1
-$symbol_1=1
-WD draw_base_addr, 34
-WD draw_base_addr + 1, 34
-WD draw_base_addr + 2, 34 
+// ace
+$symbol_A=1
+WD draw_base_addr, 37
+WD draw_base_addr + 1, 89
+WD draw_base_addr + 2, 89 
 // 2
 $symbol_2=2
 WD draw_base_addr + 3, 249
@@ -69,24 +69,24 @@ WD draw_base_addr + 37, 233
 WD draw_base_addr + 38, 153
 // club
 $symbol_club=14
-WD draw_base_addr + 39, 39
-WD draw_base_addr + 40, 247
-WD draw_base_addr + 41, 34
+WD draw_base_addr + 39, 4
+WD draw_base_addr + 40, 328
+WD draw_base_addr + 41, 64
 // spade
 $symbol_spade=15
-WD draw_base_addr + 42, 90
-WD draw_base_addr + 43, 90
-WD draw_base_addr + 44, 90
+WD draw_base_addr + 42, 14
+WD draw_base_addr + 43, 238
+WD draw_base_addr + 44, 64
 // diamond
 $symbol_diamond=16
-WD draw_base_addr + 45, 90
-WD draw_base_addr + 46, 90
-WD draw_base_addr + 47, 90
+WD draw_base_addr + 45, 4
+WD draw_base_addr + 46, 238
+WD draw_base_addr + 47, 64
 // heart
 $symbol_heart=17
-WD draw_base_addr + 48, 95
-WD draw_base_addr + 49, 255
-WD draw_base_addr + 50, 114
+WD draw_base_addr + 48, 10
+WD draw_base_addr + 49, 238
+WD draw_base_addr + 50, 64
 // S
 $symbol_S=18
 WD draw_base_addr + 51, 105
@@ -97,11 +97,11 @@ $symbol_T=19
 WD draw_base_addr + 54, 242
 WD draw_base_addr + 55, 34
 WD draw_base_addr + 56, 34
-// A
-$symbol_A=20
-WD draw_base_addr + 57, 37
-WD draw_base_addr + 58, 89
-WD draw_base_addr + 59, 249
+// I
+$symbol_I=20
+WD draw_base_addr + 57, 34
+WD draw_base_addr + 58, 34
+WD draw_base_addr + 59, 34
 // Y
 $symbol_Y=21
 WD draw_base_addr + 60, 149
@@ -162,9 +162,20 @@ $symbol_none=32
 WD draw_base_addr + 93, 0
 WD draw_base_addr + 94, 0
 WD draw_base_addr + 95, 0
+// D
+$symbol_D=32
+WD draw_base_addr + 96, 202
+WD draw_base_addr + 97, 153
+WD draw_base_addr + 98, 172
+// W
+$symbol_W=32
+WD draw_base_addr + 99, 153
+WD draw_base_addr + 100, 159
+WD draw_base_addr + 101, 249
+
 
 // AND logic
-$draw_and_logic_addr=156
+$draw_and_logic_addr=162
 WD draw_and_logic_addr, 128
 WD draw_and_logic_addr + 1, 64
 WD draw_and_logic_addr + 2, 32

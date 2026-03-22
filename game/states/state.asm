@@ -1,4 +1,4 @@
-$state_addr=194
+$state_addr=200
 
 $e_state_init=0
 $e_state_player_turn=1
