@@ -36,27 +36,27 @@ RTN
 // ===============================
 
 &draw_start:
-WD draw_symbol.r.param_pixel_color_addr, color_black
-WD draw_symbol.r.param_y_axis_addr, 10
+WD draw_symbol.v.param_pixel_color_addr, color_black
+WD draw_symbol.v.param_y_axis_addr, 10
 
-WD draw_symbol.r.param_x_axis_addr, 20
-WD draw_symbol.r.param_symbol_key, symbol_S
+WD draw_symbol.v.param_x_axis_addr, 20
+WD draw_symbol.v.param_symbol_key, symbol_S
 CAL @draw_symbol
 
-WD draw_symbol.r.param_x_axis_addr, 25
-WD draw_symbol.r.param_symbol_key, symbol_T
+WD draw_symbol.v.param_x_axis_addr, 25
+WD draw_symbol.v.param_symbol_key, symbol_T
 CAL @draw_symbol
 
-WD draw_symbol.r.param_x_axis_addr, 30
-WD draw_symbol.r.param_symbol_key, symbol_A
+WD draw_symbol.v.param_x_axis_addr, 30
+WD draw_symbol.v.param_symbol_key, symbol_A
 CAL @draw_symbol
 
-WD draw_symbol.r.param_x_axis_addr, 35
-WD draw_symbol.r.param_symbol_key, symbol_R
+WD draw_symbol.v.param_x_axis_addr, 35
+WD draw_symbol.v.param_symbol_key, symbol_R
 CAL @draw_symbol
 
-WD draw_symbol.r.param_x_axis_addr, 40
-WD draw_symbol.r.param_symbol_key, symbol_T
+WD draw_symbol.v.param_x_axis_addr, 40
+WD draw_symbol.v.param_symbol_key, symbol_T
 CAL @draw_symbol
 
 &draw_start_done:

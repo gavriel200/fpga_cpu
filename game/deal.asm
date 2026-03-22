@@ -18,8 +18,8 @@ $deal.r.value_addr=R5
 $deal.r.value=R6
 $deal.r.value_current=R7
 
-$deal.v.player_y_axis=16
-$deal.v.dealer_y_axis=1
+$deal.v.player_y_axis=20
+$deal.v.dealer_y_axis=0
 
 // input param (player or dealer)
 // player = 0
@@ -31,12 +31,12 @@ DEC deal.r.player_or_dealer
 LDR deal.r.len_addr, dealer_len_addr
 LDR deal.r.cards_addr, dealer_cards_addr
 LDR deal.r.value_addr, dealer_value_addr
-WD draw_symbol.r.param_y_axis_addr, deal.v.dealer_y_axis
+WD draw_symbol.v.param_y_axis_addr, deal.v.dealer_y_axis
 JZ @dealer
 LDR deal.r.len_addr, player_len_addr
 LDR deal.r.cards_addr, player_cards_addr
 LDR deal.r.value_addr, player_value_addr
-WD draw_symbol.r.param_y_axis_addr, deal.v.player_y_axis
+WD draw_symbol.v.param_y_axis_addr, deal.v.player_y_axis
 &dealer:
 
 CAL @get_random_card
@@ -159,6 +159,8 @@ $draw_card.v.suit_and=96
 
 $draw_card.r.suit_find=R6
 
+$draw_card.r.y_axis=R7
+
 // 00000000
 $draw_card.v.heart=0
 // 00100000
@@ -187,7 +189,7 @@ LD draw_card.r.suit, draw_card.r.suit_and
 
 // set x axis for the suit
 PSH draw_card.r.len
-CAL @set_suit_x_axis
+CAL @set_x_axis
 
 LDR draw_card.r.suit_find, draw_card.v.heart
 COM draw_card.r.suit_find, draw_card.r.suit
@@ -208,38 +210,45 @@ JZ @draw_club_symbol
 // ==================================
 
 &draw_heart_symbol:
-WD draw_symbol.r.param_symbol_key, symbol_heart
-WD draw_symbol.r.param_pixel_color_addr, color_red
+WD draw_symbol.v.param_symbol_key, symbol_heart
+WD draw_symbol.v.param_pixel_color_addr, color_red
 CAL @draw_symbol
 JMP @draw_card_symbol
 
 &draw_spade_symbol:
-WD draw_symbol.r.param_symbol_key, symbol_spade
-WD draw_symbol.r.param_pixel_color_addr, color_black
+WD draw_symbol.v.param_symbol_key, symbol_spade
+WD draw_symbol.v.param_pixel_color_addr, color_black
 CAL @draw_symbol
 JMP @draw_card_symbol
 
 &draw_diamond_symbol:
-WD draw_symbol.r.param_symbol_key, symbol_diamond
-WD draw_symbol.r.param_pixel_color_addr, color_red
+WD draw_symbol.v.param_symbol_key, symbol_diamond
+WD draw_symbol.v.param_pixel_color_addr, color_red
 CAL @draw_symbol
 JMP @draw_card_symbol
 
 &draw_club_symbol:
-WD draw_symbol.r.param_symbol_key, symbol_club
-WD draw_symbol.r.param_pixel_color_addr, color_black
+WD draw_symbol.v.param_symbol_key, symbol_club
+WD draw_symbol.v.param_pixel_color_addr, color_black
 CAL @draw_symbol
 JMP @draw_card_symbol
 
 // ==================================
 
 &draw_card_symbol:
-// set x axis for the card
-PSH draw_card.r.len
-CAL @set_card_x_axis
+RR draw_card.r.y_axis, draw_symbol.v.param_y_axis_addr
 
-WR draw_symbol.r.param_symbol_key, draw_card.r.value
-WD draw_symbol.r.param_pixel_color_addr, color_black
+// add 6 (no other register used)
+INC draw_card.r.y_axis
+INC draw_card.r.y_axis
+INC draw_card.r.y_axis
+INC draw_card.r.y_axis
+INC draw_card.r.y_axis
+INC draw_card.r.y_axis
+
+WR draw_symbol.v.param_y_axis_addr, draw_card.r.y_axis
+WR draw_symbol.v.param_symbol_key, draw_card.r.value
+WD draw_symbol.v.param_pixel_color_addr, color_black
 CAL @draw_symbol
 
 &draw_card_done:
@@ -248,63 +257,42 @@ RTN
 // ===============================
 // ===============================
 
-$set_suit_x_axis.r.multi_result=R0
-$set_suit_x_axis.r.adder=R1
+$set_x_axis.r.multi_result=R0
+$set_x_axis.r.adder=R1
 
-// x=1+10(n−1)
+// x=1+5(n−1)
 
-&set_suit_x_axis:
-CAL @len_times_10
-POP set_suit_x_axis.r.multi_result
-LDR set_suit_x_axis.r.adder, 1
-ADD set_suit_x_axis.r.multi_result, set_suit_x_axis.r.adder
-WR draw_symbol.r.param_x_axis_addr, set_suit_x_axis.r.multi_result
+&set_x_axis:
+CAL @len_times_5
+POP set_x_axis.r.multi_result
+LDR set_x_axis.r.adder, 1
 
-&set_suit_x_axis_done:
+ADD set_x_axis.r.multi_result, set_x_axis.r.adder
+WR draw_symbol.v.param_x_axis_addr, set_x_axis.r.multi_result
+
+&set_x_axis_done:
 RTN
 
-// ===============================
-// ===============================
-
-$set_card_x_axis.r.multi_result=R0
-$set_card_x_axis.r.adder=R1
-
-// x=6+10(n−1)
-
-&set_card_x_axis:
-CAL @len_times_10
-POP set_card_x_axis.r.multi_result
-LDR set_card_x_axis.r.adder, 6
-ADD set_card_x_axis.r.multi_result, set_card_x_axis.r.adder
-WR draw_symbol.r.param_x_axis_addr, set_card_x_axis.r.multi_result
-
-&set_card_x_axis_done:
-RTN
 
 // ===============================
 // ===============================
 
-$len_times_10.r.len=R0
-$len_times_10.r.multiplier=R1
+$len_times_5.r.len=R0
+$len_times_5.r.multiplier=R1
 
-&len_times_10:
-POP len_times_10.r.len
-DEC len_times_10.r.len
+&len_times_5:
+POP len_times_5.r.len
+DEC len_times_5.r.len
 
-LD len_times_10.r.multiplier, len_times_10.r.len
+LD len_times_5.r.multiplier, len_times_5.r.len
 
-ADD len_times_10.r.len, len_times_10.r.multiplier
-ADD len_times_10.r.len, len_times_10.r.multiplier
-ADD len_times_10.r.len, len_times_10.r.multiplier
-ADD len_times_10.r.len, len_times_10.r.multiplier
-ADD len_times_10.r.len, len_times_10.r.multiplier
-ADD len_times_10.r.len, len_times_10.r.multiplier
-ADD len_times_10.r.len, len_times_10.r.multiplier
-ADD len_times_10.r.len, len_times_10.r.multiplier
-ADD len_times_10.r.len, len_times_10.r.multiplier
+ADD len_times_5.r.len, len_times_5.r.multiplier
+ADD len_times_5.r.len, len_times_5.r.multiplier
+ADD len_times_5.r.len, len_times_5.r.multiplier
+ADD len_times_5.r.len, len_times_5.r.multiplier
 
-PSH len_times_10.r.len
-&len_times_10_done:
+PSH len_times_5.r.len
+&len_times_5_done:
 RTN
 
 // ===============================

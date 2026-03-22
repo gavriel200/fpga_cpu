@@ -48,7 +48,7 @@ WD draw_base_addr + 24, 249
 WD draw_base_addr + 25, 241
 WD draw_base_addr + 26, 17
 // 10
-$symbol_10=10
+$symbol_I0=10
 WD draw_base_addr + 27, 187
 WD draw_base_addr + 28, 187
 WD draw_base_addr + 29, 187
@@ -70,7 +70,7 @@ WD draw_base_addr + 38, 153
 // club
 $symbol_club=14
 WD draw_base_addr + 39, 4
-WD draw_base_addr + 40, 328
+WD draw_base_addr + 40, 238
 WD draw_base_addr + 41, 64
 // spade
 $symbol_spade=15

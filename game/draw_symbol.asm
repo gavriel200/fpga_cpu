@@ -1,9 +1,9 @@
 // draw symbol
 
-$draw_symbol.r.param_symbol_key=56
-$draw_symbol.r.param_x_axis_addr=57
-$draw_symbol.r.param_y_axis_addr=58
-$draw_symbol.r.param_pixel_color_addr=59
+$draw_symbol.v.param_symbol_key=56
+$draw_symbol.v.param_x_axis_addr=57
+$draw_symbol.v.param_y_axis_addr=58
+$draw_symbol.v.param_pixel_color_addr=59
 
 $draw_symbol.r.current_byte=R0
 $draw_symbol.r.current_byte_addr=R1
@@ -26,14 +26,14 @@ $draw_symbol.r.com=R7
 
 &draw_symbol:
 
-RR clean_screen.r.y_axis, draw_symbol.r.param_y_axis_addr
+RR clean_screen.r.y_axis, draw_symbol.v.param_y_axis_addr
 DEC clean_screen.r.y_axis
 
-RR draw_symbol.r.current_byte_addr, draw_symbol.r.param_symbol_key
+RR draw_symbol.r.current_byte_addr, draw_symbol.v.param_symbol_key
 
-RR clean_screen.r.pixel_color, draw_symbol.r.param_pixel_color_addr
+RR clean_screen.r.pixel_color, draw_symbol.v.param_pixel_color_addr
 
-RR draw_symbol.r.current_byte_addr, draw_symbol.r.param_symbol_key
+RR draw_symbol.r.current_byte_addr, draw_symbol.v.param_symbol_key
 LD draw_symbol.r.com, draw_symbol.r.current_byte_addr
 // symbol * 3 + 60 - 3
 ADD draw_symbol.r.current_byte_addr, draw_symbol.r.com
@@ -61,7 +61,7 @@ COM draw_symbol.r.row_counter, draw_symbol.r.com
 JZ @byte_loop
 
 LDR draw_symbol.r.col_counter, 4
-RR clean_screen.r.x_axis, draw_symbol.r.param_x_axis_addr
+RR clean_screen.r.x_axis, draw_symbol.v.param_x_axis_addr
 INC clean_screen.r.y_axis
 
 DEC draw_symbol.r.row_counter
