@@ -1,4 +1,3 @@
-- fix positioning of everything
 - have the cards stay after win/lost/draw
 - make ace logic 11/1 - each draw of ace add to counter ace if [value > 21] if [ace counter > 0] do [value - 10] and [counter - 1] else lose
 - make the main.hex -> binary

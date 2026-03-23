@@ -37,7 +37,7 @@ RTN
 
 &draw_start:
 WD draw_symbol.v.param_pixel_color_addr, color_black
-WD draw_symbol.v.param_y_axis_addr, 10
+WD draw_symbol.v.param_y_axis_addr, 13
 
 WD draw_symbol.v.param_x_axis_addr, 20
 WD draw_symbol.v.param_symbol_key, symbol_S

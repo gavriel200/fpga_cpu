@@ -29,33 +29,33 @@ RTN
 
 &draw_hit_stay:
 WD draw_symbol.v.param_pixel_color_addr, color_black
-WD draw_symbol.v.param_y_axis_addr, 10
+WD draw_symbol.v.param_y_axis_addr, 13
 
-WD draw_symbol.v.param_x_axis_addr, 10
+WD draw_symbol.v.param_x_axis_addr, 6
 WD draw_symbol.v.param_symbol_key, symbol_H
 CAL @draw_symbol
 
-WD draw_symbol.v.param_x_axis_addr, 15
+WD draw_symbol.v.param_x_axis_addr, 11
 WD draw_symbol.v.param_symbol_key, symbol_I
 CAL @draw_symbol
 
-WD draw_symbol.v.param_x_axis_addr, 20
+WD draw_symbol.v.param_x_axis_addr, 16
 WD draw_symbol.v.param_symbol_key, symbol_T
 CAL @draw_symbol
 
-WD draw_symbol.v.param_x_axis_addr, 30
+WD draw_symbol.v.param_x_axis_addr, 36
 WD draw_symbol.v.param_symbol_key, symbol_S
 CAL @draw_symbol
 
-WD draw_symbol.v.param_x_axis_addr, 35
+WD draw_symbol.v.param_x_axis_addr, 41
 WD draw_symbol.v.param_symbol_key, symbol_T
 CAL @draw_symbol
 
-WD draw_symbol.v.param_x_axis_addr, 40
+WD draw_symbol.v.param_x_axis_addr, 46
 WD draw_symbol.v.param_symbol_key, symbol_A
 CAL @draw_symbol
 
-WD draw_symbol.v.param_x_axis_addr, 45
+WD draw_symbol.v.param_x_axis_addr, 51
 WD draw_symbol.v.param_symbol_key, symbol_Y
 CAL @draw_symbol
 
