@@ -6,7 +6,7 @@ $draw_base_addr=60
 $symbol_A=1
 WD draw_base_addr, 37
 WD draw_base_addr + 1, 89
-WD draw_base_addr + 2, 89 
+WD draw_base_addr + 2, 249 
 // 2
 $symbol_2=2
 WD draw_base_addr + 3, 249
@@ -159,9 +159,9 @@ WD draw_base_addr + 91, 63
 WD draw_base_addr + 92, 12
 // none
 $symbol_none=32
-WD draw_base_addr + 93, 0
-WD draw_base_addr + 94, 0
-WD draw_base_addr + 95, 0
+WD draw_base_addr + 93, 255
+WD draw_base_addr + 94, 255
+WD draw_base_addr + 95, 255
 // D
 $symbol_D=32
 WD draw_base_addr + 96, 202

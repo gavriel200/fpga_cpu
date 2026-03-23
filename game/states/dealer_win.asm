@@ -1,5 +1,5 @@
 &state_dealer_win:
-CAL @clean_screen
+CAL @clean_text
 
 CAL @draw_lost
 CAL @draw_again
@@ -16,7 +16,7 @@ RTN
 // ===============================
 
 &draw_lost:
-WD draw_symbol.v.param_pixel_color_addr, color_black
+WD draw_symbol.v.param_pixel_color_addr, color_red
 WD draw_symbol.v.param_y_axis_addr, 13
 
 WD draw_symbol.v.param_x_axis_addr, 21
@@ -37,22 +37,3 @@ CAL @draw_symbol
 
 &draw_lost_done:
 RTN
-
-
-// ===============================
-// ===============================
-
-&draw_again:
-WD draw_symbol.v.param_x_axis_addr, 45
-WD draw_symbol.v.param_symbol_key, symbol_->0
-CAL @draw_symbol
-
-WD draw_symbol.v.param_x_axis_addr, 49
-WD draw_symbol.v.param_symbol_key, symbol_->1
-CAL @draw_symbol
-
-&draw_again_done:
-RTN
-
-// ===============================
-// ===============================

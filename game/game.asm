@@ -86,9 +86,12 @@ import game/states/player_win.asm
 import game/states/dealer_win.asm
 import game/states/draw.asm
 
+import game/clean_text.asm
 import game/deal.asm
+import game/draw_again.asm
 import game/draw_symbol.asm
 import game/screen.asm
 import game/sleep.asm
+import game/wait_for_button_click.asm
 
 &done:

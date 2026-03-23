@@ -19,10 +19,6 @@ CAL @init_card_select
 
 CAL @init_draw
 
-CAL @draw_start
-
-CAL @wait_for_button_click
-
 CAL @clean_screen
 
 CAL @deal_init_cards
@@ -30,52 +26,6 @@ CAL @deal_init_cards
 WD state_addr, e_state_player_turn
 
 &state_init_done:
-RTN
-
-// ===============================
-// ===============================
-
-&draw_start:
-WD draw_symbol.v.param_pixel_color_addr, color_black
-WD draw_symbol.v.param_y_axis_addr, 13
-
-WD draw_symbol.v.param_x_axis_addr, 20
-WD draw_symbol.v.param_symbol_key, symbol_S
-CAL @draw_symbol
-
-WD draw_symbol.v.param_x_axis_addr, 25
-WD draw_symbol.v.param_symbol_key, symbol_T
-CAL @draw_symbol
-
-WD draw_symbol.v.param_x_axis_addr, 30
-WD draw_symbol.v.param_symbol_key, symbol_A
-CAL @draw_symbol
-
-WD draw_symbol.v.param_x_axis_addr, 35
-WD draw_symbol.v.param_symbol_key, symbol_R
-CAL @draw_symbol
-
-WD draw_symbol.v.param_x_axis_addr, 40
-WD draw_symbol.v.param_symbol_key, symbol_T
-CAL @draw_symbol
-
-&draw_start_done:
-RTN
-
-// ===============================
-// ===============================
-
-&wait_for_button_click:
-LDR R0, 1
-COM R0, RBO1
-JZ @wait_for_button_click_done
-COM R0, RBO2
-JZ @wait_for_button_click_done
-COM R0, RBO3
-JZ @wait_for_button_click_done
-JMP @wait_for_button_click
-
-&wait_for_button_click_done:
 RTN
 
 // ===============================

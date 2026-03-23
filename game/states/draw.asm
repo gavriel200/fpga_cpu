@@ -1,5 +1,5 @@
 &state_draw:
-CAL @clean_screen
+CAL @clean_text
 
 CAL @draw_draw
 CAL @draw_again
@@ -15,7 +15,7 @@ RTN
 // ===============================
 
 &draw_draw:
-WD draw_symbol.v.param_pixel_color_addr, color_green
+WD draw_symbol.v.param_pixel_color_addr, color_purple
 WD draw_symbol.v.param_y_axis_addr, 13
 
 WD draw_symbol.v.param_x_axis_addr, 21

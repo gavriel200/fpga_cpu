@@ -18,7 +18,7 @@ $deal.r.value_addr=R5
 $deal.r.value=R6
 $deal.r.value_current=R7
 
-$deal.v.player_y_axis=20
+$deal.v.player_y_axis=19
 $deal.v.dealer_y_axis=0
 
 // input param (player or dealer)

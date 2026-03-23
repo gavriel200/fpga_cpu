@@ -44,17 +44,14 @@ JMP @state_dealer_hit_done
 
 &dealer_equal_player:
 WD state_addr, e_state_draw
-CAL @sleep
 JMP @state_dealer_hit_done
 
 &dealer_more_then_player:
 WD state_addr, e_state_dealer_win
-CAL @sleep
 JMP @state_dealer_hit_done
 
 &dealer_less_then_player:
 WD state_addr, e_state_player_win
-CAL @sleep
 JMP @state_dealer_hit_done
 
 &state_dealer_hit_done:
