@@ -116,7 +116,7 @@ WD draw_base_addr + 65, 153
 $symbol_L=23
 WD draw_base_addr + 66, 136
 WD draw_base_addr + 67, 136
-WD draw_base_addr + 68, 134
+WD draw_base_addr + 68, 143
 // O
 $symbol_O=24
 WD draw_base_addr + 69, 105
@@ -131,7 +131,7 @@ WD draw_base_addr + 74, 150
 $symbol_E=26
 WD draw_base_addr + 75, 248
 WD draw_base_addr + 76, 142
-WD draw_base_addr + 77, 134
+WD draw_base_addr + 77, 143
 // R
 $symbol_R=27
 WD draw_base_addr + 78, 233
