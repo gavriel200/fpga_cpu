@@ -30,7 +30,7 @@ WD state_addr, e_state_dealer_win
 JMP @state_hit_done
 
 &player_exactly_21:
-WD state_addr, e_state_player_win
+WD state_addr, e_state_dealer_hit
 JMP @state_hit_done
 
 &state_hit_done:
