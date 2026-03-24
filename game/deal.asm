@@ -1,10 +1,12 @@
 $player_len_addr=170
 $player_cards_addr=171
 $player_value_addr=183
+$player_ace_counter_addr=184
 
 $dealer_len_addr=185
 $dealer_cards_addr=186
 $dealer_value_addr=198
+$dealer_ace_counter_addr=199
 
 // ===============================
 // ===============================
@@ -15,8 +17,7 @@ $deal.r.len_addr=R2
 $deal.r.len=R3
 $deal.r.cards_addr=R4
 $deal.r.value_addr=R5
-$deal.r.value=R6
-$deal.r.value_current=R7
+$deal.r.ace_counter_addr=R6
 
 $deal.v.player_y_axis=19
 $deal.v.dealer_y_axis=0
@@ -31,11 +32,13 @@ DEC deal.r.player_or_dealer
 LDR deal.r.len_addr, dealer_len_addr
 LDR deal.r.cards_addr, dealer_cards_addr
 LDR deal.r.value_addr, dealer_value_addr
+LDR deal.r.ace_counter_addr, dealer_ace_counter_addr
 WD draw_symbol.v.param_y_axis_addr, deal.v.dealer_y_axis
 JZ @dealer
 LDR deal.r.len_addr, player_len_addr
 LDR deal.r.cards_addr, player_cards_addr
 LDR deal.r.value_addr, player_value_addr
+LDR deal.r.ace_counter_addr, player_ace_counter_addr
 WD draw_symbol.v.param_y_axis_addr, deal.v.player_y_axis
 &dealer:
 
@@ -50,13 +53,13 @@ RWR deal.r.cards_addr, deal.r.card
 INC deal.r.len
 RWR deal.r.len_addr, deal.r.len
 
+PSH deal.r.ace_counter_addr
 PSH deal.r.card
 CAL @get_card_value
-POP deal.r.value
 
-RRR deal.r.value_current, deal.r.value_addr
-ADD deal.r.value, deal.r.value_current
-RWR deal.r.value_addr, deal.r.value
+PSH deal.r.value_addr
+PSH deal.r.ace_counter_addr
+CAL @write_new_value
 
 PSH deal.r.card
 PSH deal.r.len
@@ -108,11 +111,17 @@ RTN
 // ===============================
 
 $get_card_value.r.card=R0
-$get_card_value.r.card_value_and=R1
-$get_card_value.r.10=R2
+$get_card_value.r.ace_counter_addr=R1
+$get_card_value.r.ace_counter=R2
+$get_card_value.r.card_value_and=R3
+$get_card_value.r.1=R4
+$get_card_value.r.10=R5
+$get_card_value.r.11=R6
 
 // after 10 should return 10
+$get_card_value.v.1=1
 $get_card_value.v.10=10
+$get_card_value.v.11=11
 // 00011111
 $get_card_value.v.card_value_and=31
 
@@ -122,24 +131,92 @@ $get_card_value.v.card_value_and=31
 
 &get_card_value:
 POP get_card_value.r.card
+POP get_card_value.r.ace_counter_addr
 
+LDR get_card_value.r.1, get_card_value.v.1
 LDR get_card_value.r.10, get_card_value.v.10
+LDR get_card_value.r.11, get_card_value.v.11
 LDR get_card_value.r.card_value_and, get_card_value.v.card_value_and
 
 // get only the number on card no suit
 AND get_card_value.r.card, get_card_value.r.card_value_and
 
+COM get_card_value.r.card, get_card_value.r.1
+JZ @ace_card
+
 COM get_card_value.r.card, get_card_value.r.10
 JC @more_then_10
+
 PSH get_card_value.r.card
+JMP @get_card_value_done
+
+&ace_card:
+RRR get_card_value.r.ace_counter, get_card_value.r.ace_counter_addr
+INC get_card_value.r.ace_counter
+RWR get_card_value.r.ace_counter_addr, get_card_value.r.ace_counter
+PSH get_card_value.r.11
 JMP @get_card_value_done
 
 &more_then_10:
 PSH get_card_value.r.10
+JMP @get_card_value_done
 
 &get_card_value_done:
 RTN
 
+// ===============================
+// ===============================
+
+$write_new_value.r.value=R0
+$write_new_value.r.value_addr=R1
+$write_new_value.r.ace_counter=R2
+$write_new_value.r.ace_counter_addr=R3
+$write_new_value.r.value_current=R4
+$write_new_value.r.0=R5
+$write_new_value.r.10=R6
+$write_new_value.r.21=R7
+
+$write_new_value.v.0=0
+$write_new_value.v.10=10
+$write_new_value.v.21=21
+
+&write_new_value:
+POP write_new_value.r.ace_counter_addr
+POP write_new_value.r.value_addr
+POP write_new_value.r.value
+
+LDR write_new_value.r.0, write_new_value.v.0
+LDR write_new_value.r.10, write_new_value.v.10
+LDR write_new_value.r.21, write_new_value.v.21
+
+RRR write_new_value.r.value_current, write_new_value.r.value_addr
+ADD write_new_value.r.value, write_new_value.r.value_current
+
+COM write_new_value.r.value, write_new_value.r.21
+JC @value_more_than_21
+
+RWR write_new_value.r.value_addr, write_new_value.r.value
+JMP @write_new_value_done
+
+&value_more_than_21:
+
+RRR write_new_value.r.ace_counter, write_new_value.r.ace_counter_addr
+COM write_new_value.r.ace_counter, write_new_value.r.0
+JNZ @handle_value_more_than_21
+
+RWR write_new_value.r.value_addr, write_new_value.r.value
+JMP @write_new_value_done
+
+&handle_value_more_than_21:
+DEC write_new_value.r.ace_counter
+RWR write_new_value.r.ace_counter_addr, write_new_value.r.ace_counter
+
+SUB write_new_value.r.value, write_new_value.r.10
+RWR write_new_value.r.value_addr, write_new_value.r.value
+JMP @write_new_value_done
+
+&write_new_value_done:
+RTN
 
 // ===============================
 // ===============================
