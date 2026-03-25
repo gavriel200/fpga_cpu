@@ -1,6 +1,6 @@
 # Blackjack Game — README
 
-A Blackjack game written entirely in assembly, running on the custom 8-bit CPU. It renders a pixel display on a 1.14" SPI LCD, uses three hardware buttons for input, and manages a full card deck with dealing, hand evaluation, and game state logic — all in hand-written assembly.
+A Blackjack game written entirely in assembly using only *624* instructions, running on the custom 8-bit CPU. It renders a pixel display on a 1.14" SPI LCD, uses three hardware buttons for input, and manages a full card deck with dealing, hand evaluation, and game state logic — all in hand-written assembly.
 
 
 ---
