@@ -2,6 +2,7 @@
 
 A Blackjack game written entirely in assembly, running on the custom 8-bit CPU. It renders a pixel display on a 1.14" SPI LCD, uses three hardware buttons for input, and manages a full card deck with dealing, hand evaluation, and game state logic — all in hand-written assembly.
 
+
 ---
 
 ## How to Play
@@ -40,6 +41,22 @@ Each state handler does its work and writes the next state into `RAM[203]` befor
 | 4 | `player_win` | Displays WIN, waits for button, resets |
 | 5 | `dealer_win` | Displays LOSE, waits for button, resets |
 | 6 | `tie` | Displays TIE, waits for button, resets |
+
+---
+
+![CPU Diagram](../docs/images/victory.jpg)
+
+---
+
+![CPU Diagram](../docs/images/hit_stay.jpg)
+
+---
+
+![CPU Diagram](../docs/images/lost.jpg)
+
+---
+
+![CPU Diagram](../docs/images/tie.jpg)
 
 ---
 

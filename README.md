@@ -4,6 +4,10 @@ A custom 8-bit CPU implemented in Verilog, synthesized on a **Tang Nano 9K FPGA*
 
 ---
 
+![CPU Diagram](docs/images/victory.jpg)
+
+---
+
 ## Architecture Overview
 
 The CPU is a simple **single-cycle, non-pipelined** design. Each clock tick executes one instruction. RAM reads take two cycles (a stall is inserted automatically).
