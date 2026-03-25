@@ -111,12 +111,12 @@ module top (
   end
 
   assign rom_enable = !stall;
-  wire [8*3-1:0] rom_data;
-  wire [   10:0] rom_pc;
-  wire           rom_jump_enable;
-  wire [   10:0] rom_jump_data;
-  wire           interrupt_jump;
-  wire           interrupt_clear_status;
+  wire [6 + 8*2-1:0] rom_data;
+  wire [       10:0] rom_pc;
+  wire               rom_jump_enable;
+  wire [       10:0] rom_jump_data;
+  wire               interrupt_jump;
+  wire               interrupt_clear_status;
   rom(
       .clk(clk),
       .rst(rst),

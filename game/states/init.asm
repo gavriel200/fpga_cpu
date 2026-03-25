@@ -52,7 +52,7 @@ RTN
 // ===============================
 
 &draw_dealer_flipped_card:
-WD draw_symbol.v.param_pixel_color_addr, color_orange
+WD draw_symbol.v.param_pixel_color_addr, color_turkiz
 WD draw_symbol.v.param_y_axis_addr, 6
 WD draw_symbol.v.param_x_axis_addr, 6
 WD draw_symbol.v.param_symbol_key, symbol_flipped_card

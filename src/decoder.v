@@ -2,10 +2,10 @@
 
 module decoder (
     // rom
-    input      [23:0] rom_data,
-    input      [10:0] rom_pc,
-    output reg        rom_jump_enable,
-    output reg [10:0] rom_jump_data,
+    input      [6 + 8*2-1:0] rom_data,
+    input      [       10:0] rom_pc,
+    output reg               rom_jump_enable,
+    output reg [       10:0] rom_jump_data,
 
     // registers
     output reg registers_from_stack_enable,
@@ -54,7 +54,7 @@ module decoder (
     input stall_reg
 );
 
-  wire [7:0] instruction = rom_data[23:16];
+  wire [5:0] instruction = rom_data[21:16];
   wire [7:0] arg_a = rom_data[15:8];
   wire [7:0] arg_b = rom_data[7:0];
 

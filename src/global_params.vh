@@ -2,36 +2,36 @@
 `define GLOBAL_PARAMS_VH
 
 // instructions
-localparam NOP = 8'd0;
-localparam LD  = 8'd1;
-localparam LDR = 8'd2;
-localparam ADD = 8'd3;
-localparam SUB = 8'd4;
-localparam INC = 8'd5;
-localparam DEC = 8'd6;
-localparam CLR = 8'd7;
-localparam FIL = 8'd8;
-localparam PSH = 8'd9;
-localparam POP = 8'd10;
-localparam JMP = 8'd11;
-localparam JZ  = 8'd12;
-localparam JNZ = 8'd13;
-localparam JC  = 8'd14;
-localparam JNC = 8'd15;
-localparam COM = 8'd16;
-localparam CAL = 8'd17;
-localparam RTN = 8'd18;
-localparam WR  = 8'd19; // write register to addr
-localparam WD  = 8'd20; // write data to addr
-localparam RR  = 8'd21; // read to register from addr
-localparam RWR  = 8'd22; // write register to addr that is read from register
-localparam RWD  = 8'd23; // write data to addr that is read from register
-localparam RRR  = 8'd24; // read to register from addr that is read from register
-localparam CIS = 8'd25; // clear interrupt status
-localparam AND = 8'd26; // and
-localparam OR  = 8'd27; // or
-localparam XOR = 8'd28; //xor
-localparam XNR = 8'd29; // xnor
+localparam NOP = 6'd0;
+localparam LD  = 6'd1;
+localparam LDR = 6'd2;
+localparam ADD = 6'd3;
+localparam SUB = 6'd4;
+localparam INC = 6'd5;
+localparam DEC = 6'd6;
+localparam CLR = 6'd7;
+localparam FIL = 6'd8;
+localparam PSH = 6'd9;
+localparam POP = 6'd10;
+localparam JMP = 6'd11;
+localparam JZ  = 6'd12;
+localparam JNZ = 6'd13;
+localparam JC  = 6'd14;
+localparam JNC = 6'd15;
+localparam COM = 6'd16;
+localparam CAL = 6'd17;
+localparam RTN = 6'd18;
+localparam WR  = 6'd19; // write register to addr
+localparam WD  = 6'd20; // write data to addr
+localparam RR  = 6'd21; // read to register from addr
+localparam RWR  = 6'd22; // write register to addr that is read from register
+localparam RWD  = 6'd23; // write data to addr that is read from register
+localparam RRR  = 6'd24; // read to register from addr that is read from register
+localparam CIS = 6'd25; // clear interrupt status
+localparam AND = 6'd26; // and
+localparam OR  = 6'd27; // or
+localparam XOR = 6'd28; //xor
+localparam XNR = 6'd29; // xnor
 
 // registers
 // rw

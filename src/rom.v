@@ -2,9 +2,9 @@ module rom (
     input clk,
     input rst,
 
-    input                enable,  // increments pc each clk while enabled
-    output     [8*3-1:0] data,
-    output reg [   10:0] pc,
+    input                    enable,  // increments pc each clk while enabled
+    output     [6 + 8*2-1:0] data,
+    output reg [       10:0] pc,
 
     // jump
     input        jump_enable,
@@ -15,8 +15,7 @@ module rom (
 );
   localparam INTERRUPT_JUMP_LOCATION = 11'h3E8;  // line 1000
   localparam ROM_LEN = 11'h400;  // 1024 lines
-  // reg [8*3-1:0] rom_data[0:ROM_LEN-1];  // each 3 bytes
-  (* syn_ramstyle = "block_ram" *) reg [8*3-1:0] rom_data[0:ROM_LEN-1];
+  (* syn_ramstyle = "block_ram" *) reg [6 + 8*2-1:0] rom_data[0:ROM_LEN-1];
 
 
   assign data = rom_data[pc];

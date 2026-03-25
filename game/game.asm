@@ -69,8 +69,6 @@ JMP @game_loop
 
 JMP @done
 
-import game/global_params.asm
-
 import game/init/clean_ram.asm
 import game/init/suits.asm
 import game/init/cards.asm
@@ -86,6 +84,7 @@ import game/states/player_win.asm
 import game/states/dealer_win.asm
 import game/states/tie.asm
 
+import game/colors.asm
 import game/clean_text.asm
 import game/deal.asm
 import game/draw_again.asm

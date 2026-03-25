@@ -1,4 +1,3 @@
-- make it so that the instruction is not 8 bits but less (as much as needed for all the current instructions)
 - code cleaning .asm
 - code clean and renaming .v
 - code clean and improve .py
