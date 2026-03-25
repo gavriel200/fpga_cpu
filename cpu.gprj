@@ -26,6 +26,8 @@
         <File path="src/top.cst" type="file.cst" enable="1"/>
         <File path="src/top.sdc" type="file.sdc" enable="1"/>
         <File path="src/cpu.rao" type="file.gao" enable="1"/>
-        <File path="src/main.hex" type="file.other" enable="1"/>
     </FileList>
+    <BinFileList>
+        <BinFile path="src/main.bin" type="file.bin" enable="1"/>
+    </BinFileList>
 </Project>

@@ -123,8 +123,8 @@ def get_jump_location(line: str):
     return line.strip().replace("&", "").replace(":", "")
 
 
-def clean_hex_file():
-    open("src/main.hex", "w").close()
+def clean_bin_file():
+    open("src/main.bin", "w").close()
     open("assembler/debug_file_asm", "w").close()
 
 
@@ -231,7 +231,7 @@ def main():
     print(f"params : {replace_params}")
     print(f"memory locations:{BaseInstruction.jump_locations}")
 
-    clean_hex_file()
+    clean_bin_file()
 
     write_pc = 0
     for i in instructions:

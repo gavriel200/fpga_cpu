@@ -25,7 +25,7 @@ module rom (
 
   initial begin
     pc = 0;
-    $readmemh("main.hex", rom_data);
+    $readmemb("main.bin", rom_data);
   end
 
   always @(posedge clk) begin

@@ -78,7 +78,7 @@ class Registers(IntEnum):
 
 
 class BaseInstruction:
-    hex_file = "src/main.hex"
+    bin_file = "src/main.bin"
     debug_file = "assembler/debug_file_asm"
     instruction_id = None
     arg1 = None
@@ -120,7 +120,7 @@ class BaseInstruction:
 
     def write(self, pc):
         self.generate_args()
-        with open(self.hex_file, "a") as f:
+        with open(self.bin_file, "a") as f:
             f.write(f"{self.value()}\n")
 
         if debug:
@@ -205,7 +205,7 @@ class BaseTwoRegistersInstruction(BaseInstruction):
         self.arg2 = self.get_reg(args[1])
 
     def value(self):
-        return f"{self.instruction_id:02X}{self.arg1:02X}{self.arg2:02X}"
+        return f"{self.instruction_id:08b}{self.arg1:08b}{self.arg2:08b}"
 
 
 class BaseOneRegisterInstruction(BaseInstruction):
@@ -216,7 +216,7 @@ class BaseOneRegisterInstruction(BaseInstruction):
         self.arg1 = self.get_reg(args[0])
 
     def value(self):
-        return f"{self.instruction_id:02X}{self.arg1:02X}{0:02X}"
+        return f"{self.instruction_id:08b}{self.arg1:08b}{0:08b}"
 
 
 class BaseOneRegisterOneNumberInstruction(BaseInstruction):
@@ -228,7 +228,7 @@ class BaseOneRegisterOneNumberInstruction(BaseInstruction):
         self.arg2 = self.get_number(args[1])
 
     def value(self):
-        return f"{self.instruction_id:02X}{self.arg1:02X}{self.arg2:02X}"
+        return f"{self.instruction_id:08b}{self.arg1:08b}{self.arg2:08b}"
 
 
 class BaseJumpInstruction(BaseInstruction):
@@ -239,14 +239,14 @@ class BaseJumpInstruction(BaseInstruction):
         self.arg1, self.arg2 = self.get_number_16_bit(args[0])
 
     def value(self):
-        return f"{self.instruction_id:02X}{self.arg1:02X}{self.arg2:02X}"
+        return f"{self.instruction_id:08b}{self.arg1:08b}{self.arg2:08b}"
 
 
 class BaseReturnInstruction(BaseInstruction):
     arg_num = 0
 
     def value(self):
-        return f"{self.instruction_id:02X}{0:02X}{0:02X}"
+        return f"{self.instruction_id:08b}{0:08b}{0:08b}"
 
 
 class Nop(BaseInstruction):
@@ -254,7 +254,7 @@ class Nop(BaseInstruction):
     arg_num = 0
 
     def value(self):
-        return f"{0:02X}{0:02X}{0:02X}"
+        return f"{0:08b}{0:08b}{0:08b}"
 
 
 class Ld(BaseTwoRegistersInstruction):
@@ -339,7 +339,7 @@ class Wr(BaseInstruction):
         self.arg2 = self.get_reg(args[1])
 
     def value(self):
-        return f"{self.instruction_id:02X}{self.arg1:02X}{self.arg2:02X}"
+        return f"{self.instruction_id:08b}{self.arg1:08b}{self.arg2:08b}"
 
 
 class Wd(BaseInstruction):
@@ -352,7 +352,7 @@ class Wd(BaseInstruction):
         self.arg2 = self.get_number(args[1])
 
     def value(self):
-        return f"{self.instruction_id:02X}{self.arg1:02X}{self.arg2:02X}"
+        return f"{self.instruction_id:08b}{self.arg1:08b}{self.arg2:08b}"
 
 
 class Rr(BaseOneRegisterOneNumberInstruction):
