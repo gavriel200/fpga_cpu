@@ -145,7 +145,7 @@ COM get_card_value.r.card, get_card_value.r.1
 JZ @ace_card
 
 COM get_card_value.r.card, get_card_value.r.10
-JC @more_then_10
+JC @more_than_10
 
 PSH get_card_value.r.card
 JMP @get_card_value_done
@@ -157,7 +157,7 @@ RWR get_card_value.r.ace_counter_addr, get_card_value.r.ace_counter
 PSH get_card_value.r.11
 JMP @get_card_value_done
 
-&more_then_10:
+&more_than_10:
 PSH get_card_value.r.10
 JMP @get_card_value_done
 

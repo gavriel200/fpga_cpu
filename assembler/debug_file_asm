@@ -239,7 +239,7 @@
 &deal_init_cards_done:
 0100100000000000000000 -- pc: 000000D5 -- instruction: RTN arg1: 00, arg2: 00 
 &draw_dealer_flipped_card:
-0101000011101100000100 -- pc: 000000D6 -- instruction: WD  arg1: 3B, arg2: 04 
+0101000011101100000001 -- pc: 000000D6 -- instruction: WD  arg1: 3B, arg2: 01 
 0101000011101000000110 -- pc: 000000D7 -- instruction: WD  arg1: 3A, arg2: 06 
 0101000011100100000110 -- pc: 000000D8 -- instruction: WD  arg1: 39, arg2: 06 
 0101000011100000100011 -- pc: 000000D9 -- instruction: WD  arg1: 38, arg2: 23 
@@ -298,11 +298,11 @@
 0100000000001000000001 -- pc: 00000105 -- instruction: COM arg1: R2, arg2: R1 
 0011000000000100001101 -- pc: 00000106 -- instruction: JZ  arg1: 01, arg2: 0D  | @player_exactly_21
 0011100000000100001001 -- pc: 00000107 -- instruction: JC  arg1: 01, arg2: 09  | @player_less_then_21
-0011110000000100001011 -- pc: 00000108 -- instruction: JNC arg1: 01, arg2: 0B  | @player_more_then_21
+0011110000000100001011 -- pc: 00000108 -- instruction: JNC arg1: 01, arg2: 0B  | @player_more_than_21
 &player_less_then_21:
 0101001100101100000001 -- pc: 00000109 -- instruction: WD  arg1: CB, arg2: 01 
 0010110000000100001111 -- pc: 0000010A -- instruction: JMP arg1: 01, arg2: 0F  | @state_hit_done
-&player_more_then_21:
+&player_more_than_21:
 0101001100101100000101 -- pc: 0000010B -- instruction: WD  arg1: CB, arg2: 05 
 0010110000000100001111 -- pc: 0000010C -- instruction: JMP arg1: 01, arg2: 0F  | @state_hit_done
 &player_exactly_21:
@@ -320,14 +320,14 @@
 0000100000001100010101 -- pc: 00000116 -- instruction: LDR arg1: R3, arg2: 15 
 0000100000010000010000 -- pc: 00000117 -- instruction: LDR arg1: R4, arg2: 10 
 0100000000001100000001 -- pc: 00000118 -- instruction: COM arg1: R3, arg2: R1 
-0011110000000100100000 -- pc: 00000119 -- instruction: JNC arg1: 01, arg2: 20  | @dealer_more_then_21
+0011110000000100100000 -- pc: 00000119 -- instruction: JNC arg1: 01, arg2: 20  | @dealer_more_than_21
 0100000000010000000001 -- pc: 0000011A -- instruction: COM arg1: R4, arg2: R1 
 0011100000000100100010 -- pc: 0000011B -- instruction: JC  arg1: 01, arg2: 22  | @dealer_has_16_or_less
 0100000000000100000010 -- pc: 0000011C -- instruction: COM arg1: R1, arg2: R2 
 0011000000000100100100 -- pc: 0000011D -- instruction: JZ  arg1: 01, arg2: 24  | @dealer_equal_player
-0011100000000100100110 -- pc: 0000011E -- instruction: JC  arg1: 01, arg2: 26  | @dealer_more_then_player
+0011100000000100100110 -- pc: 0000011E -- instruction: JC  arg1: 01, arg2: 26  | @dealer_more_than_player
 0011110000000100101000 -- pc: 0000011F -- instruction: JNC arg1: 01, arg2: 28  | @dealer_less_then_player
-&dealer_more_then_21:
+&dealer_more_than_21:
 0101001100101100000100 -- pc: 00000120 -- instruction: WD  arg1: CB, arg2: 04 
 0010110000000100101010 -- pc: 00000121 -- instruction: JMP arg1: 01, arg2: 2A  | @state_dealer_hit_done
 &dealer_has_16_or_less:
@@ -336,7 +336,7 @@
 &dealer_equal_player:
 0101001100101100000110 -- pc: 00000124 -- instruction: WD  arg1: CB, arg2: 06 
 0010110000000100101010 -- pc: 00000125 -- instruction: JMP arg1: 01, arg2: 2A  | @state_dealer_hit_done
-&dealer_more_then_player:
+&dealer_more_than_player:
 0101001100101100000101 -- pc: 00000126 -- instruction: WD  arg1: CB, arg2: 05 
 0010110000000100101010 -- pc: 00000127 -- instruction: JMP arg1: 01, arg2: 2A  | @state_dealer_hit_done
 &dealer_less_then_player:
@@ -512,7 +512,7 @@
 0100000000000000000100 -- pc: 000001B9 -- instruction: COM arg1: R0, arg2: R4 
 0011000000000110111111 -- pc: 000001BA -- instruction: JZ  arg1: 01, arg2: BF  | @ace_card
 0100000000000000000101 -- pc: 000001BB -- instruction: COM arg1: R0, arg2: R5 
-0011100000000111000100 -- pc: 000001BC -- instruction: JC  arg1: 01, arg2: C4  | @more_then_10
+0011100000000111000100 -- pc: 000001BC -- instruction: JC  arg1: 01, arg2: C4  | @more_than_10
 0010010000000000000000 -- pc: 000001BD -- instruction: PSH arg1: R0, arg2: 00 
 0010110000000111000110 -- pc: 000001BE -- instruction: JMP arg1: 01, arg2: C6  | @get_card_value_done
 &ace_card:
@@ -521,7 +521,7 @@
 0101100000000100000010 -- pc: 000001C1 -- instruction: RWR arg1: R1, arg2: R2 
 0010010000011000000000 -- pc: 000001C2 -- instruction: PSH arg1: R6, arg2: 00 
 0010110000000111000110 -- pc: 000001C3 -- instruction: JMP arg1: 01, arg2: C6  | @get_card_value_done
-&more_then_10:
+&more_than_10:
 0010010000010100000000 -- pc: 000001C4 -- instruction: PSH arg1: R5, arg2: 00 
 0010110000000111000110 -- pc: 000001C5 -- instruction: JMP arg1: 01, arg2: C6  | @get_card_value_done
 &get_card_value_done:

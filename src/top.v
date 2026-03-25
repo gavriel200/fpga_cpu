@@ -21,8 +21,10 @@ module top (
     input button3
 );
   wire rst;
-  reset(
-      .clk(clk), .rst_btn(rst_btn), .rst(rst)
+  reset reset_inst (
+      .clk(clk),
+      .rst_btn(rst_btn),
+      .rst(rst)
   );
 
   assign rst_led = !rst;
@@ -34,7 +36,7 @@ module top (
   wire [5:0] framebuffer_x_output;
   wire [5:0] framebuffer_y_output;
   wire [3:0] framebuffer_frame;
-  framebuffer(
+  framebuffer framebuffer_inst (
       .clk(clk),
       .rst(rst),
       .x_update(framebuffer_x_update),
@@ -48,7 +50,7 @@ module top (
 
   wire lcd_ready;
   wire lcd_update;
-  lcd(
+  lcd lcd_inst (
       .clk(clk),
       .rst(rst),
 
@@ -62,7 +64,7 @@ module top (
       .framebuffer_y_output(framebuffer_y_output),
       .framebuffer_frame(framebuffer_frame),
 
-      .ready(lcd_ready),
+      .ready (lcd_ready),
       .update(lcd_update)
   );
 
@@ -117,7 +119,7 @@ module top (
   wire [       10:0] rom_jump_data;
   wire               interrupt_jump;
   wire               interrupt_clear_status;
-  rom(
+  rom rom_inst (
       .clk(clk),
       .rst(rst),
       .enable(rom_enable),
@@ -134,7 +136,7 @@ module top (
   wire       ram_w_enable;
   wire [7:0] ram_w_data;
   wire [7:0] ram_r_data;
-  ram(
+  ram ram_inst (
       .clk(clk),
       //   .rst(rst),
       .addr(ram_addr),
@@ -150,7 +152,7 @@ module top (
   wire [7:0] random_seed;
   wire [7:0] random_raw;
   wire [7:0] random_range;
-  random(
+  random random_inst (
       .clk(clk),
       .rst(rst),
       .w_enable(random_w_enable),
@@ -166,7 +168,7 @@ module top (
   wire timer_interrupt_enable;
   wire timer_done;
   wire timer_interrupt;
-  timer(
+  timer timer_inst (
       .clk(clk),
       .rst(rst),
       .time_ms(timer_time_ms),
@@ -177,7 +179,7 @@ module top (
   );
 
   wire [7:0] interrupt_status;
-  interrupt(
+  interrupt interrupt_inst (
       .clk(clk),
       .rst(rst),
       .clear_status(interrupt_clear_status),
@@ -205,7 +207,7 @@ module top (
   assign led2 = !leds[2];
   assign led3 = !leds[3];
   assign led4 = !leds[4];
-  registers(
+  registers registers_inst (
       .clk(clk),
       .rst(rst),
       .w_enable(registers_w_enable),
@@ -249,7 +251,7 @@ module top (
   wire flags_z;
   wire flags_c_val;
   wire flags_c;
-  flags(
+  flags flags_inst (
       .clk(clk),
       .rst(rst),
       .w_enable(flags_w_enable),
@@ -264,7 +266,7 @@ module top (
   wire [7:0] alu_A;
   wire [7:0] alu_B;
   wire [7:0] alu_C;
-  alu(
+  alu alu_inst (
       .operation(alu_operation),
       .A(alu_A),
       .B(alu_B),
@@ -278,7 +280,7 @@ module top (
   wire [10:0] pc_stack_push_data;
   wire pc_stack_pop_enable;
   wire [10:0] pc_stack_pop_data;
-  pc_stack(
+  pc_stack pc_stack_inst (
       .clk(clk),
       .rst(rst),
       .push_enable(pc_stack_push_enable),
@@ -293,7 +295,7 @@ module top (
   wire [7:0] stack_push_data;
   wire stack_pop_enable;
   wire [7:0] stack_pop_data;
-  stack(
+  stack stack_inst (
       .clk(clk),
       .rst(rst),
       .push_enable(stack_push_enable),
@@ -303,7 +305,7 @@ module top (
   );
 
   //
-  decoder(
+  decoder decoder_inst (
       .rom_data(rom_data),
       .rom_pc(rom_pc),
       .rom_jump_enable(rom_jump_enable),

@@ -19,13 +19,13 @@ LDR R2, 21
 COM R2, R1
 JZ @player_exactly_21
 JC @player_less_then_21
-JNC @player_more_then_21
+JNC @player_more_than_21
 
 &player_less_then_21:
 WD state_addr, e_state_player_turn
 JMP @state_hit_done
 
-&player_more_then_21:
+&player_more_than_21:
 WD state_addr, e_state_dealer_win
 JMP @state_hit_done
 

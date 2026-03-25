@@ -8,7 +8,7 @@ module pc_stack (
 
     input           pop_enable,
     output [  10:0] pop_data,
-    input  [64-1:0] registers_pop_data
+    output [64-1:0] registers_pop_data
 );
   reg [11*32-1:0] memory_pc = 0;
   reg [64*32-1:0] memory_registers = 0;

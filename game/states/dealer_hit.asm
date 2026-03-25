@@ -28,15 +28,15 @@ LDR R3, 21
 LDR R4, 16
 
 COM R3, R1
-JNC @dealer_more_then_21
+JNC @dealer_more_than_21
 COM R4, R1
 JC @dealer_has_16_or_less
 COM R1, R2
 JZ @dealer_equal_player
-JC @dealer_more_then_player
+JC @dealer_more_than_player
 JNC @dealer_less_then_player
 
-&dealer_more_then_21:
+&dealer_more_than_21:
 WD state_addr, e_state_player_win
 JMP @state_dealer_hit_done
 
@@ -48,7 +48,7 @@ JMP @state_dealer_hit_done
 WD state_addr, e_state_tie
 JMP @state_dealer_hit_done
 
-&dealer_more_then_player:
+&dealer_more_than_player:
 WD state_addr, e_state_dealer_win
 JMP @state_dealer_hit_done
 
