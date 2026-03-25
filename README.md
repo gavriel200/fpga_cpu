@@ -1,6 +1,6 @@
 # Custom 8-bit CPU — Project README
 
-A custom 8-bit CPU implemented in Verilog, synthesized on a **Tang Nano 9K FPGA**. Comes with a Python assembler, a pixel LCD display pipeline, and peripherals (buttons, timer, random, interrupts). The game (Blackjack) runs on top of it — see `README_game.md` for that.
+A custom 8-bit CPU implemented in Verilog, synthesized on a **Tang Nano 9K FPGA**. Comes with a Python assembler, a pixel LCD display pipeline, and peripherals (buttons, timer, random, interrupts). The game (Blackjack) runs on top of it — see [game README.md](game/README.md) for that.
 
 ---
 
