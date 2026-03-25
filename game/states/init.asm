@@ -22,6 +22,7 @@ CAL @init_draw
 CAL @clean_screen
 
 CAL @deal_init_cards
+CAL @draw_dealer_flipped_card
 
 WD state_addr, e_state_player_turn
 
@@ -46,3 +47,18 @@ CAL @deal
 
 &deal_init_cards_done:
 RTN
+
+// ===============================
+// ===============================
+
+&draw_dealer_flipped_card:
+WD draw_symbol.v.param_pixel_color_addr, color_orange
+WD draw_symbol.v.param_y_axis_addr, 6
+WD draw_symbol.v.param_x_axis_addr, 6
+WD draw_symbol.v.param_symbol_key, symbol_flipped_card
+CAL @draw_symbol
+&draw_dealer_flipped_card_done:
+RTN
+
+// ===============================
+// ===============================

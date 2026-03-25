@@ -34,7 +34,7 @@ LDR game.r.com, e_state_dealer_win
 COM game.r.com, game.r.current_state
 JZ @case_dealer_win
 
-LDR game.r.com, e_state_draw
+LDR game.r.com, e_state_tie
 COM game.r.com, game.r.current_state
 JZ @case_draw
 
@@ -64,7 +64,7 @@ CAL @state_dealer_win
 JMP @game_loop
 
 &case_draw:
-CAL @state_draw
+CAL @state_tie
 JMP @game_loop
 
 JMP @done
@@ -84,7 +84,7 @@ import game/states/hit.asm
 import game/states/dealer_hit.asm
 import game/states/player_win.asm
 import game/states/dealer_win.asm
-import game/states/draw.asm
+import game/states/tie.asm
 
 import game/clean_text.asm
 import game/deal.asm

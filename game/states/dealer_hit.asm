@@ -15,6 +15,8 @@
 // go to draw
 
 &state_dealer_hit:
+CAL @clean_flipped_card_if_needed
+
 LDR R0, 1
 PSH R0
 CAL @deal
@@ -43,7 +45,7 @@ WD state_addr, e_state_dealer_hit
 JMP @state_dealer_hit_done
 
 &dealer_equal_player:
-WD state_addr, e_state_draw
+WD state_addr, e_state_tie
 JMP @state_dealer_hit_done
 
 &dealer_more_then_player:
@@ -55,4 +57,22 @@ WD state_addr, e_state_player_win
 JMP @state_dealer_hit_done
 
 &state_dealer_hit_done:
+RTN
+
+// ===============================
+// ===============================
+
+&clean_flipped_card_if_needed:
+
+RR R0, dealer_len_addr
+DEC R0
+JNZ @clean_flipped_card_if_needed_done
+
+WD draw_symbol.v.param_pixel_color_addr, color_white
+WD draw_symbol.v.param_y_axis_addr, 6
+WD draw_symbol.v.param_x_axis_addr, 6
+WD draw_symbol.v.param_symbol_key, symbol_none
+CAL @draw_symbol
+
+&clean_flipped_card_if_needed_done:
 RTN

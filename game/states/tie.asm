@@ -1,20 +1,20 @@
-&state_draw:
+&state_tie:
 CAL @clean_text
 
-CAL @draw_draw
+CAL @draw_tie
 CAL @draw_again
 
 CAL @wait_for_button_click
 
 WD state_addr, e_state_init
 
-&state_draw_done:
+&state_tie_done:
 RTN
 
 // ===============================
 // ===============================
 
-&draw_draw:
+&draw_tie:
 WD draw_symbol.v.param_pixel_color_addr, color_purple
 WD draw_symbol.v.param_y_axis_addr, 13
 
@@ -30,5 +30,5 @@ WD draw_symbol.v.param_x_axis_addr, 31
 WD draw_symbol.v.param_symbol_key, symbol_E
 CAL @draw_symbol
 
-&draw_draw_done:
+&draw_tie_done:
 RTN

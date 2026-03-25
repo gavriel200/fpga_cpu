@@ -9,13 +9,13 @@
 | [1:2] suit value
 | used as or with a card on init
 
-[56:160] draw card on screen logic
+[56:172] draw card on screen logic
 [56:59] input params:
 | [56] value (address of the element to draw)
 | [57] starting x axis
 | [58] starting y axis
 | [59] pixel color
-[60:161] elements to draw pixels
+[60:164] elements to draw pixels
 | struct [0:23] 3 bytes:
 | [0:3]   first row
 | [4:7]   second row
@@ -23,19 +23,19 @@
 | [12:15] forth row
 | [16:19] fifth row
 | [20:23] sixth row
-[162:169] and logic
+[165:172] and logic
 | struct [0:7] having the relevant bit be 1 for AND
 
-[170:184] player hand
-| [170] len
-| [171:182] cards
-| [183] value
-| [184] ace counter
+[173:187] player hand
+| [173] len
+| [174:185] cards
+| [186] value
+| [187] ace counter
 
-[185:199] dealer hand
-| [185] len
-| [186:197] cards
-| [198] value
-| [199] ace counter
+[188:202] dealer hand
+| [188] len
+| [189:200] cards
+| [201] value
+| [202] ace counter
 
-[200] state
+[203] state

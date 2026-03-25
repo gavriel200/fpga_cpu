@@ -163,19 +163,24 @@ WD draw_base_addr + 93, 255
 WD draw_base_addr + 94, 255
 WD draw_base_addr + 95, 255
 // D
-$symbol_D=32
+$symbol_D=33
 WD draw_base_addr + 96, 202
 WD draw_base_addr + 97, 153
 WD draw_base_addr + 98, 172
 // W
-$symbol_W=32
+$symbol_W=34
 WD draw_base_addr + 99, 153
 WD draw_base_addr + 100, 159
 WD draw_base_addr + 101, 249
+// flipped card
+$symbol_flipped_card=35
+WD draw_base_addr + 102, 90
+WD draw_base_addr + 103, 90
+WD draw_base_addr + 104, 90
 
 
 // AND logic
-$draw_and_logic_addr=162
+$draw_and_logic_addr=165
 WD draw_and_logic_addr, 128
 WD draw_and_logic_addr + 1, 64
 WD draw_and_logic_addr + 2, 32
